@@ -2,7 +2,7 @@
 
 @section('container')
     {{-- caraousel kurang js nya --}}
-    <div class="container max-w-6xl m-auto">
+    <div class="container m-auto">
         <div id="carouselExampleControls" class="carousel slide relative" data-bs-ride="carousel">
             <div class="carousel-inner relative w-full overflow-hidden">
                 <div class="carousel-item active relative float-left w-full">
@@ -42,4 +42,7 @@
             </button>
         </div>
     </div>
+    {{-- end carousel --}}
+
+    
 @endsection

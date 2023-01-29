@@ -1,2 +1,2 @@
 import './bootstrap';
-import 'tw-elements';
+import './tw-elements';

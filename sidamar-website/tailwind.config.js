@@ -9,13 +9,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#a80e0e',
+        primary: '#dc2626',
+        primaryLighten: '#ef4444',
+        primaryDarken: '#b91c1c',
         secondary: '#64748b',
         dark: '#0f172a',
       }
     },
   },
   plugins: [
-    require('tw-elements/dist/plugin')
+    require('tw-elements/dist/plugin'),
   ]
 }

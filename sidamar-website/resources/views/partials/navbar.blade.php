@@ -1,10 +1,10 @@
 <div class="relative bg-white">
-    <div class="mx-auto max-w-7xl px-6">
-      <div class="flex items-center justify-between border-b-2 border-gray-100 py-2 md:justify-start md:space-x-10">
+    <div class="mx-auto max-w-7xl px-6 mt-2">
+      <div class="flex items-center justify-between border-b-2 border-gray-100 py-0 md:justify-start md:space-x-10">
         <div class="flex justify-start lg:w-0 lg:flex-1">
-          <a href="#">
-            <span class="sr-only">Your Company</span>
-            <img class="h-16 w-auto sm:h-16" src="img/logo.png" alt="Logo Si Damar">
+          <a href="./#home" class="relative">
+            <span class="sr-only">Si Damar</span>
+            <img class="block h-16 w-auto sm:h-16 align-middle" src="img/logo.png" alt="Logo Si Damar">
           </a>
         </div>
         <div class="-my-2 -mr-2 md:hidden">
@@ -17,13 +17,14 @@
           </button>
         </div>
         <nav class="hidden space-x-10 md:flex">
-          <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
-          <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
-          <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Activity</a>
-          <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900">Donation</a>
+          <a href="./#home" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
+          <a href="./#about" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
+          <a href="./#activity" class="text-base font-medium text-gray-500 hover:text-gray-900">Activity</a>
+          <a href="./#donation" class="text-base font-medium text-gray-500 hover:text-gray-900">Donation</a>
+          <a href="/blog" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
         </nav>
         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-          <a href="#" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-500">Sign In</a>
+          <a href="/login" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-primary px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-primaryLighten">Login</a>
         </div>
       </div>
     </div>

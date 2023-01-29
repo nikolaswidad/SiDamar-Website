@@ -1,0 +1,1 @@
+dashboard  : https://tailwindcomponents.com/component/tailwind-css-admin-dashboard-layout

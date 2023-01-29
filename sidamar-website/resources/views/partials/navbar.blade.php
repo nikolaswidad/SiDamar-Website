@@ -1,10 +1,10 @@
 <div class="relative bg-white">
     <div class="mx-auto max-w-7xl px-6 mt-2">
       <div class="flex items-center justify-between border-b-2 border-gray-100 py-0 md:justify-start md:space-x-10">
-        <div class="flex justify-start lg:w-0 lg:flex-1">
+        <div class="flex flex-wrap justify-start lg:w-0 lg:flex-1">
           <a href="./#home" class="relative">
-            <span class="sr-only">Si Damar</span>
-            <img class="block h-16 w-auto sm:h-16 align-middle" src="img/logo.png" alt="Logo Si Damar">
+            <img class="block h-16 w-auto sm:h-20 align-middle flex-1" src="img/logo.png" alt="Logo Si Damar">
+            {{-- <span class="  flex-1">Si Damar</span> --}}
           </a>
         </div>
         <div class="-my-2 -mr-2 md:hidden">
@@ -26,6 +26,7 @@
         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
           <a href="/login" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-primary px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-primaryLighten">Login</a>
         </div>
+
       </div>
     </div>
   </div>

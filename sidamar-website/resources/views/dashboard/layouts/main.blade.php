@@ -8,7 +8,7 @@
   <title>Si Damar Website</title>
 </head>
 <body>
-    @include('dashboard.layouts.navbar')
+    @include('dashboard.layouts.header')
     @include('dashboard.layouts.sidebar')
 
     <div class="container mt-2">

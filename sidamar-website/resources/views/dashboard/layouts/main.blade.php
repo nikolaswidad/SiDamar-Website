@@ -12,7 +12,14 @@
     @include('dashboard.layouts.sidebar')
 
     <div class="container mt-2">
-        @yield('container')
+        <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+            <main>
+                <div class="pt-10 px-4">
+                    @yield('container')
+                </div>
+            </main>
+       </div>
+
     </div>
 </body>
 </html>

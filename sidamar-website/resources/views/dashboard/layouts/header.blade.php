@@ -1,5 +1,5 @@
-<nav class="bg-white border-b border-gray-200 fixed z-30 w-full">
-    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+<nav class="bg-primaryDarken border-b border-gray-200 fixed z-30 w-full">
+    <div class="px-3 py-0 lg:px-5 lg:pl-3">
        <div class="flex items-center justify-between">
           <div class="flex items-center justify-start">
              <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar" class="lg:hidden mr-2 text-gray-600 hover:text-gray-900 cursor-pointer p-2 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 rounded">
@@ -11,7 +11,8 @@
                 </svg>
              </button>
              <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
-             <img src="img/logo.png" class="h-12 mr-2" alt="Si Damar Logo">
+             {{-- <img src="img/logo.png" class="h-12 mr-2" alt="Si Damar Logo"> --}}
+             <span class="font-bold text-white text-3xl flex-1 font-sans p-3 rounded-xl">SI DAMAR</span>
              </a>
              <form action="#" method="GET" class="hidden lg:block lg:pl-48">
                 <label for="topbar-search" class="sr-only">Search</label>
@@ -32,9 +33,9 @@
                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                 </svg>
              </button>
-             <span>Hai, </span>
-             <a href="#" class="hidden aspect-square sm:inline-flex ml-5 text-white bg-primary hover:bg-primaryDarken focus:ring-4 focus:ring-red-200 font-medium rounded-full text-sm px-5 py-2.5 text-center items-center mr-3">
-                <img src="" alt="">Pict
+             <span class="text-white">Hai, </span>
+             <a href="#" class="w-2 hidden aspect-square sm:inline-flex hover:border hover:border-2 ml-5 text-white bg-primary hover:bg-primaryDarken focus:ring-4 focus:ring-red-200 font-medium rounded-full text-sm px-5 py-2.5 text-center items-center mr-3">
+                <img src="" alt="">
              </a>
           </div>
        </div>

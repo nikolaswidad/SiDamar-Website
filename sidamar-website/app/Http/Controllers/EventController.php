@@ -15,9 +15,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.admin.event.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *

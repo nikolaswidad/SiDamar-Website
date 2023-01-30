@@ -1,7 +1,5 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-   <h1>ini event</h1>
-       
-   <div class="mb-96"></div>
+    <h1>ini dashboard event</h1>
 @endsection

@@ -7,12 +7,12 @@
   @vite('resources/css/app.css')
   <title>Si Damar Website</title>
 </head>
-<body>
+<body class="bg-gray-50">
     @include('dashboard.layouts.header')
     @include('dashboard.layouts.sidebar')
 
     <div class="container">
-        <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
+        <div id="main-content" class="h-full w-full relative overflow-y-auto lg:ml-64">
             <main>
                 <div class="pt-10 px-4">
                     @yield('container')

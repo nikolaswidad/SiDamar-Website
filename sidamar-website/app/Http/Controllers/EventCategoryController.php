@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Event;
-use App\Http\Requests\StoreEventRequest;
-use App\Http\Requests\UpdateEventRequest;
+use App\Models\EventCategory;
+use App\Http\Requests\StoreEventCategoryRequest;
+use App\Http\Requests\UpdateEventCategoryRequest;
 
-class EventController extends Controller
+class EventCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,9 @@ class EventController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.event.index',[
-            "events" => Event::all()
-        ]);
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,16 +25,16 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.event.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreEventRequest  $request
+     * @param  \App\Http\Requests\StoreEventCategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEventRequest $request)
+    public function store(StoreEventCategoryRequest $request)
     {
         //
     }
@@ -43,10 +42,10 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\EventCategory  $eventCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
+    public function show(EventCategory $eventCategory)
     {
         //
     }
@@ -54,10 +53,10 @@ class EventController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\EventCategory  $eventCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Event $event)
+    public function edit(EventCategory $eventCategory)
     {
         //
     }
@@ -65,11 +64,11 @@ class EventController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateEventRequest  $request
-     * @param  \App\Models\Event  $event
+     * @param  \App\Http\Requests\UpdateEventCategoryRequest  $request
+     * @param  \App\Models\EventCategory  $eventCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(UpdateEventCategoryRequest $request, EventCategory $eventCategory)
     {
         //
     }
@@ -77,10 +76,10 @@ class EventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Event  $event
+     * @param  \App\Models\EventCategory  $eventCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy(EventCategory $eventCategory)
     {
         //
     }

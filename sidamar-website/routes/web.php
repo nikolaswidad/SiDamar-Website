@@ -38,6 +38,15 @@ Route::get('/dashboard/kas', function(){
 Route::get('/dashboard/presensi', function(){
     return view('dashboard.presensi');
 });
+Route::get('/dashboard/donasi', function(){
+    return view('dashboard.donasi');
+});
+Route::get('/dashboard/merch', function(){
+    return view('dashboard.merch');
+});
+Route::get('/dashboard/finance', function(){
+    return view('dashboard.finance');
+});
 // Dashboard Member End
 
 // Dashboard Admin Start
@@ -45,6 +54,7 @@ Route::resource('/dashboard/admin/event', EventController::class);
 
 
 // Dashboard Admin End
+
 
 
 // Dashboard Author Start

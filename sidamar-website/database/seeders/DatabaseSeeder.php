@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Event;
 use App\Models\EventCategory;
+use App\Models\PostCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -34,6 +35,19 @@ class DatabaseSeeder extends Seeder
         ]);
         EventCategory::create([
             'name' => 'Donation'
+        ]);
+
+        PostCategory::create([
+            'name' => 'Web Programming',
+            'slug' => 'web-programming'
+        ]);
+        PostCategory::create([
+            'name' => 'Web Design',
+            'slug' => 'web-design'
+        ]);
+        PostCategory::create([
+            'name' => 'Personal',
+            'slug' => 'personal'
         ]);
     }
 }

@@ -56,6 +56,14 @@
                            <span class="ml-3 flex-1 whitespace-nowrap">Log Presensi</span>
                         </a>
                      </li>
+                     <li>
+                        <a href="#" class="sidebar-a group ">
+                           <svg class="flex-shrink sidebar-svg" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                           </svg>
+                           <span class="ml-3 flex-1 whitespace-nowrap">Sertifikat</span>
+                        </a>
+                     </li>
                   </ul>
                   {{-- Member End --}}
 

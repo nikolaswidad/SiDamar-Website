@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,3 +45,9 @@ Route::resource('/dashboard/admin/event', EventController::class);
 
 
 // Dashboard Admin End
+
+
+// Dashboard Author Start
+Route::resource('/dashboard/posts',PostController::class);
+
+// Dashboard Author End

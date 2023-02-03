@@ -60,7 +60,7 @@ Route::resource('/dashboard/admin/event', EventController::class);
 
 
 // Dashboard Author Start
-// Route::resource('/dashboard/posts',DashboardPostController::class);
-Route::resource('/dashboard/posts',PostCategoryController::class);
+Route::resource('/dashboard/posts',DashboardPostController::class);
+Route::resource('/dashboard/categories',PostCategoryController::class);
 
 // Dashboard Author End

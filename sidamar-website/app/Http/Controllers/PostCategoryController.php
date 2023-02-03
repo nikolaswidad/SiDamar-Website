@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PostCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PostCategoryController extends Controller
 {
@@ -14,7 +15,7 @@ class PostCategoryController extends Controller
      */
     public function index()
     {
-        $category = PostCategory::all();
+        $category = PostCategory::paginate(10);
         return view('dashboard.posts.category', compact('category'));
     }
 
@@ -25,7 +26,7 @@ class PostCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.posts.create');
     }
 
     /**
@@ -36,7 +37,16 @@ class PostCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
+        // dd($request->all());
+        $category = PostCategory::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name) 
+        ]) ;
+
+        return redirect()->back()->with('success','Kategori berhasil disimpan');
     }
 
     /**
@@ -58,7 +68,8 @@ class PostCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = PostCategory::findorfail($id);
+        return view('dashboard.posts.edit',compact('category'));
     }
 
     /**
@@ -70,7 +81,18 @@ class PostCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+
+        $category_data = [
+            'name' => $request->name,
+            'slug' => Str::slug($request->name)
+        ];
+
+        PostCategory::whereId($id)->update($category_data);
+        // return redirect()->route('dashboard.posts.category');
+        return redirect('dashboard/categories')->with('success','Kategori berhasil disimpan');
     }
 
     /**

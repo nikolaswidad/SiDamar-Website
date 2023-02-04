@@ -16,7 +16,7 @@ class PostCategoryController extends Controller
     public function index()
     {
         $category = PostCategory::paginate(10);
-        return view('dashboard.posts.category', compact('category'));
+        return view('dashboard.author.category.index', compact('category'));
     }
 
     /**
@@ -26,7 +26,7 @@ class PostCategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create');
+        return view('dashboard.author.category.create');
     }
 
     /**
@@ -69,7 +69,7 @@ class PostCategoryController extends Controller
     public function edit($id)
     {
         $category = PostCategory::findorfail($id);
-        return view('dashboard.posts.edit',compact('category'));
+        return view('dashboard.author.category.edit',compact('category'));
     }
 
     /**
@@ -103,6 +103,8 @@ class PostCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = PostCategory::findorfail($id);
+        $category->delete();
+        return redirect('dashboard/categories')->with('success','Data berhasil dihapus');
     }
 }

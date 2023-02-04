@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Event;
 use App\Models\EventCategory;
+use App\Models\Post;
 use App\Models\PostCategory;
 use Illuminate\Database\Seeder;
 
@@ -37,6 +38,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Donation'
         ]);
 
+
+        // Author seeder start
         PostCategory::create([
             'name' => 'Web Programming',
             'slug' => 'web-programming'
@@ -49,5 +52,43 @@ class DatabaseSeeder extends Seeder
             'name' => 'Personal',
             'slug' => 'personal'
         ]);
+
+        Post::create([
+            'title' => 'Judul Pertama',
+            'slug' => 'judul-pertama',
+            'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat..',
+            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat ipsa cupiditate fuga esse quidem perferendis labore minima libero suscipit consequuntur laudantium quo nobis, aliquam rem odit, iure quas! Omnis vel modi ex, eius nobis possimus quos, illum veritatis impedit velit dolor in nisi voluptates ratione unde tempora consectetur facilis praesentium, explicabo iure quo nesciunt! Fugit nemo, autem, corrupti pariatur reiciendis possimus, perferendis corporis voluptas delectus laboriosam facilis consequatur minus cupiditate in omnis. Recusandae officiis ut veniam sit animi quis consequuntur suscipit dolor ab laboriosam consectetur aut similique sapiente, velit labore odio iure saepe aperiam. Placeat numquam voluptatibus aut!',
+            'category_id' => 1,
+            'user_id' => 1
+        ]);
+
+        Post::create([
+            'title' => 'Judul Kedua',
+            'slug' => 'judul-kedua',
+            'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat..',
+            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat ipsa cupiditate fuga esse quidem perferendis labore minima libero suscipit consequuntur laudantium quo nobis, aliquam rem odit, iure quas! Omnis vel modi ex, eius nobis possimus quos, illum veritatis impedit velit dolor in nisi voluptates ratione unde tempora consectetur facilis praesentium, explicabo iure quo nesciunt! Fugit nemo, autem, corrupti pariatur reiciendis possimus, perferendis corporis voluptas delectus laboriosam facilis consequatur minus cupiditate in omnis. Recusandae officiis ut veniam sit animi quis consequuntur suscipit dolor ab laboriosam consectetur aut similique sapiente, velit labore odio iure saepe aperiam. Placeat numquam voluptatibus aut!',
+            'category_id' => 1,
+            'user_id' => 1
+        ]);
+
+        Post::create([
+            'title' => 'Judul Ketiga',
+            'slug' => 'judul-ketiga',
+            'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat..',
+            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat ipsa cupiditate fuga esse quidem perferendis labore minima libero suscipit consequuntur laudantium quo nobis, aliquam rem odit, iure quas! Omnis vel modi ex, eius nobis possimus quos, illum veritatis impedit velit dolor in nisi voluptates ratione unde tempora consectetur facilis praesentium, explicabo iure quo nesciunt! Fugit nemo, autem, corrupti pariatur reiciendis possimus, perferendis corporis voluptas delectus laboriosam facilis consequatur minus cupiditate in omnis. Recusandae officiis ut veniam sit animi quis consequuntur suscipit dolor ab laboriosam consectetur aut similique sapiente, velit labore odio iure saepe aperiam. Placeat numquam voluptatibus aut!',
+            'category_id' => 2,
+            'user_id' => 1
+        ]);
+
+        Post::create([
+            'title' => 'Judul Keempat',
+            'slug' => 'judul-keempat',
+            'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat..',
+            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat ipsa cupiditate fuga esse quidem perferendis labore minima libero suscipit consequuntur laudantium quo nobis, aliquam rem odit, iure quas! Omnis vel modi ex, eius nobis possimus quos, illum veritatis impedit velit dolor in nisi voluptates ratione unde tempora consectetur facilis praesentium, explicabo iure quo nesciunt! Fugit nemo, autem, corrupti pariatur reiciendis possimus, perferendis corporis voluptas delectus laboriosam facilis consequatur minus cupiditate in omnis. Recusandae officiis ut veniam sit animi quis consequuntur suscipit dolor ab laboriosam consectetur aut similique sapiente, velit labore odio iure saepe aperiam. Placeat numquam voluptatibus aut!',
+            'category_id' => 2,
+            'user_id' => 2
+        ]);
+
+        // Author seeder end
     }
 }

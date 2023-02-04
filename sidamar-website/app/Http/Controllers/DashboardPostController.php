@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class DashboardPostController extends Controller
@@ -13,7 +14,8 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        return view('dashboard.author.posts.index');
+        $post = Post::paginate(10);
+        return view('dashboard.author.posts.index',compact('post'));
     }
 
     /**
@@ -23,7 +25,7 @@ class DashboardPostController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.author.posts.create');
     }
 
     /**

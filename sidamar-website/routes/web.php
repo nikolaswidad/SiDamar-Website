@@ -27,6 +27,9 @@ Route::get('/login/', function () {
     return view('login.login');
 });
 
+
+/****/
+
 // Dashboard Member Start
 Route::get('/dashboard/', function(){
     return view('dashboard.index');
@@ -51,16 +54,22 @@ Route::get('/dashboard/finance', function(){
 });
 // Dashboard Member End
 
+/****/
+
 // Dashboard Admin Start
 Route::resource('/dashboard/admin/event', EventController::class);
 
 
 // Dashboard Admin End
 
-
+/****/
 
 // Dashboard Author Start
-Route::resource('/dashboard/posts',DashboardPostController::class);
-Route::resource('/dashboard/categories',PostCategoryController::class);
+Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
+Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
+Route::resources([
+    '/dashboard/posts' => DashboardPostController::class,
+    'dashboard/categories' => PostCategoryController::class
+]);
 
 // Dashboard Author End

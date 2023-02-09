@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="font-bold mb-5 text-4xl">Add Post</h1>
+<h1 class="font-bold mb-5 text-4xl">Edit Post</h1>
 
     @if (count($errors)>0)
       @foreach ($errors->all() as $error)
@@ -17,18 +17,19 @@
       </div>
     @endif
 
-<form action="/dashboard/posts" method="POST" enctype="multipart/form-data">
+<form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
   @csrf
+  @method('PATCH')
   <div class="mb-6">
     <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
-    <input type="text" id="title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('title') is-invalid @enderror" placeholder="title" required value="{{ old('title') }}">
+    <input type="text" id="title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('title') is-invalid @enderror" placeholder="title" required value="{{ $post->title }}">
     @error('title')
           {{ $message }}
       @enderror
   </div>
   <div class="mb-6">
     <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
-    <input type="text" id="slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('slug') is-invalid @enderror" required value="{{ old('slug') }}">
+    <input type="text" id="slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('slug') is-invalid @enderror" required value="{{ $post->slug }}">
     @error('slug')
           {{ $message }}
       @enderror
@@ -38,7 +39,7 @@
     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
     <select class="rounded-lg" name="category_id">
       @foreach ($category as $cat)
-      @if (old('category_id') == $cat->id)
+      @if (old('category_id', $post->category_id) == $cat->id)
         <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>
       @else
         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -49,7 +50,7 @@
   
   <div class="mb-6">
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image">Upload Image</label>
-      <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('image') is-invalid @enderror" name="image" id="image" type="file" onchange="previewImage()">
+      <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('image') is-invalid @enderror" name="image" id="image" type="file" onchange="previewImage()" value="{{ $post->image }}">
     @error('image')
           {{ $message }}
     @enderror
@@ -60,7 +61,7 @@
     @error('body')
         <p class="text-danger">{{ $message }}</p>
     @enderror
-      <input id="body" type="hidden" name="body" value="{{ old('body') }}">
+      <input id="body" type="hidden" name="body" value="{{ $post->body }}">
       <trix-editor input="body"></trix-editor>
   </div>
 

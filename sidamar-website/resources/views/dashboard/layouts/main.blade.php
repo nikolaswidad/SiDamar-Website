@@ -6,7 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   @vite('resources/css/app.css')
   <title>Si Damar Website</title>
-  {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
   <link rel="stylesheet" href="css/style.css">
   
   {{-- Trix Editor --}}

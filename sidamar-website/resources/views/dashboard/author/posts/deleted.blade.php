@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-   <h1 class="font-bold mb-5 text-4xl">List Post</h1>
+   <h1 class="font-bold mb-5 text-4xl">List Post yang dihapus</h1>
 
    @if (Session::has('success'))
       <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
@@ -38,10 +38,10 @@
               @endif
               {{-- <img src="{{ asset($hasil->image) }}" alt="img" style="width: 100px"></td> --}}
             <td class="px-6 py-4">
-              <form action="{{ route('posts.destroy', $hasil->id) }}" method="POST">
+              <form action="" method="POST">
                 @csrf
                 @method('delete')
-                <a href="{{ route('posts.edit', $hasil->id) }}"><button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 ">Edit</button></a>
+                <a href="{{ route('posts.restore', $hasil->id) }}"><button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 ">Restore</button></a>
                 <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline">Delete</button>
               </form>
             </td>

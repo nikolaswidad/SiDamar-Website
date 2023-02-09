@@ -54,6 +54,12 @@ Route::get('/dashboard/finance', function(){
 });
 // Dashboard Member End
 
+// Dashboard Template Start
+Route::get('/dashboard/template/form', function(){
+    return view('dashboard.template.form');
+});
+// Dashboar Template End
+
 /****/
 
 // Dashboard Admin Start

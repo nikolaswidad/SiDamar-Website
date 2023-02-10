@@ -67,9 +67,13 @@ Route::resource('/dashboard/admin/event', EventController::class);
 // Dashboard Author Start
 Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
 Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
+Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill');
 Route::resources([
     '/dashboard/posts' => DashboardPostController::class,
-    'dashboard/categories' => PostCategoryController::class
+    'dashboard/categories' => PostCategoryController::class,
+    '/posts'=> PostController::class
 ]);
 
+
+// Route::get('/posts', [PostController::class, 'index']);
 // Dashboard Author End

@@ -156,4 +156,12 @@ class DashboardPostController extends Controller
 
         return redirect('dashboard/posts/deleted')->with('success','Data berhasil dikembalikan');
     }
+
+    //delete permanen
+    public function kill($id){
+        $post = Post::withTrashed()->where('id',$id)->first();
+        $post->forceDelete();
+
+        return redirect('dashboard/posts/deleted')->with('success','Data berhasil dihapus permanen');
+    }
 }

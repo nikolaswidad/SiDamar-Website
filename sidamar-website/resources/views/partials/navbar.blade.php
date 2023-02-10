@@ -1,9 +1,9 @@
-<div class="relative bg-white">
-    <div class="mx-auto max-w-7xl px-6 mt-2">
-      <div class="flex items-center justify-between border-b-2 border-gray-100 py-0 md:justify-start md:space-x-10">
+<nav class="relative bg-white border-b-2 border-gray-100">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="flex items-center justify-between py-0 md:justify-start md:space-x-10">
         <div class="flex flex-wrap justify-start lg:w-0 lg:flex-1">
           <a href="./#home" class="relative">
-            <img class="block h-16 w-auto sm:h-20 align-middle flex-1" src="img/logo.png" alt="Logo Si Damar">
+            <img class="block h-16 w-auto sm:h-20 align-middle flex-1 mb-2 mt-2" src="img/logo.png" alt="Logo Si Damar">
             {{-- <span class="  flex-1">Si Damar</span> --}}
           </a>
         </div>
@@ -21,7 +21,7 @@
           <a href="./#about" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
           <a href="./#activity" class="text-base font-medium text-gray-500 hover:text-gray-900">Activity</a>
           <a href="./#donation" class="text-base font-medium text-gray-500 hover:text-gray-900">Donation</a>
-          <a href="/blog" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
+          <a href="/posts" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
         </nav>
         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
           <a href="/login" class="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-primary px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-primaryLighten">Login</a>
@@ -29,4 +29,4 @@
 
       </div>
     </div>
-  </div>
+  </nav>

@@ -10,7 +10,7 @@
 </head>
 <body>
     @include('partials.navbar')
-    <div class="container mt-5 px-56">
+    <div class="container  mx-auto">
         @yield('container')
     </div>
 </body>

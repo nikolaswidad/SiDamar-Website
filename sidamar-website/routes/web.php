@@ -1,11 +1,12 @@
     <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\PostCategoryController;
-use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostCategoryController;
+use App\Http\Controllers\DashboardPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,10 +55,17 @@ Route::get('/dashboard/finance', function(){
 });
 // Dashboard Member End
 
+// Dashboard Template Start
+Route::get('/dashboard/template/form', function(){
+    return view('dashboard.template.form');
+});
+// Dashboar Template End
+
 /****/
 
 // Dashboard Admin Start
 Route::resource('/dashboard/admin/event', EventController::class);
+Route::resource('/dashboard/admin/presensi', PresensiController::class);
 
 
 // Dashboard Admin End

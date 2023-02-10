@@ -22,3 +22,7 @@
  .sidebar-svg {
    @apply w-6 h-6 text-gray-500 group-hover:text-white transition duration-75;
  }
+
+ .form-control {
+   @apply mt-1 w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm
+ }

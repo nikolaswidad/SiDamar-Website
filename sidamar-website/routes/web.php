@@ -7,6 +7,7 @@ use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\BulanKasController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -44,9 +45,9 @@ Route::get('/dashboard', function(){
 Route::get('/dashboard/event', function(){
     return view('dashboard.event');
 });
-Route::get('/dashboard/kas', function(){
-    return view('dashboard.kas');
-});
+// Route::get('/dashboard/kas', function(){
+//     return view('dashboard.kas');
+// });
 Route::get('/dashboard/presensi', function(){
     return view('dashboard.presensi');
 });
@@ -92,3 +93,7 @@ Route::resources([
 
 // Route::get('/posts', [PostController::class, 'index']);
 // Dashboard Author End
+
+
+//Dashboard Bulan Kas
+Route::resource('/dashboard/bulan_kas', BulanKasController::class);

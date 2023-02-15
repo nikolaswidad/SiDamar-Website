@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\Post;
+use App\Models\BulanKas;
 use App\Models\PostCategory;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -100,7 +101,29 @@ class DatabaseSeeder extends Seeder
             // 'user_id' => 2
         ]);
 
-    // Author seeder end
+        // Author seeder end
 
+        // Bulan Kas seeder start
+        BulanKas::create([
+            'bulan' => 'Januari',
+            'tahun' => '2021',
+            'total_terkumpul' => 2000000,
+        ]);
+        BulanKas::create([
+            'bulan' => 'Februari',
+            'tahun' => '2021',
+            'total_terkumpul' => 150000,
+        ]);
+        BulanKas::create([
+            'bulan' => 'Maret',
+            'tahun' => '2022',
+            'total_terkumpul' => 100000,
+        ]);
+        BulanKas::create([
+            'bulan' => 'April',
+            'tahun' => '2022',
+            'total_terkumpul' => 100000,
+        ]);
+        // Bulan Kas seeder end
     }
 }

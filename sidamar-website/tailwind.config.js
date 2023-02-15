@@ -5,6 +5,7 @@ module.exports = {
     "./resources/**/*.js",
     "./resources/**/*.vue",
     "./node_modules/tw-elements/dist/js/**/*.js",
+
   ],
   theme: {
     extend: {
@@ -14,6 +15,9 @@ module.exports = {
         primaryDarken: '#b91c1c',
         secondary: '#64748b',
         dark: '#0f172a',
+      },
+      fontFamily: {
+        montserrat: ['Montserrat']
       }
     },
   },

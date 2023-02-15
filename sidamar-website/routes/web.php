@@ -7,6 +7,7 @@ use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,17 +25,22 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login/', function () {
-    return view('login.login');
+// login logout
+Route::get('/login',[LoginController::class, 'index'])->name('login');
+Route::post('/login',[LoginController::class, 'authenticate']);
+Route::post('/logout',[LoginController::class, 'logout']);
+
+// blog
+Route::resource('/posts',PostController::class);
+Route::get('/post',function(){
+    return view('post');
 });
-
-
 /****/
 
 // Dashboard Member Start
-Route::get('/dashboard/', function(){
+Route::get('/dashboard', function(){
     return view('dashboard.index');
-});
+})->middleware('auth');
 Route::get('/dashboard/event', function(){
     return view('dashboard.event');
 });
@@ -76,6 +82,7 @@ Route::resource('/dashboard/admin/presensi', PresensiController::class);
 Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
 Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
 Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill');
+
 Route::resources([
     '/dashboard/posts' => DashboardPostController::class,
     'dashboard/categories' => PostCategoryController::class,

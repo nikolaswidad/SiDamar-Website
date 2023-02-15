@@ -1,4 +1,4 @@
-<nav class="relative bg-white border-b-2 border-gray-100">
+<nav class="relative bg-white border-b-2 border-gray-100 font-family-karla">
     <div class="mx-auto max-w-7xl px-6">
       <div class="flex items-center justify-between py-0 md:justify-start md:space-x-10">
         <div class="flex flex-wrap justify-start lg:w-0 lg:flex-1">

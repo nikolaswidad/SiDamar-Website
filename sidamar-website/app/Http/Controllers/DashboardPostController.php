@@ -100,11 +100,12 @@ class DashboardPostController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:posts',
+            'slug' => 'required',
             'category_id' => 'required',
             'image' => 'image|file|max:1024',
             'body' => 'required'
         ]);
+        
 
         $post = Post::findorfail($id);
 

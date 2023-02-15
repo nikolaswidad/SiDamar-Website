@@ -8,6 +8,7 @@ use App\Models\Event;
 use App\Models\EventCategory;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -38,8 +39,18 @@ class DatabaseSeeder extends Seeder
             'name' => 'Donation'
         ]);
 
+    // User seeder start
+        User  ::create([
+            'name' => 'Sidamar',
+            // 'username' => 'sidamar',
+            'email' => 'sidamar@gmail.com',
+            'password' => bcrypt('password')
+        ]);
 
-        // Author seeder start
+        User::factory(3)->create();
+    // User seeder end
+
+    // Author seeder start
         PostCategory::create([
             'name' => 'Web Programming',
             'slug' => 'web-programming'
@@ -89,6 +100,7 @@ class DatabaseSeeder extends Seeder
             // 'user_id' => 2
         ]);
 
-        // Author seeder end
+    // Author seeder end
+
     }
 }

@@ -33,10 +33,16 @@
                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
                 </svg>
              </button> --}}
-             <span class="text-white mr-3">Hai, </span>
+             <span class="text-white mr-3">Hai, {{auth()->user()->name}}</span>
              <a href="#" class="w-2 hidden aspect-square sm:inline-flex ml-5 text-white bg-primary hover:bg-primaryLighten focus:ring-4 focus:ring-red-200 font-medium rounded-full text-sm px-5 py-2.5 text-center items-center mr-3">
                 <img src="img/logo.png" alt="">
              </a>
+             <form action="/logout" method="POST">
+               @csrf
+               <button type="submit" class="text-white px-3">
+                 <i class="bi bi-box-arrow-right"></i>Logout <span data-feather="log-out"></span>
+               </button>
+             </form>
           </div>
        </div>
     </div>

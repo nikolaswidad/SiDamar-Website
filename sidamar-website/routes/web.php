@@ -24,9 +24,17 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/login/', function () {
-    return view('login.login');
-});
+// login logout
+Route::get('/login',[LoginController::class, 'index'])->name('login');
+Route::post('/login',[LoginController::class, 'authenticate']);
+Route::post('/logout',[LoginController::class, 'logout']);
+
+// blog
+Route::resource('/posts',PostController::class);
+// Route::get('/post',function(){
+//     return view('post');
+// });
+Route::get('/post/{post:slug}',[PostController::class, 'show']);
 
 
 /****/
@@ -94,3 +102,6 @@ Route::resources([
 
 // Route::get('/posts', [PostController::class, 'index']);
 // Dashboard Author End
+
+//Dashboard Bulan Kas
+Route::resource('/dashboard/bulan_kas', BulanKasController::class);

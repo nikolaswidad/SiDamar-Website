@@ -65,45 +65,11 @@ class DatabaseSeeder extends Seeder
             'slug' => 'personal'
         ]);
 
-        Post::create([
-            'title' => 'Judul Pertama',
-            'slug' => 'judul-pertama',
-            'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat..',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat ipsa cupiditate fuga esse quidem perferendis labore minima libero suscipit consequuntur laudantium quo nobis, aliquam rem odit, iure quas! Omnis vel modi ex, eius nobis possimus quos, illum veritatis impedit velit dolor in nisi voluptates ratione unde tempora consectetur facilis praesentium, explicabo iure quo nesciunt! Fugit nemo, autem, corrupti pariatur reiciendis possimus, perferendis corporis voluptas delectus laboriosam facilis consequatur minus cupiditate in omnis. Recusandae officiis ut veniam sit animi quis consequuntur suscipit dolor ab laboriosam consectetur aut similique sapiente, velit labore odio iure saepe aperiam. Placeat numquam voluptatibus aut!',
-            'category_id' => 1,
-            // 'user_id' => 1
-        ]);
+        Post::factory(20)->create();
 
-        Post::create([
-            'title' => 'Judul Kedua',
-            'slug' => 'judul-kedua',
-            'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat..',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat ipsa cupiditate fuga esse quidem perferendis labore minima libero suscipit consequuntur laudantium quo nobis, aliquam rem odit, iure quas! Omnis vel modi ex, eius nobis possimus quos, illum veritatis impedit velit dolor in nisi voluptates ratione unde tempora consectetur facilis praesentium, explicabo iure quo nesciunt! Fugit nemo, autem, corrupti pariatur reiciendis possimus, perferendis corporis voluptas delectus laboriosam facilis consequatur minus cupiditate in omnis. Recusandae officiis ut veniam sit animi quis consequuntur suscipit dolor ab laboriosam consectetur aut similique sapiente, velit labore odio iure saepe aperiam. Placeat numquam voluptatibus aut!',
-            'category_id' => 1,
-            // 'user_id' => 1
-        ]);
+    // Author seeder end
 
-        Post::create([
-            'title' => 'Judul Ketiga',
-            'slug' => 'judul-ketiga',
-            'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat..',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat ipsa cupiditate fuga esse quidem perferendis labore minima libero suscipit consequuntur laudantium quo nobis, aliquam rem odit, iure quas! Omnis vel modi ex, eius nobis possimus quos, illum veritatis impedit velit dolor in nisi voluptates ratione unde tempora consectetur facilis praesentium, explicabo iure quo nesciunt! Fugit nemo, autem, corrupti pariatur reiciendis possimus, perferendis corporis voluptas delectus laboriosam facilis consequatur minus cupiditate in omnis. Recusandae officiis ut veniam sit animi quis consequuntur suscipit dolor ab laboriosam consectetur aut similique sapiente, velit labore odio iure saepe aperiam. Placeat numquam voluptatibus aut!',
-            'category_id' => 2,
-            // 'user_id' => 1
-        ]);
-
-        Post::create([
-            'title' => 'Judul Keempat',
-            'slug' => 'judul-keempat',
-            'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat..',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem earum, fugiat ipsa cupiditate fuga esse quidem perferendis labore minima libero suscipit consequuntur laudantium quo nobis, aliquam rem odit, iure quas! Omnis vel modi ex, eius nobis possimus quos, illum veritatis impedit velit dolor in nisi voluptates ratione unde tempora consectetur facilis praesentium, explicabo iure quo nesciunt! Fugit nemo, autem, corrupti pariatur reiciendis possimus, perferendis corporis voluptas delectus laboriosam facilis consequatur minus cupiditate in omnis. Recusandae officiis ut veniam sit animi quis consequuntur suscipit dolor ab laboriosam consectetur aut similique sapiente, velit labore odio iure saepe aperiam. Placeat numquam voluptatibus aut!',
-            'category_id' => 2,
-            // 'user_id' => 2
-        ]);
-
-        // Author seeder end
-
-        // Bulan Kas seeder start
+    // Bulan Kas seeder start
         BulanKas::create([
             'bulan' => 'Januari',
             'tahun' => '2021',
@@ -124,6 +90,6 @@ class DatabaseSeeder extends Seeder
             'tahun' => '2022',
             'total_terkumpul' => 100000,
         ]);
-        // Bulan Kas seeder end
+    // Bulan Kas seeder end
     }
 }

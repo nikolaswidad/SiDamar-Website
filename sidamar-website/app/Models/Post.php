@@ -16,4 +16,8 @@ class Post extends Model
     public function category(){
         return $this->belongsTo(PostCategory::class);
     }
+
+    public function author(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

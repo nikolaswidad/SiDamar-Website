@@ -31,7 +31,11 @@ Route::post('/login',[LoginController::class, 'authenticate']);
 Route::post('/logout',[LoginController::class, 'logout']);
 
 // blog
-Route::resource('/posts',PostController::class);
+// Route::resource('/posts',PostController::class);
+Route::get('/posts', [PostController::class, 'index']);
+
+Route::get('/posts/{post:slug}',[PostController::class, 'show']);
+
 Route::get('/post',function(){
     return view('post');
 });

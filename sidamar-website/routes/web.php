@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\BulanKasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
@@ -31,7 +32,11 @@ Route::post('/login',[LoginController::class, 'authenticate']);
 Route::post('/logout',[LoginController::class, 'logout']);
 
 // blog
-Route::resource('/posts',PostController::class);
+// Route::resource('/posts',PostController::class);
+Route::get('/posts', [PostController::class, 'index']);
+
+Route::get('/posts/{post:slug}',[PostController::class, 'show']);
+
 Route::get('/post',function(){
     return view('post');
 });

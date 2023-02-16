@@ -39,8 +39,11 @@
             {{ $data[0]->excerpt }}
           </p>
           <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
-            author
+            {{ $data[0]->author->name }}
           </p>
+          {{-- <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
+            Author
+          </p> --}}
         </div>
       </a><!--/ card-->
     </div><!--/ container-->

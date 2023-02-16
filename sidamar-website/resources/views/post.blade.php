@@ -130,8 +130,8 @@
                     <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=8">
                     <img class="hover:opacity-75" src="https://source.unsplash.com/collection/1346951/150x150?sig=9">
                 </div>
-                <a href="#" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
-                    <i class="fab fa-instagram mr-2"></i> Follow @dgrzyb
+                <a href="https://www.instagram.com/sidamarofficial/" class="w-full bg-blue-800 text-white font-bold text-sm uppercase rounded hover:bg-blue-700 flex items-center justify-center px-2 py-3 mt-6">
+                    <i class="fab fa-instagram mr-2"></i> Follow @sidamarofficial
                 </a>
             </div>
 

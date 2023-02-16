@@ -19,9 +19,19 @@
       <!-- card -->
       <a href="#" class="flex flex-col md:flex-row overflow-hidden bg-white rounded-xl shadow mt-4 w-100 hover:bg-gray-100">
         <!-- media -->
-        <div class="h-64 w-auto md:w-1/2">
+        {{-- <div class="h-64 w-auto md:w-1/2">
           <img class="inset-0 border-none h-full w-full object-cover object-center" src="{{  asset($data[0]->image)  }}" />
-        </div>
+        </div> --}}
+        @if ($data[0]->image)
+          <div class="h-64 w-auto md:w-1/2">
+            <img class="inset-0 border-none h-full w-full object-cover object-center" src="{{  asset($data[0]->image)  }}" />
+          </div>
+        @else
+          <div class="h-64 w-auto md:w-1/2">
+            <img class="inset-0 border-none h-full w-full object-cover object-center" src="https://source.unsplash.com/500x1000?{{ $data[0]->category->name }}" />
+          </div>
+        @endif
+
         <!-- content -->
         <div class="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
           <h3 class="text-4xl font-bold leading-tight truncate">{{ $data[0]->title }}</h3>

@@ -15,7 +15,9 @@ class PresensiController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.presensi.index');
+        return view('dashboard.admin.presensi.index',[
+            "presensi" => Presensi::all()
+        ]);
     }
 
     /**

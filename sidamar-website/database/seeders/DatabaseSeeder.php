@@ -4,13 +4,16 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Event;
-use App\Models\EventCategory;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Event;
 use App\Models\BulanKas;
 use App\Models\PostCategory;
-use App\Models\User;
+use App\Models\EventCategory;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,17 +31,32 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Event::factory(10)->create();
+        DB::table('present_type')->insert([
+            'type' => 'Hadir'
+        ]);
+        DB::table('present_type')->insert([
+            'type' => 'Izin'
+        ]);
+        DB::table('present_type')->insert([
+            'type' => 'Sakit'
+        ]);
+        DB::table('present_type')->insert([
+            'type' => 'Tidak Hadir'
+        ]);
+
+        Event::factory(10)->create();
 
         EventCategory::create([
-            'name' => 'Event'
+            'type' => 'Event'
         ]);
         EventCategory::create([
-            'name' => 'Production'
+            'type' => 'Production'
         ]);
         EventCategory::create([
-            'name' => 'Donation'
+            'type' => 'Donation'
         ]);
+
+        
 
     // User seeder start
         User  ::create([
@@ -48,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
-        User::factory(3)->create();
+        User::factory(40)->create();
     // User seeder end
 
     // Author seeder start

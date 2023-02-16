@@ -17,14 +17,15 @@ class EventFactory extends Factory
     public function definition()
     {
         return [
-            // 'name' => $this->faker->company(),
-            // 'category' => mt_rand(1,3),
-            // 'description' => $this->faker->sentence(mt_rand(2,4)),
-            // 'date' => $this->faker->dateTime(),
-            // 'time' => $this->faker->time(),
-            // 'date_notification' => $this->faker->dateTime(),
-            // 'location' => $this->faker->streetAddress(),
-            // 'url' => $this->faker->url(),
+            'user_id' => mt_rand(1,4),
+            'title' => $this->faker->company(),
+            'category' => mt_rand(1,3),
+            'description' => $this->faker->sentence(mt_rand(2,4)),
+            'date' => $this->faker->dateTime(),
+            'time' => $this->faker->time(),
+            'date_notification' => $this->faker->dateTime(),
+            'location' => $this->faker->streetAddress(),
+            'url' => $this->faker->url(),
         ];
     }
 }

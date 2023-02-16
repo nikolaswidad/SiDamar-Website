@@ -7,6 +7,7 @@ use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------

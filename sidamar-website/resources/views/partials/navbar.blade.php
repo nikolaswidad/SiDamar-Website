@@ -1,4 +1,4 @@
-<nav class="relative bg-white border-b-2 border-gray-100 font-family-karla">
+<nav class="relative bg-white border-b-2 border-gray-100">
     <div class="mx-auto max-w-7xl px-6">
       <div class="flex items-center justify-between py-0 md:justify-start md:space-x-10">
         <div class="flex flex-wrap justify-start lg:w-0 lg:flex-1">
@@ -20,7 +20,8 @@
           <a href="./#home" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
           <a href="./#about" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
           <a href="./#activity" class="text-base font-medium text-gray-500 hover:text-gray-900">Activity</a>
-          <a href="./#donation" class="text-base font-medium text-gray-500 hover:text-gray-900">Donation</a>
+          <a href="/donation" class="text-base font-medium text-gray-500 hover:text-gray-900">Donation</a>
+          <a href="/merchandise" class="text-base font-medium text-gray-500 hover:text-gray-900">Merchandise</a>
           <a href="/posts" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
         </nav>
         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">

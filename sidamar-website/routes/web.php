@@ -7,8 +7,6 @@ use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\BulanKasController;
-use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,28 +24,32 @@ Route::get('/', function () {
     return view('index');
 });
 
-// login logout
-Route::get('/login',[LoginController::class, 'index'])->name('login');
-Route::post('/login',[LoginController::class, 'authenticate']);
-Route::post('/logout',[LoginController::class, 'logout']);
-
-// blog
-Route::resource('/posts',PostController::class);
-Route::get('/post',function(){
-    return view('post');
+Route::get('/login/', function () {
+    return view('login.login');
 });
+
+
 /****/
 
 // Dashboard Member Start
-Route::get('/dashboard', function(){
+Route::get('/dashboard/', function(){
     return view('dashboard.index');
-})->middleware('auth');
+});
+Route::get('/merchandise', function(){
+    return view('merchandise');
+});
+Route::get('/donation', function(){
+    return view('donation');
+});
+Route::get('/form-donation', function(){
+    return view('form-donation');
+});
 Route::get('/dashboard/event', function(){
     return view('dashboard.event');
 });
-// Route::get('/dashboard/kas', function(){
-//     return view('dashboard.kas');
-// });
+Route::get('/dashboard/kas', function(){
+    return view('dashboard.kas');
+});
 Route::get('/dashboard/presensi', function(){
     return view('dashboard.presensi');
 });
@@ -83,7 +85,6 @@ Route::resource('/dashboard/admin/presensi', PresensiController::class);
 Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
 Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
 Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill');
-
 Route::resources([
     '/dashboard/posts' => DashboardPostController::class,
     'dashboard/categories' => PostCategoryController::class,
@@ -93,7 +94,3 @@ Route::resources([
 
 // Route::get('/posts', [PostController::class, 'index']);
 // Dashboard Author End
-
-
-//Dashboard Bulan Kas
-Route::resource('/dashboard/bulan_kas', BulanKasController::class);

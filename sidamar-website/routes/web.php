@@ -32,10 +32,10 @@ Route::post('/logout',[LoginController::class, 'logout']);
 
 // blog
 Route::resource('/posts',PostController::class);
-// Route::get('/post',function(){
-//     return view('post');
-// });
-Route::get('/post/{post:slug}',[PostController::class, 'show']);
+Route::get('/post',function(){
+    return view('post');
+});
+// Route::get('/post/{post:slug}',[PostController::class, 'show']);
 
 
 /****/

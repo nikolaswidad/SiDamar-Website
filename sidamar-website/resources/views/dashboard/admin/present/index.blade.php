@@ -84,6 +84,7 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($presents as $present)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td class="w-4 p-4">
                         <div class="flex items-center">
@@ -91,18 +92,17 @@
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                         </div>
                     </td>
-                    @foreach ($presents as $present)
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        Apple MacBook Pro 17"
+                        {{ $present->event->title }}
                     </th>
                     <td class="px-6 py-4">
-                        Silver
+                        {{ $present->event->category }}
                     </td>
                     <td class="px-6 py-4">
-                        Laptop
+                        {{ $present->event->date }}
                     </td>
                     <td class="px-6 py-4">
-                        $2999
+                        {{ $present->event->location }}
                     </td>
                     <td class="px-6 py-4">
                         25
@@ -110,8 +110,8 @@
                     <td class="px-6 py-4">
                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </td>             
-                    @endforeach
                 </tr>
+                @endforeach
 
                 {{-- back up --}}
                 {{-- <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">

@@ -19,6 +19,7 @@ class PresentFactory extends Factory
         return [
             'event_id' => mt_rand(1,10),
             'user_id' => mt_rand(1,4),
+            'type' => mt_rand(1,4),
         ];
     }
 }

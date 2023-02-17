@@ -15,6 +15,9 @@ class PresentController extends Controller
      */
     public function index()
     {
+        // $present = Present::all();
+        // return view('present', compact('present'));
+
         return view('dashboard.admin.present.index',[
             "presents" => Present::all()
         ]);

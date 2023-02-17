@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class EventCategory extends Model
+class PresentType extends Model
 {
     use HasFactory;
 
-    public function events(){
-        return $this->hasMany(Event::class);
+    public function present(){
+        return $this->hasMany(Present::class);
     }
 }

@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Present;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class PresentSeeder extends Seeder
 {
@@ -14,6 +18,20 @@ class PresentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('present_types')->insert([
+            'type' => 'Hadir'
+        ]);
+        DB::table('present_types')->insert([
+            'type' => 'Izin'
+        ]);
+        DB::table('present_types')->insert([
+            'type' => 'Sakit'
+        ]);
+        DB::table('present_types')->insert([
+            'type' => 'Tidak Hadir'
+        ]);
+
+        Present::factory(10)->create();
+        
     }
 }

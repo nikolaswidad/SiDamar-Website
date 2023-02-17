@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Post;
 use App\Models\User;
@@ -11,9 +11,7 @@ use App\Models\BulanKas;
 use App\Models\PostCategory;
 use App\Models\EventCategory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -31,35 +29,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        DB::table('present_type')->insert([
-            'type' => 'Hadir'
-        ]);
-        DB::table('present_type')->insert([
-            'type' => 'Izin'
-        ]);
-        DB::table('present_type')->insert([
-            'type' => 'Sakit'
-        ]);
-        DB::table('present_type')->insert([
-            'type' => 'Tidak Hadir'
-        ]);
-
-        Event::factory(10)->create();
-
-        EventCategory::create([
-            'type' => 'Event'
-        ]);
-        EventCategory::create([
-            'type' => 'Production'
-        ]);
-        EventCategory::create([
-            'type' => 'Donation'
-        ]);
-
-        
+        $this->call(EventSeeder::class);
+        $this->call(PresentSeeder::class);
 
     // User seeder start
-        User  ::create([
+        User::create([
             'name' => 'Sidamar',
             // 'username' => 'sidamar',
             'email' => 'sidamar@gmail.com',

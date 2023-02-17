@@ -91,6 +91,7 @@
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                         </div>
                     </td>
+                    @foreach ($presents as $present)
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         Apple MacBook Pro 17"
                     </th>
@@ -108,7 +109,8 @@
                     </td>
                     <td class="px-6 py-4">
                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
+                    </td>             
+                    @endforeach
                 </tr>
 
                 {{-- back up --}}

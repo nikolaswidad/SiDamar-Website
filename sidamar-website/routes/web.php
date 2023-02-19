@@ -32,15 +32,16 @@ Route::post('/login',[LoginController::class, 'authenticate']);
 Route::post('/logout',[LoginController::class, 'logout']);
 
 // blog
-// Route::resource('/posts',PostController::class);
-Route::get('/posts', [PostController::class, 'index']);
+// Route::get('/posts', [PostController::class, 'index']);
 
-Route::get('/posts/{post:slug}',[PostController::class, 'show']);
+// Route::get('/posts/{post:slug}',[PostController::class, 'show']);
 
-Route::get('/post',function(){
-    return view('post');
-});
+// Route::get('/post',function(){
+//     return view('post');
+// });
 // Route::get('/post/{post:slug}',[PostController::class, 'show']);
+
+Route::resource('/blogs',PostController::class);
 
 
 /****/
@@ -99,11 +100,9 @@ Route::resource('/dashboard/admin/presents', PresentController::class);
 Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
 Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
 Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill');
-Route::resources([
-    '/dashboard/posts' => DashboardPostController::class,
-    'dashboard/categories' => PostCategoryController::class,
-    '/posts'=> PostController::class
-]);
+Route::resource('/dashboard/posts',DashboardPostController::class);
+Route::resource('/dashboard/posts',DashboardPostController::class);
+Route::resource('dashboard/categories',PostCategoryController::class);
 
 
 // Route::get('/posts', [PostController::class, 'index']);

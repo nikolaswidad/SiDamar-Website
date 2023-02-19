@@ -29,6 +29,7 @@ class DashboardPostController extends Controller
     public function create()
     {
         $category = PostCategory::all();
+        // return view('dashboard.author.posts.edit');
         return view('dashboard.author.posts.create', compact('category'));
     }
 

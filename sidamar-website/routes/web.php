@@ -109,4 +109,4 @@ Route::resource('dashboard/categories',PostCategoryController::class);
 // Dashboard Author End
 
 //Dashboard Bulan Kas
-Route::resource('/dashboard/bulan_kas', BulanKasController::class);
+Route::resource('/dashboard/bulanKas', BulanKasController::class);

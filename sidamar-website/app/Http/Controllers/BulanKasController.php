@@ -16,8 +16,8 @@ class BulanKasController extends Controller
      */
     public function index()
     {
-        return view('dashboard.bulan_kas.index', [
-            'bulan_kas' => BulanKas::all(),
+        return view('dashboard.bulanKas.index', [
+            'bulanKas' => BulanKas::all(),
         ]);
     }
 
@@ -28,7 +28,7 @@ class BulanKasController extends Controller
      */
     public function create()
     {
-        return view('dashboard.bulan_kas.create');
+        return view('dashboard.bulanKas.create');
 
     }
 
@@ -46,7 +46,7 @@ class BulanKasController extends Controller
         ]);
         BulanKas::create($validatedData);
         Session::flash('success', 'New Bulan Kas has been added');
-        return redirect('/dashboard/bulan_kas');
+        return redirect('/dashboard/bulanKas');
     }
 
     /**
@@ -57,7 +57,10 @@ class BulanKasController extends Controller
      */
     public function show(BulanKas $bulanKas)
     {
-        //
+        dd($bulanKas);
+        return view('dashboard.bulanKas.show',[
+            'bulanKas' => $bulanKas
+        ]);
     }
 
     /**
@@ -68,8 +71,8 @@ class BulanKasController extends Controller
      */
     public function edit(BulanKas $bulanKas)
     {
-        return view('dashboard.bulan_kas.edit',[
-            'bulan_kas' => $bulanKas,
+        return view('dashboard.bulanKas.edit',[
+            'bulanKas' => $bulanKas,
             'id' => $bulanKas->id
         ]);
     }
@@ -94,10 +97,12 @@ class BulanKasController extends Controller
      */
     public function destroy(BulanKas $bulanKas)
     {
-        BulanKas::destroy($bulanKas->id);
+        // BulanKas::destroy($bulanKas->id);
+
+        // Session::flash('success', 'Delete Bulan Kas Success');
         
-        Session::flash('success', 'Delete Post Success');
-        
-        return redirect('/dashboard/bulan_kas');
+        // return redirect('/dashboard/bulanKas');
+        //output value want to delete
+        dd($bulanKas);
     }
 }

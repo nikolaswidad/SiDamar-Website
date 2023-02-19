@@ -34,14 +34,12 @@ Route::post('/logout',[LoginController::class, 'logout']);
 // blog
 // Route::get('/posts', [PostController::class, 'index']);
 
-// Route::get('/posts/{post:slug}',[PostController::class, 'show']);
+Route::get('/test',function(){
+    return view('blog.isi');
+});
+Route::get('/blog/{slug}',[PostController::class, 'show'])->name('isi');
 
-// Route::get('/post',function(){
-//     return view('post');
-// });
-// Route::get('/post/{post:slug}',[PostController::class, 'show']);
-
-Route::resource('/blogs',PostController::class);
+Route::resource('/blog',PostController::class);
 
 
 /****/

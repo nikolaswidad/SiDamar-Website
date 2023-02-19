@@ -18,9 +18,16 @@ class PostController extends Controller
         return view('posts',compact('data'));
     }
 
-    public function show(Post $post){
-        return view('post',[
-            "post" => $post
-        ]);
+    public function show($slug){
+        $data = Post::where('slug', $slug)->get();
+        return view('blog.isi',compact('data'));
     }
+
+    // public function show(Post $post){
+    //     return view('post',[
+    //         "title" => "single-post",
+    //         "active" => "posts",
+    //         "post" => $post
+    //     ]);
+    // }
 }

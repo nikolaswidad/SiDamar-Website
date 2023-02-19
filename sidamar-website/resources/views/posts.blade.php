@@ -17,7 +17,7 @@
     <!-- container for all cards -->
     <div class="container ">
       <!-- card -->
-      <a href="#" class="flex flex-col md:flex-row overflow-hidden bg-white rounded-xl shadow mt-4 w-100 hover:bg-gray-100">
+      <a href="{{ route('isi', $data[0]->slug) }}" class="flex flex-col md:flex-row overflow-hidden bg-white rounded-xl shadow mt-4 w-100 hover:bg-gray-100">
         <!-- media -->
         {{-- <div class="h-64 w-auto md:w-1/2">
           <img class="inset-0 border-none h-full w-full object-cover object-center" src="{{  asset($data[0]->image)  }}" />
@@ -53,7 +53,7 @@
 <div class="container">
   {{-- mx-auto flex flex-wrap --}}
   <section class=" w-full md:w-2/3 flex items-center px-3 bg-slate-100">
-    <a href="#" class="flex bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <a href="{{ route('isi', $data[0]->slug) }}" class="flex bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
     {{-- setting image --}}
       @if ($data[0]->image)
         <div style="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">

@@ -51,14 +51,15 @@ class DashboardPostController extends Controller
 
         $image = $request->image;
         $new_image = time().$image->getClientOriginalName();
-
+        $request['user_id'] = auth()->user()->id;
         Post::create([
             'title' => $request->title,
             'slug' => $request->slug,
             'category_id' => $request->category_id,
             'image' => 'upload/posts/'.$new_image,
             'excerpt' => Str::limit(strip_tags($request->body), 200),
-            'body' => $request->body
+            'body' => $request->body,
+            'user_id' => auth()->id()
         ]);
 
         $image->move('upload/posts', $new_image);

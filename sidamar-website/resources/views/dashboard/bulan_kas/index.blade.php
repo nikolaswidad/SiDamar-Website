@@ -2,13 +2,19 @@
 
 @section('container')
     <h1 class="text-4xl font-semibold font-montserrat">Bulan Pembayaran Kas</h1>
+    <hr class="bg-slate-200 mt-5 max-w-lg">
     
-    <div class="flex justify-end">
-        <a href="/dashboard/bulan_kas/create" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5 ">Create New Bulan</a>
+    @if (session('success'))
+    <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
+      {{ session('success') }}
     </div>
-    
+    @endif
+
     {{-- Tabel Lama --}}
-    <div class="max-w-5xl">
+    <div class="max-w-7xl">
+      <div class="flex justify-end">
+          <a href="/dashboard/bulan_kas/create" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5 ">Create New Bulan</a>
+      </div>
         <div class="flex flex-col font-montserrat">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">

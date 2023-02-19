@@ -84,6 +84,11 @@ class DatabaseSeeder extends Seeder
             'tahun' => '2022',
             'total_terkumpul' => 100000,
         ]);
+
+        BulanKas::create([
+            'bulan' => 'Mei',
+            'tahun' => '2022'
+        ]);
     // Bulan Kas seeder end
     }
 }

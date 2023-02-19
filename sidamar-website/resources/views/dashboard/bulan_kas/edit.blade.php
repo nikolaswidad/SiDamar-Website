@@ -11,19 +11,12 @@
         {{-- Input Bulan type dropdown with cool tailwind style --}}
         <div class="mb-4">
             <label for="bulan" class="block text-gray-700 text-lg font-bold mb-2">Bulan</label>
+            <p>{{ $bulan_kas->id }}</p>
             <select name="bulan" id="bulan" class="h-11 block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline mb-5">
-                <option value="Januari">Januari</option>
-                <option value="Februari">Februari</option>
-                <option value="Maret">Maret</option>
-                <option value="April">April</option>
-                <option value="Mei">Mei</option>
-                <option value="Juni">Juni</option>
-                <option value="Juli">Juli</option>
-                <option value="Agustus">Agustus</option>
-                <option value="September">September</option>
-                <option value="Oktober">Oktober</option>
-                <option value="November">November</option>
-                <option value="Desember">Desember</option>
+                {{-- get old value from database --}}
+                <option value="{{ old('bulan') }}">{{ $bulan_kas->bulan }}</option>
+
+                
             </select>
 
             @error('bulan')
@@ -33,7 +26,9 @@
             {{-- field tahun berdasarkan tahun saat ini --}}
             <label for="tahun" class="block text-gray-700 text-lg font-bold mb-2">Tahun</label>
             <select name="tahun" id="tahun" class="h-11 block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline mb-5">
-                <option value="{{ now()->year }}">{{ now()->year }}</option>
+                
+                {{-- get old value and show other option --}}
+                <option value="{{ date('Y') }}" {{ old('tahun') == date('Y') ? 'selected' : '' }}>{{ date('Y') }}</option>
                 {{-- @for ($i = 2020; $i <= 2030; $i++)
                     <option value="{{ $i }}">{{ $i }}</option>
                 @endfor --}}

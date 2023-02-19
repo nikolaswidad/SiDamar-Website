@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBulanKasRequest;
 use App\Http\Requests\UpdateBulanKasRequest;
 use App\Models\BulanKas;
+use Illuminate\Support\Facades\Session;
 
 class BulanKasController extends Controller
 {
@@ -28,6 +29,7 @@ class BulanKasController extends Controller
     public function create()
     {
         return view('dashboard.bulan_kas.create');
+
     }
 
     /**
@@ -38,7 +40,13 @@ class BulanKasController extends Controller
      */
     public function store(StoreBulanKasRequest $request)
     {
-        //
+        $validatedData =  $request->validate([
+            'bulan' => 'required',
+            'tahun' => 'required'
+        ]);
+        BulanKas::create($validatedData);
+        Session::flash('success', 'New Bulan Kas has been added');
+        return redirect('/dashboard/bulan_kas');
     }
 
     /**
@@ -60,7 +68,10 @@ class BulanKasController extends Controller
      */
     public function edit(BulanKas $bulanKas)
     {
-        //
+        return view('dashboard.bulan_kas.edit',[
+            'bulan_kas' => $bulanKas,
+            'id' => $bulanKas->id
+        ]);
     }
 
     /**
@@ -83,6 +94,10 @@ class BulanKasController extends Controller
      */
     public function destroy(BulanKas $bulanKas)
     {
-        //
+        BulanKas::destroy($bulanKas->id);
+        
+        Session::flash('success', 'Delete Post Success');
+        
+        return redirect('/dashboard/bulan_kas');
     }
 }

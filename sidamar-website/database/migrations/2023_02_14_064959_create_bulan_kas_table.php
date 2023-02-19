@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('bulan');
             $table->string('tahun');
-            $table->integer('total_terkumpul');
+            $table->integer('total_terkumpul')->default(0);
             $table->timestamps();
         });
     }

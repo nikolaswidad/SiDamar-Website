@@ -55,9 +55,12 @@
                <a href="/posts" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Blog</a>
                </li>
             </ul>
+            <form action="/logout" method="POST">
+            @csrf
             <div class="py-1">
-               <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+               <button type="submit" class="block pl-4 pr-24 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
             </div>
+            </form>
          </div>
 
 

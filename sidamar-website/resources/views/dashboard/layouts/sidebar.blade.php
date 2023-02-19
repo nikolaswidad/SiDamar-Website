@@ -49,7 +49,7 @@
                         </a>
                      </li>
                      <li>
-                        <a href="/dashboard/presensi/" class="sidebar-a group ">
+                        <a href="/dashboard/present/" class="sidebar-a group ">
                            <svg class="flex-shrink sidebar-svg" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
                            </svg>
@@ -98,7 +98,7 @@
                            </svg>
                            <span class="ml-4">Event</span>
                         </a>
-                        <a href="/dashboard/admin/presensi/" class="sidebar-a group">
+                        <a href="/dashboard/admin/presents/" class="sidebar-a group">
                            <svg class="flex-shrink sidebar-svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gem" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                            <path fill="currentColor" d="M378.7 32H133.3L256 182.7L378.7 32zM512 192l-107.4-141.3L289.6 192H512zM107.4 50.67L0 192h222.4L107.4 50.67zM244.3 474.9C247.3 478.2 251.6 480 256 480s8.653-1.828 11.67-5.062L510.6 224H1.365L244.3 474.9z"></path>
                            </svg>

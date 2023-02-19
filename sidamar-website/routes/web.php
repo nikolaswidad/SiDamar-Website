@@ -110,4 +110,4 @@ Route::resources([
 // Dashboard Author End
 
 //Dashboard Bulan Kas
-Route::resource('/dashboard/bulan_kas', BulanKasController::class)->middleware('auth');
+Route::resource('/dashboard/bulan_kas', BulanKasController::class);

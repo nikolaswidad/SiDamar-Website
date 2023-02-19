@@ -46,9 +46,9 @@ Route::get('/post',function(){
 /****/
 
 // Dashboard Member Start
-Route::get('/dashboard/', function(){
+Route::get('/dashboard', function(){
     return view('dashboard.index');
-});
+})->middleware('auth');
 Route::get('/merchandise', function(){
     return view('merchandise');
 });

@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Presensi extends Model
+class PresentType extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    public function present(){
+        return $this->hasMany(Present::class);
+    }
 }

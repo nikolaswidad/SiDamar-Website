@@ -2,15 +2,16 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Event;
-use App\Models\EventCategory;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Event;
 use App\Models\BulanKas;
 use App\Models\PostCategory;
-use App\Models\User;
+use App\Models\EventCategory;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,20 +29,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Event::factory(10)->create();
-
-        EventCategory::create([
-            'name' => 'Event'
-        ]);
-        EventCategory::create([
-            'name' => 'Production'
-        ]);
-        EventCategory::create([
-            'name' => 'Donation'
-        ]);
+        $this->call(EventSeeder::class);
+        $this->call(PresentSeeder::class);
 
     // User seeder start
-        User  ::create([
+        User::create([
             'name' => 'Sidamar',
             // 'username' => 'sidamar',
             'email' => 'sidamar@gmail.com',
@@ -50,7 +42,7 @@ class DatabaseSeeder extends Seeder
             'is_author' => (true)
         ]);
 
-        User::factory(3)->create();
+        User::factory(40)->create();
     // User seeder end
 
     // Author seeder start

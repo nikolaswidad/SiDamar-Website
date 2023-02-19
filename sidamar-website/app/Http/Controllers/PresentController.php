@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Presensi;
-use App\Http\Requests\StorePresensiRequest;
-use App\Http\Requests\UpdatePresensiRequest;
+use App\Models\Present;
+use App\Http\Requests\StorePresentRequest;
+use App\Http\Requests\UpdatePresentRequest;
 
-class PresensiController extends Controller
+class PresentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,12 @@ class PresensiController extends Controller
      */
     public function index()
     {
-        return view('dashboard.admin.presensi.index');
+        // $present = Present::all();
+        // return view('present', compact('present'));
+
+        return view('dashboard.admin.present.index',[
+            "presents" => Present::all()
+        ]);
     }
 
     /**
@@ -31,10 +36,10 @@ class PresensiController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePresensiRequest  $request
+     * @param  \App\Http\Requests\StorePresentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePresensiRequest $request)
+    public function store(StorePresentRequest $request)
     {
         //
     }
@@ -42,10 +47,10 @@ class PresensiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Presensi  $presensi
+     * @param  \App\Models\Present  $present
      * @return \Illuminate\Http\Response
      */
-    public function show(Presensi $presensi)
+    public function show(Present $present)
     {
         //
     }
@@ -53,10 +58,10 @@ class PresensiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Presensi  $presensi
+     * @param  \App\Models\Present  $present
      * @return \Illuminate\Http\Response
      */
-    public function edit(Presensi $presensi)
+    public function edit(Present $present)
     {
         //
     }
@@ -64,11 +69,11 @@ class PresensiController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePresensiRequest  $request
-     * @param  \App\Models\Presensi  $presensi
+     * @param  \App\Http\Requests\UpdatePresentRequest  $request
+     * @param  \App\Models\Present  $present
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePresensiRequest $request, Presensi $presensi)
+    public function update(UpdatePresentRequest $request, Present $present)
     {
         //
     }
@@ -76,10 +81,10 @@ class PresensiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Presensi  $presensi
+     * @param  \App\Models\Present  $present
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Presensi $presensi)
+    public function destroy(Present $present)
     {
         //
     }

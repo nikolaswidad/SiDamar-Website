@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\PresensiController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PresentController;
 use App\Http\Controllers\BulanKasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,8 +64,8 @@ Route::get('/dashboard/event', function(){
 Route::get('/dashboard/kas', function(){
     return view('dashboard.kas');
 });
-Route::get('/dashboard/presensi', function(){
-    return view('dashboard.presensi');
+Route::get('/dashboard/presents', function(){
+    return view('dashboard.present');
 });
 Route::get('/dashboard/donasi', function(){
     return view('dashboard.donasi');
@@ -88,7 +88,7 @@ Route::get('/dashboard/template/form', function(){
 
 // Dashboard Admin Start
 Route::resource('/dashboard/admin/event', EventController::class);
-Route::resource('/dashboard/admin/presensi', PresensiController::class);
+Route::resource('/dashboard/admin/presents', PresentController::class);
 
 
 // Dashboard Admin End

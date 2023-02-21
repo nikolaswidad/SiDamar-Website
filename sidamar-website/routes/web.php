@@ -86,7 +86,7 @@ Route::get('/dashboard/template/form', function(){
 /****/
 
 // Dashboard Admin Start
-Route::resource('/dashboard/admin/event', EventController::class);
+Route::resource('/dashboard/events', EventController::class);
 Route::resource('/dashboard/admin/presents', PresentController::class);
 
 
@@ -101,7 +101,6 @@ Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kil
 Route::resource('/dashboard/posts',DashboardPostController::class);
 Route::resource('/dashboard/posts',DashboardPostController::class);
 Route::resource('dashboard/categories',PostCategoryController::class);
-
 
 // Route::get('/posts', [PostController::class, 'index']);
 // Dashboard Author End

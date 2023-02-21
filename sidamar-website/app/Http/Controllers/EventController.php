@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\EventCategory;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
 
@@ -26,7 +27,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.event.create');
+        return view('dashboard.admin.event.create', [
+            'categories' => EventCategory::all()
+        ]);
     }
 
     /**
@@ -37,7 +40,22 @@ class EventController extends Controller
      */
     public function store(StoreEventRequest $request)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'description' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'date_notification' => 'required',
+            'location' => 'required',
+            'url' => 'required'
+        ]);
+
+        // $validateData['user_id'] = auth()->user()->id;
+        // $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        
+        Event::create($validateData);
+        return redirect('/dashboard/events')->with('success','New event has been added');
     }
 
     /**

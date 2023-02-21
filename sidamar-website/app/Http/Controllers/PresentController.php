@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Present;
 use App\Http\Requests\StorePresentRequest;
 use App\Http\Requests\UpdatePresentRequest;
+use App\Models\Event;
 
 class PresentController extends Controller
 {
@@ -18,8 +19,11 @@ class PresentController extends Controller
         // $present = Present::all();
         // return view('present', compact('present'));
 
+
+        // $event = Present()::get();
+
         return view('dashboard.admin.present.index',[
-            "presents" => Present::all()
+            "events" => Event::all(),
         ]);
     }
 

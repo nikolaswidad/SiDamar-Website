@@ -31,7 +31,7 @@ class PresentSeeder extends Seeder
             'type' => 'Tidak Hadir'
         ]);
 
-        Present::factory(10)->create();
+        Present::factory(100)->create();
         
     }
 }

@@ -3,7 +3,7 @@
 @section('container')
    <h1 class="p-3">ini event untuk admin</h1>
    
-   <a href="/dashboard/admin/event/create" class="p-3 mt-2 bg-primary text-white rounded-lg hover:bg-primaryLighten">Create Event</a>
+   <a href="{{ route('events.create') }}" class="p-3 mt-2 bg-primary text-white rounded-lg hover:bg-primaryLighten">Create Event</a>
 
    <div class="flex flex-col">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -51,7 +51,7 @@
                      {{ $event->title }}
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                     {{ $event->category }}
+                     {{ $event->category->name }}
                   </td>
                   <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     {{ $event->description }}

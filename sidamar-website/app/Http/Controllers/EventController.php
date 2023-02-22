@@ -16,8 +16,9 @@ class EventController extends Controller
      */
     public function index()
     {
+        $eventss = Event::paginate(10);
         return view('dashboard.admin.event.index',[
-            "events" => Event::all()
+            "events" => Event::all(),
         ]);
     }
     /**
@@ -51,7 +52,7 @@ class EventController extends Controller
             'url' => 'required'
         ]);
 
-        // $validateData['user_id'] = auth()->user()->id;
+        $validateData['user_id'] = auth()->user()->id;
         // $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         
         Event::create($validateData);
@@ -100,6 +101,11 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        public function kill($id){
+            $event = Event::withTrashed()->where('id',$id)->first();
+            $event->forceDelete();
+    
+            return redirect('dashboard/events/deleted')->with('success','Data berhasil dihapus permanen');
+        }
     }
 }

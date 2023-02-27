@@ -6,6 +6,8 @@ use App\Models\Present;
 use App\Http\Requests\StorePresentRequest;
 use App\Http\Requests\UpdatePresentRequest;
 use App\Models\Event;
+use App\Models\PresentType;
+use App\Models\User;
 
 class PresentController extends Controller
 {
@@ -65,9 +67,13 @@ class PresentController extends Controller
      * @param  \App\Models\Present  $present
      * @return \Illuminate\Http\Response
      */
-    public function edit(Present $present)
+    public function edit($id)
     {
-        //
+        $type = PresentType::all();
+        // $present = Present::findorfail($id);
+        $event = Event::findorfail($id);
+        $users = User::all();
+        return view('dashboard.admin.present.edit', compact('type', 'event', 'users'));
     }
 
     /**

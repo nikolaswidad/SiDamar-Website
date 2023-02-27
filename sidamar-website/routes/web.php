@@ -86,8 +86,11 @@ Route::get('/dashboard/template/form', function(){
 /****/
 
 // Dashboard Admin Start
+Route::get('/dashboard/events/deleted',[EventController::class, 'deleted']);
+Route::get('/dashboard/events/restore/{id}',[EventController::class, 'restore'])->name('events.restore');
+Route::delete('/dashboard/events/kill/{id}',[EventController::class, 'kill'])->name('events.kill');
 Route::resource('/dashboard/events', EventController::class);
-Route::resource('/dashboard/admin/presents', PresentController::class);
+Route::resource('/dashboard/presents', PresentController::class);
 
 
 // Dashboard Admin End

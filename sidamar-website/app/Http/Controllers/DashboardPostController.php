@@ -149,6 +149,7 @@ class DashboardPostController extends Controller
     // nampilin data yang udah kehapus
     public function deleted(){
         $post = Post::onlyTrashed()->paginate(10);
+        dd($post);
         return view('dashboard.author.posts.deleted', compact('post'));
     }
 

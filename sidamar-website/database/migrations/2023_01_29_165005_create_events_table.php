@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('date_notification')->nullable();
             $table->string('location');
             $table->string('url');
+            $table->softDeletes();
             $table->timestamps('');
         });
     }

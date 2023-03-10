@@ -10,6 +10,12 @@
     </div>
     @endif
 
+    @if (session('error'))
+    <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-red-700 rounded-xl" role="alert">
+      {{ session('error') }}
+    </div>
+    @endif
+
     {{-- Tabel Lama --}}
     <div class="max-w-7xl">
       <div class="flex justify-end">
@@ -35,17 +41,17 @@
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $loop->iteration }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $bulanKas->bulan }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $bulanKas->tahun }}</td>
-                            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $bulanKas->total_terkumpul }}</td>
+                            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $bulanKas->total_terkumpul}}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">
-                                <a href="/dashboard/bulanKas/{{ $bulanKas->id }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a>
+                              
+                              <form action="/dashboard/pembayaranKas/{{ $bulanKas->id }}" method="POST" class="inline block">
+                                @csrf
+                                {{-- make 'detail button href to index method in pembayaranKas' --}}
+                                @method('GET')
+                                <button class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</button>
+                              </form>
+                                {{-- <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
                                 <a href="/dashboard/bulanKas/{{ $bulanKas->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg">Edit</a>
-                                {{-- Delete Lama --}}
-                                {{-- <form action="/dashboard/bulanKas/{{ $bulanKas->id }}" method="post" class="inline-block">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm" onclick="return confirm('Are you sure?')">Delete</button>
-                                </form> --}}
-
                                 {{-- Delete Baru --}}
                                 <form action="/dashboard/bulanKas/{{ $bulanKas['id'] }}" method="POST" class="inline-block">
                                     @csrf

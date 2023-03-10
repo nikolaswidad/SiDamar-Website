@@ -9,4 +9,8 @@ class BulanKas extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function pembayaranKas(){
+        return $this->hasMany(PembayaranKas::class);
+    }
 }

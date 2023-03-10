@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\BulanKas;
+use App\Models\PembayaranKas;
 use App\Models\PostCategory;
 use App\Models\EventCategory;
 use Illuminate\Database\Seeder;
@@ -90,5 +91,63 @@ class DatabaseSeeder extends Seeder
             'tahun' => '2022'
         ]);
     // Bulan Kas seeder end
+
+    //Pembayaran Kas Seeder start
+        PembayaranKas::create([
+            'bulan_kas_id' => 1,
+            'user_id' => 1,
+            'jumlah' => 20000,
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti1.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 2,
+            'user_id' => 2,
+            'jumlah' => 20000,
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti2.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 3,
+            'user_id' => 3,
+            'jumlah' => 20000,
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti3.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 4,
+            'user_id' => 4,
+            'jumlah' => 20000,
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti4.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 5,
+            'user_id' => 5,
+            'jumlah' => 20000,
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti5.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 1,
+            'user_id' => 6,
+            'jumlah' => 20000,
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti6.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 2,
+            'user_id' => 7,
+            'jumlah' => 20000,
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti7.jpg',
+        ]);
+        
     }
 }

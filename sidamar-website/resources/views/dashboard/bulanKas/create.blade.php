@@ -53,6 +53,7 @@
           
           
           <div class="flex justify-end max-w-full">
+              <a href="/dashboard/bulanKas" class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-3 rounded-lg mt-5 mr-3">Kembali</a>
               <button type="submit" class="bg-primary hover:bg-red-700 text-white font-bold p-3 rounded-lg mt-5">Buat Bulan</button>
           </div>
 

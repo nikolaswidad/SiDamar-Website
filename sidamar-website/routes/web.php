@@ -6,6 +6,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PresentController;
 use App\Http\Controllers\BulanKasController;
+use App\Http\Controllers\PembayaranKasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
@@ -108,3 +109,8 @@ Route::resource('dashboard/categories',PostCategoryController::class);
 
 //Dashboard Bulan Kas
 Route::resource('/dashboard/bulanKas', BulanKasController::class);
+
+//Dashboard Pembayaran Kas
+Route::resource('/dashboard/pembayaranKas', PembayaranKasController::class);
+Route::get('/dashboard/pembayaranKas/create/{bulanKasId}', [PembayaranKasController::class, 'create']);
+Route::post('/dashboard/pembayaranKas/{id}', [PembayaranKasController::class, 'store']);

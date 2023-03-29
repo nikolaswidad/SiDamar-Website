@@ -33,7 +33,7 @@
                 <option value="BRI">BRI</option>
                 <option value="Mandiri">Mandiri</option>
             </select>
-            
+            {{-- this field must fill --}}
             @error('metode')
                 <div class="text-red-500 text-sm mb-2">{{ $message }}</div>
             @enderror

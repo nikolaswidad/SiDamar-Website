@@ -13,7 +13,7 @@
         <p>{{ $bayar->status }}</p>
     @endforeach --}}
     
-    <div class="max-w-max">
+    <div class="max-w-7xl">
         @if (session('success'))
         <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
             {{ session('success') }}
@@ -25,9 +25,13 @@
                 {{ session('error') }}
             </div>
         @endif
-        <div class="flex justify-end">
-            <a href="/dashboard/pembayaranKas/create/{{ $bulanKas->id }}" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5 mb-5">Create New Pembayaran</a>
-        </div>
+
+        {{-- Hanya admin yang bisa membuat pembayaran baru --}}
+        @if (Auth::user()->is_admin==1)
+            <div class="flex justify-end">
+            <a href="/dashboard/pembayaranKas/create/{{ $bulanKas->id }}" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5 mb-5">Buat Pembayaran</a>
+            </div>
+        @endif
           <div class="flex flex-col font-montserrat">
               <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -38,11 +42,13 @@
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nama</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nominal</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Metode Pembayaran</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Bukti Pembayaran</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Metode</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Bukti</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Tanggal Pembayaran</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Status</th>
-                            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Action</th>
+                          @if (Auth::user()->is_admin == 1)
+                            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Action</th>  
+                          @endif
                         </tr>
                       </thead>
                       <tbody>
@@ -65,19 +71,20 @@
                                     @elseif ($bayar->status == 'success')
                                         <button class="bg-green-400 hover:bg-green-700 text-white p-2 text-sm rounded-lg">Success</button>
                                     @endif
-                                    {{-- {{ $bayar->status }} --}}
                                 </td>
-                                <td class="text-lg text-gray-900 px-6 py-4 text-left">
-                                      {{-- <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
-                                      <a href="/dashboard/bulanKas/{{ $bulanKas->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg">Edit</a>
-                                      {{-- Delete Baru --}}
-                                      <form action="/dashboard/pembayaranKas/{{ $bayar['id'] }}" method="POST" class="inline-block">
-                                          @csrf
-                                          <input type="hidden" name="_method" value="DELETE">
-                                          <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm" onclick="return confirm('Are you sure?')">Delete</button>
-                                      </form>
-                                  </td>
+                                @if (Auth::user()->is_admin == 1)
+                                    <td class="text-lg text-gray-900 px-6 py-4 text-left inline-flex">
                                 
+                                        {{-- <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
+                                        <a href="/dashboard/bulanKas/{{ $bulanKas->id }}/edit" class="bg-orange-400 text-white text-sm p-2 mr-3 rounded-lg">Edit</a>
+                                        {{-- Delete Baru --}}
+                                        <form action="/dashboard/pembayaranKas/{{ $bayar['id'] }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm" onclick="return confirm('Are you sure?')">Hapus</button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                         </tbody>

@@ -21,7 +21,7 @@ class BulanKasController extends Controller
         // //total terkumpul value based on count on status and then multiply by 20000
         // $pembayaranKas 
         // $total_terkumpul = PembayaranKas
-        //set total terkumpul to 0 to all bulanKas
+        //set total terkumpul to 0 to all bulanKass
         $bulanKas = BulanKas::all();
         foreach($bulanKas as $bulanKas){
             $bulanKas->total_terkumpul = 0;
@@ -34,8 +34,10 @@ class BulanKasController extends Controller
             $bulanKas->total_terkumpul += 20000;
             $bulanKas->save();
         }
+
         return view('dashboard.bulanKas.index', [
-            'bulanKas' => BulanKas::all()
+            'bulanKas' => BulanKas::all(),
+            'pembayaranKas' => PembayaranKas::all()
         ]);
     }
 
@@ -152,6 +154,11 @@ class BulanKasController extends Controller
     public function destroy($id)
     {
         $bulanKas = BulanKas::find($id);
+        // delete all pembayaranKas in this bulanKas
+        $pembayaranKas = PembayaranKas::where('bulan_kas_id', $bulanKas->id)->get();
+        foreach($pembayaranKas as $pembayaranKas){
+            $pembayaranKas->delete();
+        }
         //dd($bulanKas);
         
         $bulanKas->delete();

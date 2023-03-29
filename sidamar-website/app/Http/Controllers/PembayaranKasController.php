@@ -75,11 +75,19 @@ class PembayaranKasController extends Controller
         $pembayaranKas = new PembayaranKas;
         $pembayaranKas->user_id = auth()->user()->id;
         $pembayaranKas->bulan_kas_id = $request->bulan;
-        $pembayaranKas->metode_pembayaran = $request->metode;
+        $pembayaranKas->metode_pembayaran = $request->validate(
+            [
+                'metode' => 'required',
+            ]);
+        $pembayaranKas->metode_pembayaran = $request->input('metode');
         // handle file upload and save the path to the database
         if ($request->hasFile('bukti')) {
+            $request->validate([
+                'bukti' => 'max:2048'
+            ]);
             $path = $request->file('bukti')->store('public/bukti');
             $pembayaranKas->bukti = $path;
+            // max file size 2MB
         }
         $pembayaranKas->jumlah = 200000;
         $pembayaranKas->status = 'success';

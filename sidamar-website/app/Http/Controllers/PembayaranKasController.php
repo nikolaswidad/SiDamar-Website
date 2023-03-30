@@ -81,14 +81,23 @@ class PembayaranKasController extends Controller
             ]);
         $pembayaranKas->metode_pembayaran = $request->input('metode');
         // handle file upload and save the path to the database
-        if ($request->hasFile('bukti')) {
-            $request->validate([
-                'bukti' => 'max:2048'
-            ]);
-            $path = $request->file('bukti')->store('public/bukti');
-            $pembayaranKas->bukti = $path;
-            // max file size 2MB
-        }
+        $pembayaranKas->bukti_pembayaran = $request->validate([
+            'bukti' => 'required|max:2048|mimes:jpg,jpeg,png'
+        ]);
+        // $image = $request->image;
+        // $new_image = time().$image->getClientOriginalName();
+        // $request['user_id'] = auth()->user()->id;
+        // Post::create([
+        //     'title' => $request->title,
+        //     'slug' => $request->slug,
+        //     'category_id' => $request->category_id,
+        //     'image' => 'upload/posts/'.$new_image,
+        //     'excerpt' => Str::limit(strip_tags($request->body), 200),
+        //     'body' => $request->body,
+        //     'user_id' => auth()->id()
+        // ]);
+        $pembayaranKas->bukti_pembayaran = time().$request->file('bukti')->getClientOriginalName();
+        $request->file('bukti')->move(public_path('bukti_pembayaran'), $pembayaranKas->bukti_pembayaran);
         $pembayaranKas->jumlah = 200000;
         $pembayaranKas->status = 'success';
 

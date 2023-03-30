@@ -59,7 +59,9 @@
                               @if (Auth::user()->is_admin == 0)
                                 {{-- bayar button to create.blade --}}
                                 {{-- if pembayaranKas status on certain month is != success --}}
-                                <a href="/dashboard/pembayaranKas/create/{{ $bulanKas->id }}" class="bg-green-400 hover:bg-green-700 text-white p-2 text-sm rounded-lg">Bayar</a>
+                                @if (Auth::user()->pembayaranKas()->where('bulan_kas_id', $bulanKas->id)->value('status') != 'success')
+                                  <a href="/dashboard/pembayaranKas/create/{{ $bulanKas->id }}" class="bg-green-400 hover:bg-green-700 text-white p-2 text-sm rounded-lg">Bayar</a>
+                                @endif
                                 <form action="/dashboard/pembayaranKas/{{ $bulanKas->id }}" method="POST" class="inline block">
                                   @csrf
                                   {{-- make 'detail button href to index method in pembayaranKas' --}}

@@ -140,6 +140,9 @@ class BulanKasController extends Controller
             return redirect('/dashboard/bulanKas');
         }
 
+        //change all pembayaranKas in this bulanKas
+        $pembayaranKas = PembayaranKas::where('bulan_kas_id', $bulanKas->id)->get();
+
         $bulanKas->save();
         Session::flash('success', 'Update Bulan Kas Success');
         return redirect('/dashboard/bulanKas');

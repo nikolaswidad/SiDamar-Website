@@ -77,7 +77,7 @@
                                   <button class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</button>
                                 </form>
                                 {{-- <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
-                                <a href="/dashboard/bulanKas/{{ $bulanKas->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg">Edit</a>
+                                <a href="/dashboard/bulanKas/{{ $bulanKas->id }}/edit" class="bg-orange-400 hover:bg-orange-700 text-white text-sm p-2 rounded-lg">Edit</a>
                                 {{-- Delete Baru --}}
                                 <form action="/dashboard/bulanKas/{{ $bulanKas['id'] }}" method="POST" class="inline-block">
                                     @csrf

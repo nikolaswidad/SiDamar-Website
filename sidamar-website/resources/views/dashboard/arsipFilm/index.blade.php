@@ -45,7 +45,7 @@
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $loop->iteration }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->judul_film }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->tahun_produksi }}</td>
-                            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->durasi }}</td>
+                            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->durasi }} Menit</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->kategori }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">
                                 {{-- Link presskit --}}
@@ -57,7 +57,8 @@
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="bg-primary hover:bg-red-700 text-white text-sm p-2 rounded-lg" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Delete</button>
-                            
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
 

@@ -173,7 +173,9 @@ class PembayaranKasController extends Controller
     public function destroy($id)
     {
         $pembayaranKas = PembayaranKas::find($id);
-        //dd($bulanKas);
+        //delete the image
+        
+
         
         $pembayaranKas->delete();
         Session::flash('success', 'Delete Pembayaran Kas Success');

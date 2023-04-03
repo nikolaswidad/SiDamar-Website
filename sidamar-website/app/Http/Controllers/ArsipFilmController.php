@@ -45,7 +45,7 @@ class ArsipFilmController extends Controller
             'sutradara' => 'required|min:5|max:100',
             'distributor' => 'required|min:5|max:100',
             'email' => 'required|email:dns',
-            'no_telepon' => 'required|numeric|digits_between:10,13',
+            'nomor_telepon' => 'required|numeric|digits_between:10,13',
             'medsos' => 'required',
             'rumah_produksi' => 'required',
             'judul_film' => 'required',
@@ -60,7 +60,7 @@ class ArsipFilmController extends Controller
         //store the request
         ArsipFilm::create($validatedData);
         Session::flash('success', 'Data berhasil ditambahkan');
-        return redirect()('dashboard.arsipFilm.index');
+        return redirect('dashboard.arsipFilm.index');
     }
 
     /**
@@ -82,7 +82,9 @@ class ArsipFilmController extends Controller
      */
     public function edit(ArsipFilm $arsipFilm)
     {
-        //
+        return view('dashboard.arsipFilm.edit', [
+            'arsipfilm' => $arsipFilm,
+        ]);
     }
 
     /**
@@ -94,7 +96,29 @@ class ArsipFilmController extends Controller
      */
     public function update(UpdateArsipFilmRequest $request, ArsipFilm $arsipFilm)
     {
-        //
+        //get the request
+        
+        $validatedData = $request->validate([
+            'produser' => 'required|min:5|max:100',
+            'sutradara' => 'required|min:5|max:100',
+            'distributor' => 'required|min:5|max:100',
+            'email' => 'required|email:dns',
+            'nomor_telepon' => 'required|numeric|digits_between:10,13',
+            'medsos' => 'required',
+            'rumah_produksi' => 'required',
+            'judul_film' => 'required',
+            'tahun_produksi' => 'required|numeric|digits:4',
+            'durasi' => 'required|numeric|digits_between:1,3',
+            'kategori' => 'required',
+            'link_film' => 'required|url',
+            //take value from checkbox pernyataan
+        ]);
+
+        //update the request
+        ArsipFilm::where('id', $arsipFilm->id)
+            ->update($validatedData);
+        Session::flash('success', 'Data berhasil diubah');
+        return redirect('/dashboard/arsipFilm/');
     }
 
     /**
@@ -105,6 +129,8 @@ class ArsipFilmController extends Controller
      */
     public function destroy(ArsipFilm $arsipFilm)
     {
-        //
+        ArsipFilm::destroy($arsipFilm->id);
+        Session::flash('success', 'Data berhasil dihapus');
+        return redirect('/dashboard/arsipFilm/');
     }
 }

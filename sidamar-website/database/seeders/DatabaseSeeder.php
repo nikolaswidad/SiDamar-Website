@@ -8,6 +8,8 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\BulanKas;
+use App\Models\Certificate;
+use App\Models\CertificateStatus;
 use App\Models\PostCategory;
 use App\Models\EventCategory;
 use Illuminate\Database\Seeder;
@@ -62,6 +64,26 @@ class DatabaseSeeder extends Seeder
         Post::factory(20)->create();
 
     // Author seeder end
+
+    // Certificate seeder start
+        CertificateStatus::create([
+            'name' => 'Pending',
+        ]);
+        CertificateStatus::create([
+            'name' => 'Completed',
+        ]);
+
+        
+        Certificate::create([
+            'title' => 'Sidamar Berdonasi',
+            'user_id' => '2',
+            'status' => '2'
+        ]);
+        Certificate::factory(20)->create();
+
+        
+
+    // Certificate seeder end
 
     // Bulan Kas seeder start
         BulanKas::create([

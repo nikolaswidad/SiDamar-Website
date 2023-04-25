@@ -57,7 +57,7 @@
                         </a>
                      </li>
                      <li>
-                        <a href="#" class="sidebar-a group ">
+                        <a href="/dashboard/certificate" class="sidebar-a group ">
                            <svg class="flex-shrink sidebar-svg" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
                            </svg>
@@ -138,6 +138,12 @@
                            <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
                            </svg>
                            <span class="ml-3">Financial Report</span>
+                        </a>
+                        <a href="/dashboard/statuscertificate" class="sidebar-a group ">
+                           <svg class="flex-shrink sidebar-svg" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                           </svg>
+                           <span class="ml-3 flex-1 whitespace-nowrap">Sertifikat</span>
                         </a>
                      </div>
                   </div>

@@ -34,7 +34,7 @@
 </head>
 <body>
     @include('partials.navbar')
-    <div class="container  mx-auto font-family-karla">
+    <div class="container mx-auto font-family-karla">
         @yield('container')
     </div>
 </body>

@@ -5,7 +5,7 @@
     <hr class="bg-slate-200 mt-5 max-w-lg">
 
     {{-- @foreach ($pembayaranKas as $bayar)
-        <p>{{ $bayar->id }}</p>
+        <p>{{ $bayar->id }}</p>`
         <p>{{ $bayar->user->name }}</p>
         <p>{{ $bayar->jumlah }}</p>
         <p>{{ $bayar->metode_pembayaran }}</p>
@@ -91,8 +91,8 @@
                                 @if (Auth::user()->is_admin == 1)
                                     <td class="text-lg text-gray-900 px-6 py-4 text-left align-middle">
                                 
-                                        {{-- <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
-                                        <a href="/dashboard/bulanKas/{{ $bulanKas->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg ">Edit</a>
+                                        {{-- <a href="/dashboard/pembayaranKas/{{ $bayar->id }}/edit" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
+                                        <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}/{{ $bayar->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg ">Edit</a>
                                         {{-- Delete Baru --}}
                                         <form action="/dashboard/pembayaranKas/{{ $bayar['id'] }}" method="POST" class="inline-block">
                                             @csrf

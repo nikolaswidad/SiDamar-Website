@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class PembayaranKasController extends Controller
 {
@@ -136,10 +137,28 @@ class PembayaranKasController extends Controller
      * @param  \App\Models\PembayaranKas  $pe nmbayaranKas
      * @return \Illuminate\Http\Response
      */
-    public function edit(PembayaranKas $pembayaranKas)
+    public function edit(Request $request, $id)
     {
+        $id = $request->route('pembayaranKasId');
+        $pembayaranKas = PembayaranKas::find($id);
+        //get the pembayaranKasId from url
+        //get username based on id
+        $users = User::find($pembayaranKas->user_id);
+        $username = $users->name;
+        //get bulanKasId from pembayaranKas
+        $bulanKasId = $pembayaranKas->bulan_kas_id;
+        //get metodePembayaran from pembayaranKas
+        $metodePembayaran = $pembayaranKas->metode_pembayaran;
+        //if there is file on bukti_pembayaran then get the file
+        if($pembayaranKas->bukti_pembayaran){
+            $buktiPembayaran = $pembayaranKas->bukti_pembayaran;
+        }
         return view('dashboard.pembayaranKas.edit', [
             'pembayaranKas' => $pembayaranKas,
+            'bulanKasId' => $bulanKasId,
+            'users' => $username,
+            'metode' => $metodePembayaran,
+            'bukti' => $buktiPembayaran
         ]);
     }
 
@@ -152,16 +171,25 @@ class PembayaranKasController extends Controller
      */
     public function update(UpdatePembayaranKasRequest $request, $id)
     {
-        //get the pembayaranKas at id
+        //get the pembayaranKas id
         $pembayaranKas = PembayaranKas::find($id);
-            
-
-        if($request->status == 'pending'){
-            $pembayaranKas->status = 'success';
-            $pembayaranKas->save();
-        }
+        //dd($request->all());
         
-        return redirect()->back();
+        //get the request
+        $pembayaranKas->metode_pembayaran = $request->metode;
+        //check if there is file on request
+        if ($request->hasFile('bukti')) {
+            //delete the old image
+            Storage::delete('public/bukti_pembayaran/'.$pembayaranKas->bukti_pembayaran);
+            //upload the new image
+            $pembayaranKas->bukti_pembayaran = time().$request->file('bukti')->getClientOriginalName();
+            $request->file('bukti')->move(public_path('bukti_pembayaran'), $pembayaranKas->bukti_pembayaran);
+        }
+        $pembayaranKas->bulan_kas_id = $request->bulan;
+        $pembayaranKas->metode_pembayaran = $request->metode;
+        $pembayaranKas->save();
+        Session::flash('success', 'Update Pembayaran Kas Success');
+        return view('dashboard.pembayaranKas.show');
     }
 
     /**

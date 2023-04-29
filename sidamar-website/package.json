@@ -1,7 +1,7 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
+        "dev": "vite ; npm run dev",
         "build": "vite build"
     },
     "devDependencies": {
@@ -14,8 +14,10 @@
         "postcss": "^8.4.21",
         "tailwindcss": "^3.2.6",
         "vite": "^4.0.0"
+        
     },
     "dependencies": {
         "tw-elements": "^1.0.0-alpha13"
     }
 }
+

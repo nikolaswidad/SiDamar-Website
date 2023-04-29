@@ -2,7 +2,7 @@
 
 @section('container')
     <h1 class="text-4xl font-semibold font-montserrat">Arsip Film</h1>
-    <hr class="bg-slate-200 mt-5 max-w-lg">
+    <hr class="bg-slate-200 mt-5 max-w-sm">
     
     @if (session('success'))
     <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">

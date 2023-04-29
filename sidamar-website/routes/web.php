@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -115,6 +115,8 @@ Route::resource('/dashboard/bulanKas', BulanKasController::class);
 Route::resource('/dashboard/pembayaranKas', PembayaranKasController::class);
 Route::get('/dashboard/pembayaranKas/create/{bulanKasId}', [PembayaranKasController::class, 'create']);
 Route::post('/dashboard/pembayaranKas/{id}', [PembayaranKasController::class, 'store']);
+Route::get('/dashboard/pembayaranKas/{bulanKasId}/{pembayaranKasId}/edit', [PembayaranKasController::class, 'edit']);
+
 
 //Dashboard Arsip Film
 Route::resource('/dashboard/arsipFilm', ArsipFilmController::class);

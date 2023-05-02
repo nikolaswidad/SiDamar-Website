@@ -17,5 +17,5 @@ class Certificate extends Model
 
     public function cstatus(){
         return $this->belongsTo(CertificateStatus::class,'status');
-    }
+    } 
 }

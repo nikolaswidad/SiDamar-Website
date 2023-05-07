@@ -119,7 +119,7 @@ class PembayaranKasController extends Controller
      * @param  \App\Models\PembayaranKas  $pembayaranKas
      * @return \Illuminate\Http\Response
      */
-    public function show(PembayaranKas $pembayaranKas, $bulanKasId)
+    public function show(PembayaranKas $pembayaranKas, $bulanKasId, Request $request)
     {
         $bulanKas = BulanKas::find($bulanKasId);
         //dd($bulanKas);
@@ -147,6 +147,8 @@ class PembayaranKasController extends Controller
         $username = $users->name;
         //get bulanKasId from pembayaranKas
         $bulanKasId = $pembayaranKas->bulan_kas_id;
+        //get bulanKas based on bulanKasId
+        $bulanKas = BulanKas::find($bulanKasId);
         //get metodePembayaran from pembayaranKas
         $metodePembayaran = $pembayaranKas->metode_pembayaran;
         //if there is file on bukti_pembayaran then get the file
@@ -155,6 +157,7 @@ class PembayaranKasController extends Controller
         }
         return view('dashboard.pembayaranKas.edit', [
             'pembayaranKas' => $pembayaranKas,
+            'bulanKas' => $bulanKas,
             'bulanKasId' => $bulanKasId,
             'users' => $username,
             'metode' => $metodePembayaran,
@@ -172,9 +175,12 @@ class PembayaranKasController extends Controller
     public function update(UpdatePembayaranKasRequest $request, $id)
     {
         //get the pembayaranKas id
+        $id = $request->user;
         $pembayaranKas = PembayaranKas::find($id);
-        //dd($request->all());
-        
+        $bulanKasId = $pembayaranKas->bulan_kas_id;
+        $bulanKas = BulanKas::find($bulanKasId);
+        $userId = $pembayaranKas->user_id;
+        $users = User::find($userId);
         //get the request
         $pembayaranKas->metode_pembayaran = $request->metode;
         //check if there is file on request
@@ -189,7 +195,11 @@ class PembayaranKasController extends Controller
         $pembayaranKas->metode_pembayaran = $request->metode;
         $pembayaranKas->save();
         Session::flash('success', 'Update Pembayaran Kas Success');
-        return view('dashboard.pembayaranKas.show');
+        // return view('dashboard.pembayaranKas.show',[
+        //     'bulanKas' => $bulanKas,
+        //     'pembayaranKas' => $pembayaranKas
+        // ]);
+        return redirect('/dashboard/pembayaranKas/'.$bulanKasId);
     }
 
     /**

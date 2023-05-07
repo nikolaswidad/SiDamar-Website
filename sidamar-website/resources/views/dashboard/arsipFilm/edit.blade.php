@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <h1 class="text-4xl font-semibold font-montserrat">Buat Arsip Film</h1>
+    <h1 class="text-4xl font-semibold font-montserrat">Edit Arsip Film</h1>
     <hr class="bg-slate-200 mt-5 max-w-lg">
 
     @if (session('success'))

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreArsipFilmRequest;
 use App\Http\Requests\UpdateArsipFilmRequest;
 use App\Models\ArsipFilm;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class ArsipFilmController extends Controller
 {
@@ -28,9 +29,43 @@ class ArsipFilmController extends Controller
      */
     public function create()
     {
+        //there are 2 page create
+        //1. create from index
+        //2. create from page /arsipFilm
         return view('dashboard.arsipFilm.create');
+
     }
 
+    public function create2()
+    {
+        return view('dashboard.arsipFilm.create2');
+    }
+    public function store2(StoreArsipFilmRequest $request)
+    {
+        //get the request
+        $validatedData = $request->validate([
+            'produser' => 'required|min:5|max:100',
+            'sutradara' => 'required|min:5|max:100',
+            'distributor' => 'required|min:5|max:100',
+            'email' => 'required|email:dns',
+            'nomor_telepon' => 'required|numeric|digits_between:10,13',
+            'medsos' => 'required',
+            'rumah_produksi' => 'required',
+            'judul_film' => 'required',
+            'tahun_produksi' => 'required|numeric|digits:4',
+            'durasi' => 'required|numeric|digits_between:1,3',
+            'kategori' => 'required',
+            'link_film' => 'required|url',
+            //take value from checkbox pernyataan
+            'pernyataan' => 'required|accepted',
+        ]);
+
+        //store the request
+        ArsipFilm::create($validatedData);
+        Session::flash('success', 'Data berhasil ditambahkan');
+        
+        return redirect('dashboard.arsipFilm.index');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -58,9 +93,21 @@ class ArsipFilmController extends Controller
         ]);
 
         //store the request
-        ArsipFilm::create($validatedData);
-        Session::flash('success', 'Data berhasil ditambahkan');
-        return redirect('dashboard.arsipFilm.index');
+        $arsipFilm = ArsipFilm::create($validatedData);
+        //ArsipFilm::create($validatedData);
+        //if the previous page is create, then redirect to index
+        //else redirect to show
+        //get the route from this page
+        //dd(url()->previous());
+        $previous = url()->previous();
+        if (url()->previous()==$previous) {
+            //dd($arsipFilm->id);
+            Session::flash('success', 'Data berhasil ditambahkan');
+            return redirect()->route('dashboard.arsipFilm.show', $arsipFilm->id);
+        } else {
+            Session::flash('success', 'Data berhasil ditambahkan');
+            return redirect()->route('dashboard.arsipFilm.index');
+        }
     }
 
     /**
@@ -69,9 +116,14 @@ class ArsipFilmController extends Controller
      * @param  \App\Models\ArsipFilm  $arsipFilm
      * @return \Illuminate\Http\Response
      */
-    public function show(ArsipFilm $arsipFilm)
+    public function show(ArsipFilm $arsipFilm, $id, Request $request)
     {
-        //
+        //find id from route
+        $id = $request->route('id');
+        $arsipFilm = ArsipFilm::find($id);
+        return view('dashboard.arsipFilm.show', [
+            'arsipfilm' => $arsipFilm,
+        ]);
     }
 
     /**

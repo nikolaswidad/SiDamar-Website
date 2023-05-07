@@ -23,8 +23,11 @@ class BulanKasController extends Controller
         // $total_terkumpul = PembayaranKas
         //set total terkumpul to 0 to all bulanKass
         $bulanKas = BulanKas::all();
+        //order by month ascending
+        $bulanKas = $bulanKas->sortBy('tahun');
         foreach($bulanKas as $bulanKas){
             $bulanKas->total_terkumpul = 0;
+            //make it ascending
             $bulanKas->save();
         }
         //get count on how many pembayaranKas in each Bulan
@@ -36,7 +39,7 @@ class BulanKasController extends Controller
         }
 
         return view('dashboard.bulanKas.index', [
-            'bulanKas' => BulanKas::all(),
+            'bulanKas' => BulanKas::all()->sortBy('tahun'),
             'pembayaranKas' => PembayaranKas::all()
         ]);
     }
@@ -108,12 +111,14 @@ class BulanKasController extends Controller
     public function edit($id)
     {
         $bulanKas = BulanKas::find($id);
+        //check if the button is clicked
+        $bulanKas->bulan;
         if (!$bulanKas) {
             return abort(404);
         }
         return view('dashboard.bulanKas.edit',[
             'bulanKas' => $bulanKas,
-            'id' => $bulanKas->id
+            'id' => $bulanKas->id,
         ]);
     }
 

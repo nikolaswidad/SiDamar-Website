@@ -27,7 +27,8 @@ return new class extends Migration
             $table->string('durasi');
             $table->string('kategori');
             $table->string('link_film');
-            $table->string('peryataan');
+            //boolean type for pernyaataan
+            $table->boolean('pernyataan');
             $table->timestamps();
         });
     }

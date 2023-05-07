@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\ArsipFilmController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
+use App\Models\ArsipFilm;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,3 +122,11 @@ Route::get('/dashboard/pembayaranKas/{bulanKasId}/{pembayaranKasId}/edit', [Pemb
 
 //Dashboard Arsip Film
 Route::resource('/dashboard/arsipFilm', ArsipFilmController::class);
+//the /arsipFilm is the path, ArsipFilmController is the controller
+//i want the create2.blade.php to connected to ArsipFilmController in create method
+Route::get('/arsipFilm', [ArsipFilmController::class, 'create2']);
+//the forrm is in create2.blade.php
+//the form is connected to ArsipFilmController in store method
+Route::get('/arsipFilm/{id}', [ArsipFilmController::class, 'show']);
+//if user not doing login, they can fill form from arsipfil.blade.php
+//if they login, they can fill form from dashboard/arsipFilm/create.blade.php

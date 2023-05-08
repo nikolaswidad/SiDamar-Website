@@ -130,3 +130,8 @@ Route::get('/arsipFilm', [ArsipFilmController::class, 'create2']);
 Route::get('/arsipFilm/{id}', [ArsipFilmController::class, 'show']);
 //if user not doing login, they can fill form from arsipfil.blade.php
 //if they login, they can fill form from dashboard/arsipFilm/create.blade.php
+
+//About Page
+Route::get('/about', function () {
+    return view('about');
+});

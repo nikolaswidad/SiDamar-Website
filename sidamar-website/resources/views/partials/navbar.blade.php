@@ -18,7 +18,7 @@
         </div> --}}
         <nav class="hidden space-x-10 md:flex">
           <a href="./#home" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
-          <a href="./#about" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
+          <a href="/about" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
           <a href="./#activity" class="text-base font-medium text-gray-500 hover:text-gray-900">Activity</a>
           <a href="/donation" class="text-base font-medium text-gray-500 hover:text-gray-900">Donation</a>
           <a href="/merchandise" class="text-base font-medium text-gray-500 hover:text-gray-900">Merchandise</a>

@@ -90,7 +90,9 @@ class CertificatesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Certificate::findorfail($id);
+        $post->delete();
+        return redirect('dashboard/certificate')->with('success','Sertifikat berhasil dihapus');
     }
 
     public function admin()

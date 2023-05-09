@@ -114,3 +114,5 @@ Route::resource('dashboard/categories',PostCategoryController::class);
 
 //Dashboard Bulan Kas
 Route::resource('/dashboard/bulanKas', BulanKasController::class);
+
+Route::post('/buat',[FillPDFController::class, 'process'])->name('buat');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class CertificatesController extends Controller
@@ -26,7 +27,9 @@ class CertificatesController extends Controller
      */
     public function create()
     {
-        return view('dashboard.certificate.create');
+        $user = auth()->user();
+        $event = Event::all();
+        return view('dashboard.certificate.create',compact('event','user'));
     }
 
     /**
@@ -37,15 +40,15 @@ class CertificatesController extends Controller
      */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'title' => 'required|max:255'
-        // ]);
+        $validatedData = $request->validate([
+            'nama' => 'required|max:255'
+        ]);
 
-        // $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['user_id'] = auth()->user()->id;
 
-        // Certificate::create($validatedData);
+        Certificate::create($validatedData);
 
-        // return redirect('dashboard/certificate/create')->with('success','Sertifikat baru berhasil disimpan');
+        return redirect('dashboard/certificate/create')->with('success','Sertifikat baru berhasil disimpan');
     }
 
     /**

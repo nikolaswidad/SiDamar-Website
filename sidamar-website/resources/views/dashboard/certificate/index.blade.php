@@ -49,6 +49,7 @@
                       <form action="{{ route('buat') }}" method="POST">
                           @csrf
                           <input type="hidden" name="nama" value="{{ $hasil->user->name }}">
+                          <input type="hidden" name="judul" value="{{ $hasil->title}}">
                           <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline">Print</button>
                       </form>
                      </td>

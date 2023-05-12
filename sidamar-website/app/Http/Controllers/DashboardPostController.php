@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\User;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use illuminate\Support\Str;
 
@@ -161,5 +163,10 @@ class DashboardPostController extends Controller
         $post->forceDelete();
 
         return redirect('dashboard/posts/deleted')->with('success','Data berhasil dihapus permanen');
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+        return response()->json(['slug'=>$slug]);
     }
 }

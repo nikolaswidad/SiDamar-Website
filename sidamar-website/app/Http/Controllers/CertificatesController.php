@@ -17,7 +17,7 @@ class CertificatesController extends Controller
     {
         $event = Event::all();
         $user = auth()->user();
-        $certif = Certificate::where('user_id',$user->id)->orderBy('status')->get();
+        $certif = Certificate::where('user_id',$user->id)->orderBy('status')->filter(request(['search']))->paginate(7)->withQueryString();
         return view('dashboard.certificate.index',compact('certif','event'));
     }
 

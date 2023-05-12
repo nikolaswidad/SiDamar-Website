@@ -49,7 +49,8 @@
   
   <div class="mb-6">
     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image">Upload Image</label>
-      <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('image') is-invalid @enderror" name="image" id="image" type="file" onchange="previewImage()">
+    <img class="img-preview img-fluid">
+    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('image') is-invalid @enderror" name="image" id="image" type="file" onchange="previewImage()">
     @error('image')
           {{ $message }}
     @enderror
@@ -67,16 +68,27 @@
   
   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 </form>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  const title = document.querySelector('#title');
-  const slug = document.querySelector('#slug');
-
-  title.addEventListener('change', function(){
-    fetch('/dashboard/posts/checkSlug?title=' + title.value)
-    .then(response => response.json())
-    .then(data => slug.value = data.slug)
-  });
+    $(function() {
+        $('#title').on('change', function() {
+            var title = $(this).val();
+            if(title) {
+                $.ajax({
+                    url: '{{ route("posts.checkSlug") }}',
+                    type: 'POST',
+                    data: {
+                        'title': title,
+                        '_token': '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#slug').val(data.slug);
+                    }
+                });
+            }
+        });
+    });
 
   document.addEventListener('trix-file-accept', function(e){
     e.preventDefault();

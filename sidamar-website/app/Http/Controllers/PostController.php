@@ -16,8 +16,6 @@ class PostController extends Controller
     public function index(Post $posts)
     {
         $postcategory = PostCategory::all();
-
-        // $data = $posts->orderBy('created_at','desc')->paginate(3);
         $data = $posts->latest()->filter(request(['search','category','author']))->paginate(7)->withQueryString();
         return view('posts',compact('data','postcategory'));
     }

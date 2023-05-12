@@ -40,6 +40,7 @@ Route::get('/blog/category/{category}',[PostController::class, 'listCategory'])-
 
 Route::resource('/blog',PostController::class);
 
+
 // Route::middleware(['auth'])->group(function () {
 //     // Semua route yang perlu di-authenticate akan ditempatkan di dalam grup ini
 // });
@@ -107,6 +108,9 @@ Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kil
 Route::resource('/dashboard/posts',DashboardPostController::class);
 Route::resource('/dashboard/posts',DashboardPostController::class);
 Route::resource('dashboard/categories',PostCategoryController::class);
+// Route::get('/dashboard/posts/checkSlug',[DashboardPostController::class, 'checkSlug']);
+Route::post('/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->name('posts.checkSlug');
+
 
 
 // Route::get('/posts', [PostController::class, 'index']);

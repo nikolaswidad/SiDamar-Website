@@ -15,9 +15,10 @@ class CertificatesController extends Controller
      */
     public function index()
     {
+        $event = Event::all();
         $user = auth()->user();
-        $certif = Certificate::where('user_id',$user->id)->get();
-        return view('dashboard.certificate.index',compact('certif'));
+        $certif = Certificate::where('user_id',$user->id)->orderBy('status')->get();
+        return view('dashboard.certificate.index',compact('certif','event'));
     }
 
     /**
@@ -41,7 +42,9 @@ class CertificatesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama' => 'required|max:255'
+            'nama' => 'required|max:255',
+            'title' => 'required|max:255',
+            'status' => 'required'
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;

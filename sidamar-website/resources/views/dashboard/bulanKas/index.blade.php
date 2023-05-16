@@ -1,23 +1,23 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-  <h1 class="text-4xl font-semibold font-montserrat">Bulan Pembayaran Kas</h1>
-  <hr class="bg-slate-200 mt-5 max-w-lg">
-  
-  @if (session('success'))
-  <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
-    {{ session('success') }}
-  </div>
-  @endif
 
-  @if (session('error'))
-  <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-red-700 rounded-xl" role="alert">
-    {{ session('error') }}
-  </div>
-  @endif
-
-  {{-- Tabel Lama --}}
-  <div class="max-w-7xl">
+{{-- Tabel Lama --}}
+<div class="p-4 sm:ml-64 max-w-5xl">
+    <h1 class="text-4xl font-semibold font-montserrat">Bulan Pembayaran Kas</h1>
+    <hr class="bg-slate-200 mt-5 max-w-lg">
+    
+    @if (session('success'))
+    <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
+      {{ session('success') }}
+    </div>
+    @endif
+    
+    @if (session('error'))
+    <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 bg-red-700 rounded-xl" role="alert">
+      {{ session('error') }}
+    </div>
+    @endif
     {{-- if is_admin == 1 --}}
     @if (Auth::user()->is_admin == 1)
       <div class="flex justify-end">
@@ -25,7 +25,7 @@
       </div>
     @endif
       <div class="flex flex-col font-montserrat">
-          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="sm:-mx-6 lg:-mx-8">
             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <div class="overflow-hidden">
                 <table class="min-w-full">
@@ -49,12 +49,12 @@
                           <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $bulanKas->total_terkumpul}}</td>
                           <td class="text-lg text-gray-900 px-6 py-4 text-left">
                             @if (Auth::user()->pembayaranKas()->where('bulan_kas_id', $bulanKas->id)->value('status') == 'success')
-                              <a href="#" class="bg-green-400 text-white p-2 text-sm rounded-lg">Sudah Bayar</a>  
+                              <p class="bg-green-400 text-white px-1.5 py-2 text-sm rounded-lg text-center inline-flex">Sudah Bayar</p>  
                             @else
-                              <a href="#" class="bg-red-700 text-white p-2 text-sm rounded-lg">Belum Bayar</a>  
+                              <p class="bg-gray-500 text-white p-2 text-sm rounded-lg text-center inline-flex">Belum Bayar</a>  
                             @endif
                           </td>
-                          <td class="text-lg text-gray-900 px-6 py-4 text-left">
+                          <td class="text-lg text-gray-900 px-6 py-4 text-left flex gap-2">
                             {{-- if is_admin == 0 --}}
                             @if (Auth::user()->is_admin == 0)
                               {{-- bayar button to create.blade --}}
@@ -62,7 +62,7 @@
                               @if (Auth::user()->pembayaranKas()->where('bulan_kas_id', $bulanKas->id)->value('status') != 'success')
                                 <a href="/dashboard/pembayaranKas/create/{{ $bulanKas->id }}" class="bg-green-400 hover:bg-green-700 text-white p-2 text-sm rounded-lg">Bayar</a>
                               @endif
-                              <form action="/dashboard/pembayaranKas/{{ $bulanKas->id }}" method="POST" class="inline block">
+                              <form action="/dashboard/pembayaranKas/{{ $bulanKas->id }}" method="POST" class="inline-block">
                                 @csrf
                                 {{-- make 'detail button href to index method in pembayaranKas' --}}
                                 @method('GET')
@@ -70,7 +70,7 @@
                               </form>
 
                             @else
-                              <form action="/dashboard/pembayaranKas/{{ $bulanKas->id }}" method="POST" class="inline block">
+                              <form action="/dashboard/pembayaranKas/{{ $bulanKas->id }}" method="POST" class="inline-block">
                                 @csrf
                                 {{-- make 'detail button href to index method in pembayaranKas' --}}
                                 @method('GET')

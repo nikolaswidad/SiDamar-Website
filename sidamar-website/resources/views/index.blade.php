@@ -137,33 +137,80 @@
         </button>
     </div>
     {{-- CAROUSEL 2 END --}}
-
-
-
   
-{{-- Our Project --}}
-    <div class="py-5">
+    {{-- Our Partner --}}
+    <div class="mb-5">
         <p class="font-bold py-5 text-gray-800 uppercase hover:text-gray-700 text-4xl text-center">
             Our <span class="text-transparent bg-gradient-to-r from-primary to-orange-400 bg-clip-text">Projects</span>
         </p>
         {{-- make in coloum --}}
     
-        <div class="container px-6 mx-auto sm:flex sm:flex-wrap sm:gap-6 sm:justify-evenly">
-            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 sm:w-64 md:w-80 lg:w-72 hover:scale-105 duration-300">
+        <div class="container px-6 mx-auto flex md:flex-wrap gap-6 justify-evenly">
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-72 hover:scale-105 duration-300">
                 <img src="/our_project/1.jpg" alt="picture1" class="w-full">
             </div>
-            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 sm:w-64 md:w-80 lg:w-72 hover:scale-105 duration-300">
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-72 hover:scale-105 duration-300">
                 <img src="/our_project/2.png" alt="picture2" class="w-full">
             </div>
-            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 sm:w-64 md:w-80 lg:w-72 hover:scale-105 duration-300">
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-72 hover:scale-105 duration-300">
                 <img src="/our_project/3.png" alt="picture3" class="w-full">
             </div>
-            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 sm:w-64 md:w-80 lg:w-72 hover:scale-105 duration-300">
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-72 hover:scale-105 duration-300">
                 <img src="/our_project/4.png" alt="picture4" class="w-full">
-            </div>    
+            </div>           
+                      
         </div>
     </div>
 
+
+{{-- Our Project --}}
+    <div class="py-5 mb-10">
+        <p class="font-bold py-5 text-gray-800 uppercase hover:text-gray-700 text-4xl text-center">
+            Our <span class="text-transparent bg-gradient-to-r from-primary to-orange-400 bg-clip-text">Partner</span>
+        </p>
+        {{-- make in coloum --}}
+    
+        {{-- <div class="container px-6 mx-auto flex md:flex-wrap gap-6 justify-evenly">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full" src="https://source.unsplash.com/1200x200?movie" alt="Image 1">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full" src="https://source.unsplash.com/1200x200?film" alt="Image 2">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 3">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 3">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 3">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 3">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 3">
+            <img class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 3">
+        </div> --}}
+        <div class="container items-center flex md:flex-wrap gap-6 justify-evenly">
+            <div class="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:flex gap-4 lg:flex-wrap justify-center">
+                <div>
+                    <img class="object-cover h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-h-28 lg:h-36 lg:w-h-36 rounded-full" src="https://source.unsplash.com/1200x200?movie" alt="Image 1">
+                </div>
+                <div>
+                    <img class="object-cover h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-h-28 lg:h-36 lg:w-h-36 rounded-full" src="https://source.unsplash.com/1200x200?film" alt="Image 2">
+                </div>
+                <div>
+                    <img class="object-cover h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-h-28 lg:h-36 lg:w-h-36 rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 3">
+                </div>
+                <div>
+                    <img class="object-cover h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-h-28 lg:h-36 lg:w-h-36 rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 4">
+                </div>
+                <div>
+                    <img class="object-cover h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-h-28 lg:h-36 lg:w-h-36 rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 5">
+                </div>
+                <div>
+                    <img class="object-cover h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-h-28 lg:h-36 lg:w-h-36 rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 6">
+                </div>
+                <div>
+                    <img class="object-cover h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-h-28 lg:h-36 lg:w-h-36 rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 7">
+                </div>
+                <div>
+                    <img class="object-cover h-16 w-16 sm:h-24 sm:w-24 md:h-28 md:w-h-28 lg:h-36 lg:w-h-36 rounded-full" src="https://source.unsplash.com/1200x200?theatre" alt="Image 7">
+                </div>
+            </div>
+        </div>
+          
+          
+    </div>
 
     @include('layouts.footer')    
 @endsection

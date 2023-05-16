@@ -1,19 +1,10 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <h1 class="text-4xl font-semibold font-montserrat">Pembayaran Kas Bulan {{ $bulanKas->bulan }}</h1>
-    <hr class="bg-slate-200 mt-5 max-w-lg">
 
-    {{-- @foreach ($pembayaranKas as $bayar)
-        <p>{{ $bayar->id }}</p>`
-        <p>{{ $bayar->user->name }}</p>
-        <p>{{ $bayar->jumlah }}</p>
-        <p>{{ $bayar->metode_pembayaran }}</p>
-        <p>{{ $bayar->created_at }}</p>
-        <p>{{ $bayar->status }}</p>
-    @endforeach --}}
-    
-    <div class="max-w-7xl">
+    <div class="p-4 sm:ml-64 max-w-max">
+        <h1 class="text-4xl font-semibold font-montserrat">Pembayaran Kas Bulan {{ $bulanKas->bulan }}</h1>
+        <hr class="bg-slate-200 mt-5 max-w-lg">
         @if (session('success'))
         <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
             {{ session('success') }}
@@ -42,16 +33,16 @@
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                     <div class="overflow-hidden">
-                        <table class="min-w-full">
+                        <table class="min-w-fit">
                       <thead class="border-b">
                         <tr>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Nama</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nominal</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Metode</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Nominal</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Metode</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Bukti</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Tanggal Pembayaran</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Status</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Status</th>
                           @if (Auth::user()->is_admin == 1)
                             <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Action</th>  
                           @endif
@@ -67,7 +58,8 @@
                                 <td class="text-lg text-gray-900 px-6 py-4 text-left">
                                     {{-- view the bukti_pembayaran --}}
                                     {{-- <a href="" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg" onclick="">Lihat Bukti</a> --}}
-                                    <button class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg" onclick="showBukti('{{ $bayar->bukti_pembayaran }}')">Lihat Bukti</button>
+                                    <button class="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-1 text-sm rounded-lg" onclick="showBukti('{{ $bayar->bukti_pembayaran }}')">Lihat Bukti</button>
+                                    {{-- <button class="text-sm ">Lihat Bukti</button> --}}
                                     <!-- Include the following HTML code at the end of your page -->
                                     <div id="myModal" class="modal">
                                         <span class="close">&times;</span>
@@ -77,24 +69,19 @@
                                 </td>
                                 {{-- get only date time without time --}}
                                 <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $bayar->created_at->format('d F Y') }}</td>
-                                <td class="text-lg text-gray-900 px-6 py-4 text-left">
-                                    @if ($bayar->status == 'pending')
-                                        <form action="/dashboard/pembayaranKas/{{ $bayar->id }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                            <button type="submit" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Pending</button>
-                                        </form>
-                                    @elseif ($bayar->status == 'success')
-                                        <button class="bg-green-400 hover:bg-green-700 text-white p-2 text-sm rounded-lg">Success</button>
+                                <td class="text-lg text-gray-900 px-6 py-4 text-left align-super">    
+                                    @if ($bayar->status == 'success')
+                                        {{-- <button class="bg-green-400 hover:bg-green-700 text-white p-2 text-sm rounded-lg">Success</button> --}}
+                                        <p class="bg-green-400 text-white py-2 text-sm rounded-lg text-center">Success</p>
                                     @endif
                                 </td>
                                 @if (Auth::user()->is_admin == 1)
-                                    <td class="text-lg text-gray-900 px-6 py-4 text-left align-middle">
+                                    <td class="text-lg text-gray-900 px-6 py-4 text-left flex items-center gap-2">
                                 
                                         {{-- <a href="/dashboard/pembayaranKas/{{ $bayar->id }}/edit" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
-                                        <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}/{{ $bayar->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg ">Edit</a>
+                                        <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}/{{ $bayar->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg">Edit</a>
                                         {{-- Delete Baru --}}
-                                        <form action="/dashboard/pembayaranKas/{{ $bayar['id'] }}" method="POST" class="inline-block">
+                                        <form action="/dashboard/pembayaranKas/{{ $bayar['id'] }}" method="POST" class="">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm" onclick="return confirm('Are you sure?')">Hapus</button>

@@ -57,7 +57,7 @@ class ArsipFilmController extends Controller
             'kategori' => 'required',
             'link_film' => 'required|url',
             //take value from checkbox pernyataan
-            'pernyataan' => 'required|accepted',
+            'pernyataan' => 'required',
         ]);
 
         //store the request
@@ -91,22 +91,23 @@ class ArsipFilmController extends Controller
             //take value from checkbox pernyataan
             'pernyataan' => 'required',
         ]);
-
         //store the request
         $arsipFilm = ArsipFilm::create($validatedData);
         //ArsipFilm::create($validatedData);
         //if the previous page is create, then redirect to index
+        
         //else redirect to show
         //get the route from this page
         //dd(url()->previous());
         $previous = url()->previous();
-        if (url()->previous()==$previous) {
+        if ($previous == 'http://sidamar-website.test/dashboard/arsipFilm/create') {
             //dd($arsipFilm->id);
-            Session::flash('success', 'Data berhasil ditambahkan');
-            return redirect()->route('dashboard.arsipFilm.show', $arsipFilm->id);
-        } else {
-            Session::flash('success', 'Data berhasil ditambahkan');
-            return redirect()->route('dashboard.arsipFilm.index');
+            Session::flash('success', 'Arsip Film berhasil ditambahkan');
+            return view('/dashboard/arsipFilm');
+            
+        } elseif ($previous == 'http://sidamar-website.test/arsipFilm') {
+            Session::flash('success', 'Arsip Film berhasil ditambahkan');
+            return redirect('/arsipFilm/');
         }
     }
 
@@ -121,6 +122,8 @@ class ArsipFilmController extends Controller
         //find id from route
         $id = $request->route('id');
         $arsipFilm = ArsipFilm::find($id);
+        //get each data
+
         return view('dashboard.arsipFilm.show', [
             'arsipfilm' => $arsipFilm,
         ]);
@@ -182,7 +185,7 @@ class ArsipFilmController extends Controller
     public function destroy(ArsipFilm $arsipFilm)
     {
         ArsipFilm::destroy($arsipFilm->id);
-        Session::flash('success', 'Data berhasil dihapus');
+        Session::flash('success', 'Arsip Film berhasil dihapus');
         return redirect('/dashboard/arsipFilm/');
     }
 }

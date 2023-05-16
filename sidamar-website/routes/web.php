@@ -33,7 +33,7 @@ Route::get('/', function () {
 // login logout
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'authenticate']);
-Route::post('/logout',[LoginController::class, 'logout']);
+Route::get('/logout',[LoginController::class, 'logout']);
 
 // blog
 // Route::get('/posts', [PostController::class, 'index']);
@@ -135,3 +135,5 @@ Route::get('/arsipFilm/{id}', [ArsipFilmController::class, 'show']);
 Route::get('/about', function () {
     return view('about');
 });
+
+//if request from button Diterima then run method diterima() else ditolak()

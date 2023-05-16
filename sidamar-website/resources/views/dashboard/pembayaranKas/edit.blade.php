@@ -1,9 +1,9 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="text-4xl font-semibold font-montserrat">Update Pembayaran Kas</h1>
 
-<div class="max-w-5xl">
+<div class="p-4 sm:ml-64 max-w-7xl">
+    <h1 class="text-4xl font-semibold font-montserrat">Update Pembayaran Kas</h1>
     <hr class="bg-slate-200 mt-5 max-w-3xl">
       <form action="/dashboard/pembayaranKas/{{ $bulanKas->id }}" method="post" class="max-w-3xl mt-8 mb-8 font-montserrat" enctype="multipart/form-data">
         @csrf

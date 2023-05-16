@@ -101,7 +101,7 @@ class PembayaranKasController extends Controller
         $request->file('bukti')->move(public_path('bukti_pembayaran'), $pembayaranKas->bukti_pembayaran);
         $pembayaranKas->jumlah = 200000;
         $pembayaranKas->status = 'success';
-
+        
         //check if user already paid
         $check = PembayaranKas::where('bulan_kas_id', $request->bulan)->where('user_id', auth()->user()->id)->first();
         if($check){

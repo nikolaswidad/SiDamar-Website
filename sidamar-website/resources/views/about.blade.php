@@ -12,11 +12,11 @@
         </div>
     </header>
 
-    <div class="h-52 overflow-hidden px-10">
-        <img src="/about/1.jpg" alt="arsipFilm" class="shadow-lg sm:w-full sm:object-cover sm:h-52 lg:object-top">
+    <div class="h-72 overflow-hidden px-10">
+        <img src="/about/1.jpg" alt="arsipFilm" class="shadow-lg sm:w-full sm:object-cover sm:h-52 lg:object-center lg:h-72">
     </div>
 
-    <div class="mx-10 my-5 pb-5 boder-2 border-slate-400 shadow-lg ">
+    <div class="my-5 pb-5">
         <p class="px-10 text-lg">
             Si Damar (Sineas Muda Semarang) adalah komunitas bagi sineas muda di Semarang untuk mengembangkan dan meningkatkan skill di bidang kesenian terutama perfilman. Si Damar berdiri tanggal 30 Maret 2021 dan pada saat ini terdiri dari 55 anggota.
         </p>

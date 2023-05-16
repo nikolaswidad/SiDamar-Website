@@ -173,7 +173,7 @@ class DatabaseSeeder extends Seeder
             'durasi' => '120 Menit',
             'kategori' => 'Drama',
             'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
-            'pernyataan' => True
+            'pernyataan' => "True"
         ]);
 
         ArsipFilm::create([
@@ -189,7 +189,7 @@ class DatabaseSeeder extends Seeder
             'durasi' => '120 Menit',
             'kategori' => 'Drama, Komedi',
             'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
-            'pernyataan' => True
+            'pernyataan' => "True"
         ]);
 
         ArsipFilm::create([
@@ -205,7 +205,7 @@ class DatabaseSeeder extends Seeder
             'durasi' => '120 Menit',
             'kategori' => 'Komedi, Drama',
             'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
-            'pernyataan' => True,
+            'pernyataan' => "True",
         ]);
         
     }

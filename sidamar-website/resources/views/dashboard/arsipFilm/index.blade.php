@@ -1,23 +1,23 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <h1 class="text-4xl font-semibold font-montserrat">Arsip Film</h1>
-    <hr class="bg-slate-200 mt-5 max-w-sm">
-    
-    @if (session('success'))
-    <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
-        {{ session('success') }}
-    </div>
-    @endif
 
-    @if (session('error'))
-    <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-red-700 rounded-xl" role="alert">
-      {{ session('error') }}
-    </div>
-    @endif
-
-    {{-- Tabel Lama --}}
-    <div class="max-w-7xl">
+{{-- Tabel Lama --}}
+  <div class="p-4 sm:ml-64 max-w-full">
+      <h1 class="text-4xl font-semibold font-montserrat">Arsip Film</h1>
+      <hr class="bg-slate-200 mt-5 max-w-sm">
+      
+      @if (session('success'))
+      <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
+          {{ session('success') }}
+      </div>
+      @endif
+      
+      @if (session('error'))
+      <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-red-700 rounded-xl" role="alert">
+        {{ session('error') }}
+      </div>
+      @endif
       {{-- if is_admin == 1 --}}
       @if (Auth::user()->is_admin == 1)
         <div class="flex justify-end">
@@ -28,13 +28,13 @@
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
-                  <table class="min-w-full">
+                  <table class="max-w-full">
                     <thead class="border-b">
                       <tr>
                         <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
                         <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Judul Film</th>
                         <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Tahun Produksi</th>
-                        <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Durasi</th>
+                        <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Durasi</th>
                         <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Kategori</th>
                         <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Action</th>
                       </tr>
@@ -47,7 +47,7 @@
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->tahun_produksi }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->durasi }} Menit</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->kategori }}</td>
-                            <td class="text-lg text-gray-900 px-6 py-4 text-left">
+                            <td class="text-lg text-gray-900 px-6 py-4 text-left flex gap-2">
                                 {{-- Link presskit --}}
                                 <a href="{{ $film->link_film }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Link</a>
                                 {{-- Link edit --}}

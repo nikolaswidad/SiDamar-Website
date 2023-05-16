@@ -17,6 +17,7 @@
                   <thead class="text-xs text-gray-700 uppercase bg-white border-b dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                      <th scope="col" class="px-6 py-3">Approve</th>
+                     <th scope="col" class="px-6 py-3">Reject</th>
                      <th scope="col" class="px-6 py-3">Event Title</th>
                      <th scope="col" class="px-6 py-3">Name</th>
                      <th scope="col" class="px-6 py-3">Status</th>
@@ -32,15 +33,26 @@
                         <img src="{{ asset('img/CheckCircle.svg') }}" width="30px" height="30px" type="image/svg+xml">
                       </a>
                     </td>
+                    <td class="px-6 py-1">
+                      <a href="{{ url('dashboard/statuscertificate/rejected/'.$hasil->id) }}">
+                        <img src="{{ asset('img/CheckCircle.svg') }}" width="30px" height="30px" type="image/svg+xml">
+                      </a>
+                    </td>
                      <td class="px-6 py-4">{{ $hasil->title }}</td>
                      <td class="px-6 py-4">{{ $hasil->user->name }}</td>
-                     @if ($hasil->status == 1)
-                      <td class="px-6 py-4"><span class="text-xs font-semibold py-1 px-2 rounded text-orange-600 bg-orange-200 last:mr-0 mr-1">
-                      {{ $hasil->cstatus->name }}</span></td> 
-                     @else
-                     <td class="px-6 py-4"><span class="text-xs font-semibold py-1 px-2 rounded text-lime-600 bg-lime-200 last:mr-0 mr-1">
-                      {{ $hasil->cstatus->name }}</span></td> 
-                     @endif
+                     <td class="px-6 py-3">
+                      <span class="text-xs font-semibold py-1 px-2 rounded 
+                        @if ($hasil->cstatus->id == 1)
+                        text-orange-600 bg-orange-200 
+                        @elseif ($hasil->cstatus->id == 3)
+                          text-red-600 bg-red-200
+                        @else
+                          text-lime-600 bg-lime-200 
+                        @endif
+                            last:mr-0 mr-1">
+                        {{ $hasil->cstatus->name }}
+                      </span>
+                    </td> 
                      
                    </tr>
                   @endforeach           

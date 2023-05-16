@@ -58,6 +58,7 @@ class DashboardPostController extends Controller
             $image = $request->image;
             $new_image = time().$image->getClientOriginalName();
             $image->move('upload/posts', $new_image);
+            $validatedData['image'] = $new_image;
         }
 
         Post::create($validatedData);
@@ -140,7 +141,7 @@ class DashboardPostController extends Controller
     {
         $post = Post::findorfail($id);
         $post->delete();
-        return redirect('dashboard/posts')->with('success','Data berhasil dihapus (silahkan cek trash can');
+        return redirect('dashboard/posts')->with('success','Data berhasil dihapus (silahkan cek trash can)');
     }
 
     // nampilin data yang udah kehapus

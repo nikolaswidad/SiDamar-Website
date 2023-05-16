@@ -120,4 +120,17 @@ class CertificatesController extends Controller
         return redirect('/dashboard/statuscertificate')->with('success','Sertifikat berhasil diapprove');
     }
 
+    public function rejected ($id) 
+    {
+        try{
+            Certificate::where('id', $id)->update([
+                'status' => 3
+            ]);
+        } catch (\Exception $e){
+            return redirect('/dashboard/statuscertificate')->with('success','Sertifikat berhasil direject');
+        }
+
+        return redirect('/dashboard/statuscertificate')->with('success','Sertifikat berhasil direject');
+    }
+
 }

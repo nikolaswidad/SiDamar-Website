@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between py-0 md:justify-start md:space-x-10">
       <div class="flex flex-wrap justify-start lg:w-0 lg:flex-1">
         <a href="/#home" class="relative">
-          <img class="block h-16 w-auto sm:h-20 align-middle flex-1 mb-2 mt-2" src="img/logo.png" alt="Logo Si Damar">
+          <img class="block h-16 w-auto sm:h-20 align-middle flex-1 mb-2 mt-2" src="{{ asset('img/logo.png')}}" alt="Logo Si Damar">
           {{-- <span class="  flex-1">Si Damar</span> --}}
         </a>
       </div>

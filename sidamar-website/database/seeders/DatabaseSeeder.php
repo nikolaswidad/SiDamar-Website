@@ -72,6 +72,9 @@ class DatabaseSeeder extends Seeder
         CertificateStatus::create([
             'name' => 'Completed',
         ]);
+        CertificateStatus::create([
+            'name' => 'Rejected',
+        ]);
 
         
         Certificate::create([

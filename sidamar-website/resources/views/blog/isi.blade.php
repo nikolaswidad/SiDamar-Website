@@ -7,7 +7,7 @@
                 <!-- Article Image -->
                 <a href="#" class="hover:opacity-75">
                   @if ($blog->image)
-                    <img src="{{  asset($blog->image)  }}">
+                    <img src="{{ asset('upload/posts/' . $blog->image)  }}">
                   @else
                     <img src="https://source.unsplash.com/1000x500?{{ $blog->category->name }}">
                   @endif

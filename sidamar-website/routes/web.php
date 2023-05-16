@@ -81,6 +81,7 @@ Route::get('/dashboard/finance', function(){
 Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin']);
 
 Route::get('/dashboard/statuscertificate/approved/{id}',[CertificatesController::class, 'approved']);
+Route::get('/dashboard/statuscertificate/rejected/{id}',[CertificatesController::class, 'rejected']);
 Route::resource('/dashboard/certificate',CertificatesController::class);
 // Dashboard Member End
 

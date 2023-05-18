@@ -7,12 +7,17 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PresentController;
 use App\Http\Controllers\BulanKasController;
+
 use App\Http\Controllers\PembayaranKasController;
 use App\Http\Controllers\ArsipFilmController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
 use App\Models\ArsipFilm;
+use App\Http\Controllers\CertificatesController;
+use App\Http\Controllers\FillPDFController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,15 +42,15 @@ Route::get('/logout',[LoginController::class, 'logout']);
 
 // blog
 // Route::get('/posts', [PostController::class, 'index']);
-
-Route::get('/test',function(){
-    return view('blog.isi');
-});
 Route::get('/blog/{slug}',[PostController::class, 'show'])->name('isi');
+Route::get('/blog/category/{category}',[PostController::class, 'listCategory'])->name('list.category');
 
 Route::resource('/blog',PostController::class);
 
 
+// Route::middleware(['auth'])->group(function () {
+//     // Semua route yang perlu di-authenticate akan ditempatkan di dalam grup ini
+// });
 /****/
 
 // Dashboard Member Start
@@ -79,6 +84,12 @@ Route::get('/dashboard/merch', function(){
 Route::get('/dashboard/finance', function(){
     return view('dashboard.finance');
 });
+
+Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin']);
+
+Route::get('/dashboard/statuscertificate/approved/{id}',[CertificatesController::class, 'approved']);
+Route::get('/dashboard/statuscertificate/rejected/{id}',[CertificatesController::class, 'rejected']);
+Route::resource('/dashboard/certificate',CertificatesController::class);
 // Dashboard Member End
 
 // Dashboard Template Start
@@ -105,6 +116,9 @@ Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kil
 Route::resource('/dashboard/posts',DashboardPostController::class);
 Route::resource('/dashboard/posts',DashboardPostController::class);
 Route::resource('dashboard/categories',PostCategoryController::class);
+// Route::get('/dashboard/posts/checkSlug',[DashboardPostController::class, 'checkSlug']);
+Route::post('/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->name('posts.checkSlug');
+
 
 
 // Route::get('/posts', [PostController::class, 'index']);
@@ -137,3 +151,4 @@ Route::get('/about', function () {
 });
 
 //if request from button Diterima then run method diterima() else ditolak()
+Route::post('/buat',[FillPDFController::class, 'process'])->name('buat');

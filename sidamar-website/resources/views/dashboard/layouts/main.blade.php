@@ -39,7 +39,7 @@
     <div class="container">
         <div id="main-content" class="h-full w-full relative overflow-y-auto">
             <main>
-                <div class="pt-10 p-4">
+                <div class="pt-10 p-8 ml-64">
                     @yield('container')
                 </div>
             </main>

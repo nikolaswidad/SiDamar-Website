@@ -8,8 +8,12 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\BulanKas;
+
 use App\Models\PembayaranKas;
 use App\Models\ArsipFilm;
+use App\Models\Certificate;
+use App\Models\CertificateStatus;
+
 use App\Models\PostCategory;
 use App\Models\EventCategory;
 use Illuminate\Database\Seeder;
@@ -64,6 +68,29 @@ class DatabaseSeeder extends Seeder
         Post::factory(20)->create();
 
     // Author seeder end
+
+    // Certificate seeder start
+        CertificateStatus::create([
+            'name' => 'Pending',
+        ]);
+        CertificateStatus::create([
+            'name' => 'Completed',
+        ]);
+        CertificateStatus::create([
+            'name' => 'Rejected',
+        ]);
+
+        
+        Certificate::create([
+            'title' => 'Sidamar Berdonasi',
+            'user_id' => '2',
+            'status' => '2'
+        ]);
+        Certificate::factory(20)->create();
+
+        
+
+    // Certificate seeder end
 
     // Bulan Kas seeder start
         BulanKas::create([
@@ -170,7 +197,7 @@ class DatabaseSeeder extends Seeder
             'rumah_produksi' => 'Rumah Produksi',
             'judul_film' => 'Pangarep',
             'tahun_produksi' => '2021',
-            'durasi' => '120 Menit',
+            'durasi' => '120',
             'kategori' => 'Drama',
             'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
             'pernyataan' => "True"
@@ -186,7 +213,7 @@ class DatabaseSeeder extends Seeder
             'rumah_produksi' => 'Rumah Film',
             'judul_film' => 'Ketika Cinta Bertasbih',
             'tahun_produksi' => '2022',
-            'durasi' => '120 Menit',
+            'durasi' => '120',
             'kategori' => 'Drama, Komedi',
             'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
             'pernyataan' => "True"
@@ -202,7 +229,7 @@ class DatabaseSeeder extends Seeder
             'rumah_produksi' => 'Rumah Film',
             'judul_film' => 'Suamiku adalah Penjual Kebab',
             'tahun_produksi' => '2022',
-            'durasi' => '120 Menit',
+            'durasi' => '120',
             'kategori' => 'Komedi, Drama',
             'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
             'pernyataan' => "True",

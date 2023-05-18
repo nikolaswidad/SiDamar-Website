@@ -35,13 +35,6 @@
             <td class="px-6 py-3">{{ $no++ }}</td>
             <td class="px-6 py-3">{{ $hasil->title }}</td>
             <td class="px-6 py-3">{{ $hasil->user->name }}</td>
-            {{-- @if ($hasil->status == 1)
-            <td class="px-6 py-3"><span class="text-xs font-semibold py-1 px-2 rounded text-orange-600 bg-orange-200 last:mr-0 mr-1">
-            {{ $hasil->cstatus->name }}</span></td> 
-            @else
-            <td class="px-6 py-3"><span class="text-xs font-semibold py-1 px-2 rounded text-lime-600 bg-lime-200 last:mr-0 mr-1">
-            {{ $hasil->cstatus->name }}</span></td> 
-            @endif --}}
             <td class="px-6 py-3">
               <span class="text-xs font-semibold py-1 px-2 rounded 
                 @if ($hasil->cstatus->id == 1)

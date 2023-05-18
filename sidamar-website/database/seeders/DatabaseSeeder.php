@@ -77,12 +77,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         
-        Certificate::create([
-            'title' => 'Sidamar Berdonasi',
-            'user_id' => '2',
-            'status' => '2'
-        ]);
-        Certificate::factory(20)->create();
+        // Certificate::create([
+        //     'title' => 'Sidamar Berdonasi',
+        //     'user_id' => '2',
+        //     'status' => '2'
+            
+        // ]);
+        Certificate::factory(8)->create();
 
         
 

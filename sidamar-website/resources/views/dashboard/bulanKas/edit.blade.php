@@ -2,8 +2,8 @@
 
 @section('container')
 
-<div class="p-4 sm:ml-64 max-w-7xl">
-    <h1 class="text-4xl font-semibold font-montserrat">Buat Bulan Pembayaran Kas</h1>
+<div class="max-w-7xl">
+    <h1 class="text-4xl font-semibold font-montserrat">Edit Bulan Pembayaran Kas</h1>
     <hr class="bg-slate-200 mt-5 max-w-3xl">
       <form action="/dashboard/bulanKas/{{ $bulanKas->id }}" method="post" class="max-w-3xl mt-8 mb-8 font-montserrat">
         @method('put')

@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <div class="p-4 sm:ml-64 max-w-5xl">
+    <div class="max-w-5xl">
         <h1 class="text-4xl font-semibold font-montserrat">Edit Arsip Film</h1>
         <hr class="bg-slate-200 mt-5 max-w-lg">
     

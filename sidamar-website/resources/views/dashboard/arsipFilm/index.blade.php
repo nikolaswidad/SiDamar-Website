@@ -3,7 +3,7 @@
 @section('container')
 
 {{-- Tabel Lama --}}
-  <div class="p-4 sm:ml-64 max-w-full">
+  <div class="max-w-full">
       <h1 class="text-4xl font-semibold font-montserrat">Arsip Film</h1>
       <hr class="bg-slate-200 mt-5 max-w-sm">
       

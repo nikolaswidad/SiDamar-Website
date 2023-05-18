@@ -3,7 +3,7 @@
 @section('container')
 
 {{-- Tabel Lama --}}
-<div class="p-4 sm:ml-64 max-w-5xl">
+<div class="max-w-5xl">
     <h1 class="text-4xl font-semibold font-montserrat">Bulan Pembayaran Kas</h1>
     <hr class="bg-slate-200 mt-5 max-w-lg">
     

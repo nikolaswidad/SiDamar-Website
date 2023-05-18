@@ -2,7 +2,7 @@
 
 @section('container')
 
-    <div class="p-4 sm:ml-64 max-w-max">
+    <div class="max-w-max">
         <h1 class="text-4xl font-semibold font-montserrat">Pembayaran Kas Bulan {{ $bulanKas->bulan }}</h1>
         <hr class="bg-slate-200 mt-5 max-w-lg">
         @if (session('success'))

@@ -9,7 +9,7 @@ Untuk menampilkan alamat web proyek Laravel Anda di web browser, ikuti langkah-l
 
 3. Jalankan perintah berikut untuk memulai server lokal Laravel:
    ```
-   php artisan serve
+   npm run dev
    ```
 
 4. Setelah server lokal berhasil dijalankan, Anda akan melihat pesan di terminal yang menampilkan URL proyek Laravel Anda, seperti `http://localhost:8000` atau URL lainnya.

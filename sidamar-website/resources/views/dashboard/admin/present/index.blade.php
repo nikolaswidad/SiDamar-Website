@@ -70,14 +70,24 @@
                         Category
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Hadir
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Izin
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Sakit
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Tidak Hadir
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Date
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Location
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                        Total Present
-                    </th>
+
                 </tr>
             </thead>
             <tbody>
@@ -89,8 +99,25 @@
                             <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                         </div>
                     </td>
+                    <?php
+                        $hadir = 0;
+                        $izin = 0;
+                        $sakit = 0;
+                        $alpa = 0;
+
+                        foreach ($presents as $p) {
+                            if ($p->type == 'hadir' && $p->event_id == $event->id) $hadir++;
+                            if ($p->type == 'sakit' && $p->event_id == $event->id) $izin++;
+                            if ($p->type == 'izin' && $p->event_id == $event->id) $sakit++;
+                        }
+                        $alpa = $users->count() - ($hadir + $izin + $sakit);
+
+                    ?>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <a href="{{ route('presents.edit', $event->id) }}" class="hover:text-primary">
+                        {{-- <a href="{{ route('presents.edit', $event->id) }}" class="hover:text-primary">
+                            {{ $event->title }}
+                        </a> --}}
+                        <a href="/dashboard/present/{{ $event->id }}" class="hover:text-primary">
                             {{ $event->title }}
                         </a>
                     </th>
@@ -98,14 +125,23 @@
                         {{ $event->category->name }}
                     </td>
                     <td class="px-6 py-4">
+                        {{ $hadir }}
+                    </td>  
+                    <td class="px-6 py-4">
+                        {{ $izin }}
+                    </td>  
+                    <td class="px-6 py-4">
+                        {{ $sakit }}
+                    </td>  
+                    <td class="px-6 py-4">
+                        {{ $alpa }}
+                    </td>  
+                    <td class="px-6 py-4">
                         {{ $event->date }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $event->location }}
                     </td>
-                    <td class="px-6 py-4">
-                        25
-                    </td>  
                 </tr>
                 @endforeach
 

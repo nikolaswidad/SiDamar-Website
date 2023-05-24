@@ -51,11 +51,10 @@
               <label for="location" class="block text-sm font-medium text-gray-700">Lokasi</label>
               <input type="text" name="location" id="location" autocomplete="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
             </div>
-
             <div class="grid grid-cols-3 gap-6">
               <div class="col-span-3 sm:col-span-2">
                 <label for="url" class="block text-sm font-medium text-gray-700">Google Maps URL</label>
-                <span>Contoh : Universitas Diponegoro - <a href="https://goo.gl/maps/XF6ZaHtvd7jHnA5R7" target="_blank">https://goo.gl/maps/XF6ZaHtvd7jHnA5R7</a></span>
+                <span>Contoh : Universitas Diponegoro - <a href="https://goo.gl/maps/XF6ZaHtvd7jHnA5R7" class="hover:text-primary" target="_blank">https://goo.gl/maps/XF6ZaHtvd7jHnA5R7</a></span>
                 <div class="mt-1 flex rounded-md shadow-sm">
                   <input type="text" name="url" id="url" class="block w-full flex-1 rounded-none rounded-r-md border-gray-300 focus:border-primary focus:ring-primary sm:text-sm" placeholder="https://goo.gl/maps/XF6ZaHtvd7jHnA5R7">
                 </div>

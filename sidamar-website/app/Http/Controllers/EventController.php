@@ -16,13 +16,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        // $events = Event::paginate(10);
-        // return view('dashboard.admin.event.index',[
-        //     "events" => Event::all(),
-        // ]);
         $events = Event::paginate(10);
         return view('dashboard.admin.event.index',compact('events'));
     }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -69,7 +66,10 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        //
+        return view('dashboard.admin.event.show', [
+            'event' => $event,
+            'categories' => EventCategory::all()
+        ]);
     }
 
     /**

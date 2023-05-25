@@ -24,6 +24,17 @@
     <p>Izin: {{ $izin }}</p>
     <p>Sakit: {{ $sakit }}</p>
     <p>Tidak Hadir: {{ $alpa }}</p>
+    <p>Total: {{ $users->count() }}</p>
+    
+    <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white dark:bg-gray-800">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2 text-gray-900 dark:text-white"><span class="font-semibold">Hadir:</span> {{ $hadir }}</div>
+            </div>
+        </div>
+    </div>
+    
+    
+
     <div class="mb-10"></div>
 
     <div class="relative mb-4">
@@ -44,7 +55,7 @@
                         Nama
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Keterangan
+                        Ket
                     </th>
                 </tr>
             </thead>
@@ -54,35 +65,36 @@
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         {{ $user->name }}
                     </th>
-                    <td class="px-10 py-4">
-                        @foreach ($presents as $present)
-                            @if ($present->user_id == $user->id)
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#16a34a" fill="" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>      
-                                {{-- {{ \Illuminate\Support\Str::title(\Illuminate\Support\Str::of($present->type)->replace('_', ' ')) }} --}}
-                                    
-                             @endif
-                        @endforeach
-                    </td>
+                    @php
+                    $colorDefault = 'bg-white border border-gray-300 focus:outline-none focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700';
+
+                    $colorHadir = 'text-white bg-green-500 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800';
+                    $hoverHadir = 'hover:bg-green-600 hover:text-white focus:ring-green-200';
+
+                    $colorSakit = 'text-white bg-blue-500  focus:outline-none focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
+                    $hoverSakit = 'hover:text-white hover:bg-blue-800 focus:blue-300 focus:ring-blue-300';
+
+                    $colorIzin = 'text-white bg-yellow-300 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900';
+                    $hoverIzin = 'hover:text-white hover:bg-yellow-300 focus:ring-yellow-300';
+
+                    $colorNo = 'text-white bg-red-500 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900';
+                    $hoverNo = 'hover:text-white hover:bg-red-700 focus:ring-red-300';
+
+                    $fillHadir = 'stroke-green-500';
+                    $fillIzin = 'stroke-blue-500';
+                    $fillSakit = 'stroke-yellow-300';
+                    $fillNo = 'stroke-red-500';
+
+                            
+                    @endphp
                     <td class="px-6 py-4">
-                        @php
-                            $colorDefault = 'text-gray-900 bg-white border border-gray-300 focus:outline-none focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700';
-
-                            $colorGreen = 'text-white bg-green-500 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800';
-
-                            $colorBlue = 'text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
-
-                            $colorYellow = 'text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900';
-
-                            $colorRed = 'text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900';
-                        @endphp
                         @if ($presents->isEmpty())
-                        <span class="{{ $colorDefault }}">Default Value</span>
+                        <span class="{{ $colorDefault }}"></span>
                         @else
                         @php
                             $foundType = false;
                             $type = '';
+
 
                             foreach ($presents as $present) {
                                 if ($present->user_id == $user->id) {
@@ -97,41 +109,84 @@
                             }
 
                             // Determine the color class based on the type
-                            if ($type == 'hadir') {
-                                $colorClass = $colorGreen;
-                            } elseif ($type == 'izin') {
-                                $colorClass = $colorBlue;
-                            } elseif ($type == 'sakit') {
-                                $colorClass = $colorYellow;
+                            if ($type == 'tidak hadir') {
+                                $colorClass = $colorNo;
+                                $fillColor = $fillNo;
                             } else {
-                                $colorClass = $colorRed;
+                                if ($type == 'hadir') {
+                                    $colorClass = $colorHadir;
+                                    $fillColor = $fillHadir;
+                                } elseif ($type == 'izin') {
+                                    $colorClass = $colorIzin;
+                                    $fillColor = $fillIzin;
+                                } elseif ($type == 'sakit') {
+                                    $colorClass = $colorSakit;
+                                    $fillColor = $fillSakit;
+                                }
+                            }
+
+                            $svgCheck = '<div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#16a34a" fill="" class="w-7 h-7 ' . $fillColor . '">
+                                            <path  stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg></div>';
+                            $svgX = '<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" id="x"><g fill="none" fill-rule="evenodd" stroke="#ef4444" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" transform="translate(1 1)"><circle cx="10" cy="10" r="10"></circle><path d="M13 7l-6 6M7 7l6 6"></path></g></svg></div>';
+
+                            if ($type == 'tidak_hadir') {
+                                $svgIcon = $svgX;
+                            } else {
+                                $svgIcon = $svgCheck;
                             }
                         @endphp
 
-                        <span class="{{ $colorClass }}">
-                            {{ \Illuminate\Support\Str::title(\Illuminate\Support\Str::of($type)->replace('_', ' ')) }}
-                        </span>
+                        <div class="flex flex-row">
+                            {{-- <span class="{{ $colorClass }}">
+                                {{ \Illuminate\Support\Str::title(\Illuminate\Support\Str::of($type)->replace('_', ' ')) }}
+                            </span> --}}
+                            {!! $svgIcon !!}
+                            {{-- <div>
+                                {!! $svgCheck !!}
+                            </div> --}}
+                        </div>
                         @endif
-                    
-                        <!-- Rest of the form elements -->
+                        @foreach ($presents as $present)
+                            @if ($present->user_id == $user->id)
+                                {{-- @php
+                                $type = $present->type;
+                                    if ($type == 'hadir') {
+                                        $fillColor = $fillHadir;
+                                    } elseif ($type == 'izin') {
+                                        $fillColor = $fillIzin;
+                                    } elseif ($type == 'sakit') {
+                                        $fillColor = $fillSakit;
+                                    }   
+                                @endphp  --}}
+                                {{-- <svg   xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#16a34a" fill="" class="w-6 h-6 {{ $fillColor }}">
+                                    <path  stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>       --}}
+                                {{-- {{ \Illuminate\Support\Str::title(\Illuminate\Support\Str::of($present->type)->replace('_', ' ')) }} --}}
+                                    
+                             @endif
+                        @endforeach
                     </td>
+
                     <td class="px-6 py-4">
                         <form action="/dashboard/present/{{ $event->id }}?u={{ $user->id }}&t=hadir" method="POST" class="inline-block">
                             @csrf
-                            <button type="submit" class="{{ $colorDefault }} hover:bg-green-600 hover:text-white focus:ring-green-200">Hadir</button>
-                        </form>
-                        <form action="/dashboard/present/{{ $event->id }}?u={{ $user->id }}&t=izin" method="POST" class="inline-block">
-                            @csrf
-                            <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Izin</button>
+                            <button type="submit" class="{{ $hoverHadir }} {{ $colorDefault }}">Hadir</button>
                         </form>
                         <form action="/dashboard/present/{{ $event->id }}?u={{ $user->id }}&t=sakit" method="POST" class="inline-block">
                             @csrf
-                            <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Sakit</button>
+                            <button type="submit" class="{{ $hoverSakit }}{{ $colorDefault }}"">Sakit</button>
+                        </form>
+                        <form action="/dashboard/present/{{ $event->id }}?u={{ $user->id }}&t=izin" method="POST" class="inline-block">
+                            @csrf
+                            <button type="submit" class="{{ $hoverIzin }}{{ $colorDefault }}">Izin</button>
                         </form>
                         <form action="/dashboard/present/delete/{{ $event->id }}/{{ $user->id }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Reset</button>
+                            <button type="submit" class="{{ $fillNo }}{{ $hoverNo }}{{ $colorDefault }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 22 20" id="rotate"><g fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" transform="translate(1 1)"><path d="M0 1v6h6"></path><path d="M2.51 12a9 9 0 1 0 2.13-9.36L0 7"></path></g></svg>
+                            </button>
                         </form>
                     </td>
 
@@ -145,6 +200,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+
     document.addEventListener('DOMContentLoaded', function() {
         const searchInput = document.querySelector('#table-search');
         const rows = document.querySelectorAll('tbody tr');

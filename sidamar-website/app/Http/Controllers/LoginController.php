@@ -35,6 +35,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+        $this->middleware('guest')->except('logout');
 
         return redirect('/login');
     }

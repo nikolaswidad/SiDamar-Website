@@ -11,8 +11,8 @@
                 </svg>
              </button>
              <a href="/dashboard" class="text-xl font-bold flex items-center lg:ml-2.5">
-             {{-- <img src="img/logo.png" class="h-12 mr-2" alt="Si Damar Logo"> --}}
-             <span class="font-bold text-white text-3xl flex-1 font-sans p-3 rounded-xl">SI DAMAR</span>
+               <img src="img/logo.png" class="h-10" alt="Si Damar Logo">
+               <span class="font-bold text-white text-3xl flex-1 font-montserrat p-3 rounded-xl">SI DAMAR</span>
              </a>
              {{-- <form action="#" method="GET" class="hidden lg:block lg:pl-48">
                 <label for="topbar-search" class="sr-only">Search</label>
@@ -27,16 +27,9 @@
              </form> --}}
           </div>
           <div class="flex items-center">
-             {{-- <button id="toggleSidebarMobileSearch" type="button" class="lg:hidden text-gray-500 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg">
-                <span class="sr-only">Search</span>
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                   <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                </svg>
-             </button> --}}
              <span class="text-white mr-3">Hai, {{auth()->user()->name}}</span>
-
-             
-         <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full cursor-pointer hover:bg-primaryLighten" src="/docs/images/people/profile-picture-5.jpg" alt="User dropdown">
+          </div>
+         <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full cursor-pointer hover:bg-primaryDarken" src="/img/logo2.png" alt="User dropdown">
 
          <!-- Dropdown menu -->
          <div id="userDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
@@ -48,9 +41,6 @@
                <li>
                <a href="/" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Home</a>
                </li>
-               {{-- <li>
-               <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
-               </li> --}}
                <li>
                <a href="/blog" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Blog</a>
                </li>

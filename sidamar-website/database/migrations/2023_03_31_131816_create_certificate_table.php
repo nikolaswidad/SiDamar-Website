@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignId('user_id');
             $table->foreignId('status');
+            $table->date('event_date');
             $table->timestamps();
         });
     }

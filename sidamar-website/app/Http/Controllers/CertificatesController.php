@@ -44,7 +44,8 @@ class CertificatesController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|max:255',
             'title' => 'required|max:255',
-            'status' => 'required'
+            'status' => 'required',
+            'tanggal' => 'required'
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;

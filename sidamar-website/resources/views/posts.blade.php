@@ -1,169 +1,104 @@
+@extends('layouts.main')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Sidamar Blog</title>
-	<meta name="author" content="Nurida Larasati">
-	<meta name="description" content="">
+@section('container')
+<!-- Text Header -->
+<header class="w-full container mx-auto">
+  <div class="flex flex-col items-center py-12">
+      <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
+          Sidamar Blog
+      </a>
+      <p class="text-lg text-gray-600">
+          Sineas Muda Semarang Blog
+      </p>
+  </div>
+</header>
 
-	<!-- Tailwind -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-	<style>
-			@import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+<div class="pb-12 ">  
+    <!-- container for all cards -->
+    <div class="container ">
+      <!-- card -->
+      <a href="{{ route('isi', $data[0]->slug) }}" class="flex flex-col md:flex-row overflow-hidden bg-white rounded-xl shadow mt-4 w-100 hover:bg-gray-100">
+        <!-- media -->
+        {{-- <div class="h-64 w-auto md:w-1/2">
+          <img class="inset-0 border-none h-full w-full object-cover object-center" src="{{  asset($data[0]->image)  }}" />
+        </div> --}}
+        @if ($data[0]->image)
+          <div class="h-64 w-auto md:w-1/2">
+            <img class="inset-0 border-none h-full w-full object-cover object-center" src="{{  asset($data[0]->image)  }}" />
+          </div>
+        @else
+          <div class="h-64 w-auto md:w-1/2">
+            <img class="inset-0 border-none h-full w-full object-cover object-center" src="https://source.unsplash.com/500x1000?{{ $data[0]->category->name }}" />
+          </div>
+        @endif
 
-			.font-family-karla {
-					font-family: karla;
-			}
-	</style>
+        <!-- content -->
+        <div class="w-full py-4 px-6 text-gray-800 flex flex-col justify-between">
+          <h3 class="text-4xl font-bold leading-tight truncate">{{ $data[0]->title }}</h3>
+          <p class="mt-2">
+            {{ $data[0]->excerpt }}
+          </p>
+          <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
+            {{ $data[0]->author->name }}
+          </p>
+          {{-- <p class="text-sm text-gray-700 uppercase tracking-wide font-semibold mt-2">
+            Author
+          </p> --}}
+        </div>
+      </a><!--/ card-->
+    </div><!--/ container-->
+</div>
 
-	<!-- AlpineJS -->
-	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-	<!-- Font Awesome -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-</head>
-<body class="bg-white font-family-karla">
-  @include('partials.navbar')
-  
-  <!-- Text Header -->
-    <header class="w-full container mx-auto">
-			<div class="flex flex-col items-center py-12">
-				<a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
-					Sidamar Blog
-				</a>
-				<p class="text-lg text-gray-600">
-					Sineas Muda Semarang Blog
-				</p>
-			</div>
-    </header>
+{{-- main card --}}
+<div class="container">
+  {{-- mx-auto flex flex-wrap --}}
+  <section class=" w-full md:w-2/3 flex items-center px-3 bg-slate-100">
+    <a href="{{ route('isi', $data[0]->slug) }}" class="flex bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    {{-- setting image --}}
+      @if ($data[0]->image)
+        <div style="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
+          <img src="{{ asset($data[0]->image) }}" alt="img" style="width: 100px" alt="{{ $data[0]->category->name }}">
+        </div>
+      @else
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="https://source.unsplash.com/700x1000?{{ $data[0]->category->name }}" style="width: 100px" alt="{{ $data[0]->category->name }}">
+      @endif
+
+      <div class="flex flex-col justify-between p-4 leading-normal">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $data[0]->title }}</h5>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are {{ $data[0]->excerpt }}</p>
+      </div>
+    </a>
+{{-- <div class="flex-row inline">
+    @foreach ($data->skip(1) as $post)
     
-		<div class="container mx-auto flex flex-wrap py-6">
-			<div class="w-full flex justify-center md:w-2/3 mb-4">
-				<form action="/blog">   
-				@if (request('category'))
-				<input type="hidden" name="category" value="{{ request('category') }}">
-						
-				@endif
-				@if (request('author'))
-				<input type="hidden" name="author" value="{{ request('author') }}">
-						
-				@endif
-				<label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-				<div class="relative">
-						<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-								<svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-						</div>
-						<input type="text" id="search" name="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-96" placeholder="Search..." value="{{ request('search') }}" required>
-						<button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-				</div>
-			</form>
-			</div>
-			
-	<!-- Posts Section -->
-		<section class="w-full md:w-2/3 flex flex-col items-center px-3">
-			
-
-			@foreach ($data as $post)
-				<article class="shadow my-4 flex flex-col rounded-lg">
-					
-					<!-- Article Image -->
-					<a href="{{ route('isi', $post->slug) }}" class="hover:opacity-75">
-						@if ($post->image)
-							<div style="max-width: 100%; max-height: 300px; display: flex; justify-content: center; overflow:hidden">
-								<a href="#" class="hover:opacity-75" style="max-width: 1000px;">
-										<img class="rounded-t-lg" src="{{ asset('upload/posts/' . $post->image) }}" style="width: 100%;">
-								</a>
-							</div>
-						@else
-							<img class="rounded-t-lg" src="https://source.unsplash.com/1000x300?{{ $post->category->name }}" alt="{{ $post->category->name }}">
-						@endif
-					</a>
-					<div class="bg-white flex flex-col justify-start p-6">
-						<a href="/blog?category={{ $post->category->slug }}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{ $post->category->name }}</a>
-						<a href="{{ route('isi', $post->slug) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title }}</a>
-						<p class="text-sm pb-3">
-								By <a href="/blog?author={{ $post->author->name }}" class="font-semibold hover:text-gray-800">{{ $post->author->name }}</a>, Published on {{ $post->created_at->format('d/m/Y') }}
-						</p>
-						<a href="#" class="pb-6">{{ $post->excerpt }}</a>
-						<a href="{{ route('isi', $post->slug) }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i class="fas fa-arrow-right"></i></a>
-					</div>
-				</article>
-			@endforeach
-
-	<!-- Pagination -->
-		<div class="flex items-center py-8">
-			<a href="{{$data->previousPageUrl()}}" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center"><</a>
-			@for($i=1;$i<=$data->lastPage();$i++)
-				<!-- a Tag for another page -->
-				<a href="{{$data->url($i)}}" class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">{{$i}}</a>
-			@endfor
-			<!-- a Tag for next page -->
-			<a href="{{$data->nextPageUrl()}}" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">></a>
-		</div>
-				
-
-		</section>
-
-	<!-- Sidebar Section -->
-		@include('blog.aside')
-
-    </div>
-
-    <footer class="w-full border-t bg-white pb-12">
-        <div
-            class="relative w-full flex items-center invisible md:visible md:pb-12"
-            x-data="getCarouselData()"
-        >
-            <button
-                class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
-                x-on:click="decrement()">
-                &#8592;
-            </button>
-            <template x-for="image in images.slice(currentIndex, currentIndex + 6)" :key="images.indexOf(image)">
-                <img class="w-1/6 hover:opacity-75" :src="image">
-            </template>
-            <button
-                class="absolute right-0 bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
-                x-on:click="increment()">
-                &#8594;
-            </button>
+      <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+            @if ($data[0]->image)
+              <div style="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg">
+                <img src="{{ asset($data[0]->image) }}" alt="img" style="width: 100px" alt="{{ $data[0]->category->name }}">
+              </div>
+            @else
+              <img class="rounded-t-lg" src="https://source.unsplash.com/1700x900?{{ $data[0]->category->name }}" alt="{{ $data[0]->category->name }}">
+            @endif
+        </a>
+        <div class=" p-5">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $post->title }}</h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $post->excerpt }}</p>
+            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Read more
+                <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
         </div>
-        <div class="w-full container mx-auto flex flex-col items-center">
-            <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
-                <a href="#" class="uppercase px-3">About Us</a>
-                <a href="#" class="uppercase px-3">Privacy Policy</a>
-                <a href="#" class="uppercase px-3">Terms & Conditions</a>
-                <a href="#" class="uppercase px-3">Contact Us</a>
-            </div>
-            <div class="uppercase pb-6">&copy; myblog.com</div>
-        </div>
-    </footer>
+      </div>
+    
+    @endforeach </div>
+  </section>
+  <aside class="w-full md:w-1/3 flex flex-col items-center px-3 bg-purple-300">
+  </aside>
 
-    <script>
-        function getCarouselData() {
-            return {
-                currentIndex: 0,
-                images: [
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=1',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=2',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=3',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=4',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=5',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=6',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=7',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=8',
-                    'https://source.unsplash.com/collection/1346951/800x800?sig=9',
-                ],
-                increment() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex + 1;
-                },
-                decrement() {
-                    this.currentIndex = this.currentIndex === this.images.length - 6 ? 0 : this.currentIndex - 1;
-                },
-            }
-        }
-    </script>
+</div> --}}
 
-</body>
-</html>
+
+@endsection

@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-   <h1 class="font-bold mb-5 text-4xl">Post Category</h1>
+   <h1 class="font-bold mb-5 text-4xl">Post category</h1>
 
    @if (Session::has('success'))
       <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
@@ -9,12 +9,12 @@
       </div>
     @endif
 
-   <a href="{{ route('categories.create') }}"><button type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-4">+ Add Category</button></a>
+   <a href="{{ route('categories.create') }}"><button type="button" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-4">+ Tambah Kategori</button></a>
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
          <thead class="text-xs text-gray-700 uppercase bg-white border-b dark:bg-gray-700 dark:text-gray-400">
            <tr>
             <th scope="col" class="px-6 py-3">No</th>
-            <th scope="col" class="px-6 py-3">Category</th>
+            <th scope="col" class="px-6 py-3">Name</th>
             <th scope="col" class="px-6 py-3">Action</th>
            </tr>
          </thead>

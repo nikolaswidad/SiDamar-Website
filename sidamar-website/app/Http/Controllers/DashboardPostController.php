@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\PostCategory;
-use App\Models\User;
-use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use illuminate\Support\Str;
 
@@ -19,8 +17,7 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
-        $post = Post::orderBy('created_at','desc')->paginate(10);
-        // $post->orderBy('created_at','desc');
+        $post = Post::paginate(10);
         return view('dashboard.author.posts.index',compact('post'));
     }
 
@@ -44,7 +41,7 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
@@ -52,16 +49,20 @@ class DashboardPostController extends Controller
             'body' => 'required'
         ]);
 
-        $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
-        if($request->has('image')){
-            $image = $request->image;
-            $new_image = time().$image->getClientOriginalName();
-            $image->move('upload/posts', $new_image);
-            $validatedData['image'] = $new_image;
-        }
+        $image = $request->image;
+        $new_image = time().$image->getClientOriginalName();
+        $request['user_id'] = auth()->user()->id;
+        Post::create([
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'category_id' => $request->category_id,
+            'image' => 'upload/posts/'.$new_image,
+            'excerpt' => Str::limit(strip_tags($request->body), 200),
+            'body' => $request->body,
+            'user_id' => auth()->id()
+        ]);
 
-        Post::create($validatedData);
+        $image->move('upload/posts', $new_image);
 
         return redirect('dashboard/posts/create')->with('success','Post baru berhasil disimpan');
     }
@@ -120,6 +121,7 @@ class DashboardPostController extends Controller
             'title' => $request->title,
             'slug' => $request->slug,
             'category_id' => $request->category_id,
+            'image' => 'upload/posts/'.$new_image,
             'excerpt' => Str::limit(strip_tags($request->body), 200),
             'body' => $request->body
         ];
@@ -141,7 +143,7 @@ class DashboardPostController extends Controller
     {
         $post = Post::findorfail($id);
         $post->delete();
-        return redirect('dashboard/posts')->with('success','Data berhasil dihapus (silahkan cek trash can)');
+        return redirect('dashboard/posts')->with('success','Data berhasil dihapus (silahkan cek trash can');
     }
 
     // nampilin data yang udah kehapus
@@ -165,10 +167,5 @@ class DashboardPostController extends Controller
         $post->forceDelete();
 
         return redirect('dashboard/posts/deleted')->with('success','Data berhasil dihapus permanen');
-    }
-
-    public function checkSlug(Request $request){
-        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-        return response()->json(['slug'=>$slug]);
     }
 }

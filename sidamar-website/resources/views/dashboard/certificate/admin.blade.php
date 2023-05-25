@@ -10,7 +10,9 @@
     @endif
 
     <div class="container mx-auto">
-      <div class="grid grid-cols-2 gap-4">
+      {{-- <div class="grid grid-cols-2 gap-4"> --}}
+        
+      <div class="block m-4 p-4 w-full overflow-x-auto">
         <!-- konten bagian kiri -->
           <div class="col-span-1">
                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -59,12 +61,12 @@
                   </tbody>
                 </table> 
           </div>
-          <div class="col-span-1">
+          {{-- <div class="col-span-1">
                 <object data="{{ asset('\master\certificate.pdf') }}" type="application/pdf" width="100%" height="600px">
                   <p>File PDF tidak dapat ditampilkan pada browser Anda. Silakan unduh file PDF untuk melihatnya.</p>
                 </object>
 
-          </div>
+          </div> --}}
       </div>
   </div>
 @endsection

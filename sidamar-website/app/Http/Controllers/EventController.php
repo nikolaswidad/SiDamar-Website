@@ -16,7 +16,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::paginate(10);
+        // $events = Event::paginate(10);
+        $events = Event::all()->sortBy('date');
         return view('dashboard.admin.event.index',compact('events'));
     }
     

@@ -24,6 +24,7 @@
     <p>Izin: {{ $izin }}</p>
     <p>Sakit: {{ $sakit }}</p>
     <p>Tidak Hadir: {{ $alpa }}</p>
+    <div class="mb-10"></div>
 
     <div class="relative mb-4">
         <label for="table-search" class="sr-only">Search</label>
@@ -142,24 +143,25 @@
 
     <div class="mb-96"></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.querySelector('#table-search');
-            const rows = document.querySelectorAll('tbody tr');
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.querySelector('#table-search');
+        const rows = document.querySelectorAll('tbody tr');
 
-            searchInput.addEventListener('input', function(event) {
-                const searchValue = event.target.value.toLowerCase();
+        searchInput.addEventListener('input', function(event) {
+            const searchValue = event.target.value.toLowerCase();
 
-                rows.forEach(row => {
-                    const name = row.querySelector('th').textContent.toLowerCase();
+            rows.forEach(row => {
+                const name = row.querySelector('th').textContent.toLowerCase();
 
-                    if (name.includes(searchValue)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
+                if (name.includes(searchValue)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
             });
         });
+    });
     </script>
 @endsection

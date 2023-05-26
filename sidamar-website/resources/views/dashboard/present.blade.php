@@ -6,9 +6,9 @@
 @section('container')
 
 @php
-    //get type from 
+    //get type
 @endphp
-<div class="p-12 py-6">
+<div class="py-6">
     <div class="flex my-5 justify-between">
         <div>
             <h1 class="text-2xl font-bold">Riwayat Presensi</h1>

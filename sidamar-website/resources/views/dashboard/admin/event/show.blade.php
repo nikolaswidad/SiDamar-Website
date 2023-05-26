@@ -8,21 +8,27 @@
     @endif
 
     <div class="md:grid md:grid-cols-3 md:gap-6">
-        <div class="mt-5 md:col-span-2 md:mt-0 ">
-            <div class="shadow sm:overflow-hidden sm:rounded-md">
-                <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
-                    <label for="title" class="block text-lg font-bold text-gray-700">{{ $event->category->name }} : {{ $event->title }}</label>
-                    <label for="title" class="block text-lg text-gray-700">
-                        <label for="">Lokasi : </label>
-                        <a href="{{ $event->url }}" target="_blank" class="text-primary hover:text-primaryLighten">
-                            {{ $event->location }} 
-                        </a>
-                    </label>
-                    <label for="title" class="block text-lg text-gray-700">Waktu : {{ $event->time }} | Tanggal : {{ $event->date }}</label>
-                    <label for="title" class="block text-lg text-gray-700">Deskripsi :</label>
-                    <label for="title" class="block text-lg text-gray-700">{{ $event->description }}</label>
+        <div class="mt-5 md:col-span-2 md:mt-0">
+            <div class="shadow bg-white rounded-lg overflow-hidden">
+                <div class="p-6 space-y-6">
+                    <h2 class="text-2xl font-bold text-gray-800">{{ $event->category->name }}: {{ $event->title }}</h2>
+                    <div>
+                        <label for="location" class="text-lg font-bold text-gray-700">Lokasi:</label>
+                        <a href="{{ $event->url }}" target="_blank" class="text-primary hover:text-primaryLighten">{{ $event->location }}</a>
+                    </div>
+                    <div>
+                        <label for="datetime" class="text-lg font-bold text-gray-700">Waktu:</label>
+                        <span class="text-gray-800">{{ $event->time }}</span>
+                        <label for="date" class="text-lg font-bold text-gray-700 ml-4">Tanggal:</label>
+                        <span class="text-gray-800">{{ $event->date }}</span>
+                    </div>
+                    <div>
+                        <label for="description" class="text-lg font-bold text-gray-700">Deskripsi:</label>
+                        <p class="text-gray-800">{{ $event->description }}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    
 @endsection

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePresentRequest;
 use App\Http\Requests\UpdatePresentRequest;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class PresentController extends Controller
 {
@@ -22,7 +23,10 @@ class PresentController extends Controller
      */
     public function index()
 {
-        $events = Event::withCount('attendees')->get();
+        // $events = Event::withCount('attendees')->get();
+        $events = Event::withCount('attendees')
+            ->orderBy('date')
+            ->get();
         $presents = Present::all();
         $users = User::all();
 
@@ -171,6 +175,8 @@ class PresentController extends Controller
     // Redirect to the previous page
     return redirect()->back();
 }
+
+
 
 
 

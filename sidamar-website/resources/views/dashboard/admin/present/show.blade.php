@@ -1,9 +1,9 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <h1>Presensi:</h1>
+    {{-- <h1>Presensi:</h1> --}}
 
-    <h1 class="text-slate-500 font-semibold">{{ $event->title }}</h1>
+    <h1 class="text-slate-500 font-semibold mb-4">{{ $event->title }}</h1>
 
     @php
         $hadir = 0;
@@ -16,21 +16,104 @@
             if ($p->type == 'izin' && $p->event_id == $event->id) $izin++;
             if ($p->type == 'sakit' && $p->event_id == $event->id) $sakit++;
         }
-
-        $alpa = $users->count() - ($hadir + $izin + $sakit);
+        $total = $users->count();
+        $alpa = $total - ($hadir + $izin + $sakit);
     @endphp
 
-    <p>Hadir: {{ $hadir }}</p>
+    {{-- <p>Hadir: {{ $hadir }}</p>
     <p>Izin: {{ $izin }}</p>
     <p>Sakit: {{ $sakit }}</p>
     <p>Tidak Hadir: {{ $alpa }}</p>
-    <p>Total: {{ $users->count() }}</p>
-    
-    <div class="max-w-xs rounded overflow-hidden shadow-lg bg-white dark:bg-gray-800">
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2 text-gray-900 dark:text-white"><span class="font-semibold">Hadir:</span> {{ $hadir }}</div>
+    <p>Total: {{ $users->count() }}</p> --}}
+
+    <div class="card-group flex flex-wrap">
+        <div class="w-52 h-24 mb-4 mr-4">
+            <div class="bg-white border-l-4 border-green-500 shadow h-full py-2">
+                <div class="p-4">
+                    <div class="flex items-center">
+                        <div class="mr-2">
+                            <div class="text-xs font-bold text-green-500 uppercase mb-1">
+                                Hadir
+                            </div>
+                            <div class="text-lg font-bold text-gray-800">{{ $hadir }}</div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="w-52 h-24 mb-4 mr-4">
+            <div class="bg-white border-l-4 border-blue-500 shadow h-full py-2">
+                <div class="p-4">
+                    <div class="flex items-center">
+                        <div class="mr-2">
+                            <div class="text-xs font-bold text-blue-500 uppercase mb-1">
+                                sakit
+                            </div>
+                            <div class="text-lg font-bold text-gray-800">{{ $sakit }}</div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-52 h-24 mb-4 mr-4">
+            <div class="bg-white border-l-4 border-blue-500 shadow h-full py-2">
+                <div class="p-4">
+                    <div class="flex items-center">
+                        <div class="mr-2">
+                            <div class="text-xs font-bold text-blue-500 uppercase mb-1">
+                                izin
+                            </div>
+                            <div class="text-lg font-bold text-gray-800">{{ $izin }}</div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-52 h-24 mb-4 mr-4">
+            <div class="bg-white border-l-4 border-red-500 shadow h-full py-2">
+                <div class="p-4">
+                    <div class="flex items-center">
+                        <div class="mr-2">
+                            <div class="text-xs font-bold text-red-500 uppercase mb-1">
+                                Tidak Hadir
+                            </div>
+                            <div class="text-lg font-bold text-gray-800">{{ $alpa }}</div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-52 h-24 mb-4 mr-4">
+            <div class="bg-white border-l-4 border-slate-500 shadow h-full py-2">
+                <div class="p-4">
+                    <div class="flex items-center">
+                        <div class="mr-2">
+                            <div class="text-xs font-bold text-slate-500 uppercase mb-1">
+                                Total
+                            </div>
+                            <div class="text-lg font-bold text-gray-800">{{ $total }}</div>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
     </div>
     
     
@@ -74,14 +157,17 @@
                     $colorSakit = 'text-white bg-blue-500  focus:outline-none focus:ring-4 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800';
                     $hoverSakit = 'hover:text-white hover:bg-blue-800 focus:blue-300 focus:ring-blue-300';
 
-                    $colorIzin = 'text-white bg-yellow-300 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900';
-                    $hoverIzin = 'hover:text-white hover:bg-yellow-300 focus:ring-yellow-300';
+                    // $colorIzin = 'text-white bg-yellow-300 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900';
+                    // $hoverIzin = 'hover:text-white hover:bg-yellow-300 focus:ring-yellow-300';
+                    $colorIzin = 'text-white bg-blue-500 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-blue-500 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900';
+                    $hoverIzin = 'hover:text-white hover:bg-blue-500 focus:ring-blue-500';
 
                     $colorNo = 'text-white bg-red-500 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900';
                     $hoverNo = 'hover:text-white hover:bg-red-700 focus:ring-red-300';
 
                     $fillHadir = 'stroke-green-500';
-                    $fillIzin = 'stroke-yellow-300';
+                    // $fillIzin = 'stroke-yellow-300';
+                    $fillIzin = 'stroke-blue-500';
                     $fillSakit = 'stroke-blue-500';
                     $fillNo = 'stroke-red-500';
 

@@ -13,9 +13,10 @@
          <thead class="text-xs text-gray-700 uppercase bg-white border-b dark:bg-gray-700 dark:text-gray-400">
            <tr>
             <th scope="col" class="px-6 py-3">No</th>
-            <th scope="col" class="px-6 py-3">Judul</th>
-            <th scope="col" class="px-6 py-3">Kategori</th>
-            <th scope="col" class="px-6 py-3">Gambar</th>
+            <th scope="col" class="px-6 py-3">Title</th>
+            <th scope="col" class="px-6 py-3">Author</th>
+            <th scope="col" class="px-6 py-3">Category</th>
+            <th scope="col" class="px-6 py-3">Image</th>
             <th scope="col" class="px-6 py-3">Action</th>
            </tr>
          </thead>
@@ -25,6 +26,7 @@
           <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             <td class="px-6 py-4">{{ $post->firstItem()+$cat }}</td>
             <td class="px-6 py-4">{{ $hasil->title }}</td>
+            <td class="px-6 py-4">{{ $hasil->author->name }}</td>
             <td class="px-6 py-4">{{ $hasil->category->name }}</td>
             <td class="px-6 py-4">
               @if ($hasil->image)

@@ -22,6 +22,7 @@
             <th scope="col" class="px-6 py-3">No</th>
             <th scope="col" class="px-6 py-3">Event</th>
             <th scope="col" class="px-6 py-3">Name</th>
+            <th scope="col" class="px-6 py-3">Date</th>
             <th scope="col" class="px-6 py-3">Status</th>
             <th scope="col" class="px-6 py-3">Print</th>
             <th scope="col" class="px-6 py-3">Delete</th>
@@ -33,8 +34,9 @@
           @foreach ($certif as $cf => $hasil)
           <tr class=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-white-50 dark:hover:bg-white-600">
             <td class="px-6 py-3">{{ $no++ }}</td>
-            <td class="px-6 py-3">{{ $hasil->title }}</td>
+            <td class="px-6 py-3">{{ $hasil->events->title }}</td>
             <td class="px-6 py-3">{{ $hasil->user->name }}</td>
+            <td class="px-6 py-3">{{ $hasil->events->date }}</td>
             <td class="px-6 py-3">
               <span class="text-xs font-semibold py-1 px-2 rounded 
                 @if ($hasil->cstatus->id == 1)
@@ -51,9 +53,10 @@
             <td class="px-6 py-3">
             <form id="form-print" action="{{ route('buat') }}" method="POST" target="blank_">
               @csrf
-              {{-- <input type="hidden" name="tanggal" value="{{ $event->date}}"> --}}
+              <input type="hidden" name="tanggal" value="{{ $hasil->events->date }}">
               <input type="hidden" name="nama" value="{{ $hasil->user->name }}">
-              <input type="hidden" name="judul" value="{{ $hasil->title}}">
+              <input type="hidden" name="judul" value="{{ $hasil->events->title }}">
+              <input type="hidden" name="manager" value="{{ $hasil->events->event_manager }}">
               <button type="submit"
               @if ($hasil->cstatus->id != 2)
                 disabled
@@ -69,7 +72,7 @@
             <form action="{{ route('certificate.destroy', $hasil->id) }}" method="POST">
               @csrf
               @method('delete')
-              <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline ">Delete</button>
+              <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline " onclick="return confirm('Hapus Permanen?')">Delete</button>
             </form>
           </td>
           </tr>

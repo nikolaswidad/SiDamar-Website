@@ -3,7 +3,8 @@
 @section('container')
     {{-- <h1>Presensi:</h1> --}}
 
-    <h1 class="text-slate-500 font-semibold mb-4">{{ $event->title }}</h1>
+    {{-- <h1 class="text-slate-500 font-semibold mb-4">{{ $event->title }}</h1> --}}
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">{{ $event->category }}: {{ $event->title }}</h2>
 
     @php
         $hadir = 0;

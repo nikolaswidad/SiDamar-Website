@@ -14,7 +14,7 @@ class Event extends Model
 
     protected $table = 'events';
     protected $guarded = ['id'];
-
+    
     public function category(){
         return $this->belongsTo(EventCategory::class);
     }
@@ -27,8 +27,5 @@ class Event extends Model
     {
         return $this->belongsToMany(User::class, 'presents', 'event_id', 'user_id');
     }
-
-
-
 
 }

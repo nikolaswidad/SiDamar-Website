@@ -22,7 +22,7 @@
                         Acara
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Kategory
+                        Kategori
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Hadir
@@ -70,7 +70,7 @@
                         </a>
                     </th>
                     <td class="px-6 py-4">
-                        {{ $event->category->name }}
+                        {{ $event->category }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $hadir }}

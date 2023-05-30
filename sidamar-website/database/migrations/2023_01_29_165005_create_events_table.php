@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('title');
             $table->string('event_manager');
-            $table->integer('category');
+            $table->string('category');
             $table->text('description');
             $table->date('date');
             $table->time('time');

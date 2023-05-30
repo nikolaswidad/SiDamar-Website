@@ -52,7 +52,7 @@
                                 {{ $event->title }}</td>
                               </a>                        
                         </th>
-                        <td class="px-6 py-4">{{ $event->category->name }}</td>
+                        <td class="px-6 py-4">{{ $event->category }}</td>
                         <td class="px-6 py-4">
                             {{ $event->time }}, {{ $event->date }}
                         </td>

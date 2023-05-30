@@ -63,33 +63,33 @@ class DatabaseSeeder extends Seeder
 
     // Author seeder end
 
-<<<<<<< HEAD
-    // Certificate seeder start
-        CertificateStatus::create([
-            'name' => 'Pending',
-        ]);
-        CertificateStatus::create([
-            'name' => 'Completed',
-        ]);
-        CertificateStatus::create([
-            'name' => 'Rejected',
-        ]);
+// <<<<<<< HEAD
+//     // Certificate seeder start
+//         CertificateStatus::create([
+//             'name' => 'Pending',
+//         ]);
+//         CertificateStatus::create([
+//             'name' => 'Completed',
+//         ]);
+//         CertificateStatus::create([
+//             'name' => 'Rejected',
+//         ]);
 
         
-        // Certificate::create([
-        //     'title' => 'Sidamar Berdonasi',
-        //     'user_id' => '2',
-        //     'status' => '2'
+//         // Certificate::create([
+//         //     'title' => 'Sidamar Berdonasi',
+//         //     'user_id' => '2',
+//         //     'status' => '2'
             
-        // ]);
-        Certificate::factory(8)->create();
+//         // ]);
+//         Certificate::factory(8)->create();
 
         
 
-    // Certificate seeder end
+//     // Certificate seeder end
 
-=======
->>>>>>> parent of 1dcea78 (Squashed commit of the following:)
+// =======
+// >>>>>>> parent of 1dcea78 (Squashed commit of the following:)
     // Bulan Kas seeder start
         BulanKas::create([
             'bulan' => 'Januari',

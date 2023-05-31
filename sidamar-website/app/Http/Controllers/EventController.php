@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\EventCategory;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -18,6 +19,12 @@ class EventController extends Controller
     {
         // $events = Event::paginate(10);
         $events = Event::all()->sortBy('date');
+
+        $events->transform(function ($event) {
+            $event->time = Carbon::parse($event->time)->format('H:i');
+            return $event;
+        });
+
         return view('dashboard.admin.event.index',compact('events'));
     }
     
@@ -65,10 +72,16 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
+
+
     public function show(Event $event)
     {
+        // Format the time using Carbon
+        $time = Carbon::parse($event->time)->format('H:i');
+    
         return view('dashboard.admin.event.show', [
             'event' => $event,
+            'time' => $time,
             'categories' => EventCategory::all()
         ]);
     }

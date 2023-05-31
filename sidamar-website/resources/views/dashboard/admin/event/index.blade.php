@@ -77,10 +77,10 @@
                         </th>
                         <td class="px-6 py-4">{{ $event->category }}</td>
                         <td class="px-6 py-4">
-                            {{ $event->time }}
+                            {{ \Carbon\Carbon::parse($event->time)->format('H:i') }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $event->date }}
+                            {{ \Carbon\Carbon::parse($event->date)->format('d M Y') }}
                         </td>
                         <td class="px-6 py-4">
                             <a href="{{ $event->url }}" target="_blank" class="text-primary hover:text-primaryLighten">

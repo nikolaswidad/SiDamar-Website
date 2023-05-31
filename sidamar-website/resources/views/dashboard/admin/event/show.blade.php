@@ -18,7 +18,7 @@
                     </div>
                     <div>
                         <label for="datetime" class="text-lg font-bold text-gray-700">Waktu:</label>
-                        <span class="text-gray-800">{{ $event->time }}</span>
+                        <span class="text-gray-800">{{ \Carbon\Carbon::parse($event->time)->format('H:i') }}</span>
                         <label for="date" class="text-lg font-bold text-gray-700 ml-4">Tanggal:</label>
                         <span class="text-gray-800">{{ $event->date }}</span>
                     </div>

@@ -171,9 +171,11 @@
                     $fillIzin = 'stroke-blue-500';
                     $fillSakit = 'stroke-blue-500';
                     $fillNo = 'stroke-red-500';
-
+                    
+                    $fillColor = '';
                             
                     @endphp
+
                     <td class="px-8 py-4">
                         @if ($presents->isEmpty())
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 22 22" id="x"><g fill="none" fill-rule="evenodd" stroke="#ef4444" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" transform="translate(1 1)"><circle cx="10" cy="10" r="10"></circle><path d="M13 7l-6 6M7 7l6 6"></path></g></svg>

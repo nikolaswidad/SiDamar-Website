@@ -56,8 +56,8 @@
 
                         foreach ($presents as $p) {
                             if ($p->type == 'hadir' && $p->event_id == $event->id) $hadir++;
-                            if ($p->type == 'sakit' && $p->event_id == $event->id) $izin++;
-                            if ($p->type == 'izin' && $p->event_id == $event->id) $sakit++;
+                            if ($p->type == 'izin' && $p->event_id == $event->id) $izin++;
+                            if ($p->type == 'sakit' && $p->event_id == $event->id) $sakit++;
                         }
                         $alpa = $users->count() - ($hadir + $izin + $sakit);
                     @endphp

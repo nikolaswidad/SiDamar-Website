@@ -50,10 +50,10 @@
                         
                       </a>
                     </td>
-                     <td class="px-6 py-4">{{ $hasil->title }}</td>
-                     <td class="px-6 py-3">{{ $hasil->event_date }}</td>
-                     <td class="px-6 py-4">{{ $hasil->user->name }}</td>
-                     <td class="px-6 py-3">
+                    <td class="px-6 py-3">{{ $hasil->events->title }}</td>
+                    <td class="px-6 py-3">{{ $hasil->events->date }}</td>
+                    <td class="px-6 py-3">{{ $hasil->user->name }}</td>
+                    <td class="px-6 py-3">
                       <span class="text-xs font-semibold py-1 px-2 rounded 
                         @if ($hasil->cstatus->id == 1)
                         text-orange-600 bg-orange-200 
@@ -69,9 +69,12 @@
                     <td class="px-6 py-3">
                       <form id="form-print" action="{{ route('buat') }}" method="POST" target="blank_">
                         @csrf
-                        {{-- <input type="hidden" name="tanggal" value="{{ $event->date}}"> --}}
+                        {{-- <input type="hidden" name="nama" value="{{ $hasil->user->name }}">
+                        <input type="hidden" name="judul" value="{{ $hasil->title}}"> --}}
+                        <input type="hidden" name="tanggal" value="{{ $hasil->events->date }}">
                         <input type="hidden" name="nama" value="{{ $hasil->user->name }}">
-                        <input type="hidden" name="judul" value="{{ $hasil->title}}">
+                        <input type="hidden" name="judul" value="{{ $hasil->events->title }}">
+                        <input type="hidden" name="manager" value="{{ $hasil->events->event_manager }}">
                         <button type="submit"
                         class="
                       text-white bg-gradient-to-r from-lime-400 via-lime-500 to-lime-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 

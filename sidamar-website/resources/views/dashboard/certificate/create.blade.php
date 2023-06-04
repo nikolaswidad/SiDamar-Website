@@ -28,14 +28,14 @@
   </div>
   
   <div class="mb-6">
-    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event Title</label>
-    <select class="rounded-lg" name="title">
+    <label for="event_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Event Title</label>
+    <select class="rounded-lg" name="event_id">
       <option value="">Pilih Event</option>
       @foreach ($event as $e)
-      @if (old('title') == $e->title)
-        <option value="{{ $e->title }}" selected data-date="{{ $e->date }}">{{ $e->title }}</option>
+      @if (old('event_id') == $e->title)
+        <option value="{{ $e->id }}" selected data-date="{{ $e->date }}">{{ $e->title }}</option>
       @else
-        <option value="{{ $e->title }}" data-date="{{ $e->date }}">{{ $e->title }}</option>
+        <option value="{{ $e->id }}" data-date="{{ $e->date }}">{{ $e->title }}</option>
       @endif
       @endforeach
     </select>
@@ -46,12 +46,13 @@
 
   
 
+  {{-- <input type="hidden" name="title" value="coba">  --}}
   <input type="hidden" name="status" value="1">  
   <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 </form>
 
 <script>
-  const titleSelect = document.querySelector('select[name="title"]');
+  const titleSelect = document.querySelector('select[name="event_id"]');
   const tanggalInput = document.querySelector('input[name="tanggal"]');
 
   titleSelect.addEventListener('change', function() {

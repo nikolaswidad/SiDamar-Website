@@ -9,7 +9,14 @@ use App\Http\Controllers\BulanKasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
+
 use App\Http\Controllers\DonateController;
+
+
+use App\Http\Controllers\EventMemberController;
+use App\Http\Controllers\PresentMemberController;
+use App\Models\Event;
+use App\Models\Present;
 
 
 /*
@@ -56,34 +63,27 @@ Route::resource('/donate',DonateController::class);
 Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
-// Route::get('/merch/buy', function(){
-//     return view('merch.buy');
-// });
-// Route::get('/donation', function(){
-//     return view('donation');
-// });
-Route::get('/form-donation', function(){
-    return view('form-donation');
-});
-Route::get('/dashboard/event', function(){
-    return view('dashboard.event');
-});
+
+
+// Route::get('/dashboard/event', function(){ return view('dashboard.event'); });
+// Route::get('/dashboard/event//{year}/{month}', [EventMemberController::class, 'showCalendar'])->name('calendar');
+Route::get('/dashboard/event', [EventMemberController::class, 'index']);
+
+
 Route::get('/dashboard/kas', function(){
     return view('dashboard.kas');
 });
+
 Route::get('/dashboard/presents', function(){
     return view('dashboard.present');
 });
-Route::get('/donation', function(){
-    return view('dashboard.donation');
+
+Route::get('/dashboard/present', [PresentMemberController::class, 'show']);
+Route::get('/dashboard/donasi', function(){
+    return view('dashboard.donasi');
 });
-// Route::get('/dashboard/merch', function(){
-//     return view('dashboard.merch');
-// });
-// Route::get('/dashboard/finance', function(){
-//     return view('dashboard.finance');
-// });
-// Dashboard Member End
+
+
 
 // Dashboard Template Start
 Route::get('/dashboard/template/form', function(){
@@ -94,8 +94,19 @@ Route::get('/dashboard/template/form', function(){
 /****/
 
 // Dashboard Admin Start
-Route::resource('/dashboard/admin/event', EventController::class);
-Route::resource('/dashboard/admin/presents', PresentController::class);
+Route::get('/dashboard/events/deleted',[EventController::class, 'deleted']);
+Route::get('/dashboard/events/restore/{id}',[EventController::class, 'restore'])->name('events.restore');
+Route::delete('/dashboard/events/kill/{id}',[EventController::class, 'kill'])->name('events.kill');
+Route::resource('/dashboard/events', EventController::class);
+// Route::resource('/dashboard/presents', PresentController::class);
+
+// Present Route
+Route::get('/dashboard/presents', [PresentController::class,'index']);
+Route::get('/dashboard/present/{id}', [PresentController::class, 'show']);
+Route::post('/dashboard/present/{present}/', [PresentController::class, 'store']);
+Route::delete('/dashboard/present/delete/{id}/{user}', [PresentController::class, 'destroy']);
+
+
 
 
 // Dashboard Admin End
@@ -109,7 +120,6 @@ Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kil
 Route::resource('/dashboard/posts',DashboardPostController::class);
 Route::resource('/dashboard/posts',DashboardPostController::class);
 Route::resource('dashboard/categories',PostCategoryController::class);
-
 
 // Route::get('/posts', [PostController::class, 'index']);
 // Dashboard Author End

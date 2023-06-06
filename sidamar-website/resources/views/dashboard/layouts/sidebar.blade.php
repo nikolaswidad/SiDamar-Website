@@ -75,6 +75,7 @@
                         </h6>
                      </div>
                      <div class="space-y-2 pt-2">
+
                      <a href="/dashboard/donatur/" class="sidebar-a group">
                         <svg class="flex-shrink sidebar-svg" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                            <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542.637 0 .987-.254 1.194-.542.226-.314.306-.705.306-.958a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2h-13z"/>
@@ -98,6 +99,15 @@
                         <span class="ml-3">Financial Report</span>
                      </a>
                      </div>
+
+                        <a href="/dashboard/template/form" class="sidebar-a group">
+                           <svg class="flex-shrink sidebar-svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gem" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                           <path fill="currentColor" d="M378.7 32H133.3L256 182.7L378.7 32zM512 192l-107.4-141.3L289.6 192H512zM107.4 50.67L0 192h222.4L107.4 50.67zM244.3 474.9C247.3 478.2 251.6 480 256 480s8.653-1.828 11.67-5.062L510.6 224H1.365L244.3 474.9z"></path>
+                           </svg>
+                           <span class="ml-4">Form</span>
+                        </a>
+                  </div>
+
                   {{-- Template End --}}
 
                   {{-- Admin Start --}}
@@ -108,17 +118,17 @@
                         </h6>
                      </div>
                      <div class="space-y-2 pt-2">
-                        <a href="/dashboard/admin/event/" class="sidebar-a group">
+                        <a href="/dashboard/events" class="sidebar-a group">
                            <svg class="flex-shrink sidebar-svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gem" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                            <path fill="currentColor" d="M378.7 32H133.3L256 182.7L378.7 32zM512 192l-107.4-141.3L289.6 192H512zM107.4 50.67L0 192h222.4L107.4 50.67zM244.3 474.9C247.3 478.2 251.6 480 256 480s8.653-1.828 11.67-5.062L510.6 224H1.365L244.3 474.9z"></path>
                            </svg>
-                           <span class="ml-4">Event</span>
+                           <span class="ml-4">Events</span>
                         </a>
-                        <a href="/dashboard/admin/presents/" class="sidebar-a group">
+                        <a href="/dashboard/presents" class="sidebar-a group">
                            <svg class="flex-shrink sidebar-svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gem" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                            <path fill="currentColor" d="M378.7 32H133.3L256 182.7L378.7 32zM512 192l-107.4-141.3L289.6 192H512zM107.4 50.67L0 192h222.4L107.4 50.67zM244.3 474.9C247.3 478.2 251.6 480 256 480s8.653-1.828 11.67-5.062L510.6 224H1.365L244.3 474.9z"></path>
                            </svg>
-                           <span class="ml-4">Presensi</span>
+                           <span class="ml-4">Presents</span>
                         </a>
                         <a href="" class="sidebar-a group">
                            <svg class="flex-shrink sidebar-svg" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

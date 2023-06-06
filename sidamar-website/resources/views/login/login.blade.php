@@ -54,7 +54,7 @@
             </div>
 
             <div>
-            <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-white hover:bg-primaryDarken focus:outline-none focus:ring-2 focus:ring-primaryLighten focus:ring-offset-2">
+            <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent  py-2 px-4 text-sm font-medium text-white bg-red-600 hover:bg-primaryDarken focus:outline-none focus:ring-2 focus:ring-primaryLighten focus:ring-offset-2">
                 Sign in
             </button>
         </div>

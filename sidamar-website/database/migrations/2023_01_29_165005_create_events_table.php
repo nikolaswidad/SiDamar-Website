@@ -17,13 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('title');
-            $table->integer('category');
+            $table->string('event_manager')->nullable();
+            $table->string('category');
             $table->text('description');
             $table->date('date');
             $table->time('time');
             $table->date('date_notification')->nullable();
             $table->string('location');
             $table->string('url');
+            $table->softDeletes();
             $table->timestamps('');
         });
     }

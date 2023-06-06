@@ -20,8 +20,7 @@ class CertificateFactory extends Factory
             // 'title' => $this->faker->sentence(mt_rand(1,2)),
             'event_id' => mt_rand(1,10),
             'user_id' => mt_rand(1,4),
-            'status' => mt_rand(1,2),
-            'event_date' => fake()->dateTime()
+            'status' => mt_rand(1,2)
         ];
     }
 }

@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('event_id');
             $table->foreignId('user_id');
             $table->foreignId('status');
-            $table->date('event_date');
             $table->timestamps();
         });
     }

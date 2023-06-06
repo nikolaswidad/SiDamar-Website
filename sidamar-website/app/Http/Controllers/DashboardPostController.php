@@ -101,7 +101,6 @@ class DashboardPostController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required',
             'category_id' => 'required',
             'image' => 'image|file|max:1024',
             'body' => 'required'
@@ -118,7 +117,7 @@ class DashboardPostController extends Controller
 
         $post_data = [
             'title' => $request->title,
-            'slug' => $request->slug,
+            'slug' =>  Str::slug($request->title),
             'category_id' => $request->category_id,
             'excerpt' => Str::limit(strip_tags($request->body), 200),
             'body' => $request->body

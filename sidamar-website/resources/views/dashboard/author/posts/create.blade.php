@@ -16,8 +16,8 @@
       <span class="font-medium">{{ Session('success') }}</span>
     </div>
   @endif
-<div class="w-full flex">
-  <form action="/dashboard/posts" method="POST" enctype="multipart/form-data" class="bg-white shadow rounded-l-lg px-8 pt-6 pb-8 mb-4">
+<div class="w-full">
+  <form action="/dashboard/posts" method="POST" enctype="multipart/form-data" class="bg-white shadow rounded-lg px-8 pt-6 pb-8 mb-4">
     @csrf
     <div class="mb-6">
       <label for="title" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Title</label>
@@ -68,9 +68,6 @@
     
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
   </form>
-  <div class="flex-shrink-0">
-    <img class="rounded-r-lg shadow" src="https://source.unsplash.com/330x640?post" alt="">
-</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -98,6 +95,7 @@
   document.addEventListener('trix-file-accept', function(e){
     e.preventDefault();
   })
+  
 
   function previewImage(){
     const image = document.querySelector('#image');

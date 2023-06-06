@@ -20,8 +20,8 @@
           <a href="./#home" class="text-base font-medium text-gray-500 hover:text-gray-900">Home</a>
           <a href="./#about" class="text-base font-medium text-gray-500 hover:text-gray-900">About</a>
           <a href="./#activity" class="text-base font-medium text-gray-500 hover:text-gray-900">Activity</a>
-          <a href="/donation" class="text-base font-medium text-gray-500 hover:text-gray-900">Donation</a>
-          <a href="/merchandise" class="text-base font-medium text-gray-500 hover:text-gray-900">Merchandise</a>
+          <a href="/donatur" class="text-base font-medium text-gray-500 hover:text-gray-900">Donation</a>
+          <a href="/merch" class="text-base font-medium text-gray-500 hover:text-gray-900">Merchandise</a>
           <a href="/blog" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
         </nav>
         <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">

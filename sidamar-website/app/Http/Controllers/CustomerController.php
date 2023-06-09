@@ -33,15 +33,6 @@ class CustomerController extends Controller
         // return view('dashboard.author.posts.edit');
         return view('merch.create', compact('merch'));
     }
-
-    public function getProductPrice($id)
-    {
-        $merch = Merch::findOrFail($id);
-
-        return response()->json([
-            'price' => $merch->price,
-        ]);
-    }
     /**
      * Store a newly created resource in storage.
      *

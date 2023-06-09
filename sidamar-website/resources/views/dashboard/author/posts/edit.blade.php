@@ -17,11 +17,11 @@
       </div>
     @endif
 
-<form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data" class="bg-white shadow rounded-lg px-8 pt-6 pb-8 mb-4">
   @csrf
   @method('PATCH')
   <div class="mb-6">
-    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title</label>
+    <label for="title" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Title</label>
     <input type="text" id="title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('title') is-invalid @enderror" placeholder="title" required value="{{ $post->title }}">
     @error('title')
           {{ $message }}
@@ -29,7 +29,7 @@
   </div>
 
   <div class="mb-6">
-    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+    <label for="category" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Category</label>
     <select class="rounded-lg" name="category_id">
       @foreach ($category as $cat)
       @if (old('category_id', $post->category_id) == $cat->id)
@@ -42,15 +42,16 @@
   </div>
   
   <div class="mb-6">
-    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image">Upload Image</label>
-      <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('image') is-invalid @enderror" name="image" id="image" type="file" onchange="previewImage()" value="{{ $post->image }}">
+    <label class="block mb-2 text-sm font-bold text-gray-900 dark:text-white" for="image">Upload Image</label>
+    <img class="img-preview img-fluid mb-3 w-96">
+    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('image') is-invalid @enderror" name="image" id="image" type="file" onchange="previewImage()">
     @error('image')
           {{ $message }}
     @enderror
   </div>
 
   <div class="mb-3">
-    <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
+    <label for="body" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Body</label>
     @error('body')
         <p class="text-danger">{{ $message }}</p>
     @enderror

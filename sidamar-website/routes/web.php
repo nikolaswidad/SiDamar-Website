@@ -29,7 +29,7 @@ use App\Http\Controllers\FillPDFController;
 | contains the "web" middleware group. Now create something great!  
 |
 */
-
+// Route::middleware(['auth'])->group(function () {
 // Home
 Route::get('/', function () {
     return view('index');
@@ -85,11 +85,11 @@ Route::get('/dashboard/finance', function(){
     return view('dashboard.finance');
 });
 
-Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin']);
+Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin'])->middleware('auth');
 
 Route::get('/dashboard/statuscertificate/approved/{id}',[CertificatesController::class, 'approved']);
 Route::get('/dashboard/statuscertificate/rejected/{id}',[CertificatesController::class, 'rejected']);
-Route::resource('/dashboard/certificate',CertificatesController::class);
+Route::resource('/dashboard/certificate',CertificatesController::class)->middleware('auth');
 // Dashboard Member End
 
 // Dashboard Template Start
@@ -110,12 +110,11 @@ Route::resource('/dashboard/admin/presents', PresentController::class);
 /****/
 
 // Dashboard Author Start
-Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
-Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
-Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill');
-Route::resource('/dashboard/posts',DashboardPostController::class);
-Route::resource('/dashboard/posts',DashboardPostController::class);
-Route::resource('dashboard/categories',PostCategoryController::class);
+Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted'])->middleware('auth');
+Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore')->middleware('auth');
+Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill')->middleware('auth');
+Route::resource('/dashboard/posts',DashboardPostController::class)->middleware('auth');
+Route::resource('dashboard/categories',PostCategoryController::class)->middleware('auth')->middleware('auth');
 // Route::get('/dashboard/posts/checkSlug',[DashboardPostController::class, 'checkSlug']);
 Route::post('/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->name('posts.checkSlug');
 
@@ -152,3 +151,4 @@ Route::get('/about', function () {
 
 //if request from button Diterima then run method diterima() else ditolak()
 Route::post('/buat',[FillPDFController::class, 'process'])->name('buat');
+// });

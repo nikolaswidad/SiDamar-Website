@@ -67,6 +67,8 @@ class DatabaseSeeder extends Seeder
 
         Post::factory(20)->create();
 
+        PostCategory::factory(20)->create();
+
     // Author seeder end
 
     // Certificate seeder start
@@ -88,8 +90,6 @@ class DatabaseSeeder extends Seeder
             
         // ]);
         Certificate::factory(8)->create();
-
-        
 
     // Certificate seeder end
 

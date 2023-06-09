@@ -2,7 +2,7 @@
 
 @section('container')
     <h1 class="text-4xl font-semibold font-montserrat">Donation</h1>
-    <hr class="bg-slate-200 mt-5 max-w-lg">
+    <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
     
     @if (session('success'))
     <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
@@ -11,18 +11,24 @@
     @endif
 
     {{-- Tabel Lama --}}
-    <div class="max-w-7xl">
-      
-      <div class="flex justify-end">
+         
         
-          <a href="/dashboard/donation/create" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5 ">Tambahkan Donasi Event</a>
-      </div>
-        <div class="flex flex-col font-montserrat">
-            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="overflow-hidden">
-                  <table class="min-w-full">
-                    <thead class="border-b">
+        <a href="/dashboard/donation/create"><button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 float-right mb-2">
+           Tambahkan Donasi Event</button>
+         </a>
+
+         <div>
+          <label for="table-search" class="sr-only">Search</label>
+          <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none py-2">
+                  <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+              </div>
+              <input type="text" id="table-search" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari donasi event...">
+          </div>
+        </div>
+
+        <table id="donation-table" class="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+          <thead text-xs text-gray-700  bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                       <tr>
                         <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
                         <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Image</th>
@@ -45,13 +51,21 @@
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $don->title }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $don->body }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ Carbon\Carbon::parse($don->date)->format('Y-m-d') }}</td>
-                            <td class="text-lg text-gray-900 px-6 py-4 text-left">
-                                <a href="/dashboard/donation/{{ $don->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg">Edit</a>
+                            <td class="text-lg text-gray-900 px-6 py-4 text-center">
+                                {{-- <a href="/dashboard/donation/{{ $don->id }}/edit" class="bg-orange-400 text-white text-sm p-2 rounded-lg">Edit</a>
                                 <form action="/dashboard/donation/{{ $don['id'] }}" method="POST" class="inline-block">
                                     @csrf
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                                </form> --}}
+
+                                <form action="/dashboard/donation/{{ $don['id'] }}" method="POST">
+                                  @csrf
+                                  @method('delete')
+                                  <a href="/dashboard/donation/{{ $don->id }}/edit"><button type="button" class="text-white bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 ">Edit</button></a>
+                                  <button type="submit" class="mt-2 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline ">Delete</button>
                                 </form>
+
                             </td>
                         </tr>
                     @endforeach
@@ -63,5 +77,39 @@
         </div>
     </div>
     
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+  
+      var searchInput = document.getElementById("table-search");
+      searchInput.addEventListener("input", searchTable);
+  
+      function searchTable() {
+          var input = searchInput.value.toLowerCase();
+          var table = document.getElementById("donation-table");
+          var rows = table.getElementsByTagName("tr");
+  
+          for (var i = 0; i < rows.length; i++) {
+              var rowData = rows[i].textContent.toLowerCase();
+  
+              if (rowData.includes(input)) {
+                  rows[i].style.display = "";
+              } else {
+                  rows[i].style.display = "none";
+              }
+          }
+      }
+  
+        // Make the table header sticky
+        var tableContainer = document.querySelector(".table-container");
+        tableContainer.addEventListener("scroll", function() {
+          var tableHeader = document.querySelector("donation-table thead");
+          tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
+      });
+  
+  });
+  
+  
+      
+  </script>
 @endsection

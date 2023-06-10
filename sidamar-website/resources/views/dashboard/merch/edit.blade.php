@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="text-4xl font-semibold font-montserrat">Ubah Event Donasi</h1>
+<h1 class="text-4xl font-semibold font-montserrat">Ubah Merchandise</h1>
 
     @if (count($errors)>0)
       @foreach ($errors->all() as $error)

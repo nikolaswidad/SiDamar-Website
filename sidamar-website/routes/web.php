@@ -131,9 +131,11 @@ Route::resource('/dashboard/bulanKas', BulanKasController::class);
 Route::resource('/dashboard/donation', App\Http\Controllers\donationController::class);
 Route::get('/donatur', [App\Http\Controllers\donationController::class, 'index2']);
 Route::get('/donatur/cetak/{id}', [App\Http\Controllers\donaturController::class, 'invoice'])->name('invoice');
+Route::get('/donatur/bukti/{id}', [App\Http\Controllers\donaturController::class, 'bukti'])->name('bukti');
 Route::get('/donatur/create', [App\Http\Controllers\donaturController::class, 'store']);
 Route::get('/donatur/create', [App\Http\Controllers\donaturController::class, 'create']);
 Route::resource('/dashboard/donatur', App\Http\Controllers\donaturController::class);
+
 
 //Dashboard Finances
 Route::resource('/dashboard/finances', App\Http\Controllers\financeController::class);

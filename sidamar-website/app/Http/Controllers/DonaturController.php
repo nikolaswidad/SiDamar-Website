@@ -6,6 +6,7 @@ use App\Models\donation;
 use App\Models\Donatur;
 use Illuminate\Http\Request;
 use illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 
 class DonaturController extends Controller
@@ -28,7 +29,9 @@ class DonaturController extends Controller
      */
     public function create()
     {
-        $donation = donation::all();
+        $currentDate = Carbon::now()->toDateString();
+
+        $donation = donation::where('date', '>=', $currentDate)->get();
         // return view('dashboard.author.posts.edit');
         return view('donatur.create', compact('donation'));
     }
@@ -68,7 +71,7 @@ class DonaturController extends Controller
 
         $image->move('upload/donatur', $new_image);
 
-        return view('donatur/cetak', compact('donatur'));
+        return view('donatur/bukti', compact('donatur'));
     }
     
 
@@ -89,6 +92,14 @@ class DonaturController extends Controller
         $donatur = Donatur::where('id', $id)->first();
 
         return view('donatur.cetak', ['donatur' => $donatur,]);
+        
+    }
+
+    public function bukti($id)
+    {
+        $donatur = Donatur::where('id', $id)->first();
+
+        return view('donatur.bukti', ['donatur' => $donatur,]);
         
     }
     /**

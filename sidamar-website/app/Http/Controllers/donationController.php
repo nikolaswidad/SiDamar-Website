@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\donation;
+use App\Models\Donatur;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class donationController extends Controller
 {
@@ -20,7 +23,9 @@ class donationController extends Controller
 
     public function index2()
     {
-        $donation = donation::all();
+        $currentDate = Carbon::now()->toDateString();
+
+        $donation = donation::where('date', '>=', $currentDate)->get();
         return view('donatur.index',['donation'=>$donation]);
     }
 

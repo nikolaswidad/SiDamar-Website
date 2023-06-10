@@ -33,7 +33,7 @@
             @endif
         </h1>
   
-        <p class="mt-1 text-sm text-gray-500">Nomor Pembelian: 0002023-DTR-0{{ $donatur->id }}</p>
+        <p class="mt-1 text-sm text-gray-500">Nomor Donatur: 0002023-DTR-0{{ $donatur->id }}</p>
       </div>
   
   

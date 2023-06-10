@@ -16,7 +16,7 @@
 </head>
 <body>
     <h1 class="judul">Merch Si DAMAR</h1>
-    <p class="cetak">Dicetak pada: {{ $customer->created_at }} </p>
+    <p class="cetak">Dipesan pada: {{ $customer->created_at }} </p>
     <hr class="bg-slate-200 mt-5 max-w-lg">
     
 

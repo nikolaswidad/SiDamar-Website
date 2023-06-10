@@ -75,7 +75,7 @@ class CustomerController extends Controller
         ]);
 
         $image->move('upload/customer', $new_image);
-        return view('merch/cetak', compact('customer'));
+        return view('merch/bukti', compact('customer'));
 
     }
 

@@ -31,7 +31,7 @@
   </style>
 </head>
 <body class="bg-gray-50">
-    @include('dashboard.layouts.header')
+
     @include('dashboard.layouts.sidebar')
 
     <div class="container">

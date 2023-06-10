@@ -6,10 +6,10 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PresentController;
 use App\Http\Controllers\BulanKasController;
+use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
-
 use App\Http\Controllers\DonateController;
 
 
@@ -38,7 +38,7 @@ Route::get('/', function () {
 // login logout
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 Route::post('/login',[LoginController::class, 'authenticate']);
-Route::post('/logout',[LoginController::class, 'logout']);
+Route::get('/logout',[LoginController::class, 'logout']);
 
 // blog
 // Route::get('/posts', [PostController::class, 'index']);
@@ -79,9 +79,6 @@ Route::get('/dashboard/presents', function(){
 });
 
 Route::get('/dashboard/present', [PresentMemberController::class, 'show']);
-Route::get('/dashboard/donasi', function(){
-    return view('dashboard.donasi');
-});
 
 Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin'])->middleware('auth');
 

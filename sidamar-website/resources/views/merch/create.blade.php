@@ -92,23 +92,20 @@ $price = 0;
       <div class="mb-4">
         <label for="merch_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Item</label>
         <select name="merch_id" id="merch_id" class="h-11 block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline mb-5">
-          <option value="">Pilih Item</option>
+          <option value="" >Pilih Item</option>
           @foreach ($merch as $merch)
           <option value="{{ $merch->id }}">
               {{ $merch->title }}   ----------->   Rp {{ $merch->price }}
             </div>
-          </option>
-          @php
-              $price= $merch['price'];
-          @endphp
-          @endforeach
+          </option>          
+          @endforeach          
         </select>
       </div>
       
 
       <div class="mb-6">
         <label for="total" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Total</label>
-        <input type="text" id="total" name="total" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('total') is-invalid @enderror" required >
+        <input type="text" id="total" name="total" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('total') is-invalid @enderror" required>
         @error('total')
               {{ $message }}
           @enderror
@@ -158,7 +155,7 @@ $price = 0;
         }
       }
       
-        // Get the select element and total input element
+        //Get the select element and total input element
   const merchSelect = document.getElementById('merch_id');
   const totalInput = document.getElementById('total');
 
@@ -177,9 +174,66 @@ $price = 0;
 
   });
 
+  
+ 
+  // const merchSelect = document.getElementById('merch_id');
+  // const totalInput = document.getElementById('total');
+
+  // merchSelect.addEventListener('change', (event) => {
+  //   const selectedOption = event.target.options[event.target.selectedIndex];
+  //   const price = selectedOption.getAttribute('data-price');
+  //   totalInput.value = price ? `Rp ${price}` : '';
+  // });
+
+  // Ambil elemen dropdown dan input total
+  // var merchDropdown = document.getElementById("merch_id");
+  // var totalInput = document.getElementById("total");
+
+  // // Tambahkan event listener untuk mengupdate total saat ada perubahan pada dropdown
+  // merchDropdown.addEventListener("change", function() {
+  //   // Ambil harga berdasarkan id yang dipilih
+  //   var selectedMerchId = merchDropdown.value;
+  //   var selectedMerch = {!! json_encode($merch->toArray()) !!}.find(function(merch) {
+  //     return merch.id == selectedMerchId;
+  //   });
+
+  //   // Perbarui nilai total dengan harga merch yang dipilih
+  //   totalInput.value = selectedMerch ? selectedMerch.price : '';
+  // });
+
+  // Ambil elemen dropdown
+  // var merchDropdown = document.getElementById("merch_id");
+
+  // // Tambahkan event listener untuk mengupdate info merch saat ada perubahan pada dropdown
+  // merchDropdown.addEventListener("change", function() {
+  //   // Ambil id merch yang dipilih
+  //   var selectedMerchId = merchDropdown.value;
+
+  //   // Kirim permintaan AJAX ke server
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open("GET", "/get-merch-info?id=" + selectedMerchId);
+  //   xhr.onreadystatechange = function() {
+  //     if (xhr.readyState === XMLHttpRequest.DONE) {
+  //       if (xhr.status === 200) {
+  //         // Respons sukses, update info merch di halaman
+  //         var merchInfo = JSON.parse(xhr.responseText);
+
+  //         // Update elemen di halaman dengan info merch yang diterima
+
+  //         var priceElement = document.getElementById("total");
 
 
+  //         priceElement.textContent = merchInfo.price;
+  //       } else {
+  //         // Respons gagal, lakukan penanganan error sesuai kebutuhan
+  //         console.error("Error: " + xhr.status);
+  //       }
+  //     }
+  //   };
+  //   xhr.send();
+  // });
+</script>
 
-    </script>
+
 @endsection
 

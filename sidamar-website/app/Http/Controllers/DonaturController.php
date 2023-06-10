@@ -102,61 +102,7 @@ class DonaturController extends Controller
         return view('donatur.bukti', ['donatur' => $donatur,]);
         
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        // $donation = donation::all();
-        // $donatur = Donatur::findorfail($id);
-        // return view('dashboard.author.posts.edit', compact('post','category'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        // $request->validate([
-        //     'title' => 'required|max:255',
-        //     'slug' => 'required',
-        //     'category_id' => 'required',
-        //     'image' => 'image|file|max:1024',
-        //     'body' => 'required'
-        // ]);
-        
-
-        // $post = Post::findorfail($id);
-
-        // if($request->has('image')){
-        //     $image = $request->image;
-        //     $new_image = time().$image->getClientOriginalName();
-        //     $image->move('upload/posts', $new_image);
-        // }
-
-        // $post_data = [
-        //     'title' => $request->title,
-        //     'slug' => $request->slug,
-        //     'category_id' => $request->category_id,
-        //     'image' => 'upload/posts/'.$new_image,
-        //     'excerpt' => Str::limit(strip_tags($request->body), 200),
-        //     'body' => $request->body
-        // ];
-
-        // $post->update($post_data);
-
-
-        // return redirect('dashboard/posts')->with('success','Post berhasil diperbarui');
-
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *

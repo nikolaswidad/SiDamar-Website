@@ -105,16 +105,10 @@ class donationController extends Controller
         $donation-> title=$request->title;
         $donation-> body=strip_tags($request->body);
         $donation-> date=$request->date;
-        // if($request->has('image')){
-        //     $image = $request->image;
-        //     $new_image = time().$image->getClientOriginalName();
-        //     $image->move('upload/donation', $new_image);
-        // }
-        // $donation-> image='upload/donation/'.$new_image;
+
         $donation-> save();
         return redirect('dashboard/donation/')->with('success','Event berhasil diperbarui');
-        //return view('dashboard.donation.edit',['donation'=>$donation]);
-
+  
     }
 
     /**

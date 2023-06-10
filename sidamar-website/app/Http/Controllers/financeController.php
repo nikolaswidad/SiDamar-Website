@@ -83,13 +83,7 @@ class financeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $finances->update([
-        //     'keperluan' => $request->keperluan,
-        //     'date' => $request->date,
-        //     'cashin' => $request->cashin,
-        //     'cashout' => $request->cashout,
-        //     'keterangan' => $request->keterangan,
-        // ]);
+        
         $finance = finance::findOrFail($id);
         $finance-> keperluan=$request->keperluan;
         $finance-> date=$request->date;
@@ -97,7 +91,7 @@ class financeController extends Controller
         $finance-> cashout=$request->cashout;
         $finance-> keterangan=$request->keterangan;
         $finance-> save();
-        // return redirect('dashboard.finances.edit' . $finances->id);
+        
         return redirect('dashboard/finances/')->with('success','Report berhasil diperbarui');
         
 

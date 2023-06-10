@@ -84,6 +84,15 @@ class MerchController extends Controller
         }
     }
 
+    public function getMerchInfo(Request $request)
+{
+    $id = $request->query('id');
+    $merch = Merch::find($id);
+
+    return response()->json([
+        'price' => $merch->price,
+    ]);
+}
     
     public function destroy($id)
     {

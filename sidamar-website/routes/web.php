@@ -29,7 +29,7 @@ use App\Models\Present;
 | contains the "web" middleware group. Now create something great!  
 |
 */
-
+// Route::middleware(['auth'])->group(function () {
 // Home
 Route::get('/', function () {
     return view('index');
@@ -83,7 +83,12 @@ Route::get('/dashboard/donasi', function(){
     return view('dashboard.donasi');
 });
 
+Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin'])->middleware('auth');
 
+Route::get('/dashboard/statuscertificate/approved/{id}',[CertificatesController::class, 'approved']);
+Route::get('/dashboard/statuscertificate/rejected/{id}',[CertificatesController::class, 'rejected']);
+Route::resource('/dashboard/certificate',CertificatesController::class)->middleware('auth');
+// Dashboard Member End
 
 // Dashboard Template Start
 Route::get('/dashboard/template/form', function(){
@@ -114,12 +119,11 @@ Route::delete('/dashboard/present/delete/{id}/{user}', [PresentController::class
 /****/
 
 // Dashboard Author Start
-Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
-Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
-Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill');
-Route::resource('/dashboard/posts',DashboardPostController::class);
-Route::resource('/dashboard/posts',DashboardPostController::class);
-Route::resource('dashboard/categories',PostCategoryController::class);
+Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted'])->middleware('auth');
+Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore')->middleware('auth');
+Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill')->middleware('auth');
+Route::resource('/dashboard/posts',DashboardPostController::class)->middleware('auth');
+Route::resource('dashboard/categories',PostCategoryController::class)->middleware('auth')->middleware('auth');
 
 // Route::get('/posts', [PostController::class, 'index']);
 // Dashboard Author End
@@ -152,3 +156,32 @@ Route::get('/get-product-price/{id}', [App\Http\Controllers\CustomerController::
 
 Route::resource('/dashboard/merch', App\Http\Controllers\MerchController::class);
 
+//Dashboard Bulan Kas
+Route::resource('/dashboard/bulanKas', BulanKasController::class);
+
+//Dashboard Pembayaran Kas
+Route::resource('/dashboard/pembayaranKas', PembayaranKasController::class);
+Route::get('/dashboard/pembayaranKas/create/{bulanKasId}', [PembayaranKasController::class, 'create']);
+Route::post('/dashboard/pembayaranKas/{id}', [PembayaranKasController::class, 'store']);
+Route::get('/dashboard/pembayaranKas/{bulanKasId}/{pembayaranKasId}/edit', [PembayaranKasController::class, 'edit']);
+
+
+//Dashboard Arsip Film
+Route::resource('/dashboard/arsipFilm', ArsipFilmController::class);
+//the /arsipFilm is the path, ArsipFilmController is the controller
+//i want the create2.blade.php to connected to ArsipFilmController in create method
+Route::get('/arsipFilm', [ArsipFilmController::class, 'create2']);
+//the forrm is in create2.blade.php
+//the form is connected to ArsipFilmController in store method
+Route::get('/arsipFilm/{id}', [ArsipFilmController::class, 'show']);
+//if user not doing login, they can fill form from arsipfil.blade.php
+//if they login, they can fill form from dashboard/arsipFilm/create.blade.php
+
+//About Page
+Route::get('/about', function () {
+    return view('about');
+});
+
+//if request from button Diterima then run method diterima() else ditolak()
+Route::post('/buat',[FillPDFController::class, 'process'])->name('buat');
+// });

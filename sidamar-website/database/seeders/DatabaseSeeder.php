@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\BulanKas;
 use App\Models\PostCategory;
 use App\Models\EventCategory;
+use App\Models\Certificate;
 use App\Models\finance;
 use App\Models\donation;
 use App\Models\Donatur;
@@ -66,6 +67,8 @@ class DatabaseSeeder extends Seeder
 
         Post::factory(20)->create();
 
+        PostCategory::factory(20)->create();
+
     // Author seeder end
 
 // <<<<<<< HEAD
@@ -81,17 +84,15 @@ class DatabaseSeeder extends Seeder
 //         ]);
 
         
-//         // Certificate::create([
-//         //     'title' => 'Sidamar Berdonasi',
-//         //     'user_id' => '2',
-//         //     'status' => '2'
+        // Certificate::create([
+        //     'title' => 'Sidamar Berdonasi',
+        //     'user_id' => '2',
+        //     'status' => '2'
             
-//         // ]);
-//         Certificate::factory(8)->create();
+        // ]);
+        Certificate::factory(8)->create();
 
-        
-
-//     // Certificate seeder end
+    // Certificate seeder end
 
 // =======
 // >>>>>>> parent of 1dcea78 (Squashed commit of the following:)

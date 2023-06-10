@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Blog Template</title>
-    <meta name="author" content="David Grzyb">
+    <title>Sidamar Website</title>
+    <link rel="icon" type="/img/logo3.png" href="/img/logo3.png">
+    <meta name="author" content="Nurida Larasati">
     <meta name="description" content="">
 
     <!-- Tailwind -->

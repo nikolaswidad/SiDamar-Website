@@ -7,17 +7,18 @@
 
     <div class="relative mx-auto max-w-screen-xl px-4 py-8">
       <div>
-        <h1 class="text-2xl font-bold lg:text-4xl">{{ ucfirst($merch->title) }}</h1>
+        <h1 class="text-3xl font-bold lg:text-4xl">{{ ucfirst($merch->title) }}</h1>
   
-        <p class="mt-1 text-sm text-gray-500">SKU: #012345</p>
+        <p class="mt-1 text-sm text-gray-500">ID: id-merch-20230{{ $merch->id }}</p>
       </div>
   
       <div class="grid gap-8 lg:grid-cols-4 lg:items-start">
         <div class="lg:col-span-3">
           <div class="relative mt-4">
+            
             @if ($merch->image)
-                <div style="max-height: 500px; ">
-                    <img src="{{ asset($merch->image) }}" alt="img" alt="{{ $merch->title }}">
+                <div style="max-height: 30%; overflow:hidden">
+                    <img src="{{ asset($merch->image) }}" alt="img" style="width:70%"  alt="{{ $merch->title }}">
                 </div>
             @endif
   
@@ -54,12 +55,7 @@
           </div>
           <legend class="text-lg font-bold">Description </legend>
           <p>
-            {!! $merch->desc !!} Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam totam
-          eos iusto repellat blanditiis voluptate aspernatur, quae nemo
-          exercitationem cum debitis! Sint consectetur laborum tempora
-          repellat odit. Impedit quasi reprehenderit harum illum sequi
-          provident soluta cum quisquam odit possimus? Officia illum saepe
-          magnam nostrum, officiis placeat iure itaque cumque voluptate?
+            {!! $merch->desc !!} <br><br> Si Damar menyediakan merchandise yang kekinian, selalu mengikuti trend, dan pastinya berbahan yang berkualitas
         </p>
 
             <a

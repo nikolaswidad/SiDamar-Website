@@ -143,7 +143,8 @@ Route::resource('/dashboard/finances', App\Http\Controllers\financeController::c
 //Dashboard Merch
 Route::resource('/merch', App\Http\Controllers\MerchController::class);
 Route::get('/merch', [App\Http\Controllers\MerchController::class, 'index2']);
-Route::get('/customer/cetak/{id}', [App\Http\Controllers\CustomerController::class, 'invoice'])->name('invoice');
+Route::get('/merch/cetak/{id}', [App\Http\Controllers\CustomerController::class, 'invoice'])->name('invoice');
+Route::get('/merch/bukti/{id}', [App\Http\Controllers\CustomerController::class, 'bukti2'])->name('bukti2');
 Route::get('/merch/create', [App\Http\Controllers\CustomerController::class, 'store']);
 Route::get('/merch/create', [App\Http\Controllers\CustomerController::class, 'create']);
 Route::resource('/dashboard/customer', App\Http\Controllers\CustomerController::class);

@@ -14,8 +14,7 @@
                         
                     </a>
                     <p class="text-body-color text-base">
-                        There are many variations of passages of Lorem Ipsum available but
-                        the majority have suffered alteration in some form.
+                        Si Damar menyediakan merchandise yang kekinian, selalu mengikuti trend, dan pastinya berbahan yang berkualitas
                       </p>
                 </div>
             </div>

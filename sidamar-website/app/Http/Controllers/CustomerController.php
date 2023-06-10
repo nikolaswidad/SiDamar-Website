@@ -21,6 +21,14 @@ class CustomerController extends Controller
         return view('dashboard.customer.index',compact('customer'));
     }
 
+    public function bukti2($id)
+    {
+        $customer = Customer::where('id', $id)->first();
+
+        return view('merch.bukti', ['customer' => $customer,]);
+        
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -48,6 +56,7 @@ class CustomerController extends Controller
             'image' => 'image|file|max:1024',
             'email' => 'required',
             'total' => 'required',
+            'address' => 'required',
             'payment_type' => 'required'
         ]);
         $image = $request->image;
@@ -60,6 +69,7 @@ class CustomerController extends Controller
             'image' => 'upload/customer/'.$new_image,
             'email' => $request->email,
             'total' => $request->total,
+            'address' => $request->address,
             'payment_type' => $request->payment_type,
 
         ]);

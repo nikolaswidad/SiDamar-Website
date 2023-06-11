@@ -16,8 +16,9 @@
         <span class="font-medium">{{ Session('success') }}</span>
       </div>
     @endif
-    
-   <form action="{{ route('categories.update',$category->id)  }}" method="POST">
+
+<div class="w-full">
+   <form action="{{ route('categories.update',$category->id)  }}" method="POST" class="bg-white shadow rounded-lg px-8 pt-6 pb-8 mb-4">
     @csrf
     @method('patch')
     <div class="mb-6">
@@ -28,6 +29,7 @@
   
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto mt-3 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
   </form>
+</div>
 
   <div class="mb-96"></div>
 @endsection

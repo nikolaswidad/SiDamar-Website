@@ -15,7 +15,11 @@ class Present extends Model
         return $this->belongsTo(Event::class);
     }
 
-    public function present_types(){
+    public function present_type(){
         return $this->belongsTo(PresentType::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

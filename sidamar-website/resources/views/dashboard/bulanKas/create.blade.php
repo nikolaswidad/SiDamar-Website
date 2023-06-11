@@ -1,9 +1,9 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
+<h1 class="text-4xl font-semibold font-montserrat">Buat Bulan Pembayaran Kas</h1>
 
 <div class="max-w-5xl">
-    <h1 class="text-4xl font-semibold font-montserrat">Buat Bulan Pembayaran Kas</h1>
     <hr class="bg-slate-200 mt-5 max-w-3xl">
       <form action="/dashboard/bulanKas/" method="post" class="max-w-3xl mt-8 mb-8 font-montserrat">
         @csrf
@@ -53,7 +53,6 @@
           
           
           <div class="flex justify-end max-w-full">
-              <a href="/dashboard/bulanKas" class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-3 rounded-lg mt-5 mr-3">Kembali</a>
               <button type="submit" class="bg-primary hover:bg-red-700 text-white font-bold p-3 rounded-lg mt-5">Buat Bulan</button>
           </div>
 

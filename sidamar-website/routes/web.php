@@ -13,6 +13,8 @@ use App\Http\Controllers\ArsipFilmController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\donationController;
+use App\Http\Controllers\DonaturController;
 use App\Models\ArsipFilm;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\FillPDFController;
@@ -47,6 +49,7 @@ Route::get('/blog/category/{category}',[PostController::class, 'listCategory'])-
 
 Route::resource('/blog',PostController::class);
 
+Route::resource('/donate',donationController::class);
 
 // Route::middleware(['auth'])->group(function () {
 //     // Semua route yang perlu di-authenticate akan ditempatkan di dalam grup ini
@@ -126,6 +129,31 @@ Route::post('/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->
 
 //Dashboard Bulan Kas
 Route::resource('/dashboard/bulanKas', BulanKasController::class);
+
+// //Dashboard Donasi
+Route::resource('/dashboard/donation', App\Http\Controllers\donationController::class);
+Route::get('/donatur', [App\Http\Controllers\donationController::class, 'index2']);
+Route::get('/donatur/cetak/{id}', [App\Http\Controllers\donaturController::class, 'invoice'])->name('invoice');
+Route::get('/donatur/bukti/{id}', [App\Http\Controllers\donaturController::class, 'bukti'])->name('bukti');
+Route::get('/donatur/create', [App\Http\Controllers\donaturController::class, 'store']);
+Route::get('/donatur/create', [App\Http\Controllers\donaturController::class, 'create']);
+Route::resource('/dashboard/donatur', App\Http\Controllers\donaturController::class);
+
+
+//Dashboard Finances
+Route::resource('/dashboard/finances', App\Http\Controllers\financeController::class);
+
+//Dashboard Merch
+Route::resource('/merch', App\Http\Controllers\MerchController::class);
+Route::get('/merch', [App\Http\Controllers\MerchController::class, 'index2']);
+Route::get('/merch/cetak/{id}', [App\Http\Controllers\CustomerController::class, 'invoice'])->name('invoice');
+Route::get('/merch/bukti/{id}', [App\Http\Controllers\CustomerController::class, 'bukti2'])->name('bukti2');
+Route::get('/merch/create', [App\Http\Controllers\CustomerController::class, 'store']);
+Route::get('/merch/create', [App\Http\Controllers\CustomerController::class, 'create']);
+Route::resource('/dashboard/customer', App\Http\Controllers\CustomerController::class);
+Route::get('/get-product-price/{id}', [App\Http\Controllers\CustomerController::class, 'getProductPrice']);
+
+Route::resource('/dashboard/merch', App\Http\Controllers\MerchController::class);
 
 //Dashboard Pembayaran Kas
 Route::resource('/dashboard/pembayaranKas', PembayaranKasController::class);

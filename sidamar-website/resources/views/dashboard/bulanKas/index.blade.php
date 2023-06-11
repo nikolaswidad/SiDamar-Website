@@ -21,7 +21,7 @@
     {{-- if is_admin == 1 --}}
     @if (Auth::user()->is_admin == 1)
       <div class="flex justify-end">
-        <a href="/dashboard/bulanKas/create" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5 ">Buat Bulan Kas Baru</a>
+        <a href="/dashboard/bulanKas/create" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5">Buat Bulan Kas Baru</a>
       </div>
     @endif
       <div class="flex flex-col font-montserrat">

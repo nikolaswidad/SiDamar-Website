@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBulanKasRequest;
 use App\Http\Requests\UpdateBulanKasRequest;
-use Illuminate\Http\Request;
 use App\Models\BulanKas;
-use App\Models\PembayaranKas;
 use Illuminate\Support\Facades\Session;
 
 class BulanKasController extends Controller
@@ -18,29 +16,8 @@ class BulanKasController extends Controller
      */
     public function index()
     {
-        // //total terkumpul value based on count on status and then multiply by 20000
-        // $pembayaranKas 
-        // $total_terkumpul = PembayaranKas
-        //set total terkumpul to 0 to all bulanKass
-        $bulanKas = BulanKas::all();
-        //order by month ascending
-        $bulanKas = $bulanKas->sortBy('tahun');
-        foreach($bulanKas as $bulanKas){
-            $bulanKas->total_terkumpul = 0;
-            //make it ascending
-            $bulanKas->save();
-        }
-        //get count on how many pembayaranKas in each Bulan
-        $pembayaranKas = PembayaranKas::all();
-        foreach($pembayaranKas as $pembayaranKas){
-            $bulanKas = BulanKas::find($pembayaranKas->bulan_kas_id);
-            $bulanKas->total_terkumpul += 20000;
-            $bulanKas->save();
-        }
-
         return view('dashboard.bulanKas.index', [
-            'bulanKas' => BulanKas::all()->sortBy('tahun'),
-            'pembayaranKas' => PembayaranKas::all()
+            'bulanKas' => BulanKas::all(),
         ]);
     }
 
@@ -67,16 +44,6 @@ class BulanKasController extends Controller
             'bulan' => 'required',
             'tahun' => 'required'
         ]);
-
-        $existingBulanKas = BulanKas::where('bulan', $validatedData['bulan'])
-                                    ->where('tahun', $validatedData['tahun'])
-                                    ->first();
-
-        if ($existingBulanKas) {
-            Session::flash('error', 'Bulan and tahun already exists');
-            return redirect('/dashboard/bulanKas');
-        }
-        // dd($validatedData);
         BulanKas::create($validatedData);
         Session::flash('success', 'New Bulan Kas has been added');
         return redirect('/dashboard/bulanKas');
@@ -88,17 +55,11 @@ class BulanKasController extends Controller
      * @param  \App\Models\BulanKas  $bulanKas
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(BulanKas $bulanKas)
     {
-        $bulanKas = BulanKas::find($id);
-
-        if (!$bulanKas) {
-            return abort(404);
-        }
-        //dd($bulanKas);
+        dd($bulanKas);
         return view('dashboard.bulanKas.show',[
-            'bulanKas' => $bulanKas,
-            'id' => $bulanKas->id
+            'bulanKas' => $bulanKas
         ]);
     }
 
@@ -108,17 +69,11 @@ class BulanKasController extends Controller
      * @param  \App\Models\BulanKas  $bulanKas
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BulanKas $bulanKas)
     {
-        $bulanKas = BulanKas::find($id);
-        //check if the button is clicked
-        $bulanKas->bulan;
-        if (!$bulanKas) {
-            return abort(404);
-        }
         return view('dashboard.bulanKas.edit',[
             'bulanKas' => $bulanKas,
-            'id' => $bulanKas->id,
+            'id' => $bulanKas->id
         ]);
     }
 
@@ -129,28 +84,9 @@ class BulanKasController extends Controller
      * @param  \App\Models\BulanKas  $bulanKas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {   
-        $bulanKas = BulanKas::find($id);
-        $bulanKas->bulan = $request->bulan;
-        $bulanKas->tahun = $request->tahun;
-        
-        //check if the same month and year already exists
-        $existingBulanKas = BulanKas::where('bulan', $bulanKas->bulan)
-                                    ->where('tahun', $bulanKas->tahun)
-                                    ->first();
-
-        if ($existingBulanKas) {
-            Session::flash('error', 'Bulan and tahun already exists');
-            return redirect('/dashboard/bulanKas');
-        }
-
-        //change all pembayaranKas in this bulanKas
-        $pembayaranKas = PembayaranKas::where('bulan_kas_id', $bulanKas->id)->get();
-
-        $bulanKas->save();
-        Session::flash('success', 'Update Bulan Kas Success');
-        return redirect('/dashboard/bulanKas');
+    public function update(UpdateBulanKasRequest $request, BulanKas $bulanKas)
+    {
+        //
     }
 
     /**
@@ -159,20 +95,14 @@ class BulanKasController extends Controller
      * @param  \App\Models\BulanKas  $bulanKas
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BulanKas $bulanKas)
     {
-        $bulanKas = BulanKas::find($id);
-        // delete all pembayaranKas in this bulanKas
-        $pembayaranKas = PembayaranKas::where('bulan_kas_id', $bulanKas->id)->get();
-        foreach($pembayaranKas as $pembayaranKas){
-            $pembayaranKas->delete();
-        }
-        //dd($bulanKas);
-        
-        $bulanKas->delete();
-        Session::flash('success', 'Delete Bulan Kas Success');
-        return redirect('/dashboard/bulanKas');
+        // BulanKas::destroy($bulanKas->id);
 
+        // Session::flash('success', 'Delete Bulan Kas Success');
         
+        // return redirect('/dashboard/bulanKas');
+        //output value want to delete
+        dd($bulanKas);
     }
 }

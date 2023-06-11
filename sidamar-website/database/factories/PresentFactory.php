@@ -17,9 +17,9 @@ class PresentFactory extends Factory
     public function definition()
     {
         return [
-            // 'event_id' => $this->faker->numberBetween(1, 10),
-            // 'user_id' => mt_rand(1,20),
-            // 'type' => mt_rand(1,4),
+            'event_id' => mt_rand(1,10),
+            'user_id' => mt_rand(1,4),
+            'type' => mt_rand(1,4),
         ];
     }
 }

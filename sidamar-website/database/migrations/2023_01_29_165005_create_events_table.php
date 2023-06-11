@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('title');
+            $table->string('event_manager');
             $table->integer('category');
             $table->text('description');
             $table->date('date');
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->date('date_notification')->nullable();
             $table->string('location');
             $table->string('url');
+            $table->softDeletes();
             $table->timestamps('');
         });
     }

@@ -16,8 +16,9 @@
         <span class="font-medium">{{ Session('success') }}</span>
       </div>
     @endif
-    
-   <form action="{{ route('categories.store') }}" method="POST">
+
+<div class="w-full">
+  <form action="{{ route('categories.store') }}" method="POST" class="bg-white shadow rounded-lg px-8 pt-6 pb-8 mb-4">
     @csrf
     <div class="mb-6">
       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
@@ -27,6 +28,7 @@
   
     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto mt-3 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
   </form>
+</div>
 
   <div class="mb-96"></div>
 @endsection

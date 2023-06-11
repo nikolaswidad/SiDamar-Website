@@ -12,8 +12,7 @@
         <div class="mb-4">
             <label for="bulan" class="block text-gray-700 text-lg font-bold mb-2">Bulan</label>
             <select name="bulan" id="bulan" class="h-11 block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline mb-5">
-                {{-- disable option shows data from database --}}
-                <option value="{{ $bulanKas->bulan }}" disabled>{{ $bulanKas->bulan }}</option>
+                
             </select>
             {{-- <input type="text" class="h-11 block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline mb-5"> --}}
 

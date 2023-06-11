@@ -18,14 +18,14 @@ class EventSeeder extends Seeder
     {
         Event::factory(10)->create();
 
-        EventCategory::create([
-            'name' => 'Event'
-        ]);
-        EventCategory::create([
-            'name' => 'Production'
-        ]);
-        EventCategory::create([
-            'name' => 'Donation'
-        ]);
+        // EventCategory::create([
+        //     'name' => 'Event'
+        // ]);
+        // EventCategory::create([
+        //     'name' => 'Production'
+        // ]);
+        // EventCategory::create([
+        //     'name' => 'Donation'
+        // ]);
     }
 }

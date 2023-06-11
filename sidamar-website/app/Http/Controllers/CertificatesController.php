@@ -49,7 +49,6 @@ class CertificatesController extends Controller
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
-        // $validatedData['event_date'] = $request->tanggal; // Simpan nilai tanggal dari AJAX
         Certificate::create($validatedData);
 
         return redirect('dashboard/certificate/create')->with('success', 'Sertifikat baru berhasil disimpan');

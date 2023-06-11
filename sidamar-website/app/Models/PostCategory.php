@@ -10,4 +10,9 @@ class PostCategory extends Model
     use HasFactory;
     protected $table = 'posts_categories';
     protected $guarded = ['id'];
+
+    public function getRouteKey()
+    {
+        return 'slug';
+    }
 }

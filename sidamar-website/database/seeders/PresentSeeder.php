@@ -27,8 +27,11 @@ class PresentSeeder extends Seeder
         DB::table('present_types')->insert([
             'type' => 'Sakit'
         ]);
+        DB::table('present_types')->insert([
+            'type' => 'Tidak Hadir'
+        ]);
 
-        // Present::factory(100)->create();
+        Present::factory(10)->create();
         
     }
 }

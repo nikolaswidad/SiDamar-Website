@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            // $table->string('title');
-            $table->foreignId('event_id');
+            $table->string('title');
             $table->foreignId('user_id');
             $table->foreignId('status');
-            $table->date('event_date');
             $table->timestamps();
         });
     }

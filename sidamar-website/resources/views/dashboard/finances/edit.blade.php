@@ -1,8 +1,8 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="text-4xl font-semibold font-montserrat">Ubah Finance Report</h1>
-
+    <h1 class="text-4xl font-semibold font-montserrat">Ubah Finance Report</h1>
+    <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
 
     @if (count($errors)>0)
     @foreach ($errors->all() as $error)
@@ -19,7 +19,7 @@
     @endif
 
     <!-- Edit Modal -->
-    <div class="modal fade" id="editModal-{{ $finance->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="" id="editModal-{{ $finance->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div>
             <div class="md:grid md:grid-cols-3 md:gap-6">
               <div class="mt-5 md:col-span-2 md:mt-0 ">
@@ -27,7 +27,7 @@
                         <input type="hidden" name="_method" value="PUT">
                         @csrf
                         <div class="shadow sm:overflow-hidden sm:rounded-md">
-                            <div class="space-y-3 bg-white px-3 py-5 sm:p-6">
+                            <div class="space-y-3">
           
                         <div class="form-group mb-6 col-span-6">
                             <label for="keperluan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keperluan</label>

@@ -66,18 +66,17 @@
       <a href="/" class="flex items-center">
           <img class="block h-16 w-auto sm:h-20 align-middle flex-1 mb-2 mt-2" src="/img/logo.png" alt="Logo Si Damar">
       </a>
-      <div class="flex items-center md:order-2 ">
+      <div class="flex items-center md:order-2">
           @if (Auth::check())
-            <a href="/dashboard" class="mr-3 text-md hover:text-red-500">Hai, {{ Auth::user()->name }}</a>
+            <a href="/dashboard" class="mr-3 text-md hover:text-red-500 font-semibold">Hai, {{ Auth::user()->name }}</a>
             <img class="w-10 h-10 rounded-full hover:bg-primaryDarken" src="/img/logo2.png" alt="User dropdown">
-            <form action="/logout" method="POST">
-              @csrf
+            <a href="/logout">
               <div class="py-1">
-                 <button type="submit" class="block font-karla ml-4 px-4 py-2 text-md bg-red-600 rounded-lg text-white hover:bg-red-800 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
+                 <button type="submit" class="block font- ml-4 px-4 py-2 text-md bg-red-600 rounded-lg text-white hover:bg-red-800 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
               </div>
-            </form>
+            </a>
           @else
-            <a href="/login" class="text-white bg-primary hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-md px-4 py-2 md:relative md:px-5 md:py-2.5 mr-1 md:mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-red-800">Login</a>
+            <a href="/login" class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-md px-4 py-2 md:relative md:px-5 md:py-2.5 mr-1 md:mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-red-800">Login</a>
           @endif
           <button data-collapse-toggle="mega-menu" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu" aria-expanded="false">
               <span class="sr-only">Open main menu</span>

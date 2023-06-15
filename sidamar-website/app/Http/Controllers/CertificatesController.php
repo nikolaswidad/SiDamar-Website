@@ -15,10 +15,10 @@ class CertificatesController extends Controller
      */
     public function index()
     {
-        $event = Event::all();
         $user = auth()->user();
         $certif = Certificate::where('user_id',$user->id)->orderBy('status')->filter(request(['search']))->paginate(7)->withQueryString();
-        return view('dashboard.certificate.index',compact('certif','event'));
+        // $event = Event::where('event_id',$certif->event_id);
+        return view('dashboard.certificate.index',compact('certif'));
     }
 
     /**
@@ -42,17 +42,18 @@ class CertificatesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'title' => 'required|max:255',
-            'status' => 'required'
+            'nama' => 'required|max:20',
+            'status' => 'required',
+            'tanggal' => 'required',
+            'event_id' => 'required'
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
-
         Certificate::create($validatedData);
 
-        return redirect('dashboard/certificate/create')->with('success','Sertifikat baru berhasil disimpan');
+        return redirect('dashboard/certificate/create')->with('success', 'Sertifikat baru berhasil disimpan');
     }
+
 
     /**
      * Display the specified resource.

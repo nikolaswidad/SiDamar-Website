@@ -16,6 +16,10 @@ class Certificate extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
+    public function events(){
+        return $this->belongsTo(Event::class,'event_id');
+    }
+
     public function cstatus(){
         return $this->belongsTo(CertificateStatus::class,'status');
     }

@@ -39,7 +39,7 @@ class PostCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required|string|regex:/^[a-zA-Z\s]+$/'
         ]);
         // dd($request->all());
         $category = PostCategory::create([

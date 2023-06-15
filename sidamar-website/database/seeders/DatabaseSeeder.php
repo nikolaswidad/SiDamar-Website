@@ -12,15 +12,15 @@ use App\Models\BulanKas;
 use App\Models\PembayaranKas;
 use App\Models\ArsipFilm;
 use App\Models\Certificate;
+use App\Models\CertificateStatus;
+
+use App\Models\PostCategory;
+use App\Models\EventCategory;
 use App\Models\finance;
 use App\Models\donation;
 use App\Models\Donatur;
 use App\Models\Merch;
 use App\Models\Customer;
-use App\Models\CertificateStatus;
-
-use App\Models\PostCategory;
-use App\Models\EventCategory;
 use Illuminate\Database\Seeder;
 
 
@@ -72,6 +72,8 @@ class DatabaseSeeder extends Seeder
 
         Post::factory(20)->create();
 
+        PostCategory::factory(20)->create();
+
     // Author seeder end
 
     // Certificate seeder start
@@ -86,14 +88,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         
-        Certificate::create([
-            'title' => 'Sidamar Berdonasi',
-            'user_id' => '2',
-            'status' => '2'
-        ]);
-        Certificate::factory(20)->create();
+        // Certificate::create([
+        //     'title' => 'Sidamar Berdonasi',
+        //     'user_id' => '2',
+        //     'status' => '2'
 
-        
+        // ]);
+        Certificate::factory(8)->create();
 
     // Certificate seeder end
 
@@ -125,6 +126,121 @@ class DatabaseSeeder extends Seeder
         ]);
     // Bulan Kas seeder end
 
+    //Pembayaran Kas Seeder start
+        PembayaranKas::create([
+            'bulan_kas_id' => 1,
+            'user_id' => 1,
+            'jumlah' => 20000,
+            'status' => 'success',
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti1.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 2,
+            'user_id' => 2,
+            'jumlah' => 20000,
+            'status' => 'success',
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti2.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 3,
+            'user_id' => 3,
+            'jumlah' => 20000,
+            'status' => 'success',
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti3.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 4,
+            'user_id' => 4,
+            'jumlah' => 20000,
+            'status' => 'success',
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti4.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 5,
+            'user_id' => 5,
+            'jumlah' => 20000,
+            'status' => 'success',
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti5.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 1,
+            'user_id' => 6,
+            'jumlah' => 20000,
+            'status' => 'success',
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti6.jpg',
+        ]);
+
+        PembayaranKas::create([
+            'bulan_kas_id' => 2,
+            'user_id' => 7,
+            'jumlah' => 20000,
+            'status' => 'success',
+            'metode_pembayaran' => 'BCA',
+            'bukti_pembayaran' => 'bukti7.jpg',
+        ]);
+
+        //Pembayaran Kas Seeder end
+
+        //Arsip Film Seeder start
+        ArsipFilm::create([
+            'produser' => 'Farhan Kebab',
+            'sutradara' => 'Asep Spakbor',
+            'distributor' => 'Jim Salabim',
+            'email' => 'filmmaker@gmail.com',
+            'nomor_telepon' => '081234567890',
+            'medsos' => 'instagram.com/filmaker',
+            'rumah_produksi' => 'Rumah Produksi',
+            'judul_film' => 'Pangarep',
+            'tahun_produksi' => '2021',
+            'durasi' => '120',
+            'kategori' => 'Drama',
+            'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
+            'pernyataan' => "True"
+        ]);
+
+        ArsipFilm::create([
+            'produser' => 'Sigit Rendang',
+            'sutradara' => 'Reza Kecap',
+            'distributor' => 'Anto Bengkel',
+            'email' => 'ganool@gmail.com',
+            'nomor_telepon' => '081234567890',
+            'medsos' => 'instagram.com/ganool',
+            'rumah_produksi' => 'Rumah Film',
+            'judul_film' => 'Ketika Cinta Bertasbih',
+            'tahun_produksi' => '2022',
+            'durasi' => '120',
+            'kategori' => 'Drama, Komedi',
+            'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
+            'pernyataan' => "True"
+        ]);
+
+        ArsipFilm::create([
+            'produser' => 'Supri Icikiwir',
+            'sutradara' => 'Zaki Indomie',
+            'distributor' => 'Asep Batagor',
+            'email' => 'rumahfilm@gmail.com',
+            'nomor_telepon' => '081234567890',
+            'medsos' => 'instagram.com/rumahfilm',
+            'rumah_produksi' => 'Rumah Film',
+            'judul_film' => 'Suamiku adalah Penjual Kebab',
+            'tahun_produksi' => '2022',
+            'durasi' => '120',
+            'kategori' => 'Komedi, Drama',
+            'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
+            'pernyataan' => "True",
+        ]);
+        
     //finance seeder start
         finance::create([
             'keperluan' => 'Membayar Pajak',
@@ -261,122 +377,5 @@ class DatabaseSeeder extends Seeder
         ]);
 
     //customer seeder start
-
-
-    //Pembayaran Kas Seeder start
-        PembayaranKas::create([
-            'bulan_kas_id' => 1,
-            'user_id' => 1,
-            'jumlah' => 20000,
-            'status' => 'success',
-            'metode_pembayaran' => 'BCA',
-            'bukti_pembayaran' => 'bukti1.jpg',
-        ]);
-
-        PembayaranKas::create([
-            'bulan_kas_id' => 2,
-            'user_id' => 2,
-            'jumlah' => 20000,
-            'status' => 'success',
-            'metode_pembayaran' => 'BCA',
-            'bukti_pembayaran' => 'bukti2.jpg',
-        ]);
-
-        PembayaranKas::create([
-            'bulan_kas_id' => 3,
-            'user_id' => 3,
-            'jumlah' => 20000,
-            'status' => 'success',
-            'metode_pembayaran' => 'BCA',
-            'bukti_pembayaran' => 'bukti3.jpg',
-        ]);
-
-        PembayaranKas::create([
-            'bulan_kas_id' => 4,
-            'user_id' => 4,
-            'jumlah' => 20000,
-            'status' => 'success',
-            'metode_pembayaran' => 'BCA',
-            'bukti_pembayaran' => 'bukti4.jpg',
-        ]);
-
-        PembayaranKas::create([
-            'bulan_kas_id' => 5,
-            'user_id' => 5,
-            'jumlah' => 20000,
-            'status' => 'success',
-            'metode_pembayaran' => 'BCA',
-            'bukti_pembayaran' => 'bukti5.jpg',
-        ]);
-
-        PembayaranKas::create([
-            'bulan_kas_id' => 1,
-            'user_id' => 6,
-            'jumlah' => 20000,
-            'status' => 'success',
-            'metode_pembayaran' => 'BCA',
-            'bukti_pembayaran' => 'bukti6.jpg',
-        ]);
-
-        PembayaranKas::create([
-            'bulan_kas_id' => 2,
-            'user_id' => 7,
-            'jumlah' => 20000,
-            'status' => 'success',
-            'metode_pembayaran' => 'BCA',
-            'bukti_pembayaran' => 'bukti7.jpg',
-        ]);
-
-        //Pembayaran Kas Seeder end
-
-        //Arsip Film Seeder start
-        ArsipFilm::create([
-            'produser' => 'Farhan Kebab',
-            'sutradara' => 'Asep Spakbor',
-            'distributor' => 'Jim Salabim',
-            'email' => 'filmmaker@gmail.com',
-            'nomor_telepon' => '081234567890',
-            'medsos' => 'instagram.com/filmaker',
-            'rumah_produksi' => 'Rumah Produksi',
-            'judul_film' => 'Pangarep',
-            'tahun_produksi' => '2021',
-            'durasi' => '120',
-            'kategori' => 'Drama',
-            'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
-            'pernyataan' => "True"
-        ]);
-
-        ArsipFilm::create([
-            'produser' => 'Sigit Rendang',
-            'sutradara' => 'Reza Kecap',
-            'distributor' => 'Anto Bengkel',
-            'email' => 'ganool@gmail.com',
-            'nomor_telepon' => '081234567890',
-            'medsos' => 'instagram.com/ganool',
-            'rumah_produksi' => 'Rumah Film',
-            'judul_film' => 'Ketika Cinta Bertasbih',
-            'tahun_produksi' => '2022',
-            'durasi' => '120',
-            'kategori' => 'Drama, Komedi',
-            'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
-            'pernyataan' => "True"
-        ]);
-
-        ArsipFilm::create([
-            'produser' => 'Supri Icikiwir',
-            'sutradara' => 'Zaki Indomie',
-            'distributor' => 'Asep Batagor',
-            'email' => 'rumahfilm@gmail.com',
-            'nomor_telepon' => '081234567890',
-            'medsos' => 'instagram.com/rumahfilm',
-            'rumah_produksi' => 'Rumah Film',
-            'judul_film' => 'Suamiku adalah Penjual Kebab',
-            'tahun_produksi' => '2022',
-            'durasi' => '120',
-            'kategori' => 'Komedi, Drama',
-            'link_film' => 'https://www.youtube.com/watch?v=QH2-TGUlwu4',
-            'pernyataan' => "True",
-        ]);
-        
     }
 }

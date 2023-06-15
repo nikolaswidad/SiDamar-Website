@@ -13,12 +13,17 @@ use App\Http\Controllers\ArsipFilmController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\donationController;
-use App\Http\Controllers\DonaturController;
+
+use App\Http\Controllers\DonateController;
 use App\Models\ArsipFilm;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\FillPDFController;
 
+
+use App\Http\Controllers\EventMemberController;
+use App\Http\Controllers\PresentMemberController;
+use App\Models\Event;
+use App\Models\Present;
 
 
 /*
@@ -31,7 +36,7 @@ use App\Http\Controllers\FillPDFController;
 | contains the "web" middleware group. Now create something great!  
 |
 */
-
+// Route::middleware(['auth'])->group(function () {
 // Home
 Route::get('/', function () {
     return view('index');
@@ -49,10 +54,11 @@ Route::get('/blog/category/{category}',[PostController::class, 'listCategory'])-
 
 Route::resource('/blog',PostController::class);
 
-Route::resource('/donate',donationController::class);
 
-// Route::middleware(['auth'])->group(function () {
-//     // Semua route yang perlu di-authenticate akan ditempatkan di dalam grup ini
+Route::resource('/donate',DonateController::class);
+
+// Route::get('/donate', function(){
+//     return view('donate');
 // });
 /****/
 
@@ -60,6 +66,7 @@ Route::resource('/donate',donationController::class);
 Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
+
 Route::get('/merchandise', function(){
     return view('merchandise');
 });

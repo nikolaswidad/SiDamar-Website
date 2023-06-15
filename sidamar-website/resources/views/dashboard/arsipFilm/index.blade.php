@@ -3,9 +3,9 @@
 @section('container')
 
 {{-- Tabel Lama --}}
-  <div class="max-w-full">
-      <h1 class="text-4xl font-semibold font-montserrat">Arsip Film</h1>
-      <hr class="bg-slate-200 mt-5 max-w-sm">
+  <h1 class="text-4xl font-semibold font-montserrat">Arsip Film</h1>
+  <hr class="bg-slate-200 mt-5 max-w-sm">
+  <div class="max-w-7xl">
       
       @if (session('success'))
       <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
@@ -49,14 +49,14 @@
                             <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->kategori }}</td>
                             <td class="text-lg text-gray-900 px-6 py-4 text-left flex gap-2">
                                 {{-- Link presskit --}}
-                                <a href="{{ $film->link_film }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Link</a>
+                                <a href="{{ $film->link_film }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm font-semibold rounded-lg">Link</a>
                                 {{-- Link edit --}}
-                                <a href="/dashboard/arsipFilm/{{ $film->id }}/edit" class="bg-orange-400 hover:bg-orange-600 text-white text-sm p-2 rounded-lg">Edit</a>
+                                <a href="/dashboard/arsipFilm/{{ $film->id }}/edit" class="bg-orange-400 hover:bg-orange-600 text-white text-sm font-semibold p-2 rounded-lg">Edit</a>
                                 {{-- Link delete --}}
                                 <form action="/dashboard/arsipFilm/{{ $film->id }}" method="post" class="inline-block">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="bg-primary hover:bg-red-700 text-white text-sm p-2 rounded-lg" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Delete</button>
+                                    <button type="submit" class="bg-primary hover:bg-red-700 text-white text-sm font-semibold p-2 rounded-lg" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Delete</button>
                                 </form>
                             </td>
                         </tr>

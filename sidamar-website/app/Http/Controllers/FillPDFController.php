@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Certificate;
 use Illuminate\Http\Request;
 use setasign\Fpdi\Fpdi;
+use Carbon\Carbon;
 
 
 class FillPDFController extends Controller
@@ -22,14 +23,15 @@ class FillPDFController extends Controller
         // $nama = $request->post('nama');
         $nama = $request->post('nama');
         $judul = $request->post('judul');
-        $deskripsi = $request->post('tanggal');
+        $tanggal = $request->post('tanggal');
+        $manager = $request->post('manager');
         $outputfile = public_path().'certificate.pdf';
-        $this->fillPDF(public_path().'\master\certificate.pdf',$outputfile,$nama,$judul);
+        $this->fillPDF(public_path().'\master\certificate.pdf',$outputfile,$nama,$judul,$tanggal,$manager);
 
         return response()->file($outputfile);
     }
 
-    public function fillPDF($file, $outputfile,$nama,$judul)
+    public function fillPDF($file, $outputfile,$nama,$judul,$tanggal,$manager)
     {
         $fpdi = new FPDI;
         $fpdi->setSourceFile($file);
@@ -51,7 +53,16 @@ class FillPDFController extends Controller
         $fpdi->SetFont('Poppins', '', 17.8);
         $fpdi->SetTextColor(1, 37, 84);
         $fpdi->Text($right+20.5, $top+33.8, $judul);
-        // $fpdi->Text($right, $top+100, $tanggal);
+
+        $formattedTanggal = Carbon::createFromFormat('Y-m-d', $tanggal)->isoFormat('D MMMM YYYY');
+
+        $fpdi->SetFont('Poppins', '', 17.8);
+        $fpdi->SetTextColor(1, 37, 84);
+        $fpdi->Text($right+11, $top+42.6, $formattedTanggal);
+
+        $fpdi->SetFont('Poppins', '', 17.8);
+        $fpdi->SetTextColor(1, 37, 84);
+        $fpdi->Text($right+104, $top+67.8, $manager);
 
         return $fpdi->Output($outputfile,'F');
     }

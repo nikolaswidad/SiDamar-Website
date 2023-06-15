@@ -12,22 +12,22 @@ $balance = 0;
     <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
     
     @if (session('success'))
-    <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
+    <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 mb-5 bg-green-500 rounded-xl" role="alert">
       {{ session('success') }}
     </div>
     @endif
 
-<a href="/dashboard/finances/create"><button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 float-right mb-2">
-      Tambahkan Report</button>
+<a href="/dashboard/finances/create">
+  <button type="button" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-700 float-right mb-5">+ Tambahkan Report</button>
     </a>
 
     <div>
       <label for="table-search" class="sr-only">Search</label>
-      <div class="relative">
+      <div class="relative max-w-3xl">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none py-2">
           <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
         </div>
-        <input type="text" id="table-search" class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari report...">
+        <input type="text" id="table-search" class="mb-5 block p-3 pl-10 text-md text-gray-900 border border-gray-300 rounded-lg w-96 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Report...">
       </div>
     </div>
 
@@ -58,8 +58,8 @@ $balance = 0;
               <form action="/dashboard/finances/{{ $fin['id'] }}" method="POST">
                 @csrf
                 @method('delete')
-                <a href="/dashboard/finances/{{ $fin->id }}/edit"><button type="button" class="text-white bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 ">Edit</button></a>
-                <button type="submit" class="mt-2 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline ">Delete</button>
+                <a href="/dashboard/finances/{{ $fin->id }}/edit"><button type="button" class="bg-orange-400 hover:bg-orange-700 text-white text-sm p-2 px-3 rounded-lg font-semibold">Edit</button></a>
+                <button type="submit" class="bg-primary text-white p-2 px-3 rounded-lg text-sm font-semibold">Delete</button>
               </form>
             </td>
           </tr>

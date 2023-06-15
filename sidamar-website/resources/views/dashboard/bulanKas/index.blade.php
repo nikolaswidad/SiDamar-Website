@@ -21,7 +21,7 @@
     {{-- if is_admin == 1 --}}
     @if (Auth::user()->is_admin == 1)
       <div class="flex justify-end">
-        <a href="/dashboard/bulanKas/create" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5">Buat Bulan Kas Baru</a>
+        <a href="/dashboard/bulanKas/create" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mt-5 ">Buat Bulan Kas Baru</a>
       </div>
     @endif
       <div class="flex flex-col font-montserrat">
@@ -39,7 +39,7 @@
                       <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Action</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="">
                   @foreach ($bulanKas as $bulanKas)
                       <tr class="border-b">
                           {{-- check user status in pembayaran kas, if != success display it --}}
@@ -49,9 +49,9 @@
                           <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $bulanKas->total_terkumpul}}</td>
                           <td class="text-lg text-gray-900 px-6 py-4 text-left">
                             @if (Auth::user()->pembayaranKas()->where('bulan_kas_id', $bulanKas->id)->value('status') == 'success')
-                              <p class="bg-green-400 text-white px-1.5 py-2 text-sm rounded-lg text-center inline-flex">Sudah Bayar</p>  
+                              <p class="bg-green-400 text-white px-2 py-2 text-sm font-semibold rounded-lg text-center inline-flex">Sudah Bayar</p>  
                             @else
-                              <p class="bg-gray-500 text-white p-2 text-sm rounded-lg text-center inline-flex">Belum Bayar</a>  
+                              <p class="bg-gray-500 text-white p-2 text-sm font-semibold rounded-lg text-center inline-flex">Belum Bayar</a>  
                             @endif
                           </td>
                           <td class="text-lg text-gray-900 px-6 py-4 text-left flex gap-2">
@@ -66,7 +66,7 @@
                                 @csrf
                                 {{-- make 'detail button href to index method in pembayaranKas' --}}
                                 @method('GET')
-                                <button class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</button>
+                                <button class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm font-semibold rounded-lg">Detail</button>
                               </form>
 
                             @else
@@ -74,15 +74,15 @@
                                 @csrf
                                 {{-- make 'detail button href to index method in pembayaranKas' --}}
                                 @method('GET')
-                                <button class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</button>
+                                <button class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm font-semibold rounded-lg">Detail</button>
                               </form>
                               {{-- <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
-                              <a href="/dashboard/bulanKas/{{ $bulanKas->id }}/edit" class="bg-orange-400 hover:bg-orange-700 text-white text-sm p-2 rounded-lg">Edit</a>
+                              <a href="/dashboard/bulanKas/{{ $bulanKas->id }}/edit" class="bg-orange-400 hover:bg-orange-700 text-white text-sm font-semibold p-2 rounded-lg">Edit</a>
                               {{-- Delete Baru --}}
                               <form action="/dashboard/bulanKas/{{ $bulanKas['id'] }}" method="POST" class="inline-block">
                                   @csrf
                                   <input type="hidden" name="_method" value="DELETE">
-                                  <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm" onclick="return confirm('Are you sure?')">Hapus</button>
+                                  <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm font-semibold" onclick="return confirm('Are you sure?')">Hapus</button>
                               </form>
                             @endif
                           </td>

@@ -17,12 +17,31 @@ class DashboardPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function index()
+    // {
+    //     $post = Post::orderBy('created_at','desc')->paginate(10);
+    //     // $post->orderBy('created_at','desc');
+    //     return view('dashboard.author.posts.index',compact('post'));
+    // }
+
     public function index()
     {
-        $post = Post::orderBy('created_at','desc')->paginate(10);
+        $post = Post::orderBy('created_at','desc')->filter(request(['search']))->paginate(10);
         // $post->orderBy('created_at','desc');
         return view('dashboard.author.posts.index',compact('post'));
     }
+
+    // public function index($request)
+    // {
+    //     if($request->has('search')){
+    //         $post = Post::where('title', 'LIKE', '%' .$request->search. '%')->paginate(10);
+    //     }
+    //     else {
+    //         $post = Post::orderBy('created_at','desc')->paginate(10);
+    //         return view('dashboard.author.posts.index',compact('post'));
+    //     }
+        
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -99,9 +118,8 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required',
             'category_id' => 'required',
             'image' => 'image|file|max:1024',
             'body' => 'required'
@@ -110,21 +128,26 @@ class DashboardPostController extends Controller
 
         $post = Post::findorfail($id);
 
+        
         if($request->has('image')){
             $image = $request->image;
             $new_image = time().$image->getClientOriginalName();
             $image->move('upload/posts', $new_image);
+            $validatedData['image'] = $new_image;
         }
 
-        $post_data = [
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'category_id' => $request->category_id,
-            'excerpt' => Str::limit(strip_tags($request->body), 200),
-            'body' => $request->body
-        ];
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validatedData['slug'] = Str::slug($request->title);
 
-        $post->update($post_data);
+        // $post_data = [
+        //     'title' => $request->title,
+        //     'slug' =>  Str::slug($request->title),
+        //     'category_id' => $request->category_id,
+        //     'excerpt' => Str::limit(strip_tags($request->body), 200),
+        //     'body' => $request->body
+        // ];
+
+        $post->update($validatedData);
 
 
         return redirect('dashboard/posts')->with('success','Post berhasil diperbarui');

@@ -13,12 +13,12 @@
          <thead class="text-xs text-gray-700 uppercase bg-white border-b dark:bg-gray-700 dark:text-gray-400">
            <tr>
             <th scope="col" class="px-6 py-3">No</th>
-            <th scope="col" class="px-6 py-3">Title</th>
-            <th scope="col" class="px-6 py-3">Author</th>
-            <th scope="col" class="px-6 py-3">Category</th>
-            <th scope="col" class="px-6 py-3">Image</th>
+            <th scope="col" class="px-6 py-3">Judul</th>
+            <th scope="col" class="px-6 py-3">Penulis</th>
+            <th scope="col" class="px-6 py-3">Kategori</th>
+            <th scope="col" class="px-6 py-3">Gambar</th>
             <th scope="col" class="px-6 py-3">Restore</th>
-            <th scope="col" class="px-6 py-3">Delete</th>
+            <th scope="col" class="px-6 py-3">Hapus</th>
            </tr>
          </thead>
          

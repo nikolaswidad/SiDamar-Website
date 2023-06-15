@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-   <h1 class="font-bold mb-5 text-4xl">Edit category</h1>
+   <h1 class="font-bold mb-5 text-4xl">Edit Kategori</h1>
 
    @if (count($errors)>0)
       @foreach ($errors->all() as $error)

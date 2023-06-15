@@ -159,9 +159,6 @@ Route::get('/get-product-price/{id}', [App\Http\Controllers\CustomerController::
 
 Route::resource('/dashboard/merch', App\Http\Controllers\MerchController::class);
 
-//Dashboard Bulan Kas
-Route::resource('/dashboard/bulanKas', BulanKasController::class);
-
 //Dashboard Pembayaran Kas
 Route::resource('/dashboard/pembayaranKas', PembayaranKasController::class);
 Route::get('/dashboard/pembayaranKas/create/{bulanKasId}', [PembayaranKasController::class, 'create']);

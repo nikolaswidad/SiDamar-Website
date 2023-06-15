@@ -4,7 +4,7 @@
       x-data="getCarouselData()"
   >
       <button
-          class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
+          class="absolute bg-red-600 hover:bg-red-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
           x-on:click="decrement()">
           &#8592;
       </button>
@@ -12,7 +12,7 @@
           <img class="w-1/6 hover:opacity-75" :src="image">
       </template>
       <button
-          class="absolute right-0 bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
+          class="absolute right-0 bg-red-600 hover:bg-red-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
           x-on:click="increment()">
           &#8594;
       </button>

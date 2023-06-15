@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-   <h1 class="font-bold mb-5 text-4xl">Post Category</h1>
+   <h1 class="font-bold mb-5 text-4xl">Kategori Post</h1>
 
    @if (Session::has('success'))
       <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
@@ -9,15 +9,15 @@
       </div>
     @endif
 
-   <a href="{{ route('categories.create') }}"><button type="button" class="bg-blue-500 text-white px-3 py-2.5 mr-2 mb-4 rounded-lg text-sm">+ Add Category</button></a>
+   <a href="{{ route('categories.create') }}"><button type="button" class="bg-blue-500 text-white px-3 py-2.5 mr-2 mb-4 rounded-lg text-sm">+ Tambah Kategori</button></a>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-1/2 sm:w-full text-sm text-left text-gray-500 dark:text-gray-400">
       <thead class="text-sm text-gray-700 uppercase bg-gray-50 border-b dark:bg-gray-700 dark:text-gray-400">
         <tr>
         <th scope="col" class="px-6 py-3">No</th>
-        <th scope="col" class="px-6 py-3">Category</th>
+        <th scope="col" class="px-6 py-3">Kategori</th>
         <th scope="col" class="px-6 py-3">Edit</th>
-        <th scope="col" class="px-6 py-3">Delete</th>
+        <th scope="col" class="px-6 py-3">Hapus</th>
         </tr>
       </thead>
         

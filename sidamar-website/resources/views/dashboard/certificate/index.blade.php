@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-   <h1 class="font-bold mb-5 text-4xl">My Certificate</h1>
+   <h1 class="font-bold mb-5 text-4xl">Sertifikat</h1>
 
    @if (Session::has('success'))
     <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
@@ -10,19 +10,19 @@
   @endif
 
     <a href="{{ route('certificate.create') }}"><button type="button" class="
-      bg-blue-500 text-white px-5 py-2.5 mr-2 mb-4 rounded-lg text-sm">+ Add Certificate</button></a>
+      bg-blue-500 text-white px-5 py-2.5 mr-2 mb-4 rounded-lg text-sm">+ Tambah Sertifikat</button></a>
     
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-1/2 sm:w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-sm text-gray-700 uppercase bg-gray-50 border-b dark:bg-gray-700 dark:text-gray-400">
           <tr>
             <th scope="col" class="px-6 py-3">No</th>
-            <th scope="col" class="px-6 py-3">Event</th>
-            <th scope="col" class="px-6 py-3">Name</th>
-            <th scope="col" class="px-6 py-3">Date</th>
+            <th scope="col" class="px-6 py-3">Acara</th>
+            <th scope="col" class="px-6 py-3">Nama</th>
+            <th scope="col" class="px-6 py-3">Tanggal</th>
             <th scope="col" class="px-6 py-3">Status</th>
-            <th scope="col" class="px-6 py-3">Print</th>
-            <th scope="col" class="px-6 py-3">Delete</th>
+            <th scope="col" class="px-6 py-3">Cetak</th>
+            <th scope="col" class="px-6 py-3">Hapus</th>
           </tr>
         </thead>
         

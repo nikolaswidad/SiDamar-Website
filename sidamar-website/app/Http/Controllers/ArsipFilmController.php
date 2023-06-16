@@ -103,7 +103,7 @@ class ArsipFilmController extends Controller
         if ($previous == 'http://sidamar-website.test/dashboard/arsipFilm/create') {
             //dd($arsipFilm->id);
             Session::flash('success', 'Arsip Film berhasil ditambahkan');
-            return view('/dashboard/arsipFilm');
+            return redirect('/dashboard/arsipFilm');
             
         } elseif ($previous == 'http://sidamar-website.test/arsipFilm') {
             Session::flash('success', 'Arsip Film berhasil ditambahkan');

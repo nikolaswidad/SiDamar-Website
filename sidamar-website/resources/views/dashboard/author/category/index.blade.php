@@ -6,9 +6,9 @@
   <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
 
   @if (Session::has('success'))
-     <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-       <span class="font-medium">{{ Session('success') }}</span>
-     </div>
+  <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 mb-5 bg-green-500 rounded-xl" role="alert">
+    {{ session('success') }}
+  </div>
    @endif
   
    <div class="grid grid-cols-2">
@@ -20,7 +20,7 @@
                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
              </div>
-               <input type="search" id="search" name="search" class="mb-5 block p-3 pl-10 text-md text-gray-900 border border-gray-300 rounded-lg w-96 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Kategori...">
+               <input type="search" id="table-search" name="search" class="mb-5 block p-3 pl-10 text-md text-gray-900 border border-gray-300 rounded-lg w-96 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Kategori...">
            </div>
        </form>
      </div>
@@ -43,7 +43,7 @@
           </tr>
         </thead>
         
-        <tbody>
+        <tbody id="category-table">
             @foreach ($category as $cat => $hasil)
                   <tr class="border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                   <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $category->firstItem()+$cat }}</td>
@@ -52,7 +52,7 @@
                       <form action="{{ route('categories.destroy', $hasil->id) }}" method="POST">
                         @csrf
                         @method('delete')
-                      <a href="{{ route('categories.edit', $hasil->id) }}"><button type="button" class="text-yellow-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <a href="{{ route('categories.edit', $hasil->id) }}"><button type="button" class="text-yellow-400 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                         </svg></button></a>
                     </form>
@@ -74,7 +74,37 @@
  <div class="mt-5 text-center flex justify-center">
    {{ $category->links() }}
  </div>
-      
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+   document.addEventListener("DOMContentLoaded", function() {
+
+   var searchInput = document.getElementById("table-search");
+   searchInput.addEventListener("input", searchTable);
+
+   function searchTable() {
+       var input = searchInput.value.toLowerCase();
+       var table = document.getElementById("category-table");
+       var rows = table.getElementsByTagName("tr");
+
+       for (var i = 0; i < rows.length; i++) {
+           var rowData = rows[i].textContent.toLowerCase();
+
+           if (rowData.includes(input)) {
+               rows[i].style.display = "";
+           } else {
+               rows[i].style.display = "none";
+           }
+       }
+   }
+
+     // Make the table header sticky
+     var tableContainer = document.querySelector(".table-container");
+     tableContainer.addEventListener("scroll", function() {
+       var tableHeader = document.querySelector("category-table thead");
+       tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
+   });
+ });
+ </script>  
   <div class="mb-24"></div>
 
 </div>

@@ -2,7 +2,7 @@
 
 @section('container')
 
-    <div class="max-w-max">
+    <div class="max-w-7xl">
         <h1 class="text-4xl font-semibold font-montserrat">Pembayaran Kas Bulan {{ $bulanKas->bulan }}</h1>
         <hr class="bg-slate-200 mt-5 max-w-lg">
         @if (session('success'))
@@ -37,14 +37,14 @@
                       <thead class="border-b">
                         <tr>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nama</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/7">Nama</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/12">Nominal</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Metode</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/7">Metode</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Bukti</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Tanggal</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/7">Tanggal</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Status</th>
                           @if (Auth::user()->is_admin == 1)
-                            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Action</th>  
+                            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/7">Action</th>  
                           @endif
                         </tr>
                       </thead>
@@ -84,7 +84,7 @@
                                         <form action="/dashboard/pembayaranKas/{{ $bayar['id'] }}" method="POST" class="">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm font-semibold" onclick="return confirm('Are you sure?')">Hapus</button>
+                                            <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm font-semibold" onclick="return confirm('Apakah Anda yakin ingin menghapus pembayaran?')">Hapus</button>
                                         </form>
                                     </td>
                                 @endif

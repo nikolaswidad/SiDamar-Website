@@ -16,7 +16,7 @@
             <form action="#" method="POST">
               <div class="overflow-hidden sm:rounded-md">
                 <div class="">
-                  <h2 class="text-2xl font-bold lg:text-2xl text-center mb-2 mt-2">
+                  <h2 class="font-montserrat text-2xl font-bold lg:text-2xl text-center mb-6 mt-2">
                     @if ($donatur->donation && isset($donatur->donation->title))
                         {{ $donatur->donation->title }}
                     @endif

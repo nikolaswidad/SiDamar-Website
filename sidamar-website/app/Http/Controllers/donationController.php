@@ -64,7 +64,8 @@ class donationController extends Controller
             'image' => 'upload/donation/'.$new_image,
         ]);
         $image->move('upload/donation', $new_image);
-        return redirect('dashboard/donation/');
+        
+        return redirect('dashboard/donation/')->with('success','Donasi Event Berhasil Dibuat');
     }
 
     /**
@@ -107,7 +108,7 @@ class donationController extends Controller
         $donation-> date=$request->date;
 
         $donation-> save();
-        return redirect('dashboard/donation/')->with('success','Event berhasil diperbarui');
+        return redirect('dashboard/donation/')->with('success','Donasi Event Berhasil Diperbarui');
   
     }
 
@@ -122,6 +123,6 @@ class donationController extends Controller
         $donation = donation::findOrFail($id);
         $donation->delete();
         
-        return redirect()->back()->with('success', 'Data Deleted Successfully');
+        return redirect()->back()->with('success', 'Donasi Event Berhasil Dihapus');
     }
 }

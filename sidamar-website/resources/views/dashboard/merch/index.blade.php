@@ -93,6 +93,5 @@
       });
     });
     </script>   
-
-
+    <div class="mb-24"></div>
 @endsection

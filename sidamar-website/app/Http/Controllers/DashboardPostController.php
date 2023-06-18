@@ -82,7 +82,7 @@ class DashboardPostController extends Controller
 
         Post::create($validatedData);
 
-        return redirect('dashboard/posts/create')->with('success','Post baru berhasil disimpan');
+        return redirect('dashboard/posts/create')->with('success','Post Berhasil Ditambahkan');
     }
 
     /**
@@ -150,7 +150,7 @@ class DashboardPostController extends Controller
         $post->update($validatedData);
 
 
-        return redirect('dashboard/posts')->with('success','Post berhasil diperbarui');
+        return redirect('dashboard/posts')->with('success','Post Berhasil Diperbarui');
 
     }
 
@@ -164,7 +164,7 @@ class DashboardPostController extends Controller
     {
         $post = Post::findorfail($id);
         $post->delete();
-        return redirect('dashboard/posts')->with('success','Data berhasil dihapus (silahkan cek trash can)');
+        return redirect('dashboard/posts')->with('success','Post Berhasil Dihapus (silahkan cek tempat sampah)');
     }
 
     // nampilin data yang udah kehapus
@@ -186,7 +186,7 @@ class DashboardPostController extends Controller
         $post = Post::withTrashed()->where('id',$id)->first();
         $post->forceDelete();
 
-        return redirect('dashboard/posts/deleted')->with('success','Data berhasil dihapus permanen');
+        return redirect('dashboard/posts/deleted')->with('success','Post Berhasil Dihapus Permanen');
     }
 
     public function checkSlug(Request $request){

@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-    <h1 class="font-bold mb-5 text-4xl">Tambahkan Event Donasi</h1>
+    <h1 class="font-montserrat font-bold mb-5 text-4xl">Tambahkan Event Donasi</h1>
     <hr class="bg-slate-200 mt-5 max-w-3xl">
 
     @if (count($errors)>0)
@@ -28,7 +28,7 @@
                 <div class="space-y-4">
 
                   <div class="col-span-6 sm:col-span-3">
-                    <label for="title" class="block text-gray-700 text-lg font-bold mb-2"><br>Title</label>
+                    <label for="title" class="block text-gray-700 text-lg font-bold mb-2"><br>Nama Event</label>
                     <input type="text" id="title" name="title" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm @error('title') is-invalid @enderror" required value="{{ old('title') }}">
                     @error('title')
                           {{ $donation }}
@@ -36,7 +36,7 @@
                   </div>
             
                   <div class="mb-6">
-                    <label for="date" class="block text-gray-700 text-lg font-bold mb-2">Dateline</label>
+                    <label for="date" class="block text-gray-700 text-lg font-bold mb-2">Tanggal</label>
                     <input type="date" id="date" name="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm @error('date') is-invalid @enderror" placeholder="date" required value="{{ old('date') }}">
                     @error('date')
                           {{ $donation }}
@@ -44,7 +44,7 @@
                   </div>
             
                   <div class="mb-3">
-                    <label for="body" class="block text-gray-700 text-lg font-bold mb-2">Description</label>
+                    <label for="body" class="block text-gray-700 text-lg font-bold mb-2">Deskripsi</label>
                     @error('body')
                         <p class="text-danger">{{ $donation }}</p>
                     @enderror
@@ -53,7 +53,7 @@
                   </div>
 
                   <div class="m6-4 col-span-6">
-                    <label class="block text-gray-700 text-lg font-bold mb-2" for="image">Upload Image</label>
+                    <label class="block text-gray-700 text-lg font-bold mb-2" for="image">Upload Gambar</label>
                       <input class="block w-full text-sm text-gray-400 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('image') is-invalid @enderror" name="image" id="image" type="file" onchange="previewImage()">
                     @error('image')
                           {{ $donation }}

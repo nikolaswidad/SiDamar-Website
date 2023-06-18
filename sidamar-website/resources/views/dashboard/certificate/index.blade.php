@@ -10,15 +10,29 @@
      <span class="font-medium">{{ Session('success') }}</span>
    </div>
  @endif --}}
-  @if (session('success'))
-    <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
-      {{ session('success') }}
+ @if (session('success'))
+  <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
+    {{ session('success') }}
+  </div>
+@endif
+  <div class="grid grid-cols-2">
+
+    <div class="flex justify-start">
+      <label for="table-search" class="sr-only">Search</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none py-2">
+          <svg class="w-5 h-5 mt-3 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+        </div>
+        <input type="text" id="table-search" class="mt-5 block p-3 pl-10 text-md text-gray-900 border border-gray-300 rounded-lg w-96 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Sertifikat...">
+      </div>
     </div>
-   @endif
-   <div class="flex justify-end">
-     <a href="{{ route('certificate.create') }}">
-     <button type="button" class="bg-red-600 text-white px-5 py-2.5 mr-2 mb-4 mt-5 rounded-lg text-md font-bold">+ Tambah Sertifikat</button></a>
-   </div>
+
+    <div class="flex justify-end">
+      <a href="{{ route('certificate.create') }}">
+      <button type="button" class="bg-red-600 text-white px-5 py-2.5 mr-2 mb-4 mt-5 rounded-lg text-md font-bold">+ Tambah Sertifikat</button></a>
+    </div>
+
+  </div>
      
    <div class="relative overflow-x-auto sm:rounded-lg">
      <table class="w-1/2 sm:w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -34,7 +48,7 @@
          </tr>
        </thead>
        
-       <tbody class="text-base">
+       <tbody id="sertif-table" class="text-base">
          @php $no = 1 @endphp
          @foreach ($certif as $cf => $hasil)
          <tr class="border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -94,5 +108,36 @@
  </div>
 
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+  var searchInput = document.getElementById("table-search");
+  searchInput.addEventListener("input", searchTable);
+
+  function searchTable() {
+      var input = searchInput.value.toLowerCase();
+      var table = document.getElementById("sertif-table");
+      var rows = table.getElementsByTagName("tr");
+
+      for (var i = 0; i < rows.length; i++) {
+          var rowData = rows[i].textContent.toLowerCase();
+
+          if (rowData.includes(input)) {
+              rows[i].style.display = "";
+          } else {
+              rows[i].style.display = "none";
+          }
+      }
+  }
+
+    // Make the table header sticky
+    var tableContainer = document.querySelector(".table-container");
+    tableContainer.addEventListener("scroll", function() {
+      var tableHeader = document.querySelector("sertif-table thead");
+      tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
+  });
+});
+</script> 
 <div class="mb-16"></div>
 @endsection

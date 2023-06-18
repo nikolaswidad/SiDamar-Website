@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\finance;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 
@@ -44,8 +45,7 @@ class financeController extends Controller
         $finance-> cashout=$request->cashout;
         $finance-> keterangan=$request->keterangan;
         $finance-> save();
-        
-        return redirect('dashboard/finances/');
+        return redirect('dashboard/finances/')->with('success','Report Berhasil Dibuat');
         // return view('dashboard.finances.create',['finance'=>$finance]);
     }
 
@@ -92,7 +92,7 @@ class financeController extends Controller
         $finance-> keterangan=$request->keterangan;
         $finance-> save();
         
-        return redirect('dashboard/finances/')->with('success','Report berhasil diperbarui');
+        return redirect('dashboard/finances/')->with('success','Report Berhasil Diperbarui');
         
 
     }
@@ -108,6 +108,6 @@ class financeController extends Controller
         $finance = finance::findOrFail($id);
         $finance->delete();
         
-        return redirect()->back()->with('success', 'Data Deleted Successfully');
+        return redirect()->back()->with('success', 'Report Berhasil Dihapus');
     }
 }

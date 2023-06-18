@@ -104,7 +104,7 @@ class CustomerController extends Controller
             $customer = Customer::findOrFail($id);
             $customer->delete();
             
-            return redirect()->back()->with('success', 'Data Deleted Successfully');
+            return redirect()->back()->with('success', 'Pembelian Berhasil Dihapus');
         }
     }
 }

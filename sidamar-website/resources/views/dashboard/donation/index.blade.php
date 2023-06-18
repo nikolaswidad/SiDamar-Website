@@ -2,7 +2,7 @@
 
 @section('container')
   <div class="max-w-7xl font-montserrat">
-    <h1 class="text-4xl font-semibold font-montserrat">Donation</h1>
+    <h1 class="text-4xl font-semibold font-montserrat">Donasi</h1>
     <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
     
     @if (session('success'))
@@ -28,9 +28,9 @@
         <tr>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Image</th>
-          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Title</th>
+          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Nama Acara</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Keterangan</th>
-          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Dateline</th>
+          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Tanggal</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Action</th>
         </tr>
       </thead>

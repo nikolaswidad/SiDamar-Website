@@ -58,7 +58,7 @@
                     
                     
                 <div class="flex justify-end max-w-full ">
-                    <a href="/dashboard/pembayaranKas" class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-3 rounded-lg mt-5 mr-3 text-sm lg:text-md">Kembali</a>
+                    <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-3 rounded-lg mt-5 mr-3 text-sm lg:text-md">Kembali</a>
                     <button type="submit" class="text-sm lg:text-md bg-primary hover:bg-red-700 text-white font-bold p-3 rounded-lg mt-5">Buat Pembayaran</button>
                 </div>
         

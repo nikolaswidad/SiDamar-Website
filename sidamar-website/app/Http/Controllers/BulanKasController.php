@@ -73,12 +73,12 @@ class BulanKasController extends Controller
                                     ->first();
 
         if ($existingBulanKas) {
-            Session::flash('error', 'Bulan and tahun already exists');
+            Session::flash('error', 'Bulan Kas sudan dibuat');
             return redirect('/dashboard/bulanKas');
         }
         // dd($validatedData);
         BulanKas::create($validatedData);
-        Session::flash('success', 'New Bulan Kas has been added');
+        Session::flash('success', 'Bulan Kas Berhasil Ditambahkan');
         return redirect('/dashboard/bulanKas');
     }
 
@@ -141,7 +141,7 @@ class BulanKasController extends Controller
                                     ->first();
 
         if ($existingBulanKas) {
-            Session::flash('error', 'Bulan and tahun already exists');
+            Session::flash('error', 'Bulan Kas sudah dibuat');
             return redirect('/dashboard/bulanKas');
         }
 
@@ -149,7 +149,7 @@ class BulanKasController extends Controller
         $pembayaranKas = PembayaranKas::where('bulan_kas_id', $bulanKas->id)->get();
 
         $bulanKas->save();
-        Session::flash('success', 'Update Bulan Kas Success');
+        Session::flash('success', 'Bulan Kas Berhasil Diubah');
         return redirect('/dashboard/bulanKas');
     }
 
@@ -170,7 +170,7 @@ class BulanKasController extends Controller
         //dd($bulanKas);
         
         $bulanKas->delete();
-        Session::flash('success', 'Delete Bulan Kas Success');
+        Session::flash('success', 'Bulan Kas Berhasil Dihapus');
         return redirect('/dashboard/bulanKas');
 
         

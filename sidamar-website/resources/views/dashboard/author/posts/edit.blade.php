@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<div class="max-w-7xl font-montserrat">
+<div class="max-w-4xl font-montserrat">
 
   <h1 class="font-bold mb-5 text-4xl">Edit Post</h1>
   <hr class="bg-slate-200 mt-5 max-w-3xl">

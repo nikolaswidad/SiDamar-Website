@@ -168,62 +168,7 @@ $price = 0;
     totalInput.value = price;
   });
  
-  // const merchSelect = document.getElementById('merch_id');
-  // const totalInput = document.getElementById('total');
 
-  // merchSelect.addEventListener('change', (event) => {
-  //   const selectedOption = event.target.options[event.target.selectedIndex];
-  //   const price = selectedOption.getAttribute('data-price');
-  //   totalInput.value = price ? `Rp ${price}` : '';
-  // });
-
-  // Ambil elemen dropdown dan input total
-  // var merchDropdown = document.getElementById("merch_id");
-  // var totalInput = document.getElementById("total");
-
-  // // Tambahkan event listener untuk mengupdate total saat ada perubahan pada dropdown
-  // merchDropdown.addEventListener("change", function() {
-  //   // Ambil harga berdasarkan id yang dipilih
-  //   var selectedMerchId = merchDropdown.value;
-  //   var selectedMerch = {!! json_encode($merch->toArray()) !!}.find(function(merch) {
-  //     return merch.id == selectedMerchId;
-  //   });
-
-  //   // Perbarui nilai total dengan harga merch yang dipilih
-  //   totalInput.value = selectedMerch ? selectedMerch.price : '';
-  // });
-
-  // Ambil elemen dropdown
-  // var merchDropdown = document.getElementById("merch_id");
-
-  // // Tambahkan event listener untuk mengupdate info merch saat ada perubahan pada dropdown
-  // merchDropdown.addEventListener("change", function() {
-  //   // Ambil id merch yang dipilih
-  //   var selectedMerchId = merchDropdown.value;
-
-  //   // Kirim permintaan AJAX ke server
-  //   var xhr = new XMLHttpRequest();
-  //   xhr.open("GET", "/get-merch-info?id=" + selectedMerchId);
-  //   xhr.onreadystatechange = function() {
-  //     if (xhr.readyState === XMLHttpRequest.DONE) {
-  //       if (xhr.status === 200) {
-  //         // Respons sukses, update info merch di halaman
-  //         var merchInfo = JSON.parse(xhr.responseText);
-
-  //         // Update elemen di halaman dengan info merch yang diterima
-
-  //         var priceElement = document.getElementById("total");
-
-
-  //         priceElement.textContent = merchInfo.price;
-  //       } else {
-  //         // Respons gagal, lakukan penanganan error sesuai kebutuhan
-  //         console.error("Error: " + xhr.status);
-  //       }
-  //     }
-  //   };
-  //   xhr.send();
-  // });
 </script>
 
 

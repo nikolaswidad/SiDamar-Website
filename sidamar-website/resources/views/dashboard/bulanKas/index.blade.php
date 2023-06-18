@@ -1,3 +1,6 @@
+@php
+$total_kas = 0;
+@endphp
 @extends('dashboard.layouts.main')
 
 @section('container')
@@ -102,7 +105,16 @@
                             @endif
                           </td>
                       </tr>
+                      @php
+                        $total_kas += $bulanKas['total_terkumpul'];
+                      @endphp
                   @endforeach
+                  {{-- count total kas --}}
+                  {{-- sum all total_terkumpul --}}
+                  <tr>
+                    <td colspan="3" class="text-lg text-gray-900 px-6 py-4 text-left font-bold">Total Kas</td>
+                    <td colspan="3" class="text-lg text-gray-900 px-6 py-4 text-left font-bold">{{ $total_kas }}</td>
+                  </tr>
                   </tbody>
               </table>
               </div>

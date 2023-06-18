@@ -18,7 +18,7 @@
     @endif
 
     <!-- Edit Modal -->
-    <div class="modal fade" id="editModal-{{ $donation->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div  id="editModal-{{ $donation->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div>
         <div class="md:grid md:grid-cols-3 md:gap-6">
           <div class="mt-5 md:col-span-2 md:mt-0 ">

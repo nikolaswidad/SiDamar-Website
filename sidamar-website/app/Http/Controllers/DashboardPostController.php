@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\User;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use illuminate\Support\Str;
 
@@ -24,7 +26,7 @@ class DashboardPostController extends Controller
 
     public function index()
     {
-        $post = Post::orderBy('created_at','desc')->paginate(10);
+        $post = Post::orderBy('created_at','desc')->filter(request(['search']))->paginate(10);
         // $post->orderBy('created_at','desc');
         return view('dashboard.author.posts.index',compact('post'));
     }
@@ -61,7 +63,7 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:posts',
             'category_id' => 'required',
@@ -69,20 +71,16 @@ class DashboardPostController extends Controller
             'body' => 'required'
         ]);
 
-        $image = $request->image;
-        $new_image = time().$image->getClientOriginalName();
-        $request['user_id'] = auth()->user()->id;
-        Post::create([
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'category_id' => $request->category_id,
-            'image' => 'upload/posts/'.$new_image,
-            'excerpt' => Str::limit(strip_tags($request->body), 200),
-            'body' => $request->body,
-            'user_id' => auth()->id()
-        ]);
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        if($request->has('image')){
+            $image = $request->image;
+            $new_image = time().$image->getClientOriginalName();
+            $image->move('upload/posts', $new_image);
+            $validatedData['image'] = $new_image;
+        }
 
-        $image->move('upload/posts', $new_image);
+        Post::create($validatedData);
 
         return redirect('dashboard/posts/create')->with('success','Post baru berhasil disimpan');
     }
@@ -129,6 +127,7 @@ class DashboardPostController extends Controller
         
 
         $post = Post::findorfail($id);
+
         
         if($request->has('image')){
             $image = $request->image;
@@ -137,13 +136,16 @@ class DashboardPostController extends Controller
             $validatedData['image'] = $new_image;
         }
 
-        $post_data = [
-            'title' => $request->title,
-            'slug' => $request->slug,
-            'category_id' => $request->category_id,
-            'excerpt' => Str::limit(strip_tags($request->body), 200),
-            'body' => $request->body
-        ];
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validatedData['slug'] = Str::slug($request->title);
+
+        // $post_data = [
+        //     'title' => $request->title,
+        //     'slug' =>  Str::slug($request->title),
+        //     'category_id' => $request->category_id,
+        //     'excerpt' => Str::limit(strip_tags($request->body), 200),
+        //     'body' => $request->body
+        // ];
 
         $post->update($validatedData);
 
@@ -162,13 +164,12 @@ class DashboardPostController extends Controller
     {
         $post = Post::findorfail($id);
         $post->delete();
-        return redirect('dashboard/posts')->with('success','Data berhasil dihapus (silahkan cek trash can');
+        return redirect('dashboard/posts')->with('success','Data berhasil dihapus (silahkan cek trash can)');
     }
 
     // nampilin data yang udah kehapus
     public function deleted(){
         $post = Post::onlyTrashed()->paginate(10);
-        dd($post);
         return view('dashboard.author.posts.deleted', compact('post'));
     }
 
@@ -186,5 +187,10 @@ class DashboardPostController extends Controller
         $post->forceDelete();
 
         return redirect('dashboard/posts/deleted')->with('success','Data berhasil dihapus permanen');
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+        return response()->json(['slug'=>$slug]);
     }
 }

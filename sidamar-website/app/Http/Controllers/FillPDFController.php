@@ -26,7 +26,7 @@ class FillPDFController extends Controller
         $tanggal = $request->post('tanggal');
         $manager = $request->post('manager');
         $outputfile = public_path().'certificate.pdf';
-        $this->fillPDF(public_path().'\master\certificate.pdf',$outputfile,$nama,$judul,$tanggal,$manager,$tanggal);
+        $this->fillPDF(public_path().'\master\certificate.pdf',$outputfile,$nama,$judul,$tanggal,$manager);
 
         return response()->file($outputfile);
     }

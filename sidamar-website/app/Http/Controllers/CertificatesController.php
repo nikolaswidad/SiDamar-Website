@@ -42,9 +42,10 @@ class CertificatesController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama' => 'required|max:255',
-            'title' => 'required|max:255',
-            'status' => 'required'
+            'nama' => 'required|max:20',
+            'status' => 'required',
+            'tanggal' => 'required',
+            'event_id' => 'required'
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;

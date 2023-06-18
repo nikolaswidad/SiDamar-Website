@@ -52,22 +52,22 @@ class DatabaseSeeder extends Seeder
     // User seeder end
 
     // Author seeder start
-        PostCategory::create([
-            'name' => 'Web Programming',
-            'slug' => 'web-programming'
-        ]);
-        PostCategory::create([
-            'name' => 'Web Design',
-            'slug' => 'web-design'
-        ]);
-        PostCategory::create([
-            'name' => 'Personal',
-            'slug' => 'personal'
-        ]);
+        // PostCategory::create([
+        //     'name' => 'Web Programming',
+        //     'slug' => 'web-programming'
+        // ]);
+        // PostCategory::create([
+        //     'name' => 'Web Design',
+        //     'slug' => 'web-design'
+        // ]);
+        // PostCategory::create([
+        //     'name' => 'Personal',
+        //     'slug' => 'personal'
+        // ]);
 
-        Post::factory(20)->create();
+        // Post::factory(20)->create();
 
-        PostCategory::factory(20)->create();
+        // PostCategory::factory(20)->create();
 
     // Author seeder end
 
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
         //     'status' => '2'
             
         // ]);
-        Certificate::factory(8)->create();
+        // Certificate::factory(8)->create();
 
     // Certificate seeder end
 
@@ -163,7 +163,7 @@ class DatabaseSeeder extends Seeder
     donation::create([
         'title' => 'Kerja Bakti Bersama SI DAMAR',
         'body' => 'Kerja bakti membersihkan lingkungan rumah biasanya dilakukan dalam lingkup rukun tetangga (RT) dan rukun warga (RW). Kerja bakti tersebut dilakukan oleh semua warga dalam lingkup RT dan RW yang bertujuan untuk mencapai lingkungan hidup yang bersih dan asri. Seluruh warga juga harus bekerja sama untuk tidak membuang sampah secara sembarangan agar kebersihan dan keasrian lingkungan terjaga.&nbsp;',
-        'date' => '2023-06-10',
+        'date' => '2023-06-20',
         'image' => 'upload/donation/1684684561Kerja Bakti.jpg'
     ]);
 

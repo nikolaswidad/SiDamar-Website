@@ -38,6 +38,8 @@ class PresentMemberController extends Controller
     
         // Get the events with titles based on the event IDs
         $events = Event::whereIn('id', $eventIds)->get(['id', 'title']);
+        
+        
     
         // Build an associative array with event titles and update dates
         $eventData = [];

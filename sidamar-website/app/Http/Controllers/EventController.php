@@ -43,17 +43,15 @@ class EventController extends Controller
     {
         $validateData = $request->validate([
             'title' => 'required|max:255',
-            'category_id' => 'required',
+            'category' => 'required',
             'description' => 'required',
             'date' => 'required',
             'time' => 'required',
-            'date_notification' => 'required',
             'location' => 'required',
             'url' => 'required'
         ]);
 
         $validateData['user_id'] = auth()->user()->id;
-        // $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         
         Event::create($validateData);
         return redirect('/dashboard/events')->with('success','New event has been added');
@@ -102,11 +100,10 @@ class EventController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
-            'category_id' => 'required',
+            'category' => 'required',
             'description' => 'required',
             'date' => 'required',
             'time' => 'required',
-            'date_notification' => 'required',
             'location' => 'required',
             'url' => 'required'
         ];

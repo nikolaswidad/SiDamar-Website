@@ -5,7 +5,7 @@
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="flex items-center justify-between pb-4">
             <div>
-                <h1 class="text-lg font-semibold text-gray-700 p-4">Presensi</h1>
+                <h1 class="text-lg font-semibold text-gray-700 p-4">List Presensi</h1>
             </div>
             <label for="table-search" class="sr-only">Search</label>
             <div class="relative">

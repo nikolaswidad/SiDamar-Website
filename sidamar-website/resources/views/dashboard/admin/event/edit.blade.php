@@ -52,10 +52,10 @@
                 <input type="time" name="time" id="time"  value="{{ old('time') ?? $event->time }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
                 </div>
                 
-                <div>
+                {{-- <div>
                 <label for="date_notification" class="block text-sm font-medium text-gray-700">Waktu Notifikasi</label>
                 <input type="date" name="date_notification" id="date_notification" value="{{ old('date_notification') ?? $event->date_notification }}" autocomplete="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm">
-                </div>
+                </div> --}}
 
                 <div>
                 <label for="location" class="block text-sm font-medium text-gray-700">Lokasi</label>

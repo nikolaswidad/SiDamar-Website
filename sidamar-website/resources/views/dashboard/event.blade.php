@@ -3,7 +3,7 @@
 @section('container')
 
 
-   <h1 class="font-bold mb-5 text-4xl">Event</h1>
+   <h1 class="font-bold mb-5 text-4xl">List Acara</h1>
 
    @if (Session::has('success'))
       <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">

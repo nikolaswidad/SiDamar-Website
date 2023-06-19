@@ -32,7 +32,7 @@
 
   <div class="mb-6">
       <label for="category" class="block text-gray-700 text-lg font-bold mb-2">Category</label>
-      <select class="rounded-lg w-full" name="category_id">
+      <select class="block px-4 text-sm  text-gray-900 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="category_id">
       @foreach ($category as $cat)
       @if (old('category_id', $post->category_id) == $cat->id)
         <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>

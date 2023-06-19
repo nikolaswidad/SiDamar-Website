@@ -46,9 +46,9 @@
         <tbody id="category-table">
         @foreach ($category as $cat => $hasil)
           <tr class="border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-          <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $category->firstItem()+$cat }}</td>
-          <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->name }}</td>
-          <td class="text-lg text-gray-900 px-6 py-4 text-left">
+          <td class="text-base text-gray-900 px-6 py-4 text-left">{{ $category->firstItem()+$cat }}</td>
+          <td class="text-base text-gray-900 px-6 py-4 text-left">{{ $hasil->name }}</td>
+          <td class="text-base text-gray-900 px-6 py-4 text-left">
             <form action="{{ route('categories.destroy', $hasil->id) }}" method="POST">
               @csrf
               @method('delete')
@@ -57,7 +57,7 @@
                 </svg></button></a>
             </form>
           </td>
-          <td class="text-lg text-gray-900 px-6 py-4 text-left">
+          <td class="text-base text-gray-900 px-6 py-4 text-left">
             <form action="{{ route('categories.destroy', $hasil->id) }}" method="POST">
               @csrf
               @method('delete')

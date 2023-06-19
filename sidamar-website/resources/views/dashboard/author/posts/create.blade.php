@@ -1,7 +1,8 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="font-bold mb-5 text-4xl">Tambah Post</h1>
+<div class="max-w-4xl font-montserrat">
+  <h1 class="font-bold mb-5 text-4xl">Tambah Post</h1>
 
   @if (count($errors)>0)
     @foreach ($errors->all() as $error)
@@ -16,8 +17,7 @@
       <span class="font-medium">{{ Session('success') }}</span>
     </div>
   @endif
-<div class="w-full">
-  <form action="/dashboard/posts" method="POST" enctype="multipart/form-data" class="bg-white shadow rounded-lg px-8 pt-6 pb-8 mb-4">
+  <form action="/dashboard/posts" method="POST" enctype="multipart/form-data" class="rounded-lg space-y-5">
     @csrf
     <div class="mb-6">
       <label for="title" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Judul</label>
@@ -35,8 +35,8 @@
     </div>
 
     <div class="mb-6">
-      <label for="category" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Kategori</label>
-      <select class="rounded-lg" name="category_id">
+      <label for="category" class="block mb-2 text-sm font-bold text-gray-900">Kategori</label>
+      <select class="block px-4 text-sm  text-gray-900 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="category_id">
         @foreach ($category as $cat)
         @if (old('category_id') == $cat->id)
           <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>

@@ -41,7 +41,7 @@
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Event</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nama</th>
-           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Tanggal</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-9 py-4 text-left">Tanggal</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Status</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Print</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Hapus</th>
@@ -55,7 +55,7 @@
            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $no++ }}</td>
            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->events->title }}</td>
            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->user->name }}</td>
-           <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->events->date }}</td>
+           <td class="text-lg text-gray-900 px-5 py-4 text-left">{{ $hasil->events->date }}</td>
            <td class="text-lg text-gray-900 px-6 py-4 text-left">
              <span class="px-2 font-semibold 
                 @if ($hasil->cstatus->id == 1)

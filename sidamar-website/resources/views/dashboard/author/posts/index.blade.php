@@ -15,7 +15,6 @@
      <a href="{{ route('posts.create') }}"><button type="button" class="p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mb-5">+ Tambah Post</button></a>
    <a href="/dashboard/posts/deleted">
    <button type="button" class="
-   {{-- text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 --}}
    p-3 hover:bg-red-600 bg-primary text-white 
     font-semibold rounded-lg text-lg px-5 py-2.5 text-center mr-2 float-right mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash inline" viewBox="0 0 16 16">
     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>

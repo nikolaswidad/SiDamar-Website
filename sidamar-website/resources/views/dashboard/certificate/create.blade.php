@@ -32,7 +32,7 @@
   
   <div class="mb-6">
     <label for="event_id" class="block text-gray-700 text-lg font-bold mb-2">Nama Event</label>
-    <select class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="event_id">
+    <select class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="event_id" value="{{ old('event_id') }}>
       <option value="">Pilih Event</option>
       @foreach ($event as $e)
       @if (old('event_id') == $e->title)
@@ -45,7 +45,7 @@
   </div>
 
   <label for="tanggal" class="block text-gray-700 text-lg font-bold mb-2">Tanggal</label>
-  <input type="date" id="tanggal" name="tanggal" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly>
+  <input type="date" id="tanggal" name="tanggal" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly value="{{ old('tanggal') }}">
 
   <input type="hidden" name="status" value="1"> 
   <div class="flex justify-end">

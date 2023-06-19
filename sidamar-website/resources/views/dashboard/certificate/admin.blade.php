@@ -26,7 +26,7 @@
                      <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Approve</th>
                      <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Reject</th>
                      <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nama Event</th>
-                     <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Tanggal</th>
+                     <th scope="col" class="text-lg font-bold text-gray-900 px-6 pr-20 py-4 text-left">Tanggal</th>
                      <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nama</th>
                      <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Status</th>
                      <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Print</th>

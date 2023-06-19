@@ -59,8 +59,8 @@
 					<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 						<svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
 					</div>
-					<input type="text" id="search" name="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-red-500 focus:border-red-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500 mr-96" placeholder="Cari..." value="{{ request('search') }}" required>
-					<button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Cari</button>
+					<input type="text" id="search" name="search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mr-96" placeholder="Search..." value="{{ request('search') }}" required>
+					<button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
 				</div>
 			</form>
 			</div>
@@ -85,7 +85,7 @@
 						@endif
 					</a>
 					<div class="bg-white flex flex-col justify-start p-6">
-						<a href="/blog?category={{ $post->category->slug }}" class="text-red-600 text-sm font-bold uppercase pb-4">{{ $post->category->name }}</a>
+						<a href="/blog?category={{ $post->category->slug }}" class="text-blue-700 text-sm font-bold uppercase pb-4">{{ $post->category->name }}</a>
 						<a href="{{ route('isi', $post->slug) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">{{ $post->title }}</a>
 						<p class="text-sm pb-3">
 								By <a href="/blog?author={{ $post->author->name }}" class="font-semibold hover:text-gray-800">{{ $post->author->name }}</a>, Published on {{ $post->created_at->format('d/m/Y') }}
@@ -98,13 +98,13 @@
 
 	<!-- Pagination -->
 		<div class="flex items-center py-8">
-			<a href="{{$data->previousPageUrl()}}" class="h-10 w-10 bg-red-600 hover:bg-red-700 font-semibold text-white text-sm flex items-center justify-center"><</a>
+			<a href="{{$data->previousPageUrl()}}" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center"><</a>
 			@for($i=1;$i<=$data->lastPage();$i++)
 				<!-- a Tag for another page -->
-				<a href="{{$data->url($i)}}" class="h-10 w-10 font-semibold text-gray-800 hover:bg-red-600 hover:text-white text-sm flex items-center justify-center">{{$i}}</a>
+				<a href="{{$data->url($i)}}" class="h-10 w-10 font-semibold text-gray-800 hover:bg-blue-600 hover:text-white text-sm flex items-center justify-center">{{$i}}</a>
 			@endfor
 			<!-- a Tag for next page -->
-			<a href="{{$data->nextPageUrl()}}" class="h-10 w-10 bg-red-600 hover:bg-red-700 font-semibold text-white text-sm flex items-center justify-center">></a>
+			<a href="{{$data->nextPageUrl()}}" class="h-10 w-10 bg-blue-800 hover:bg-blue-600 font-semibold text-white text-sm flex items-center justify-center">></a>
 		</div>
 				
 

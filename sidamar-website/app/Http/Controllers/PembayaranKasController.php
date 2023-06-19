@@ -105,11 +105,11 @@ class PembayaranKasController extends Controller
         //check if user already paid
         $check = PembayaranKas::where('bulan_kas_id', $request->bulan)->where('user_id', auth()->user()->id)->first();
         if($check){
-            Session::flash('error', 'Anda sudah membayar kas bulan ini!');
+            Session::flash('error', 'Anda Sudah Membayar Kas Bulan Ini!');
             return redirect('/dashboard/pembayaranKas/'.$pembayaranKas->bulan_kas_id);
         }
         $pembayaranKas->save();
-        Session::flash('success', 'Pembayaran Kas berhasil ditambahkan!');
+        Session::flash('success', 'Pembayaran Kas Berhasil Ditambahkan');
         return redirect('/dashboard/pembayaranKas/'.$pembayaranKas->bulan_kas_id);
     }
 
@@ -194,7 +194,7 @@ class PembayaranKasController extends Controller
         $pembayaranKas->bulan_kas_id = $request->bulan;
         $pembayaranKas->metode_pembayaran = $request->metode;
         $pembayaranKas->save();
-        Session::flash('success', 'Update Pembayaran Kas Success');
+        Session::flash('success', 'Pembayaran Kas Berhasil Diperbarui');
         // return view('dashboard.pembayaranKas.show',[
         //     'bulanKas' => $bulanKas,
         //     'pembayaranKas' => $pembayaranKas
@@ -212,11 +212,9 @@ class PembayaranKasController extends Controller
     {
         $pembayaranKas = PembayaranKas::find($id);
         //delete the image
-        
-
-        
         $pembayaranKas->delete();
-        Session::flash('success', 'Delete Pembayaran Kas Success');
+        Storage::delete('public/bukti_pembayaran/'.$pembayaranKas->bukti_pembayaran);
+        Session::flash('success', 'Pembayaran Kas Berhasil Dihapus');
         return redirect()->back();
     }
 }

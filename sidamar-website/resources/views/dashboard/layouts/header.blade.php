@@ -1,4 +1,4 @@
-<nav class="bg-primaryDarken border-b border-gray-200 fixed z-30 w-full">
+<nav class="fixed z-30 w-full">
     <div class="px-3 py-0 lg:px-5 lg:pl-3">
        <div class="flex items-center justify-between">
           <div class="flex items-center justify-start">
@@ -14,20 +14,10 @@
                <img src="img/logo.png" class="h-10" alt="Si Damar Logo">
                <span class="font-bold text-white text-3xl flex-1 font-montserrat p-3 rounded-xl">SI DAMAR</span>
              </a>
-             {{-- <form action="#" method="GET" class="hidden lg:block lg:pl-48">
-                <label for="topbar-search" class="sr-only">Search</label>
-                <div class="mt-1 relative lg:w-64">
-                   <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                         <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                      </svg>
+      
                    </div>
-                   <input type="text" name="email" id="topbar-search" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primaryDarken focus:border-primaryDarken block w-full pl-10 p-2.5" placeholder="Search">
-                </div>
-             </form> --}}
-          </div>
-          <div class="flex items-center">
-             <span class="text-white mr-3">Hai, {{auth()->user()->name}}</span>
+          <div class="flex items-end">
+             <span class="mr-3">Hai, {{auth()->user()->name}}</span>
           </div>
          <img id="avatarButton" type="button" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="w-10 h-10 rounded-full cursor-pointer hover:bg-primaryDarken" src="/img/logo2.png" alt="User dropdown">
 
@@ -53,17 +43,6 @@
             </form>
          </div>
 
-
-             {{-- <a href="#" class="w-2 hidden aspect-square sm:inline-flex ml-5 text-white bg-primary hover:bg-primaryLighten focus:ring-4 focus:ring-red-200 font-medium rounded-full text-sm px-5 py-2.5 text-center items-center mr-3">
-                <img src="img/logo.png" alt="">
-             </a> --}}
-
-             {{-- <form action="/logout" method="POST">
-               @csrf
-               <button type="submit" class="text-white px-3">
-                 <i class="bi bi-box-arrow-right"></i>Logout <span data-feather="log-out"></span>
-               </button>
-             </form> --}}
           </div>
        </div>
     </div>

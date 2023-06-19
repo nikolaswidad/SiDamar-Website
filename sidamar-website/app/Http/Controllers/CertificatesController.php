@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Certificate;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CertificatesController extends Controller
 {
@@ -50,8 +51,9 @@ class CertificatesController extends Controller
 
         $validatedData['user_id'] = auth()->user()->id;
         Certificate::create($validatedData);
+        Session::flash('success', 'Sertifikat Berhasil Dibuat');
 
-        return redirect('dashboard/certificate/create')->with('success', 'Sertifikat baru berhasil disimpan');
+        return redirect('dashboard/certificate')->with('success', 'Sertifikat Berhasil Ditambahkan');
     }
 
 
@@ -99,7 +101,7 @@ class CertificatesController extends Controller
     {
         $post = Certificate::findorfail($id);
         $post->delete();
-        return redirect('dashboard/certificate')->with('success','Sertifikat berhasil dihapus');
+        return redirect('dashboard/certificate')->with('success','Sertifikat Berhasil Dihapus');
     }
 
     public function admin()
@@ -115,10 +117,10 @@ class CertificatesController extends Controller
                 'status' => 2
             ]);
         } catch (\Exception $e){
-            return redirect('/dashboard/statuscertificate')->with('success','Sertifikat berhasil diapprove');
+            return redirect('/dashboard/statuscertificate')->with('success','Sertifikat Berhasil Diapprove');
         }
 
-        return redirect('/dashboard/statuscertificate')->with('success','Sertifikat berhasil diapprove');
+        return redirect('/dashboard/statuscertificate')->with('success','Sertifikat Berhasil Diapprove');
     }
 
     public function rejected ($id) 
@@ -128,10 +130,10 @@ class CertificatesController extends Controller
                 'status' => 3
             ]);
         } catch (\Exception $e){
-            return redirect('/dashboard/statuscertificate')->with('success','Sertifikat berhasil direject');
+            return redirect('/dashboard/statuscertificate')->with('success','Sertifikat Berhasil Direject');
         }
 
-        return redirect('/dashboard/statuscertificate')->with('success','Sertifikat berhasil direject');
+        return redirect('/dashboard/statuscertificate')->with('success','Sertifikat Berhasil Direject');
     }
 
 }

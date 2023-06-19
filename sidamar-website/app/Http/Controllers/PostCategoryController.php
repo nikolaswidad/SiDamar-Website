@@ -47,7 +47,7 @@ class PostCategoryController extends Controller
             'slug' => Str::slug($request->name) 
         ]) ;
 
-        return redirect()->back()->with('success','Kategori berhasil disimpan');
+        return redirect()->back()->with('success','Kategori Berhasil Ditambahkan');
     }
 
     /**
@@ -93,7 +93,7 @@ class PostCategoryController extends Controller
 
         PostCategory::whereId($id)->update($category_data);
         // return redirect()->route('dashboard.posts.category');
-        return redirect('dashboard/categories')->with('success','Kategori berhasil disimpan');
+        return redirect('dashboard/categories')->with('success','Kategori Berhasil Diperbarui');
     }
 
     /**
@@ -106,6 +106,6 @@ class PostCategoryController extends Controller
     {
         $category = PostCategory::findorfail($id);
         $category->delete();
-        return redirect('dashboard/categories')->with('success','Data berhasil dihapus');
+        return redirect('dashboard/categories')->with('success','Kategori Berhasil Dihapus');
     }
 }

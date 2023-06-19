@@ -1,47 +1,70 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-   <h1 class="font-bold mb-5 text-4xl">Sertifikat</h1>
+<div class="max-w-5xl font-montserrat">
+  <h1 class="font-montserrat font-bold mb-5 text-4xl">Sertifikat</h1>
+  <hr class="bg-slate-200 mt-5 max-w-xs">
 
-   @if (Session::has('success'))
+  {{-- @if (Session::has('success'))
     <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
       <span class="font-medium">{{ Session('success') }}</span>
     </div>
+ @endif --}}
+  @if (session('success'))
+    <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
+      {{ session('success') }}
+    </div>
   @endif
+  <div class="grid grid-cols-2">
 
-    <a href="{{ route('certificate.create') }}"><button type="button" class="
-      bg-blue-500 text-white px-5 py-2.5 mr-2 mb-4 rounded-lg text-sm">+ Tambah Sertifikat</button></a>
-    
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="flex justify-start">
+      <label for="table-search" class="sr-only">Search</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none py-2">
+          <svg class="w-5 h-5 mt-3 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+        </div>
+        <input type="text" id="table-search" class="mt-5 block p-3 pl-10 text-md text-gray-900 border border-gray-300 rounded-lg w-96 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Cari Sertifikat...">
+      </div>
+    </div>
+
+   <div class="flex justify-end">
+     <a href="{{ route('certificate.create') }}">
+     <button type="button" class="bg-red-600 text-white px-5 py-2.5 mr-2 mb-4 mt-5 rounded-lg text-md font-bold">+ Tambah Sertifikat</button></a>
+   </div>
+
+  </div>
+     
+   <div class="relative overflow-x-auto sm:rounded-lg">
       <table class="w-1/2 sm:w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-sm text-gray-700 uppercase bg-gray-50 border-b dark:bg-gray-700 dark:text-gray-400">
+       <thead class="text-sm text-gray-700 bg-gray-50 border-b dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" class="px-6 py-3">No</th>
-            <th scope="col" class="px-6 py-3">Acara</th>
-            <th scope="col" class="px-6 py-3">Nama</th>
-            <th scope="col" class="px-6 py-3">Tanggal</th>
-            <th scope="col" class="px-6 py-3">Status</th>
-            <th scope="col" class="px-6 py-3">Cetak</th>
-            <th scope="col" class="px-6 py-3">Hapus</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Event</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nama</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Tanggal</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Status</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Print</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Hapus</th>
           </tr>
         </thead>
         
-        <tbody class="text-base">
+       <tbody id="sertif-table" class="text-base">
           @php $no = 1 @endphp
           @foreach ($certif as $cf => $hasil)
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <td class="px-6 py-3">{{ $no++ }}</td>
-            <td class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $hasil->events->title }}</td>
-            <td class="px-6 py-3">{{ $hasil->user->name }}</td>
-            <td class="px-6 py-3">{{ $hasil->events->date }}</td>
-            <td class="px-6 py-3">
-              <span class="text-xs font-semibold py-1 px-2 rounded 
+         <tr class="border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+           <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $no++ }}</td>
+           <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->events->title }}</td>
+           <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->user->name }}</td>
+           <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->events->date }}</td>
+           <td class="text-lg text-gray-900 px-6 py-4 text-left">
+             <span class="px-2 font-semibold 
                 @if ($hasil->cstatus->id == 1)
-                text-orange-600 bg-orange-200 
+              bg-orange-400 text-white px-1.5 py-2 text-sm rounded-lg text-center inline-flex
+               
                 @elseif ($hasil->cstatus->id == 3)
-                  text-red-600 bg-red-200
+               bg-red-600 text-white px-1.5 py-2 text-sm rounded-lg text-center inline-flex
                 @else
-                  text-lime-600 bg-lime-200 
+               bg-green-400 text-white px-1.5 py-2 text-sm rounded-lg text-center inline-flex 
                 @endif
                     last:mr-0 mr-1">
                 {{ $hasil->cstatus->name }}
@@ -83,4 +106,38 @@
           
     </div>
   </div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+  var searchInput = document.getElementById("table-search");
+  searchInput.addEventListener("input", searchTable);
+
+  function searchTable() {
+      var input = searchInput.value.toLowerCase();
+      var table = document.getElementById("sertif-table");
+      var rows = table.getElementsByTagName("tr");
+
+      for (var i = 0; i < rows.length; i++) {
+          var rowData = rows[i].textContent.toLowerCase();
+
+          if (rowData.includes(input)) {
+              rows[i].style.display = "";
+          } else {
+              rows[i].style.display = "none";
+          }
+      }
+  }
+
+    // Make the table header sticky
+    var tableContainer = document.querySelector(".table-container");
+    tableContainer.addEventListener("scroll", function() {
+      var tableHeader = document.querySelector("sertif-table thead");
+      tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
+  });
+});
+</script> 
+<div class="mb-16"></div>
 @endsection

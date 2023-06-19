@@ -9,7 +9,7 @@
                     <span class="text-dark mb-2 sm:text-3xl block text-lg font-semibold">
                         Our Merch
                     </span>
-                    <a class="text-primary hover:text-dark mb-4 text-3xl font-bold sm:text-4xl md:text-[40px]" href="/merch/create">
+                    <a class="text-primary hover:text-red-700 hover:underline text-3xl font-bold sm:text-4xl md:text-[40px]" href="/merch/create">
                         Click on a merch to buy!
                         
                     </a>
@@ -33,7 +33,7 @@
                         @endif
                     </div>
                     <div>
-                        <span class="bg-primary mb-5 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-white">
+                        <span class="bg-primary mb-5 inline-block rounded py-1 px-4 text-center text-lg font-semibold leading-loose text-white">
                         Rp {{ $merch->price }}
                         </span>
                         <h3><a
@@ -45,10 +45,11 @@
                 </div>          
             </ul>
                 @empty
-                <p class="text-warning">No Merches available</p>
+                <p class="text-warning">Merchandise tidak tersedia</p>
             @endforelse
             </div> 
         </div>
     </div>
+
 
 @endsection

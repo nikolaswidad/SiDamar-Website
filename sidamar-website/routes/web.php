@@ -67,17 +67,32 @@ Route::get('/dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
 
-
-// Route::get('/dashboard/event', function(){ return view('dashboard.event'); });
-// Route::get('/dashboard/event//{year}/{month}', [EventMemberController::class, 'showCalendar'])->name('calendar');
-Route::get('/dashboard/event', [EventMemberController::class, 'index']);
-
-
+Route::get('/merchandise', function(){
+    return view('merchandise');
+});
+Route::get('/donation', function(){
+    return view('donation');
+});
+Route::get('/form-donation', function(){
+    return view('form-donation');
+});
+Route::get('/dashboard/event', function(){
+    return view('dashboard.event');
+});
 Route::get('/dashboard/kas', function(){
     return view('dashboard.kas');
 });
 Route::get('/dashboard/presents', function(){
     return view('dashboard.present');
+});
+Route::get('/dashboard/donasi', function(){
+    return view('dashboard.donasi');
+});
+Route::get('/dashboard/merch', function(){
+    return view('dashboard.merch');
+});
+Route::get('/dashboard/finance', function(){
+    return view('dashboard.finance');
 });
 
 Route::get('/dashboard/present', [PresentMemberController::class, 'show']);
@@ -110,7 +125,8 @@ Route::get('/dashboard/present/{id}', [PresentController::class, 'show']);
 Route::post('/dashboard/present/{present}/', [PresentController::class, 'store']);
 Route::delete('/dashboard/present/delete/{id}/{user}', [PresentController::class, 'destroy']);
 
-
+Route::resource('/dashboard/admin/event', EventController::class);
+Route::resource('/dashboard/admin/presents', PresentController::class);
 
 
 // Dashboard Admin End
@@ -184,4 +200,3 @@ Route::get('/about', function () {
 
 //if request from button Diterima then run method diterima() else ditolak()
 Route::post('/buat',[FillPDFController::class, 'process'])->name('buat');
-// });

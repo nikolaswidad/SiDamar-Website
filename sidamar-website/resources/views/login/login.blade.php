@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="w-full max-w-md space-y-8">
+        <div class="w-full max-w-md space-y-1 p-10 rounded-xl shadow-lg border">
         <div>
 
             @if (session()->has('loginError'))
@@ -20,14 +20,14 @@
               
             @endif
 
-            <h2 class="my-6 text-center text-3xl font-bold tracking-tight text-primary">Login ke Akunmu!</h2>
-            <img src="/login/1.jpg" alt="" class="object-cover object-left h-24 w-full rounded-lg">
+            <h2 class="mb-5 text-center text-3xl font-bold tracking-tight text-primary">Login ke Akunmu!</h2>
+            <img src="/login/3.jpg" alt="" class="object-cover object-top h-28 w-full rounded-lg mb-5">
         </div>
         <form class="mt-8 space-y-4" action="/login" method="POST">
         @csrf
         {{-- <input type="hidden" name="remember" value="true"> --}}
         <div class="-space-y-px rounded-md shadow-sm">
-            <div class="py-4">
+            <div class="mb-4">
                 <label for="email" class="block text-gray-700 text-lg font-bold mb-2">Email</label>
                 <label for="email-address" class="sr-only">Email address</label>
                 <input id="email-address" name="email" type="email" autocomplete="email" autofocus required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-primary focus:outline-none focus:ring-prborder-primary sm:text-sm @error('email') is-invalid @enderror" placeholder="Email address" value="{{ old('email') }}">

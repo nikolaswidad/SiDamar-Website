@@ -62,7 +62,7 @@ class ArsipFilmController extends Controller
 
         //store the request
         ArsipFilm::create($validatedData);
-        Session::flash('success', 'Data berhasil ditambahkan');
+        Session::flash('success', 'Arsip Film Berhasil Ditambahkan');
         
         return redirect('dashboard.arsipFilm.index');
     }
@@ -102,11 +102,11 @@ class ArsipFilmController extends Controller
         $previous = url()->previous();
         if ($previous == 'http://sidamar-website.test/dashboard/arsipFilm/create') {
             //dd($arsipFilm->id);
-            Session::flash('success', 'Arsip Film berhasil ditambahkan');
-            return view('/dashboard/arsipFilm');
+            Session::flash('success', 'Arsip Film Berhasil Ditambahkan');
+            return redirect('/dashboard/arsipFilm');
             
         } elseif ($previous == 'http://sidamar-website.test/arsipFilm') {
-            Session::flash('success', 'Arsip Film berhasil ditambahkan');
+            Session::flash('success', 'Arsip Film Berhasil Ditambahkan');
             return redirect('/arsipFilm/');
         }
     }
@@ -172,7 +172,7 @@ class ArsipFilmController extends Controller
         //update the request
         ArsipFilm::where('id', $arsipFilm->id)
             ->update($validatedData);
-        Session::flash('success', 'Data berhasil diubah');
+        Session::flash('success', 'Arsip Film Berhasil Diubah');
         return redirect('/dashboard/arsipFilm/');
     }
 
@@ -185,7 +185,7 @@ class ArsipFilmController extends Controller
     public function destroy(ArsipFilm $arsipFilm)
     {
         ArsipFilm::destroy($arsipFilm->id);
-        Session::flash('success', 'Arsip Film berhasil dihapus');
+        Session::flash('success', 'Arsip Film Berhasil Dihapus');
         return redirect('/dashboard/arsipFilm/');
     }
 }

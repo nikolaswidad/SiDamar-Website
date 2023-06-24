@@ -11,7 +11,7 @@
         <div class="mt-5 md:col-span-2 md:mt-0">
             <div class="shadow bg-white rounded-lg overflow-hidden">
                 <div class="p-6 space-y-6">
-                    <h2 class="text-2xl font-bold text-gray-800">{{ $event->category }}: {{ $event->title }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-800">{{ $event->categories->category }}: {{ $event->title }}</h2>
                     <div>
                         <label for="location" class="text-lg font-bold text-gray-700">Lokasi:</label>
                         <a href="{{ $event->url }}" target="_blank" class="text-primary hover:text-primaryLighten">{{ $event->location }}</a>

@@ -75,7 +75,7 @@
                                 {{ $event->title }}</td>
                               </a>                        
                         </th>
-                        <td class="px-6 py-4">{{ $event->category }}</td>
+                        <td class="px-6 py-4">{{ $event->categories->category }}</td>
                         <td class="px-6 py-4">
                             {{ \Carbon\Carbon::parse($event->time)->format('H:i') }}
                         </td>

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('description');
             $table->date('date');
             $table->time('time');
-            $table->date('date_notification')->nullable();
+            // $table->date('date_notification')->nullable();
             $table->string('location');
             $table->string('url');
             $table->softDeletes();

@@ -17,7 +17,7 @@ class EventCategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'category' => $this->faker->randomElement(['Event', 'Production', 'Donation']),
         ];
     }
 }

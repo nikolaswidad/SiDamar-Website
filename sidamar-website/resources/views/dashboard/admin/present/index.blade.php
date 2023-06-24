@@ -70,7 +70,7 @@
                         </a>
                     </th>
                     <td class="px-6 py-4">
-                        {{ $event->category }}
+                        {{ $event->categories->category }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $hadir }}

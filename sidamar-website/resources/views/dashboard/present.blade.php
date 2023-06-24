@@ -41,9 +41,12 @@
                         <td class="px-6 py-4 whitespace-no-wrap">
                             <div class="flex items-center">
                                 <div>
-                                    <div class="{{ presentColorClass($event['type'])['color'] }}">
+                                    {{ ucfirst($event['type']) }}
+                                    {{-- <div class="
+                                    {{ presentColorClass($event['type'])['color'] }}">
                                         {{ ucfirst($event['type']) }}
-                                    </div>
+
+                                    </div> --}}
                                 </div>
                             </div>
                         </td>

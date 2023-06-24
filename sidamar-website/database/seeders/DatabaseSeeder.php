@@ -32,6 +32,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EventSeeder::class);
         $this->call(PresentSeeder::class);
 
+
+
     // User seeder start
         User::create([
             'name' => 'Sidamar',

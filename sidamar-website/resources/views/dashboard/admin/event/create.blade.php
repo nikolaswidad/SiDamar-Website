@@ -19,12 +19,12 @@
               <label for="category_id" class="block text-sm font-medium text-gray-700">Kategori</label>
               <select id="category_id" name="category_id" autocomplete="category_id" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm">
                 <option selected disabled>Pilih Kategori</option>
-                {{-- @foreach ($categories as $category)
-                  <option value="{{ $category->id }}" >{{ $category->name }}</option>
-                  @endforeach --}}
-                  <option value="event" >Event</option>
+                @foreach ($categories as $cat)
+                  <option value="{{ $cat->id }}" >{{ $cat->category }}</option>
+                  @endforeach
+                  {{-- <option value="event" >Event</option>
                   <option value="production" >Production</option>
-                  <option value="donation" >donation</option>
+                  <option value="donation" >donation</option> --}}
               </select>
             </div>
             

@@ -16,12 +16,14 @@ class EventFactory extends Factory
      */
     public function definition()
     {
+        $categories = ['Event', 'Production', 'Donation'];
+
         return [
             'user_id' => mt_rand(1,4),
-            'title' => $this->faker->company(),
+            'title' => $this->faker->word(),
             'event_manager' => fake()->name(),
-            'category' => mt_rand(1,3),
-            'description' => $this->faker->sentence(mt_rand(2,4)),
+            'category' => $this->faker->randomElement($categories),
+            'description' => $this->faker->paragraphs(5, true),
             'date' => $this->faker->dateTime(),
             'time' => $this->faker->time(),
             'date_notification' => $this->faker->dateTime(),

@@ -31,6 +31,11 @@
             @error('bulan')
                 <div class="text-red-500 text-sm mb-2">{{ $message }}</div>
             @enderror
+            
+            <div class="hidden">
+                <label for="user" class="block text-gray-700 text-lg font-bold mb-2">UserID</label>
+                <input type="text" name="user_id" class="h-11 block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline mb-3" placeholder="Link Presskit Film" value="{{ auth()->user()->id }}">
+            </div>
 
             {{-- field tahun berdasarkan tahun saat ini --}}
             <label for="tahun" class="block text-gray-700 text-lg font-bold mb-2">Tahun</label>

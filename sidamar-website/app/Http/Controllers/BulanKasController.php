@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\KasChart;
 use App\Http\Requests\StoreBulanKasRequest;
 use App\Http\Requests\UpdateBulanKasRequest;
 use Illuminate\Http\Request;
 use App\Models\BulanKas;
+use App\Models\User;
 use App\Models\PembayaranKas;
 use Illuminate\Support\Facades\Session;
+
 
 class BulanKasController extends Controller
 {
@@ -16,7 +19,7 @@ class BulanKasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(KasChart $kasChart)
     {
         // //total terkumpul value based on count on status and then multiply by 20000
         // $pembayaranKas 
@@ -40,7 +43,8 @@ class BulanKasController extends Controller
 
         return view('dashboard.bulanKas.index', [
             'bulanKas' => BulanKas::all()->sortBy('tahun'),
-            'pembayaranKas' => PembayaranKas::all()
+            'pembayaranKas' => PembayaranKas::all(),
+            'kasChart' => $kasChart->build(),
         ]);
     }
 
@@ -51,6 +55,8 @@ class BulanKasController extends Controller
      */
     public function create()
     {
+        // get user id
+
         return view('dashboard.bulanKas.create');
 
     }
@@ -64,6 +70,7 @@ class BulanKasController extends Controller
     public function store(StoreBulanKasRequest $request)
     {
         $validatedData =  $request->validate([
+            'user_id'=> 'required',
             'bulan' => 'required',
             'tahun' => 'required'
         ]);
@@ -132,6 +139,7 @@ class BulanKasController extends Controller
     public function update(Request $request, $id)
     {   
         $bulanKas = BulanKas::find($id);
+        $bulanKas->user_id = $request->user_id;
         $bulanKas->bulan = $request->bulan;
         $bulanKas->tahun = $request->tahun;
         

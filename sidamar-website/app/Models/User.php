@@ -45,4 +45,13 @@ class User extends Authenticatable
     public function pembayaranKas(){
         return $this->hasMany(PembayaranKas::class);
     }
+    public function presents()
+    {
+        return $this->hasMany(Present::class);
+    }
+
+    public function attendedEvents()
+    {
+        return $this->belongsToMany(Event::class, 'presents', 'user_id', 'event_id');
+    }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->integer('jumlah');
             $table->string('metode_pembayaran');
-            $table->string('bukti_pembayaran')->nullable();
+            $table->string('bukti_pembayaran');
             $table->string('status')->default('pending');
             $table->timestamps();
         });

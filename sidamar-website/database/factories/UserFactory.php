@@ -22,9 +22,13 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            // year between 2021 and year now
+            'tahun_bergabung' => fake()->numberBetween(2021, 2023),
             'remember_token' => Str::random(10),
             'is_admin' => fake()->boolean(),
             'is_author' => fake()->boolean(),
+            'profile_photo' => public_path('img/logo2.png'),
+
         ];
     }
 

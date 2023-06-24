@@ -46,11 +46,12 @@ class DatabaseSeeder extends Seeder
     // User seeder start
         User::create([
             'name' => 'Sidamar',
-            // 'username' => 'sidamar',
             'email' => 'sidamar@gmail.com',
             'password' => bcrypt('password'),
+            'tahun_bergabung' => '2021',
             'is_admin' => (true),
-            'is_author' => (true)
+            'is_author' => (true),
+            'profile_photo' => 'img/logo2.png'
         ]);
 
         User::factory(40)->create();
@@ -100,29 +101,35 @@ class DatabaseSeeder extends Seeder
 
     // Bulan Kas seeder start
         BulanKas::create([
+            'user_id' => 1,
             'bulan' => 'Januari',
             'tahun' => '2021',
             'total_terkumpul' => 2000000,
         ]);
         BulanKas::create([
+            'user_id' => 1,
             'bulan' => 'Februari',
             'tahun' => '2021',
             'total_terkumpul' => 150000,
         ]);
         BulanKas::create([
+            'user_id' => 1,
             'bulan' => 'Maret',
             'tahun' => '2022',
             'total_terkumpul' => 100000,
         ]);
         BulanKas::create([
+            'user_id' => 1,
             'bulan' => 'April',
             'tahun' => '2022',
             'total_terkumpul' => 100000,
         ]);
 
         BulanKas::create([
+            'user_id' => 1,
             'bulan' => 'Mei',
-            'tahun' => '2022'
+            'tahun' => '2022',
+            'total_terkumpul' => 100000,
         ]);
     // Bulan Kas seeder end
 
@@ -194,6 +201,7 @@ class DatabaseSeeder extends Seeder
 
         //Arsip Film Seeder start
         ArsipFilm::create([
+            'user_id' => 1,
             'produser' => 'Farhan Kebab',
             'sutradara' => 'Asep Spakbor',
             'distributor' => 'Jim Salabim',
@@ -210,6 +218,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ArsipFilm::create([
+            'user_id' => 1,
             'produser' => 'Sigit Rendang',
             'sutradara' => 'Reza Kecap',
             'distributor' => 'Anto Bengkel',
@@ -226,6 +235,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ArsipFilm::create([
+            'user_id' => 1,
             'produser' => 'Supri Icikiwir',
             'sutradara' => 'Zaki Indomie',
             'distributor' => 'Asep Batagor',

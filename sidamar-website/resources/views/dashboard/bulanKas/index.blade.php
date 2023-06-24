@@ -121,37 +121,7 @@ $total_kas = 0;
               </div>
           </div>
       </div>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-
-        var searchInput = document.getElementById("table-search");
-        searchInput.addEventListener("input", searchTable);
-
-        function searchTable() {
-            var input = searchInput.value.toLowerCase();
-            var table = document.getElementById("kas-table");
-            var rows = table.getElementsByTagName("tr");
-
-            for (var i = 0; i < rows.length; i++) {
-                var rowData = rows[i].textContent.toLowerCase();
-
-                if (rowData.includes(input)) {
-                    rows[i].style.display = "";
-                } else {
-                    rows[i].style.display = "none";
-                }
-            }
-        }
-
-          // Make the table header sticky
-          var tableContainer = document.querySelector(".table-container");
-          tableContainer.addEventListener("scroll", function() {
-            var tableHeader = document.querySelector("kas-table thead");
-            tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
-        });
-      });
-      </script> 
   </div>
+
 
 @endsection

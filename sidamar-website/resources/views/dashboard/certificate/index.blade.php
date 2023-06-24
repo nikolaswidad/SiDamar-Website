@@ -105,6 +105,11 @@
      </table>
          
      </div>
+     @empty($events)
+        <div class="px-6 py-8 whitespace-nowrap">
+            <div class="font-medium mb-5 text-2xl text-center text-gray-500">- Tidak Ada Event -</div>
+        </div>
+      @endempty
  </div>
 
 </div>

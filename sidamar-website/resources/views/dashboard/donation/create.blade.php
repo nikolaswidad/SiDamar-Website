@@ -29,7 +29,7 @@
 
                   <div class="col-span-6 sm:col-span-3">
                     <label for="title" class="block text-gray-700 text-lg font-bold mb-2"><br>Nama Event</label>
-                    <input type="text" id="title" name="title" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm @error('title') is-invalid @enderror" required value="{{ old('title') }}">
+                    <input type="text" id="title" name="title" class="block w-full rounded-md border-gray-300 shadow-sm sm:text-sm @error('title') is-invalid @enderror" required value="{{ old('title') }}">
                     @error('title')
                           {{ $donation }}
                       @enderror
@@ -37,7 +37,7 @@
             
                   <div class="mb-6">
                     <label for="date" class="block text-gray-700 text-lg font-bold mb-2">Tanggal</label>
-                    <input type="date" id="date" name="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm @error('date') is-invalid @enderror" placeholder="date" required value="{{ old('date') }}">
+                    <input type="date" id="date" name="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm @error('date') is-invalid @enderror" placeholder="date" required value="{{ old('date') }}">
                     @error('date')
                           {{ $donation }}
                       @enderror

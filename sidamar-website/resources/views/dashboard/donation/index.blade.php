@@ -29,7 +29,7 @@
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Gambar</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Nama Acara</th>
-          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Keterangan</th>
+          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-center">Keterangan</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Tanggal</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Action</th>
         </tr>
@@ -48,7 +48,15 @@
 
             <td class="text-base text-gray-900 px-6 py-4 text-left">{{ $don->title }}</td>
 
-            <td class="text-base text-gray-900 px-6 py-4 text-left">{{ $don->body }}</td>
+            <td class="text-base text-gray-900 px-6 py-4 text-left">
+              <div class="flex justify-center">
+                <button data-tooltip-target="tooltip-light" data-tooltip-style="light" type="button" class="text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-semibold rounded-lg text-sm px-5 py-2.5 text-center">Detail</button>
+                <div id="tooltip-light" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-base text-gray-900 bg-white border border-gray-200 rounded-xl shadow-lg opacity-0 tooltip">
+                    {{ $don->body }}
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+              </div>
+            </td>
 
             <td class="text-base text-gray-900 px-6 py-4 text-left">{{ Carbon\Carbon::parse($don->date)->format('Y-m-d') }}</td>
 

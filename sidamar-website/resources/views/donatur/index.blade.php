@@ -33,7 +33,7 @@
       <a href="./donatur/create">
         <div class="w-full mb-5">
           @if ($donate->image)
-            <img class="inset-0 -left-96 border w-[300px] h-full rounded-l-2xl object-cover object-right" src="{{ asset($donate->image) }}" alt="img"  alt="{{ $donate->title }}">
+            <img class="inset-0 -left-96 border h-full rounded-l-2xl object-cover object-right" src="{{ asset($donate->image) }}" alt="img"  alt="{{ $donate->title }}">
           @endif
           {{-- <img src="/login/1.jpg" alt="" class="w-full object-cover rounded-l-2xl"> --}}
         </div>

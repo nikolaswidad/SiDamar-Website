@@ -2,7 +2,7 @@
 
 @section('container')
     {{-- CAROUSEL BARU FIX --}}
-    <div id="default-carousel" class="relative w-full h-96 overflow-hidden rounded-lg" data-carousel="slide">
+    <div id="default-carousel" class="lg:relative lg:w-full lg:h-96 overflow-hidden rounded-lg object-cover flex-shrink-0" data-carousel="slide">
         <!-- Carousel wrapper -->
         <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
@@ -57,7 +57,7 @@
         </p>
         {{-- make in coloum --}}
 
-        <div class="swiper mx-auto flex gap-6 justify-center">
+        <div class="swiper mx-auto lg:flex lg:gap-6 justify-center grid grid-cols-2">
             <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-60 hover:scale-105 duration-300">
                 <img src="/our_project/1.jpg" alt="picture1" class="w-full h-full">
             </div>

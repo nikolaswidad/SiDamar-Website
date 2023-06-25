@@ -18,21 +18,21 @@
         </div>
       @endif
   
-  <div class="w-full flex">
-  <form action="/dashboard/certificate" method="POST" enctype="multipart/form-data" class="w-96 mt-8 mr-8 pb-8 mb-4">
+  {{-- <div class="w-full flex"> --}}
+  <form action="/dashboard/certificate" method="POST" enctype="multipart/form-data" class="max-w-2xl mt-8 mr-8 pb-8 mb-4">
     @csrf
-    <div class="mb-6">
+    <div class="mb-3">
       <label for="nama" class="block text-gray-700 text-lg font-bold mb-2">Nama</label>
-      <input type="text" id="nama" name="nama" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('nama') is-invalid @enderror" placeholder="nama" required value="{{ $user->name }}">
+      <input type="text" id="nama" name="nama" class="h-11 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('nama') is-invalid @enderror" placeholder="nama" required value="{{ $user->name }}">
       
         @error('nama')
             {{ $message }}
         @enderror
     </div>
     
-    <div class="mb-6">
+    <div class="mb-3">
       <label for="event_id" class="block text-gray-700 text-lg font-bold mb-2">Nama Event</label>
-    <select class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="event_id" value="{{ old('event_id') }}>
+    <select class="h-11 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="event_id" value="{{ old('event_id') }}>
         <option value="">Pilih Event</option>
         @foreach ($event as $e)
         @if (old('event_id') == $e->title)
@@ -45,7 +45,7 @@
     </div>
   
     <label for="tanggal" class="block text-gray-700 text-lg font-bold mb-2">Tanggal</label>
-  <input type="date" id="tanggal" name="tanggal" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly value="{{ old('tanggal') }}">
+  <input type="date" id="tanggal" name="tanggal" class="h-11 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly value="{{ old('tanggal') }}">
   
     <input type="hidden" name="status" value="1">
     <div class="flex justify-end">
@@ -54,9 +54,9 @@
 
     </div>
   </form>
-    <div class="flex-shrink-0 mt-28 md:mt-10 w-1/2">
+    {{-- <div class="flex-shrink-0 mt-28 md:mt-10 w-1/2">
       <img class="rounded-r-lg shadow" src="https://source.unsplash.com/655x373?seminar" alt="">
-    </div>
+    </div> --}}
     </div>
 
   </div>

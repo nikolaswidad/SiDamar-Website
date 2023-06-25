@@ -36,7 +36,7 @@
 
   <div class="mb-6">
       <label for="category" class="block mb-2 text-sm font-bold text-gray-900">Kategori</label>
-      <select class="block px-4 text-sm  text-gray-900 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="category_id">
+      <select class="w-full px-4 text-sm  text-gray-900 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="category_id">
       @foreach ($category as $cat)
       @if (old('category_id') == $cat->id)
         <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>

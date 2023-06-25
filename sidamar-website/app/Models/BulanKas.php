@@ -13,4 +13,7 @@ class BulanKas extends Model
     public function pembayaranKas(){
         return $this->hasMany(PembayaranKas::class);
     }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

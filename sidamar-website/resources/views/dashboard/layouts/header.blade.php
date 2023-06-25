@@ -15,7 +15,7 @@
                <span class="font-bold text-white text-3xl flex-1 font-montserrat p-3 rounded-xl">SI DAMAR</span>
              </a>
       
-                   </div>
+          </div>
           <div class="flex items-end">
              <span class="mr-3">Hai, {{auth()->user()->name}}</span>
           </div>

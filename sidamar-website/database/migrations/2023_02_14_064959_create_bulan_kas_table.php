@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('bulan_kas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('bulan');
             $table->string('tahun');
             $table->integer('total_terkumpul')->default(0);

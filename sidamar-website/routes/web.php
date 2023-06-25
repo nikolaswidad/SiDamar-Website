@@ -18,13 +18,14 @@ use App\Http\Controllers\DonateController;
 use App\Models\ArsipFilm;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\FillPDFController;
+use App\Http\Controllers\UserController;
 
 
 use App\Http\Controllers\EventMemberController;
 use App\Http\Controllers\PresentMemberController;
 use App\Models\Event;
 use App\Models\Present;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,15 +77,16 @@ Route::get('/donation', function(){
 Route::get('/form-donation', function(){
     return view('form-donation');
 });
-Route::get('/dashboard/event', function(){
-    return view('dashboard.event');
-});
+
+// Route::get('/dashboard/event', function(){ return view('dashboard.event'); });
+// Route::get('/dashboard/event//{year}/{month}', [EventMemberController::class, 'showCalendar'])->name('calendar');
+Route::get('/dashboard/event', [EventMemberController::class, 'index']);
+
+
 Route::get('/dashboard/kas', function(){
     return view('dashboard.kas');
 });
-Route::get('/dashboard/presents', function(){
-    return view('dashboard.present');
-});
+Route::get('/dashboard/present', [PresentMemberController::class, 'show']);
 Route::get('/dashboard/donasi', function(){
     return view('dashboard.donasi');
 });
@@ -101,7 +103,7 @@ Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin
 
 Route::get('/dashboard/statuscertificate/approved/{id}',[CertificatesController::class, 'approved']);
 Route::get('/dashboard/statuscertificate/rejected/{id}',[CertificatesController::class, 'rejected']);
-Route::resource('/dashboard/certificate',CertificatesController::class)->middleware('auth');
+Route::resource('/dashboard/certificate',CertificatesController::class);
 // Dashboard Member End
 
 // Dashboard Template Start
@@ -125,8 +127,7 @@ Route::get('/dashboard/present/{id}', [PresentController::class, 'show']);
 Route::post('/dashboard/present/{present}/', [PresentController::class, 'store']);
 Route::delete('/dashboard/present/delete/{id}/{user}', [PresentController::class, 'destroy']);
 
-Route::resource('/dashboard/admin/event', EventController::class);
-Route::resource('/dashboard/admin/presents', PresentController::class);
+
 
 
 // Dashboard Admin End
@@ -134,11 +135,12 @@ Route::resource('/dashboard/admin/presents', PresentController::class);
 /****/
 
 // Dashboard Author Start
-Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted'])->middleware('auth');
-Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore')->middleware('auth');
-Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill')->middleware('auth');
-Route::resource('/dashboard/posts',DashboardPostController::class)->middleware('auth');
-Route::resource('dashboard/categories',PostCategoryController::class)->middleware('auth')->middleware('auth');
+Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
+Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
+Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill');
+Route::resource('/dashboard/posts',DashboardPostController::class);
+Route::resource('/dashboard/posts',DashboardPostController::class);
+Route::resource('dashboard/categories',PostCategoryController::class);
 // Route::get('/dashboard/posts/checkSlug',[DashboardPostController::class, 'checkSlug']);
 Route::post('/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->name('posts.checkSlug');
 
@@ -196,7 +198,13 @@ Route::get('/arsipFilm/{id}', [ArsipFilmController::class, 'show']);
 //About Page
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 //if request from button Diterima then run method diterima() else ditolak()
 Route::post('/buat',[FillPDFController::class, 'process'])->name('buat');
+
+// Dashboard User 
+Route::resource('/dashboard/user', UserController::class);
+
+//Route dashboard buat grafik
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.dashboard');

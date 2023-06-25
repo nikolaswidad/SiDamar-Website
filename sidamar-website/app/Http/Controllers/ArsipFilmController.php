@@ -76,6 +76,7 @@ class ArsipFilmController extends Controller
     {
         //get the request
         $validatedData = $request->validate([
+            'user_id' => 'required',
             'produser' => 'required|min:5|max:100',
             'sutradara' => 'required|min:5|max:100',
             'distributor' => 'required|min:5|max:100',
@@ -92,7 +93,7 @@ class ArsipFilmController extends Controller
             'pernyataan' => 'required',
         ]);
         //store the request
-        $arsipFilm = ArsipFilm::create($validatedData);
+        ArsipFilm::create($validatedData);
         //ArsipFilm::create($validatedData);
         //if the previous page is create, then redirect to index
         
@@ -166,6 +167,7 @@ class ArsipFilmController extends Controller
             'durasi' => 'required|numeric|digits_between:1,3',
             'kategori' => 'required',
             'link_film' => 'required|url',
+            'pernyataan' => 'required',
             //take value from checkbox pernyataan
         ]);
 

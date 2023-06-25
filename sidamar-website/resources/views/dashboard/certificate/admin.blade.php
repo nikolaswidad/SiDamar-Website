@@ -3,11 +3,13 @@
 @section('container')
    <h1 class="text-4xl font-semibold font-montserrat">Daftar Sertifikat</h1>
    <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
+   <h1 class="text-4xl font-semibold font-montserrat">Daftar Sertifikat</h1>
+   <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
 
    @if (Session::has('success'))
-      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <span class="font-medium">{{ Session('success') }}</span>
-      </div>
+    <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 mb-5 bg-green-500 rounded-xl" role="alert">
+      {{ session('success') }}
+    </div>
     @endif
 
     <label for="table-search" class="sr-only">Search</label>

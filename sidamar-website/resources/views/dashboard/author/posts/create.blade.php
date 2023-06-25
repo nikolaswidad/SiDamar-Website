@@ -4,19 +4,19 @@
 <div class="max-w-4xl font-montserrat">
   <h1 class="font-bold mb-5 text-4xl">Tambah Post</h1>
 
-  @if (count($errors)>0)
-    @foreach ($errors->all() as $error)
-      <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-        <span class="font-medium">{{ $error }}</span> Change a few things up and try submitting again.
-      </div>
-    @endforeach
-  @endif
+    @if (count($errors)>0)
+      @foreach ($errors->all() as $error)
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <span class="font-medium">{{ $error }}</span> Change a few things up and try submitting again.
+        </div>
+      @endforeach
+    @endif
 
   @if (Session::has('success'))
-    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-      <span class="font-medium">{{ Session('success') }}</span>
-    </div>
-  @endif
+      <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 mb-5 bg-green-500 rounded-xl" role="alert">
+      {{ session('success') }}
+      </div>
+    @endif
   <form action="/dashboard/posts" method="POST" enctype="multipart/form-data" class="rounded-lg space-y-5">
     @csrf
     <div class="mb-6">
@@ -29,10 +29,10 @@
     <div class="mb-6">
       <label for="slug" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Slug</label>
       <input type="text" id="slug" name="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('slug') is-invalid @enderror" placeholder="slug" required value="{{ old('slug') }}">
-      @error('slug')
-            {{ $message }}
-        @enderror
-    </div>
+    @error('slug')
+          {{ $message }}
+      @enderror
+  </div>
 
     <div class="mb-6">
       <label for="category" class="block mb-2 text-sm font-bold text-gray-900">Kategori</label>
@@ -99,7 +99,7 @@
   document.addEventListener('trix-file-accept', function(e){
     e.preventDefault();
   })
-  
+
 
   function previewImage(){
     const image = document.querySelector('#image');

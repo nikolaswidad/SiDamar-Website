@@ -6,12 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "arielmejiadev/larapex-charts": "^6.0",
         "cviebrock/eloquent-sluggable": "^9.0",
+        "dompdf/dompdf": "*",
         "guzzlehttp/guzzle": "^7.2",
+        "kyslik/column-sortable": "^6.5",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "nesbot/carbon": "^2.66",
+        "nesbot/carbon": "^2.67",
         "setasign/fpdf": "^1.8",
         "setasign/fpdi": "^2.3"
     },

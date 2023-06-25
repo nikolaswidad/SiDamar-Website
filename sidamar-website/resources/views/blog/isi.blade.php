@@ -18,8 +18,10 @@
                     <p class="text-sm pb-8">
                         By <a href="/blog?author={{ $blog->author->name }}" class="font-semibold hover:text-gray-800">{{ $blog->author->name }}</a>, Published {{ $blog->created_at->format('d/m/Y') }}
                     </p>
-                    <h1 class="text-2xl font-bold pb-3">Introduction</h1>
-                    <p class="pb-3">{{ strip_tags($blog->body) }}</p>
+                    {{-- <h1 class="text-2xl font-bold pb-3">Introduction</h1> --}}
+                    {{-- <p class="pb-3">{{ strip_tags($blog->body) }}</p> --}}
+                    {{-- <p class="pb-3">{{ $blog->body }}</p> --}}
+                    <article>{!!$blog->body!!}</article>
                 </div>
             </article>
 

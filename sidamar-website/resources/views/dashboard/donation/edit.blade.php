@@ -1,9 +1,9 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="text-4xl font-semibold font-montserrat">Ubah Event Donasi</h1>
+  <h1 class="text-4xl font-semibold font-montserrat">Ubah Event Donasi</h1>
   <hr class="bg-slate-200 mt-5 max-w-3xl">
-
+  
     @if (count($errors)>0)
       @foreach ($errors->all() as $error)
         <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">

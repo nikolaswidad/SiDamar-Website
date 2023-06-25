@@ -4,6 +4,9 @@
 <div class="max-w-7xl font-montserrat">
   <h1 class="font-bold mb-5 text-4xl">Post Kategori</h1>
   <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
+<div class="max-w-7xl font-montserrat">
+  <h1 class="font-bold mb-5 text-4xl">Post Kategori</h1>
+  <hr class="bg-slate-200 mt-5 mb-9 max-w-lg">
 
    @if (Session::has('success'))
   <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 mb-5 bg-green-500 rounded-xl" role="alert">

@@ -4,6 +4,9 @@
 <div class="max-w-5xl font-montserrat">
   <h1 class="font-montserrat font-bold mb-5 text-4xl">Sertifikat</h1>
   <hr class="bg-slate-200 mt-5 max-w-xs">
+<div class="max-w-5xl font-montserrat">
+  <h1 class="font-montserrat font-bold mb-5 text-4xl">Sertifikat</h1>
+  <hr class="bg-slate-200 mt-5 max-w-xs">
 
   {{-- @if (Session::has('success'))
     <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">

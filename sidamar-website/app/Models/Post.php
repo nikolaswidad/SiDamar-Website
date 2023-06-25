@@ -28,7 +28,7 @@ class Post extends Model
                     })
                     ->orWhereHas('category', function ($query) use ($search) {
                         $query->where('name', 'like', '%' . $search . '%');
-                    });
+        });
             });
         });
         

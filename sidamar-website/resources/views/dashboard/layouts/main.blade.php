@@ -35,10 +35,11 @@
 <body class="bg-gray-50">
     {{-- @include('dashboard.layouts.header') --}}
     @include('dashboard.layouts.sidebar')
+    {{-- @include('dashboard.layouts.header') --}}
 
     <div class="container">
         {{-- <div id="main-content" class="h-full w-full relative overflow-y-auto lg:ml-64"> --}}
-        <div id="main-content" class="h-full max-w-full relative overflow-y-auto lg:ml-64">
+        <div id="main-content" class="h-full max-w-full relative overflow-y-auto sm:ml-64">
             <main>
                 <div class="pt-10 px-4">
                     @yield('container')

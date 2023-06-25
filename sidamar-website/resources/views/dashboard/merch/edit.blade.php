@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="text-4xl font-semibold font-montserrat">Ubah Merchandise</h1>
+    <h1 class="text-4xl font-semibold font-montserrat">Ubah Merchandise</h1>
     <hr class="bg-slate-200 mt-5 max-w-3xl">
     @if (count($errors)>0)
       @foreach ($errors->all() as $error)
@@ -12,9 +12,9 @@
     @endif
 
     @if (Session::has('success'))
-      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <span class="font-medium">{{ Session('success') }}</span>
-      </div>
+    <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+      <span class="font-medium">{{ Session('success') }}</span>
+    </div>
     @endif
 
     <!-- Edit Modal -->

@@ -35,7 +35,7 @@ $balance = 0;
           <tr>
             <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/12">No</th>
             <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Keperluan</th>
-            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Tanggal</th>
+            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/3">Tanggal</th>
             <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">CashIn</th>
             <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">CashOut</th>
             <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Keterangan</th>
@@ -58,7 +58,7 @@ $balance = 0;
                   @csrf
                   @method('delete')
                   <a href="/dashboard/finances/{{ $fin->id }}/edit"><button type="button" class="bg-orange-400 hover:bg-orange-700 text-white text-sm p-2 px-3 rounded-lg font-semibold">Edit</button></a>
-                  <button type="submit" class="bg-primary text-white p-2 px-3 rounded-lg text-sm font-semibold">Delete</button>
+                  <button type="submit" class="bg-primary hover:bg-red-700 text-white p-2 px-3 rounded-lg text-sm font-semibold">Hapus</button>
                 </form>
               </td>
             </tr>
@@ -81,36 +81,56 @@ $balance = 0;
         </tbody>
     </table>
     </div>
-  
+    @empty($finance)
+      <div class="px-6 py-8 whitespace-nowrap">
+          <div class="font-semibold mb-5 text-2xl text-center text-gray-500">- Tidak Ada Report -</div>
+      </div>
+    @endempty
+    <div id="no-event-data" class="hidden px-6 py-4 whitespace-nowrap">
+        <div class="font-semibold mb-5 text-2xl text-center text-gray-500">Report tidak ditemukan</div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-  
+
       var searchInput = document.getElementById("table-search");
       searchInput.addEventListener("input", searchTable);
-  
+
       function searchTable() {
           var input = searchInput.value.toLowerCase();
           var table = document.getElementById("finances-table");
           var rows = table.getElementsByTagName("tr");
-  
+          var noEventDataDiv = document.getElementById("no-event-data");
+
+          var hasResults = false;
+
           for (var i = 0; i < rows.length; i++) {
               var rowData = rows[i].textContent.toLowerCase();
-  
+
               if (rowData.includes(input)) {
                   rows[i].style.display = "";
+                  hasResults = true;
               } else {
+                  //h1 Tidak ada event
+
                   rows[i].style.display = "none";
               }
           }
+
+          if (hasResults) {
+          noEventDataDiv.style.display = "none";
+          } else {
+              noEventDataDiv.style.display = "block";
+          }
       }
-  
-        // Make the table header sticky
-        var tableContainer = document.querySelector(".table-container");
-        tableContainer.addEventListener("scroll", function() {
-          var tableHeader = document.querySelector("donation-table thead");
+
+      // Make the table header sticky
+      var tableContainer = document.querySelector(".table-container");
+      tableContainer.addEventListener("scroll", function() {
+          var tableHeader = document.querySelector("finances-table thead");
           tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
       });
-    });
+      });
     </script>
 @endsection

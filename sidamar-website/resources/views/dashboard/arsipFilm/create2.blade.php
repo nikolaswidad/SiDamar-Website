@@ -156,7 +156,7 @@
             </div>
             <div>
                 <input type="checkbox" id="pernyataan" name="pernyataan" value="True" class="my-3">
-                <label for="pernyataan">Informasi yang disampaikan adalah benar adanya dan jika terdapat kesalahan pihak yang bersangkutan siap menerima konsekuensinya</label><br>
+                <label for="pernyataan">Informasi yang disampaikan adalah benar adanya dan jika terdapat kesalahan dapat menghungi <a href="https://wa.me/+62895359747200/?text=" class="hover:text-primary" target="_blank">admin</a></label><br>
 
                 {{-- @error('pernyataan')
                     <div class="text-red-500 text-sm mb-2">{{ $message }}</div>

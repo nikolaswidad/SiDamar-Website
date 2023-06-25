@@ -6,14 +6,14 @@
     <hr class="bg-slate-200 mt-5 max-w-lg">
  
     @if (Session::has('success'))
-      <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 mb-5 bg-green-500 rounded-xl" role="alert">
+      <div class="max-w-full font-montserrat text-xl text-white p-5 mt-5 bg-green-500 rounded-xl" role="alert">
         <span class="font-medium">{{ Session('success') }}</span>
       </div>
      @endif
  
-    <a href="{{ route('events.create') }}"><button type="button" class="mt-9 p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mb-5">+ Tambah Event</button></a>
+    <a href="{{ route('events.create') }}"><button type="button" class="mt-8 p-3 bg-primary rounded-lg text-white font-semibold hover:bg-red-600 mb-5">+ Tambah Event</button></a>
 
-    <a href="/dashboard/events/deleted"><button type="button" class="mt-9 p-3 hover:bg-red-600 bg-primary text-white font-semibold rounded-lg px-5 py-3 text-center mr-2 float-right mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash inline" viewBox="0 0 16 16">
+    <a href="/dashboard/events/deleted"><button type="button" class="mt-8 p-3 hover:bg-red-600 bg-primary text-white font-semibold rounded-lg px-5 py-3 text-center mr-2 float-right mb-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash inline" viewBox="0 0 16 16">
      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
      <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
      </svg> Tempat Sampah</button>
@@ -104,7 +104,7 @@
                              @csrf
                              @method('delete')
                              <a href="{{ route('events.edit', $event->id) }}"><button type="button" class="bg-orange-400 hover:bg-orange-700 text-white text-sm font-semibold p-2 rounded-lg inline-block">Edit</button></a>
-                             <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm font-semibold inline-block ">Delete</button>
+                             <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm font-semibold inline-block ">Hapus</button>
                            </form>
                          </td>     
                 </tr>
@@ -115,12 +115,16 @@
  
         <div class="mb-4 justify-center">
      </div>
- 
-       
- 
+     @empty($event)
+       <div class="px-6 py-8 whitespace-nowrap">
+           <div class="font-semibold mb-5 text-2xl text-center text-gray-500">- Tidak Ada Event -</div>
+       </div>
+     @endempty
+  
      <div id="no-event-data" class="hidden px-6 py-4 whitespace-nowrap">
-       <div class="font-semibold mb-5 text-2xl text-center text-gray-500">-- Tidak Ada Event --</div>
+         <div class="font-semibold mb-5 text-2xl text-center text-gray-500">Event tidak ditemukan</div>
      </div>
+ 
     <div class="mb-20"></div>
   
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -143,10 +147,12 @@
   
               if (rowData.includes(input)) {
                   rows[i].style.display = "";
+                  hasResults = true;
               } else {
                   rows[i].style.display = "none";
               }
           }
+          
           if (hasResults) {
               noEventDataDiv.style.display = "none";
           } else {

@@ -64,7 +64,7 @@
             </div>
             @endempty
             <div id="no-event-data" class="hidden px-6 py-4 whitespace-nowrap">
-                <div class="font-semibold mb-5 text-2xl text-center text-gray-500">-- Tidak ada event --</div>
+                <div class="font-semibold mb-5 text-2xl text-center text-gray-500">Event tidak ditemukan</div>
             </div>
     
         </div>

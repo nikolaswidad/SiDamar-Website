@@ -1,16 +1,28 @@
 @extends('layouts.main')
 
 @section('container')
-
+    <header class="w-full container mx-auto">
+        <div class="flex flex-col items-center py-12">
+            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="#">
+                Merchandise
+            </a>
+            <p class="text-lg text-gray-600">
+                Merchandise Official Sineas Muda Semarang
+            </p>
+            <a class="text-primary hover:text-red-700 hover:underline text-2xl font-semibold sm:text-4xl md:text-[40px]" href="/merch/create"">
+                Klik Disini untuk Membeli!!
+            </a>
+        </div>
+    </header>
     <div class="container mx-auto">
-        <div  class="-mx-4 flex flex-wrap justify-center">
+        {{-- <div  class="-mx-4 flex flex-wrap justify-center">
             <div class="w-full px-4">
-                <div class="mx-auto mb-[60px] max-w-[510px] text-center lg:mb-20">
-                    <span class="text-dark mb-2 sm:text-3xl block text-lg font-semibold">
-                        Our Merch
+                <div class="mx-auto mb-[60px] max-w-[510px] text-center lg:mb-1">
+                    <span class="text-dark mb-2 sm:text-3xl  uppercase block text-lg font-semibold">
+                        Merchandise
                     </span>
-                    <a class="text-primary hover:text-red-700 hover:underline text-3xl font-bold sm:text-4xl md:text-[40px]" href="/merch/create">
-                        Click on a merch to buy!
+                    <a class="text-primary hover:text-red-700 hover:underline text-3xl font-semibold sm:text-4xl md:text-[40px]" href="/merch/create">
+                        Klik disini untuk Membeli!!
                         
                     </a>
                     <p class="text-body-color text-base">
@@ -18,7 +30,7 @@
                       </p>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="-mx-4 flex flex-wrap justify-center">
                  
             @forelse($merch as $merch)
@@ -52,4 +64,5 @@
     </div>
     
 
+    @include('layouts.footer')
 @endsection

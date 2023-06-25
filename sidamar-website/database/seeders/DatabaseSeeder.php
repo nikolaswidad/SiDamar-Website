@@ -201,7 +201,6 @@ class DatabaseSeeder extends Seeder
 
         //Arsip Film Seeder start
         ArsipFilm::create([
-            'user_id' => 1,
             'produser' => 'Farhan Kebab',
             'sutradara' => 'Asep Spakbor',
             'distributor' => 'Jim Salabim',
@@ -218,7 +217,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ArsipFilm::create([
-            'user_id' => 1,
             'produser' => 'Sigit Rendang',
             'sutradara' => 'Reza Kecap',
             'distributor' => 'Anto Bengkel',
@@ -235,7 +233,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ArsipFilm::create([
-            'user_id' => 1,
             'produser' => 'Supri Icikiwir',
             'sutradara' => 'Zaki Indomie',
             'distributor' => 'Asep Batagor',
@@ -386,6 +383,9 @@ class DatabaseSeeder extends Seeder
             'total' => 50000,
         ]);
 
-    //customer seeder start
+    //Event Category Start
+        EventCategory::create([
+            'name' => 'Donation',
+        ]);
     }
 }

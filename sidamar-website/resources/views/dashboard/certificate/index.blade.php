@@ -41,7 +41,7 @@
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Event</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Nama</th>
-           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Tanggal</th>
+           <th scope="col" class="text-lg font-bold text-gray-900 px-9 py-4 text-left">Tanggal</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Status</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Print</th>
            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Hapus</th>
@@ -55,7 +55,7 @@
            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $no++ }}</td>
            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->events->title }}</td>
            <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->user->name }}</td>
-           <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->events->date }}</td>
+           <td class="text-lg text-gray-900 px-5 py-4 text-left">{{ $hasil->events->date }}</td>
            <td class="text-lg text-gray-900 px-6 py-4 text-left">
              <span class="px-2 font-semibold 
                @if ($hasil->cstatus->id == 1)
@@ -105,44 +105,60 @@
      </table>
          
      </div>
-     @empty($events)
+     @empty($hasil)
         <div class="px-6 py-8 whitespace-nowrap">
-            <div class="font-medium mb-5 text-2xl text-center text-gray-500">- Tidak Ada Event -</div>
+            <div class="font-semibold mb-5 text-2xl text-center text-gray-500">- Tidak Ada Sertifikat -</div>
         </div>
       @endempty
+      <div id="no-event-data" class="hidden px-6 py-4 whitespace-nowrap">
+        <div class="font-semibold mb-5 text-2xl text-center text-gray-500">Sertfikat tidak ditemukan</div>
+      </div>
  </div>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {
 
-  var searchInput = document.getElementById("table-search");
-  searchInput.addEventListener("input", searchTable);
+    var searchInput = document.getElementById("table-search");
+    searchInput.addEventListener("input", searchTable);
 
-  function searchTable() {
-      var input = searchInput.value.toLowerCase();
-      var table = document.getElementById("sertif-table");
-      var rows = table.getElementsByTagName("tr");
+    function searchTable() {
+        var input = searchInput.value.toLowerCase();
+        var table = document.getElementById("sertif-table");
+        var rows = table.getElementsByTagName("tr");
+        var noEventDataDiv = document.getElementById("no-event-data");
 
-      for (var i = 0; i < rows.length; i++) {
-          var rowData = rows[i].textContent.toLowerCase();
+        var hasResults = false;
 
-          if (rowData.includes(input)) {
-              rows[i].style.display = "";
-          } else {
-              rows[i].style.display = "none";
-          }
-      }
-  }
+        for (var i = 0; i < rows.length; i++) {
+            var rowData = rows[i].textContent.toLowerCase();
+
+            if (rowData.includes(input)) {
+                rows[i].style.display = "";
+                hasResults = true;
+            } else {
+                //h1 Tidak ada event
+
+                rows[i].style.display = "none";
+            }
+        }
+
+        if (hasResults) {
+        noEventDataDiv.style.display = "none";
+        } else {
+            noEventDataDiv.style.display = "block";
+        }
+    }
 
     // Make the table header sticky
     var tableContainer = document.querySelector(".table-container");
     tableContainer.addEventListener("scroll", function() {
-      var tableHeader = document.querySelector("sertif-table thead");
-      tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
-  });
+        var tableHeader = document.querySelector("sertif-table thead");
+        tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
+    });
 });
+</script> 
 </script> 
 <div class="mb-16"></div>
 @endsection

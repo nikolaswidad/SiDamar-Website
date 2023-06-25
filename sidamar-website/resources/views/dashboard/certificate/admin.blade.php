@@ -53,7 +53,7 @@
                         </svg>
                       </a>
                     </td>
-                    <td class="text-lg text-gray-900 px-6 py-4 text-left font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $hasil->events->title }}</td>
+                    <td class="text-lg text-gray-900 px-6 py-4 text-left font-medium whitespace-nowrap dark:text-white">{{ $hasil->events->title }}</td>
                     <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->events->date }}</td>
                     <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $hasil->user->name }}</td>
                      <td class="text-lg text-gray-900 px-6 py-4 text-left">

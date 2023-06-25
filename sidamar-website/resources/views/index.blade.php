@@ -6,23 +6,23 @@
         <!-- Carousel wrapper -->
         <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/carousel/4.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/carousel/1.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://source.unsplash.com/1920x580?movie" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/carousel/2.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://source.unsplash.com/1920x580?theatre" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/carousel/3.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://source.unsplash.com/1920x580?popcorn" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/carousel/4.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <!-- Item 5 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://source.unsplash.com/1920x580?film" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <img src="/carousel/5.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
         <div class="relative h-56 overflow-hidden rounded-lg lg:h-full">
         </div>
@@ -56,21 +56,23 @@
             Our <span class="text-transparent bg-gradient-to-r from-primary to-orange-400 bg-clip-text">Projects</span>
         </p>
         {{-- make in coloum --}}
-    
-        <div class="container px-6 mx-auto flex md:flex-wrap gap-6 justify-evenly">
-            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-72 hover:scale-105 duration-300">
-                <img src="/our_project/1.jpg" alt="picture1" class="w-full">
+
+        <div class="swiper mx-auto flex gap-6 justify-center">
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-60 hover:scale-105 duration-300">
+                <img src="/our_project/1.jpg" alt="picture1" class="w-full h-full">
             </div>
-            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-72 hover:scale-105 duration-300">
-                <img src="/our_project/2.png" alt="picture2" class="w-full">
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-60 hover:scale-105 duration-300">
+                <img src="/our_project/2.png" alt="picture2" class="w-full h-full">
             </div>
-            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-72 hover:scale-105 duration-300">
-                <img src="/our_project/3.png" alt="picture3" class="w-full">
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52  lg:w-60 hover:scale-105 duration-300">
+                <img src="/our_project/3.png" alt="picture3" class="w-full h-full">
             </div>
-            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52 lg:w-72 hover:scale-105 duration-300">
-                <img src="/our_project/4.png" alt="picture4" class="w-full">
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52  lg:w-60 hover:scale-105 duration-300">
+                <img src="/our_project/4.png" alt="picture4" class="w-full h-full">
             </div>           
-                      
+            <div class="rounded-lg mb-10 shadow-lg overflow-hidden sm:mb-0 w-40 md:w-52  lg:w-60 hover:scale-105 duration-300">
+                <img src="/our_project/5.png" alt="picture4" class="w-full h-full">
+            </div>           
         </div>
     </div>
 

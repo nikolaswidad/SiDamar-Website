@@ -10,6 +10,7 @@ use App\Models\BulanKas;
 use App\Models\User;
 use App\Models\PembayaranKas;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 
 class BulanKasController extends Controller
@@ -174,6 +175,10 @@ class BulanKasController extends Controller
         $pembayaranKas = PembayaranKas::where('bulan_kas_id', $bulanKas->id)->get();
         foreach($pembayaranKas as $pembayaranKas){
             $pembayaranKas->delete();
+            //delete all image in this pembayaranKas
+            if($pembayaranKas->bukti_pembayaran){
+                Storage::delete('public/bukti_pembayaran/'.$pembayaranKas->bukti_pembayaran);
+            }
         }
         //dd($bulanKas);
         

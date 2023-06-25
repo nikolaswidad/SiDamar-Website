@@ -7,10 +7,10 @@
             <div class="w-full px-4">
                 <div class="mx-auto mb-3 max-w-[510px] text-center lg:mb-20">
                     <span class="text-dark mb-1 sm:text-3xl block text-lg font-semibold">
-                        Lets Donate!!
+                        Mari Berdonasi!!
                     </span>
                     <a class="text-primary hover:text-dark mb-4 text-3xl font-bold sm:text-4xl md:text-[40px]" href="/donatur">
-                        Click to see another event! 
+                        Klik untuk melihat event lainnya!
                     </a>
 
                 </div>
@@ -48,28 +48,28 @@
               
             </div>
           </div>
-          <div class="bg-white py-12 md:py-24">
+          <div class="bg-white pt-3 pb-12 md:pb-24">
             <div class="mx-auto max-w-lg px-4 lg:px-8">
               <div class="max-w-5xl ">
                 <form action="/dashboard/donatur" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="mb-6">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                    <input type="text" id="name" name="name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('name') is-invalid @enderror" required value="{{ old('name') }}">
+                    <input type="text" id="name" name="name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('name') is-invalid @enderror" required value="{{ old('name') }}" placeholder="Masukkan nama">
                     @error('name')
                           {{ $message }}
                       @enderror
                   </div>
                   <div class="mb-6">
                     <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No HP</label>
-                    <input type="text" id="no_hp" name="no_hp" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('no_hp') is-invalid @enderror" required value="{{ old('no_hp') }}">
+                    <input type="text" id="no_hp" name="no_hp" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('no_hp') is-invalid @enderror" required value="{{ old('no_hp') }}" placeholder="Masukkan nomor telepon aktif">
                     @error('no_hp')
                           {{ $message }}
                       @enderror
                   </div>
                   <div class="mb-6">
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                    <input type="email" id="email" name="email" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('email') is-invalid @enderror" required value="{{ old('email') }}">
+                    <input type="email" id="email" name="email" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('email') is-invalid @enderror" required value="{{ old('email') }}" placeholder="Masukkan email aktif">
                     @error('email')
                           {{ $message }}
                       @enderror
@@ -91,8 +91,8 @@
                   
 
                   <div class="mb-6">
-                    <label for="total" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Total</label>
-                    <input type="text" id="total" name="total" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('total') is-invalid @enderror" required value="{{ old('total') }}">
+                    <label for="total" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nominal</label>
+                    <input type="text" id="total" name="total" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('total') is-invalid @enderror" required value="{{ old('total') }}"placeholder="Masukkan nominal (misal:50000) (tanpa titik)">
                     @error('total')
                           {{ $message }}
                       @enderror
@@ -128,9 +128,8 @@
                     @enderror
                   </div>
                 
-                  
-                  <a href="/donatur"><button type="button" class="text-white bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 ">Back</button></a>
-                  <button type="submit" class="mt-2 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline ">Submit</button>
+                  <a href="/donatur"><button type="button" class="text-white rounded-lg bg-gray-400 hover:bg-gray-500 px-6 py-3 text-base text-center font-bold tracking-wide">Kembali</button></a>
+                  <button type="submit" class="mt-2 text-white bg-red-700 hover:bg-red-800 font-bold rounded-lg text-base px-6 py-3 text-center">Submit</button>
                 </form>
     
     <script>
@@ -150,5 +149,12 @@
       }
       
     </script>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+    @include('layouts.footer')
 @endsection
 

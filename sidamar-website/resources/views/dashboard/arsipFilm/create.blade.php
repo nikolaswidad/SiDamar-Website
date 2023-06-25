@@ -15,10 +15,10 @@
             @method('POST')
             <div class="max-w-3xl xl:max-w-7xl">
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="hidden">
+                    {{-- <div class="hidden">
                         <label for="user_id" class="block text-gray-700 text-lg font-bold mb-2">User ID</label>
                         <input type="text" name="user_id" class="h-11 block appearance-none w-full lg:w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline mb-3" placeholder="User ID" value="{{ auth()->user()->id }}">
-                    </div>
+                    </div> --}}
                     <div class="">
                         <label for="produser" class="block text-gray-700 text-lg font-bold mb-2">Produser</label>
                         <input type="text" name="produser" class="h-11 block appearance-none w-full lg:w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline mb-3" placeholder="Nama Produser" value="{{ old('produser') }}">

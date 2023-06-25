@@ -120,7 +120,58 @@ $total_kas = 0;
               </div>
               </div>
           </div>
+          @empty($bulanKas)
+            <div class="px-6 py-4 whitespace-nowrap">
+                <div class="font-semibold mb-5 text-2xl text-center text-gray-500">-- Tidak ada event --</div>
+            </div>
+          @endempty
+          <div id="no-event-data" class="hidden px-6 py-4 whitespace-nowrap">
+              <div class="font-semibold mb-5 text-2xl text-center text-gray-500">Bulan Kas tidak ditemukan</div>
+          </div>
       </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+            var searchInput = document.getElementById("table-search");
+            searchInput.addEventListener("input", searchTable);
+
+            function searchTable() {
+                var input = searchInput.value.toLowerCase();
+                var table = document.getElementById("kas-table");
+                var rows = table.getElementsByTagName("tr");
+                var noEventDataDiv = document.getElementById("no-event-data");
+
+                var hasResults = false;
+
+                for (var i = 0; i < rows.length; i++) {
+                    var rowData = rows[i].textContent.toLowerCase();
+
+                    if (rowData.includes(input)) {
+                        rows[i].style.display = "";
+                        hasResults = true;
+                    } else {
+                        //h1 Tidak ada event
+
+                        rows[i].style.display = "none";
+                    }
+                }
+
+                if (hasResults) {
+                noEventDataDiv.style.display = "none";
+                } else {
+                    noEventDataDiv.style.display = "block";
+                }
+            }
+
+            // Make the table header sticky
+            var tableContainer = document.querySelector(".table-container");
+            tableContainer.addEventListener("scroll", function() {
+                var tableHeader = document.querySelector("kas-table thead");
+                tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
+            });
+        });
+        </script>  
   </div>
 
 

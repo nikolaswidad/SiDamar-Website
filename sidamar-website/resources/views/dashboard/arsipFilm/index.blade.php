@@ -49,8 +49,8 @@
                       <thead class="border-b">
                         <tr>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Judul Film</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Tahun Produksi</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/12">Judul</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 py-4 text-center w-1/6">Tahun Produksi</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Durasi</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Kategori</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Action</th>
@@ -62,12 +62,12 @@
                                 {{-- check user status in pembayaran kas, if != success display it --}}
                                 <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $loop->iteration }}</td>
                                 <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->judul_film }}</td>
-                                <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->tahun_produksi }}</td>
+                                <td class="text-lg text-gray-900 py-4 text-center">{{ $film->tahun_produksi }}</td>
                                 <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->durasi }} Menit</td>
                                 <td class="text-lg text-gray-900 px-6 py-4 text-left">{{ $film->kategori }}</td>
-                                <td class="text-lg text-gray-900 px-6 py-4 text-left flex gap-2">
+                                <td class="text-lg text-gray-900 px-6 py-4 text-left gap-2">
                                     {{-- Link presskit --}}
-                                    <a href="{{ $film->link_film }}" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm font-semibold rounded-lg">Link</a>
+                                    <a href="{{ $film->link_film }}" target="_blank" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm font-semibold rounded-lg">Link</a>
                                     {{-- Link edit --}}
                                     <a href="/dashboard/arsipFilm/{{ $film->id }}/edit" class="bg-orange-400 hover:bg-orange-600 text-white text-sm font-semibold p-2 rounded-lg">Edit</a>
                                     {{-- Link delete --}}
@@ -80,38 +80,65 @@
                             </tr>
                         @endforeach
                       </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              @empty($film)
+                  <div class="px-6 py-8 whitespace-nowrap">
+                      <div class="font-semibold mb-5 text-2xl text-center text-gray-500">- Tidak Ada Film -</div>
+                  </div>
+              @endempty
+              <div id="no-event-data" class="hidden px-6 py-4 whitespace-nowrap">
+                  <div class="font-semibold mb-5 text-2xl text-center text-gray-500">Film tidak ditemukan</div>
+              </div>
+          </div>
+    </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+          document.addEventListener("DOMContentLoaded", function() {
+
+          var searchInput = document.getElementById("table-search");
+          searchInput.addEventListener("input", searchTable);
+
+          function searchTable() {
+              var input = searchInput.value.toLowerCase();
+              var table = document.getElementById("film-table");
+              var rows = table.getElementsByTagName("tr");
+              var noEventDataDiv = document.getElementById("no-event-data");
+
+              var hasResults = false;
+
+              for (var i = 0; i < rows.length; i++) {
+                  var rowData = rows[i].textContent.toLowerCase();
+
+                  if (rowData.includes(input)) {
+                      rows[i].style.display = "";
+                      hasResults = true;
+                  } else {
+                      //h1 Tidak ada event
+
+                      rows[i].style.display = "none";
+                  }
+              }
+
+              if (hasResults) {
+              noEventDataDiv.style.display = "none";
+              } else {
+                  noEventDataDiv.style.display = "block";
+              }
+          }
+
+          // Make the table header sticky
+          var tableContainer = document.querySelector(".table-container");
+          tableContainer.addEventListener("scroll", function() {
+              var tableHeader = document.querySelector("film-table thead");
+              tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
+          });
+      });
+      </script>
   </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
 
-    var searchInput = document.getElementById("table-search");
-    searchInput.addEventListener("input", searchTable);
-
-    function searchTable() {
-        var input = searchInput.value.toLowerCase();
-        var table = document.getElementById("film-table");
-        var rows = table.getElementsByTagName("tr");
-
-        for (var i = 0; i < rows.length; i++) {
-            var rowData = rows[i].textContent.toLowerCase();
-
-            if (rowData.includes(input)) {
-                rows[i].style.display = "";
-            } else {
-                rows[i].style.display = "none";
-            }
-        }
-    }
-
-      // Make the table header sticky
-      var tableContainer = document.querySelector(".table-container");
-      tableContainer.addEventListener("scroll", function() {
-        var tableHeader = document.querySelector("kas-table thead");
-        tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
-    });
-  });
-  </script>
                   
 
 @endsection

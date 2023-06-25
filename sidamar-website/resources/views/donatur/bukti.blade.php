@@ -12,7 +12,7 @@
             <div class="w-full px-4">
                 <div class="mx-auto mb-1 max-w-[510px] text-center lg:mb-20">
                     <span class="text-primary mb-2 sm:text-3xl block text-lg font-semibold">
-                        Congratulation!!
+                        Terima Kasih!!
                     </span>
                     <p>Kamu telah berhasil berdonasi</p>
                 </div>
@@ -65,9 +65,9 @@
 
                   </div>
                 </div>
-                <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                  <a href="/donatur/"type="button" class="mt-2 text-white bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline ">Kembali</a>
-                  <a href="/donatur/cetak/{{ $donatur->id }}"type="button" class="mt-2 text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-4 py-2 text-center mr-1 inline ">Cetak</a>
+                <div class="bg-gray-50 px-4 py-3 text-right sm:px-6 mb-5">
+                  <a href="/donatur/"type="button" class="text-white rounded-lg bg-gray-400 hover:bg-gray-500 px-6 py-3 text-base text-center font-bold tracking-wide">Kembali</a>
+                  <a href="/donatur/cetak/{{ $donatur->id }}"type="button" class=" text-white bg-red-700 hover:bg-red-800 font-bold rounded-lg text-base px-6 py-3 text-center">Cetak</a>
                 </div>
               </div>
             </form>

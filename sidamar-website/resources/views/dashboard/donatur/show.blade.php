@@ -9,73 +9,61 @@
       {{ session('success') }}
     </div>
     @endif
-    <div class="relative mx-auto max-w-7xl py-7 mr-9">
-      <div class="mt-10 sm:mt-0">
-        <div class="md:grid md:grid-cols-3 md:gap-6">
-          <div class="mt-5 md:col-span-2 md:mt-0">
-            <form action="#" method="POST">
-              <div class="overflow-hidden sm:rounded-md">
-                <div class="">
-                  <h2 class="font-montserrat text-2xl font-bold lg:text-2xl text-center mb-6 mt-2">
-                    @if ($donatur->donation && isset($donatur->donation->title))
-                        {{ $donatur->donation->title }}
-                    @endif
-                  </h2>
-                  <p class="block text-orange-500 text-lg font-bold mb-2">*Dipesan pada: {{ $donatur->created_at }}</p>
-                  <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="first-name" class="block text-gray-700 text-lg font-bold">ID Donatur</label>
-                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" value="0002023-DTR-0{{ $donatur->id }}" disabled>
-                    </div>
-    
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="last-name" class="block text-gray-700 text-lg font-bold">Nama Donatur</label>
-                      <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" value="{{ $donatur->name }}" disabled>
-                    </div>
 
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="first-name" class="block text-gray-700 text-lg font-bold">Email</label>
-                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"value="{{ $donatur->email }}" disabled>
-                    </div>
-    
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="last-name" class="block text-gray-700 text-lg font-bold">Nomor Handphone</label>
-                      <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"value="{{ $donatur->no_hp }}" disabled>
-                    </div>
+    <div class="max-w-3xl xl:max-w-7xl">
+      <h2 class="font-montserrat text-2xl font-bold lg:text-2xl mb-3 mt-8">
+        @if ($donatur->donation && isset($donatur->donation->title))
+            {{ $donatur->donation->title }}
+        @endif
+      </h2>
+      <p class="block text-orange-500 text-lg font-bold mb-2">*dilakukan pada: {{ $donatur->created_at }}</p>
+      
+      <div class="lg:grid lg:grid-cols-2 lg:gap-3">
 
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="first-name" class="block text-gray-700 text-lg font-bold">Payment Method</label>
-                      <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm uppercase"value="{{ $donatur->payment_type }}" disabled>
-                    </div>
-    
-                    <div class="col-span-6 sm:col-span-3">
-                      <label for="last-name" class="block text-gray-700 text-lg font-bold">Total</label>
-                      <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"value="{{ $donatur->total }}" disabled>
-                    </div>
-    
-                    <div class="col-span-6 sm:col-span-6">
-                      <label for="last-name" class="block text-gray-700 text-lg font-bold">Bukti Pembayaran</label>
-                      <div class="lg:col-span-6">
-                        <div class="relative mt-4">
-                          @if ($donatur->image)
-                              <div style="max-height: 500px; ">
-                                  <img src="{{ asset($donatur->image) }}" alt="img" alt="{{ $donatur->name }}">
-                              </div>
-                          @endif
-                        </div>
-                      </div>
-                    </div>
+        <div class="">
+          <label for="first-name" class="block text-gray-700 text-lg font-bold mb-2">ID Donatur</label>
+          <input type="text" name="first-name" id="first-name" autocomplete="given-name" class=" mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" value="0002023-DTR-0{{ $donatur->id }}" disabled>
+        </div>
 
-                  </div>
-                </div>
-                <div class="flex justify-end">
-                  <a href="/dashboard/donatur/"type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-3 rounded-lg mt-5 mr-3">Kembali</a>
-                </div>
+        <div class="">
+          <label for="last-name" class="block text-gray-700 text-lg font-bold mb-2">Nama Donatur</label>
+          <input type="text" name="last-name" id="last-name" autocomplete="family-name" class=" mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" value="{{ $donatur->name }}" disabled>
+        </div>
+
+        <div class="">
+          <label for="first-name" class="block text-gray-700 text-lg font-bold mb-2">Email</label>
+          <input type="text" name="first-name" id="first-name" autocomplete="given-name" class=" mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"value="{{ $donatur->email }}" disabled>
+        </div>
+
+        <div class="">
+          <label for="last-name" class="block text-gray-700 text-lg font-bold mb-2">Nomor Handphone</label>
+          <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"value="{{ $donatur->no_hp }}" disabled>
+        </div>
+
+        <div class="">
+          <label for="first-name" class="block text-gray-700 text-lg font-bold mb-2">Payment Method</label>
+          <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm uppercase"value="{{ $donatur->payment_type }}" disabled>
+        </div>
+
+        <div class="">
+          <label for="last-name" class="block text-gray-700 text-lg font-bold mb-2">Total</label>
+          <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"value="{{ $donatur->total }}" disabled>
+        </div>
+
+        <div class="">
+          <label for="last-name" class="block text-gray-700 text-lg font-bold mb-2">Bukti Pembayaran</label>
+          @if ($donatur->image)
+              <div style="max-height: 500px; ">
+                  <img src="{{ asset($donatur->image) }}" alt="img" alt="{{ $donatur->name }}" class="w-auto h-64">
               </div>
-            </form>
-          </div>
+          @endif
+        </div>
+
+        <div class="flex justify-end lg:mt-64">
+          <a href="/dashboard/donatur/"type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-3 rounded-lg mr-3">Kembali ke Daftar Donatur</a>
         </div>
       </div>
-      <div class="mb-16"></div>
+    </div>
+    <div class="mb-16"></div>
 
 @endsection

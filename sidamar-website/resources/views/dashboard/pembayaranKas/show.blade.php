@@ -64,11 +64,11 @@
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/7">Nama</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/12">Nominal</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/7">Metode</th>
-                          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Bukti</th>
+                          <th scope="col" class="text-lg font-bold text-gray-900 px-8 py-4 text-center">Bukti</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/7">Tanggal</th>
                           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Status</th>
                           @if (Auth::user()->is_admin == 1)
-                            <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/7">Action</th>  
+                            <th scope="col" class="text-lg font-bold text-gray-900 px-8 py-4 text-left w-1/7">Action</th>  
                           @endif
                         </tr>
                       </thead>
@@ -79,12 +79,10 @@
                                 <td class="text-base text-gray-900 px-6 py-4 text-left">{{ $bayar->user->name }}</td>
                                 <td class="text-base text-gray-900 px-6 py-4 text-left">{{ $bayar->jumlah }}</td>
                                 <td class="text-base text-gray-900 px-6 py-4 text-left">{{ $bayar->metode_pembayaran }}</td>
-                                <td class="text-base text-gray-900 px-6 py-4 text-left">
+                                <td class="text-base text-gray-900 py-4 text-left">
                                     {{-- view the bukti_pembayaran --}}
                                     {{-- <a href="" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg" onclick="">Lihat Bukti</a> --}}
-                                    <button class="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-3 text-xs font-semibold rounded-lg inline-flex" onclick="showBukti('{{ $bayar->bukti_pembayaran }}')">Lihat Bukti</button>
-                                    {{-- <button class="text-sm ">Lihat Bukti</button> --}}
-                                    <!-- Include the following HTML code at the end of your page -->
+                                    <button class="bg-yellow-400 hover:bg-yellow-700 text-white py-2 px-4 text-sm font-semibold rounded-lg inline-flex text-center" onclick="showBukti('{{ $bayar->bukti_pembayaran }}')">Lihat Bukti</button>
                                     <div id="myModal" class="modal">
                                         <span class="close">&times;</span>
                                         <img class="modal-content" id="img01">
@@ -93,23 +91,25 @@
                                 </td>
                                 {{-- get only date time without time --}}
                                 <td class="text-base text-gray-900 px-6 py-4 text-left">{{ $bayar->created_at->format('d F Y') }}</td>
-                                <td class="text-base text-gray-900 px-6 py-4 text-left align-super">    
+                                <td class="text-base text-gray-900 px-6 py-4 text-left">    
                                     @if ($bayar->status == 'success')
                                         {{-- <button class="bg-green-400 hover:bg-green-700 text-white p-2 text-sm rounded-lg">Success</button> --}}
                                         <p class="bg-green-400 text-white py-2 px-2 text-sm font-semibold rounded-lg text-center">Success</p>
                                     @endif
                                 </td>
                                 @if (Auth::user()->is_admin == 1)
-                                    <td class="text-base text-gray-900 px-6 py-4 text-left flex items-center gap-2">
+                                    <td class="text-base text-gray-900 py-4 text-left">
                                 
                                         {{-- <a href="/dashboard/pembayaranKas/{{ $bayar->id }}/edit" class="bg-yellow-400 hover:bg-yellow-700 text-white p-2 text-sm rounded-lg">Detail</a> --}}
-                                        <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}/{{ $bayar->id }}/edit" class="bg-orange-400 text-white text-sm font-semibold p-2 rounded-lg">Edit</a>
-                                        {{-- Delete Baru --}}
-                                        <form action="/dashboard/pembayaranKas/{{ $bayar['id'] }}" method="POST" class="">
-                                            @csrf
-                                            <input type="hidden" name="_method" value="DELETE">
-                                            <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm font-semibold" onclick="return confirm('Apakah Anda yakin ingin menghapus pembayaran?')">Hapus</button>
-                                        </form>
+                                        <div class="flex justify-center gap-2">
+                                            <a href="/dashboard/pembayaranKas/{{ $bulanKas->id }}/{{ $bayar->id }}/edit" class="bg-orange-400 text-white text-sm font-semibold p-2 rounded-lg">Edit</a>
+                                            {{-- Delete Baru --}}
+                                            <form action="/dashboard/pembayaranKas/{{ $bayar['id'] }}" method="POST" class="">
+                                                @csrf
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="bg-primary text-white p-2 rounded-lg text-sm font-semibold" onclick="return confirm('Apakah Anda yakin ingin menghapus pembayaran?')">Hapus</button>
+                                            </form>
+                                        </div>
                                     </td>
                                 @endif
                             </tr>

@@ -4,7 +4,7 @@
       x-data="getCarouselData()"
   >
       <button
-          class="absolute bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
+          class="absolute bg-red-600 hover:bg-red-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 ml-12"
           x-on:click="decrement()">
           &#8592;
       </button>
@@ -12,15 +12,15 @@
           <img class="w-1/6 hover:opacity-75" :src="image">
       </template>
       <button
-          class="absolute right-0 bg-blue-800 hover:bg-blue-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
+          class="absolute right-0 bg-red-600 hover:bg-red-700 text-white text-2xl font-bold hover:shadow rounded-full w-16 h-16 mr-12"
           x-on:click="increment()">
           &#8594;
       </button>
   </div>
   <div class="w-full container mx-auto flex flex-col items-center">
       <div class="flex flex-col md:flex-row text-center md:text-left md:justify-between py-6">
-          <a href="#" class="uppercase px-3">About Us</a>
-          <a href="#" class="uppercase px-3">Privacy Policy</a>
+          <a href="{{ route('about') }}" class="uppercase px-3">About Us</a>
+          <a href="https://www.instagram.com/sidamarofficial/" class="uppercase px-3">Instagram</a>
           <a href="#" class="uppercase px-3">Terms & Conditions</a>
           <a href="#" class="uppercase px-3">Contact Us</a>
       </div>

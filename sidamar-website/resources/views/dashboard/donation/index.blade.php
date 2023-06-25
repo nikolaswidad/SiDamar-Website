@@ -27,7 +27,7 @@
       <thead class="border-b">
         <tr>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">No</th>
-          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Image</th>
+          <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Gambar</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Nama Acara</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left">Keterangan</th>
           <th scope="col" class="text-lg font-bold text-gray-900 px-6 py-4 text-left w-1/6">Tanggal</th>
@@ -65,37 +65,75 @@
         @endforeach
       </tbody>
     </table>
-    
+    @empty($donation)
+        <div class="px-6 py-8 whitespace-nowrap">
+            <div class="font-semibold mb-5 text-2xl text-center text-gray-500">- Tidak Ada Film -</div>
+        </div>
+    @endempty
+    <div id="no-event-data" class="hidden px-6 py-4 whitespace-nowrap">
+        <div class="font-semibold mb-5 text-2xl text-center text-gray-500">Event Donasi tidak ditemukan</div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function() {
 
-      var searchInput = document.getElementById("table-search");
-      searchInput.addEventListener("input", searchTable);
+        var searchInput = document.getElementById("table-search");
+        searchInput.addEventListener("input", searchTable);
 
-      function searchTable() {
-          var input = searchInput.value.toLowerCase();
-          var table = document.getElementById("donation-table");
-          var rows = table.getElementsByTagName("tr");
+        function searchTable() {
+            var input = searchInput.value.toLowerCase();
+            var table = document.getElementById("donation-table");
+            var rows = table.getElementsByTagName("tr");
+            var noEventDataDiv = document.getElementById("no-event-data");
 
-          for (var i = 0; i < rows.length; i++) {
-              var rowData = rows[i].textContent.toLowerCase();
+            var hasResults = false;
 
-              if (rowData.includes(input)) {
-                  rows[i].style.display = "";
-              } else {
-                  rows[i].style.display = "none";
-              }
-          }
-      }
+            for (var i = 0; i < rows.length; i++) {
+                var rowData = rows[i].textContent.toLowerCase();
+
+                if (rowData.includes(input)) {
+                    rows[i].style.display = "";
+                    hasResults = true;
+                } else {
+                    //h1 Tidak ada event
+
+                    rows[i].style.display = "none";
+                }
+            }
+
+            if (hasResults) {
+            noEventDataDiv.style.display = "none";
+            } else {
+                noEventDataDiv.style.display = "block";
+            }
+        }
 
         // Make the table header sticky
-        var tableContainer = document.querySelector(".table-container");
-        tableContainer.addEventListener("scroll", function() {
-          var tableHeader = document.querySelector("donation-table thead");
-          tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
-      });
-    });
+            var tableContainer = document.querySelector(".table-container");
+            tableContainer.addEventListener("scroll", function() {
+                var tableHeader = document.querySelector("donation-table thead");
+                tableHeader.style.transform = "translateY(" + tableContainer.scrollTop + "px)";
+            });
+        });
+
+        function showBukti(bukti_pembayaran) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            var span = document.getElementsByClassName("close")[0];
+    
+            modal.style.display = "block";
+            modalImg.src = "/bukti_pembayaran/" + bukti_pembayaran;
+    
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+    
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
     </script>
     
   </div>

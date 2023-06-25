@@ -23,14 +23,14 @@
       <div>
         <div class="md:grid md:grid-cols-3 md:gap-6">
           <div class="mt-5 md:col-span-2 md:mt-0 ">
-            <form action="{{ route('donation.update', $donation->id) }}" method="POST" class="max-w-3xl font-montserrat">
+            <form action="{{ route('donation.update', $donation->id) }}" method="POST" class="max-w-4xl font-montserrat">
               <input type="hidden" name="_method" value="PUT">
               @csrf
-                <div class="shadow sm:overflow-hidden sm:rounded-md">
+                <div class="sm:overflow-hidden sm:rounded-md">
                   <div class="space-y-4">
 
                     <div class="form-group mb-6 col-span-6">
-                        <label for="title" class="block text-gray-700 text-lg font-bold mb-2"><br>Judul</label>
+                        <label for="title" class="block text-gray-700 text-lg font-bold mb-2"><br>Nama Event Donasi</label>
                         <input type="text" name="title" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('title') is-invalid @enderror" id="title" value="{{ $donation->title }}" required>   
                         @error('title')
                             {{ $donation }}

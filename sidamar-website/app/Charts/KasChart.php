@@ -33,8 +33,8 @@ class KasChart
         ->setFontFamily('Montserrat')
         ->setTitle('Bulan Kas')
         ->setSubtitle('Total terkumpul dari semua bulan kas')
-        ->setWidth(500)
-        ->setHeight(300)
+        ->setWidth(440)
+        ->setHeight(370)
         ->setColors(['#ffa500'])
         ->setXAxis($label)
         ->addData('Total Terkumpul', $data);

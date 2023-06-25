@@ -43,7 +43,7 @@ class EventController extends Controller
     {
         $validateData = $request->validate([
             'title' => 'required|max:255',
-            'category_id' => 'required',
+            'category' => 'required',
             'description' => 'required',
             'date' => 'required',
             'time' => 'required',
@@ -56,7 +56,7 @@ class EventController extends Controller
         // $validateData['excerpt'] = Str::limit(strip_tags($request->body), 200);
         
         Event::create($validateData);
-        return redirect('/dashboard/events')->with('success','New event has been added');
+        return redirect('/dashboard/events')->with('success','Event Berhasil Ditambahkan');
     }
 
     /**
@@ -84,7 +84,7 @@ class EventController extends Controller
         // $categories = EventCategory::all();
         // $event = Event::findorfail($id);
         // return view('dashboard.admin.event.edit', compact('event','categories'));
-
+        // dd($event);
         return view('dashboard.admin.event.edit', [
             'event' => $event,
             'categories' => EventCategory::all()
@@ -102,7 +102,7 @@ class EventController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
-            'category_id' => 'required',
+            'category' => 'required',
             'description' => 'required',
             'date' => 'required',
             'time' => 'required',
@@ -112,12 +112,21 @@ class EventController extends Controller
         ];
 
         $validateData = $request->validate($rules);
-
+        // //get all input
+        // $validateData = $request->validate([
+        //     'title' => 'required|max:255',
+        //     'category_id' => 'required',
+        //     'description' => 'required',
+        //     'date' => 'required',
+        //     'time' => 'required',
+        //     'date_notification' => 'required',
+        //     'location' => 'required',
+        //     'url' => 'required'
+        // ]);
         $validateData['user_id'] = auth()->user()->id;
 
         Event::where('id',$event->id)->update($validateData);
-        
-        return redirect('/dashboard/events')->with('success','Event has been edited');
+        return redirect('/dashboard/events')->with('success','Event Berhasil Diperbarui');
     }
 
     /**
@@ -131,7 +140,7 @@ class EventController extends Controller
         $event = Event::findorfail($id);
         $event->delete();
         
-        return redirect('dashboard/events')->with('success','Data berhasil dihapus (silahkan cek trash can');
+        return redirect('dashboard/events')->with('success','Event Berhasil Dihapus (Silahkan Cek Tempat Sampah');
     }
 
     // nampilin data yang udah kehapus
@@ -148,7 +157,7 @@ class EventController extends Controller
         $events = Event::withTrashed()->where('id',$id)->first();
         $events->restore();
 
-        return redirect('dashboard/events/')->with('success','Data berhasil dikembalikan');
+        return redirect('dashboard/events/')->with('success','Event Berhasil Dikembalikan');
     }
 
     //delete permanen
@@ -156,6 +165,6 @@ class EventController extends Controller
         $event = Event::withTrashed()->where('id',$id)->first();
         $event->forceDelete();
 
-        return redirect('dashboard/events/deleted')->with('success','Data berhasil dihapus permanen');
+        return redirect('dashboard/events/deleted')->with('success','Event Berhasil Dihapus Permanen');
     }
 }

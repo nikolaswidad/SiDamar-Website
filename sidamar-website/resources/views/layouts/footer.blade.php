@@ -1,10 +1,10 @@
 
-<footer class="bg-white dark:bg-gray-900">
-
+<footer class="bg-white dark:bg-gray-900 text-sm">
+    
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex text-start">
             
-          <div class="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-2">
+          {{-- <div class="grid grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-2">
               <div class="">
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
                   <ul class="text-gray-600 dark:text-gray-400 font-medium">
@@ -28,7 +28,7 @@
                   </ul>
               </div>
               
-          </div>
+          </div> --}}
       </div>
       <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div class="sm:flex sm:items-center sm:justify-between">

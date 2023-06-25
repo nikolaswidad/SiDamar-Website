@@ -14,27 +14,35 @@ class UserChart
         $this->chart = $chart;
     }
 
-    public function build(): \ArielMejiaDev\LarapexCharts\DonutChart
+    public function build(): \ArielMejiaDev\LarapexCharts\BarChart
     {
         $user = User::get();
         // get data count based on tahun_bergabung
         $data = [];
         foreach ($user as $key => $value) {
             // count every tahun_bergabung
-            $tahun = $value->tahun_bergabung;
-            $data[] = User::where('tahun_bergabung', $tahun)->count();
+            $tahun_bergabung = $value->tahun_bergabung;
+            foreach ($user as $key => $value) {
+                if ($value->tahun_bergabung == $tahun_bergabung) {
+                    $data[$tahun_bergabung] = User::where('tahun_bergabung', $tahun_bergabung)->count();
+                }
+            }
         }
         $label = [];
         // fill label with tahun_bergabung
         foreach ($user as $key => $value) {
             $label[] = $value->tahun_bergabung;
+            if (count($label) == count($data)) {
+                break;
+            }
         }
-        return $this->chart->donutChart()
-            ->setTitle('Grafi Jumlah Pengguna')
+        // dd($data, $label);
+        return $this->chart->barChart()
+            ->setTitle('Jumlah Pengguna')
             ->setSubtitle('Berdasarkan Tahun Bergabung')
-            ->setWidth(500)
-            ->setHeight(300)
-            ->setXAxis($label)
-            ->addData($data);
+            ->setWidth(400)
+            ->setHeight(400)
+            ->addData("Pengguna",$data)
+            ->setLabels($label);
     }
 }

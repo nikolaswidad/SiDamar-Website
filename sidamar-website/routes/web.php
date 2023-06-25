@@ -187,6 +187,8 @@ Route::resource('/dashboard/arsipFilm', ArsipFilmController::class);
 //the /arsipFilm is the path, ArsipFilmController is the controller
 //i want the create2.blade.php to connected to ArsipFilmController in create method
 Route::get('/arsipFilm', [ArsipFilmController::class, 'create2']);
+// Route::post('/arsipFilm', [ArsipFilmController::class, 'store'])->name('arsipFilm.store');
+
 //the forrm is in create2.blade.php
 //the form is connected to ArsipFilmController in store method
 Route::get('/arsipFilm/{id}', [ArsipFilmController::class, 'show']);
@@ -196,7 +198,7 @@ Route::get('/arsipFilm/{id}', [ArsipFilmController::class, 'show']);
 //About Page
 Route::get('/about', function () {
     return view('about');
-});
+})->name('about');
 
 //if request from button Diterima then run method diterima() else ditolak()
 Route::post('/buat',[FillPDFController::class, 'process'])->name('buat');

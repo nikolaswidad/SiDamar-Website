@@ -1,7 +1,8 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="font-bold mb-5 text-4xl">Add Post</h1>
+<div class="max-w-4xl font-montserrat">
+  <h1 class="font-bold mb-5 text-4xl">Tambah Post</h1>
 
     @if (count($errors)>0)
       @foreach ($errors->all() as $error)
@@ -12,15 +13,14 @@
     @endif
 
     @if (Session::has('success'))
-      <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-        <span class="font-medium">{{ Session('success') }}</span>
+      <div class="max-w-7xl font-montserrat text-xl text-white p-5 mt-5 mb-5 bg-green-500 rounded-xl" role="alert">
+      {{ session('success') }}
       </div>
     @endif
-<div class="w-full">
-  <form action="/dashboard/posts" method="POST" enctype="multipart/form-data" class="bg-white shadow rounded-lg px-8 pt-6 pb-8 mb-4">
+  <form action="/dashboard/posts" method="POST" enctype="multipart/form-data" class="rounded-lg space-y-5">
   @csrf
   <div class="mb-6">
-      <label for="title" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Title</label>
+      <label for="title" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Judul</label>
     <input type="text" id="title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('title') is-invalid @enderror" placeholder="title" required value="{{ old('title') }}">
     @error('title')
           {{ $message }}
@@ -35,8 +35,8 @@
   </div>
 
   <div class="mb-6">
-      <label for="category" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Category</label>
-    <select class="rounded-lg" name="category_id">
+      <label for="category" class="block mb-2 text-sm font-bold text-gray-900">Kategori</label>
+      <select class="block px-4 text-sm  text-gray-900 border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" name="category_id">
       @foreach ($category as $cat)
       @if (old('category_id') == $cat->id)
         <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>
@@ -48,7 +48,7 @@
   </div>
   
   <div class="mb-6">
-      <label class="block mb-2 text-sm font-bold text-gray-900 dark:text-white" for="image">Upload Image</label>
+      <label class="block mb-2 text-sm font-bold text-gray-900 dark:text-white" for="image">Unggah gambar</label>
     <img class="img-preview img-fluid mb-3 w-96">
     <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('image') is-invalid @enderror" name="image" id="image" type="file" onchange="previewImage()">
     @error('image')
@@ -57,7 +57,7 @@
   </div>
 
   <div class="mb-3">
-      <label for="body" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Body</label>
+      <label for="body" class="block mb-2 text-sm font-bold text-gray-900 dark:text-white">Isi</label>
     @error('body')
         <p class="text-danger">{{ $message }}</p>
     @enderror
@@ -66,7 +66,11 @@
   </div>
 
   
-  <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+    {{-- <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button> --}}
+    <div class="flex justify-end">
+      <a href="/dashboard/posts"><button type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold p-3 rounded-lg mt-5 mr-3 text-sm lg:text-md">Kembali</button></a>
+      <button type="submit" class="text-sm lg:text-md bg-primary hover:bg-red-700 text-white font-bold p-3 rounded-lg mt-5">Buat Post</button>
+    </div>
 </form>
 </div>
 

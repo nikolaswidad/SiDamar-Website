@@ -115,7 +115,7 @@ class DonaturController extends Controller
             $donatur = donatur::findOrFail($id);
             $donatur->delete();
             
-            return redirect()->back()->with('success', 'Data Deleted Successfully');
+            return redirect()->back()->with('success', 'Data Donatur Berhasil Dihapus');
         }
     }
 }

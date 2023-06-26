@@ -19,7 +19,7 @@ class PresentFactory extends Factory
         $type = ['hadir', 'sakit', 'izin'];
 
         return [
-            'event_id' => $this->faker->numberBetween(1, 9),
+            'event_id' => $this->faker->numberBetween(1, 8),
             'user_id' => mt_rand(1,41),
             'type' => $this->faker->randomElement($type),
 

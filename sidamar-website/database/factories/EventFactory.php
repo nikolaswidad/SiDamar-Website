@@ -23,7 +23,7 @@ class EventFactory extends Factory
             'title' => $this->faker->word(),
             'event_manager' => fake()->name(),
             // 'category' => $this->faker->randomElement($categories),
-            'category' =>  mt_rand(1,3),
+            'category_id' =>  mt_rand(1,9),
             'description' => $this->faker->paragraphs(5, true),
             'date' => $this->faker->dateTime(),
             'time' => $this->faker->time(),

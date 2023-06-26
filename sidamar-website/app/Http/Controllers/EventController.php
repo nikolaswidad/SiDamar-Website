@@ -41,9 +41,10 @@ class EventController extends Controller
      */
     public function store(StoreEventRequest $request)
     {
+        // return $request->all();
         $validateData = $request->validate([
             'title' => 'required|max:255',
-            'category' => 'required',
+            'category_id' => 'required',
             'description' => 'required',
             'date' => 'required',
             'time' => 'required',
@@ -51,7 +52,10 @@ class EventController extends Controller
             'url' => 'required'
         ]);
 
+        // dd($validateData);
+        
         $validateData['user_id'] = auth()->user()->id;
+
         
         Event::create($validateData);
         return redirect('/dashboard/events')->with('success','New event has been added');
@@ -98,9 +102,10 @@ class EventController extends Controller
      */
     public function update(UpdateEventRequest $request, Event $event)
     {
+        // return $request->all();
         $rules = [
             'title' => 'required|max:255',
-            'category' => 'required',
+            'category_id' => 'required',
             'description' => 'required',
             'date' => 'required',
             'time' => 'required',
@@ -114,7 +119,7 @@ class EventController extends Controller
 
         Event::where('id',$event->id)->update($validateData);
         
-        return redirect('/dashboard/events')->with('success','Event has been edited');
+        return redirect('/dashboard/events')->with('success','Acara berhasil diedit');
     }
 
     /**
@@ -128,7 +133,7 @@ class EventController extends Controller
         $event = Event::findorfail($id);
         $event->delete();
         
-        return redirect('dashboard/events')->with('success','Data berhasil dihapus (silahkan cek trash can');
+        return redirect('dashboard/events')->with('success','Data berhasil dihapus (silahkan cek sampah)');
     }
 
     // nampilin data yang udah kehapus

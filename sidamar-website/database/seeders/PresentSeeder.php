@@ -28,7 +28,7 @@ class PresentSeeder extends Seeder
             'type' => 'Sakit'
         ]);
 
-        Present::factory(300)->create();
+        Present::factory(200)->create();
         
     }
 }

@@ -15,7 +15,7 @@
             <div class="shadow sm:overflow-hidden sm:rounded-md">
             <div class="space-y-6 bg-white px-4 py-5 sm:p-6">
 
-                <label for="title" class="block text-lg font-bold text-gray-700">Edit Acara</label>
+                <label for="title" class="block text-lg font-bold text-gray-700">Ubah Acara</label>
                 <div class="col-span-6">
                 <label for="title" class="block text-sm font-medium text-gray-700">Nama Acara</label>
                 <input type="text" name="title" id="title" autocomplete="title"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" value="{{ old('title') ?? $event->title }}">
@@ -26,7 +26,7 @@
                 <select id="category_id" name="category_id" autocomplete="category_id" value="{{ old('category') ?? $event->category_id }}" class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-primary focus:outline-none focus:ring-primary sm:text-sm">
                     <option selected disabled>Pilih Kategori</option>
                     @foreach ($categories as $category)
-                        @if (old('category') ?? $event->category == $category->id)   
+                        @if (old('category') ?? $event->category_id == $category->id)   
                             <option value="{{ $category->id }}" selected>{{ $category->category }}</option>
                         @else
                             <option value="{{ $category->id }}" >{{ $category->category }}</option>

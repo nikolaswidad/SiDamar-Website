@@ -16,7 +16,7 @@ class Event extends Model
     protected $guarded = ['id'];
     
     public function categories(){
-        return $this->belongsTo(EventCategory::class, 'category');
+        return $this->belongsTo(EventCategory::class, 'category_id');
     }
 
     public function present(){

@@ -9,7 +9,7 @@
     <div class="py-6">
         <div class="flex my-5 justify-between">
             <div>
-                <h1 class="text-2xl font-bold">Riwayat Presensi</h1>
+                <h1 class="text-2xl font-bold">Riwayat Kehadiran</h1>
             </div>
         </div>
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

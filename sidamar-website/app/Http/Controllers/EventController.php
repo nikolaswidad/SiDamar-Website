@@ -58,7 +58,7 @@ class EventController extends Controller
 
         
         Event::create($validateData);
-        return redirect('/dashboard/events')->with('success','New event has been added');
+        return redirect('/dashboard/events')->with('success','Acara berhasil ditambahkan');
     }
 
     /**

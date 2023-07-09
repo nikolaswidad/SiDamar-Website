@@ -19,6 +19,12 @@ use App\Models\ArsipFilm;
 use App\Http\Controllers\CertificatesController;
 use App\Http\Controllers\FillPDFController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\donationController;
+use App\Http\Controllers\financeController;
+use App\Http\Controllers\MerchController;
+use App\Http\Controllers\DonaturController;
+use App\Http\Controllers\CustomerController;
+
 
 
 use App\Http\Controllers\EventMemberController;
@@ -64,9 +70,9 @@ Route::resource('/donate',DonateController::class);
 /****/
 
 // Dashboard Member Start
-Route::get('/dashboard', function(){
-    return view('dashboard.index');
-})->middleware('auth');
+// Route::get('/dashboard', function(){
+//     return view('dashboard.index');
+// })->middleware('auth');
 
 Route::get('/merchandise', function(){
     return view('merchandise');
@@ -80,50 +86,50 @@ Route::get('/form-donation', function(){
 
 // Route::get('/dashboard/event', function(){ return view('dashboard.event'); });
 // Route::get('/dashboard/event//{year}/{month}', [EventMemberController::class, 'showCalendar'])->name('calendar');
-Route::get('/dashboard/event', [EventMemberController::class, 'index']);
+Route::get('/dashboard/event', [EventMemberController::class, 'index'])->middleware('auth');
 
 
 Route::get('/dashboard/kas', function(){
     return view('dashboard.kas');
-});
-Route::get('/dashboard/present', [PresentMemberController::class, 'show']);
+})->middleware('auth');
+Route::get('/dashboard/present', [PresentMemberController::class, 'show'])->middleware('auth');
 Route::get('/dashboard/donasi', function(){
     return view('dashboard.donasi');
-});
+})->middleware('auth');
 Route::get('/dashboard/merch', function(){
     return view('dashboard.merch');
-});
+})->middleware('auth');
 Route::get('/dashboard/finance', function(){
     return view('dashboard.finance');
-});
+})->middleware('auth');
 
-Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin']);
+Route::get('/dashboard/statuscertificate',[CertificatesController::class, 'admin'])->middleware('auth');
 
-Route::get('/dashboard/statuscertificate/approved/{id}',[CertificatesController::class, 'approved']);
-Route::get('/dashboard/statuscertificate/rejected/{id}',[CertificatesController::class, 'rejected']);
-Route::resource('/dashboard/certificate',CertificatesController::class);
+Route::get('/dashboard/statuscertificate/approved/{id}',[CertificatesController::class, 'approved'])->middleware('auth');
+Route::get('/dashboard/statuscertificate/rejected/{id}',[CertificatesController::class, 'rejected'])->middleware('auth');
+Route::resource('/dashboard/certificate',CertificatesController::class)->middleware('auth');
 // Dashboard Member End
 
 // Dashboard Template Start
 Route::get('/dashboard/template/form', function(){
     return view('dashboard.template.form');
-});
+})->middleware('auth');
 // Dashboar Template End
 
 /****/
 
 // Dashboard Admin Start
-Route::get('/dashboard/events/deleted',[EventController::class, 'deleted']);
-Route::get('/dashboard/events/restore/{id}',[EventController::class, 'restore'])->name('events.restore');
-Route::delete('/dashboard/events/kill/{id}',[EventController::class, 'kill'])->name('events.kill');
-Route::resource('/dashboard/events', EventController::class);
+Route::get('/dashboard/events/deleted',[EventController::class, 'deleted'])->middleware('auth');
+Route::get('/dashboard/events/restore/{id}',[EventController::class, 'restore'])->name('events.restore')->middleware('auth');
+Route::delete('/dashboard/events/kill/{id}',[EventController::class, 'kill'])->name('events.kill')->middleware('auth');
+Route::resource('/dashboard/events', EventController::class)->middleware('auth');
 // Route::resource('/dashboard/presents', PresentController::class);
 
 // Present Route
-Route::get('/dashboard/presents', [PresentController::class,'index']);
-Route::get('/dashboard/present/{id}', [PresentController::class, 'show']);
-Route::post('/dashboard/present/{present}/', [PresentController::class, 'store']);
-Route::delete('/dashboard/present/delete/{id}/{user}', [PresentController::class, 'destroy']);
+Route::get('/dashboard/presents', [PresentController::class,'index'])->middleware('auth');
+Route::get('/dashboard/present/{id}', [PresentController::class, 'show'])->middleware('auth');
+Route::post('/dashboard/present/{present}/', [PresentController::class, 'store'])->middleware('auth');
+Route::delete('/dashboard/present/delete/{id}/{user}', [PresentController::class, 'destroy'])->middleware('auth');
 
 
 
@@ -133,11 +139,11 @@ Route::delete('/dashboard/present/delete/{id}/{user}', [PresentController::class
 /****/
 
 // Dashboard Author Start
-Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted']);
-Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore');
-Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill');
-Route::resource('/dashboard/posts',DashboardPostController::class);
-Route::resource('/dashboard/posts',DashboardPostController::class);
+Route::get('/dashboard/posts/deleted',[DashboardPostController::class, 'deleted'])->middleware('auth');
+Route::get('/dashboard/posts/restore/{id}',[DashboardPostController::class, 'restore'])->name('posts.restore')->middleware('auth');
+Route::delete('/dashboard/posts/kill/{id}',[DashboardPostController::class, 'kill'])->name('posts.kill')->middleware('auth');
+Route::resource('/dashboard/posts',DashboardPostController::class)->middleware('auth');
+Route::resource('/dashboard/posts',DashboardPostController::class)->middleware('auth');
 Route::resource('dashboard/categories',PostCategoryController::class);
 // Route::get('/dashboard/posts/checkSlug',[DashboardPostController::class, 'checkSlug']);
 Route::post('/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->name('posts.checkSlug');
@@ -148,20 +154,20 @@ Route::post('/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->
 // Dashboard Author End
 
 //Dashboard Bulan Kas
-Route::resource('/dashboard/bulanKas', BulanKasController::class);
+Route::resource('/dashboard/bulanKas', BulanKasController::class)->middleware('auth');
 
 // //Dashboard Donasi
-Route::resource('/dashboard/donation', App\Http\Controllers\donationController::class);
+Route::resource('/dashboard/donation', App\Http\Controllers\donationController::class)->middleware('auth');
 Route::get('/donatur', [App\Http\Controllers\donationController::class, 'index2']);
 Route::get('/donatur/cetak/{id}', [App\Http\Controllers\donaturController::class, 'invoice'])->name('invoice');
 Route::get('/donatur/bukti/{id}', [App\Http\Controllers\donaturController::class, 'bukti'])->name('bukti');
 Route::get('/donatur/create', [App\Http\Controllers\donaturController::class, 'store']);
 Route::get('/donatur/create', [App\Http\Controllers\donaturController::class, 'create']);
-Route::resource('/dashboard/donatur', App\Http\Controllers\donaturController::class);
+Route::resource('/dashboard/donatur', App\Http\Controllers\donaturController::class)->middleware('auth');
 
 
 //Dashboard Finances
-Route::resource('/dashboard/finances', App\Http\Controllers\financeController::class);
+Route::resource('/dashboard/finances', App\Http\Controllers\financeController::class)->middleware('auth');
 
 //Dashboard Merch
 Route::resource('/merch', App\Http\Controllers\MerchController::class);
@@ -170,20 +176,20 @@ Route::get('/merch/cetak/{id}', [App\Http\Controllers\CustomerController::class,
 Route::get('/merch/bukti/{id}', [App\Http\Controllers\CustomerController::class, 'bukti2'])->name('bukti2');
 Route::get('/merch/create', [App\Http\Controllers\CustomerController::class, 'store']);
 Route::get('/merch/create', [App\Http\Controllers\CustomerController::class, 'create']);
-Route::resource('/dashboard/customer', App\Http\Controllers\CustomerController::class);
+Route::resource('/dashboard/customer', App\Http\Controllers\CustomerController::class)->middleware('auth');
 Route::get('/get-product-price/{id}', [App\Http\Controllers\CustomerController::class, 'getProductPrice']);
 
-Route::resource('/dashboard/merch', App\Http\Controllers\MerchController::class);
+Route::resource('/dashboard/merch', App\Http\Controllers\MerchController::class)->middleware('auth');
 
 //Dashboard Pembayaran Kas
-Route::resource('/dashboard/pembayaranKas', PembayaranKasController::class);
-Route::get('/dashboard/pembayaranKas/create/{bulanKasId}', [PembayaranKasController::class, 'create']);
-Route::post('/dashboard/pembayaranKas/{id}', [PembayaranKasController::class, 'store']);
-Route::get('/dashboard/pembayaranKas/{bulanKasId}/{pembayaranKasId}/edit', [PembayaranKasController::class, 'edit']);
+Route::resource('/dashboard/pembayaranKas', PembayaranKasController::class)->middleware('auth');
+Route::get('/dashboard/pembayaranKas/create/{bulanKasId}', [PembayaranKasController::class, 'create'])->middleware('auth');
+Route::post('/dashboard/pembayaranKas/{id}', [PembayaranKasController::class, 'store'])->middleware('auth');
+Route::get('/dashboard/pembayaranKas/{bulanKasId}/{pembayaranKasId}/edit', [PembayaranKasController::class, 'edit'])->middleware('auth');
 
 
 //Dashboard Arsip Film
-Route::resource('/dashboard/arsipFilm', ArsipFilmController::class);
+Route::resource('/dashboard/arsipFilm', ArsipFilmController::class)->middleware('auth');
 //the /arsipFilm is the path, ArsipFilmController is the controller
 //i want the create2.blade.php to connected to ArsipFilmController in create method
 Route::get('/arsipFilm', [ArsipFilmController::class, 'create2']);
@@ -204,7 +210,7 @@ Route::get('/about', function () {
 Route::post('/buat',[FillPDFController::class, 'process'])->name('buat');
 
 // Dashboard User 
-Route::resource('/dashboard/user', UserController::class);
+Route::resource('/dashboard/user', UserController::class)->middleware('auth');
 
 //Route dashboard buat grafik
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.dashboard');
+Route::resource('/dashboard', DashboardController::class)->middleware('auth');
